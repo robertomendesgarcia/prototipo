@@ -7,3 +7,7 @@
 /dist
 .DS_Store
 /tags
+!/app/Config/acl.ini.php
+!/app/Config/
+!/plugins/
+!/vendors/
