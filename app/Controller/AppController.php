@@ -34,5 +34,12 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
     
     public $components = array('DebugKit.Toolbar');
+
+    function beforeRender() {
+        parent::beforeRender();
+        if (!defined("DEFAULT_URL")) {
+            define("DEFAULT_URL", Router::url("/", true));
+        }
+    }
     
 }
