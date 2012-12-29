@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Application level Controller
  *
@@ -19,7 +20,6 @@
  * @since         CakePHP(tm) v 0.2.9
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
-
 App::uses('Controller', 'Controller');
 
 /**
@@ -32,8 +32,26 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    
-    public $components = array('DebugKit.Toolbar');
+
+    public $components = array(
+        'DebugKit.Toolbar',
+        'Session',
+        'Auth' => array(
+            'loginRedirect' => array('controller' => 'usuarios', 'action' => 'bem_vindo'),
+            'logoutRedirect' => array('controller' => 'usuarios', 'action' => 'login'),
+            'loginAction' => array('controller' => 'usuarios', 'action' => 'login', 'plugin' => null),
+            'settings' => array(
+                'fields' => array(
+                    'username' => 'usuario',
+                    'password' => 'senha'
+                ),
+                'userModel' => 'Usuario',
+                'scope' => array(),
+                'recursive' => 0,
+                'contain' => null,
+            ),
+        ),
+    );
 
     function beforeRender() {
         parent::beforeRender();
@@ -41,5 +59,15 @@ class AppController extends Controller {
             define("DEFAULT_URL", Router::url("/", true));
         }
     }
-    
+
+    function beforeFilter() {
+        //$this->Auth->allow('index', 'view');
+
+//        $locale = Configure::read('Config.language');
+//        if ($locale && file_exists(VIEWS . $locale . DS . $this->viewPath)) {
+//            // e.g. use /app/View/fre/Pages/tos.ctp instead of /app/View/Pages/tos.ctp
+//            $this->viewPath = $locale . DS . $this->viewPath;
+//        }
+    }
+
 }
