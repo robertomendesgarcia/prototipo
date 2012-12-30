@@ -36,7 +36,7 @@ class UsuariosController extends AppController {
 
     public function add() {
         if ($this->request->is('post')) {
-//            if ($this->Usuario->validaLogin($this->request->data['usuario'])) {
+            if ($this->Usuario->validaLogin($this->request->data['usuario'])) {
                 $this->Usuario->create();
                 if ($this->Usuario->save($this->request->data)) {
                     $this->Session->setFlash(__('The user has been saved'));
@@ -44,9 +44,9 @@ class UsuariosController extends AppController {
                 } else {
                     $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
                 }
-//            } else {
-//                $this->Session->setFlash(__('This \'user\' already exists. Please inform another.'));
-//            }
+            } else {
+                $this->Session->setFlash(__('This \'user\' already exists. Please inform another.'));
+            }
         }
     }
 

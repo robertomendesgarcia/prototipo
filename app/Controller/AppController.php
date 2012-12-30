@@ -1,5 +1,8 @@
 <?php
 
+//-- Créditos a Pedro Elsner
+//-- http://pedroelsner.com/2011/07/criando-uma-area-restrita-no-cakephp/
+
 /**
  * Application level Controller
  *
@@ -33,24 +36,29 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
+    /**
+     * Define os componentes disponíveis por padrão
+     *
+     * @var array
+     * @access public
+     */
     public $components = array(
         'DebugKit.Toolbar',
         'Session',
-        'Auth' => array(
-            'loginRedirect' => array('controller' => 'usuarios', 'action' => 'bem_vindo'),
-            'logoutRedirect' => array('controller' => 'usuarios', 'action' => 'login'),
-            'loginAction' => array('controller' => 'usuarios', 'action' => 'login', 'plugin' => null),
-            'settings' => array(
-                'fields' => array(
-                    'username' => 'usuario',
-                    'password' => 'senha'
-                ),
-                'userModel' => 'Usuario',
-                'scope' => array(),
-                'recursive' => 0,
-                'contain' => null,
-            ),
-        ),
+        'Auth'
+    );
+
+    /**
+     * Define os helpers disponíveis por padrão
+     *
+     * @var array
+     * @access public
+     */
+    var $helpers = array(
+        'Html',
+        'Form',
+        'Session',
+        'Paginator'
     );
 
     function beforeRender() {
@@ -60,14 +68,72 @@ class AppController extends Controller {
         }
     }
 
+    /**
+     * Before Filter
+     *
+     * Função de callback executada antes que qualquer outra
+     *
+     * @access public
+     * @link http://book.cakephp.org/pt/view/984/Callbacks
+     */
     function beforeFilter() {
-        //$this->Auth->allow('index', 'view');
 
-//        $locale = Configure::read('Config.language');
-//        if ($locale && file_exists(VIEWS . $locale . DS . $this->viewPath)) {
-//            // e.g. use /app/View/fre/Pages/tos.ctp instead of /app/View/Pages/tos.ctp
-//            $this->viewPath = $locale . DS . $this->viewPath;
-//        }
+        Security::setHash('md5'); // Método de Hash da senha
+
+        $this->Auth->userModel = "Usuario"; // Nome do modelo para os usuários
+
+        $this->Auth->fields = array(
+            'username' => 'usuario', // Troque o segundo parametro se desejar
+
+            'password' => 'senha', // Troque o segundo parametro se desejar
+        );
+
+//        $this->Auth->userScope = array(
+//            'User.active' => '1' // Permite apenas usuários ativos
+//        );
+
+        $this->Auth->authorize = 'controller'; // Utiliza a função isAuthorize para autorizar os usuários
+
+        $this->Auth->autoRedirect = true; // Redireciona o usuário para a requisição anterior que foi negada após o login
+
+        $this->Auth->loginAction = array(
+            'controller' => 'usuarios',
+            'action' => 'login',
+            'admin' => false
+        );
+
+        $this->Auth->loginRedirect = array(
+            'controller' => 'pages',
+            'action' => 'index',
+            'admin' => true
+        );
+
+        $this->Auth->logoutRedirect = array(
+            'controller' => 'pages',
+            'action' => 'home',
+            'admin' => false
+        );
+
+        $this->Auth->loginError = __('Usuário ou senha inválidos.', true);
+        $this->Auth->authError = __('Você não tem permissão para acessar.', true);
+
+        // Libera acesso para actions sem prefixo admin
+        if (!(isset($this->params['admin']))) {
+            $this->Auth->allow('*');
+        }
+    }
+
+    /**
+     * Is Authorized
+     *
+     * Faz a autorização do usuário
+     *
+     * @return boolean
+     * @access public
+     */
+    function isAuthorized() {
+        // Pode ser mais complexo antes de liberar o acesso
+        return true;
     }
 
 }

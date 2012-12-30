@@ -5,6 +5,11 @@ App::uses('AuthComponent', 'Controller/Component');
 class Usuario extends AppModel {
 
     public $name = 'Usuario';
+    
+    public $virtualFields = array(
+        'confirmar_senha' => ''
+    );
+    
     public $validate = array(
         'nome' => array(
             'Obrigatorio' => array(
@@ -44,10 +49,28 @@ class Usuario extends AppModel {
                 'rule' => 'alphaNumeric',
                 'message' => 'Only alphabets and numbers allowed'
             ),
+            'confirmarSenha' => array(
+                'rule' => array('confirmarSenha'),
+                'message' => 'A senha e sua confirmação não são iguais.'
+            )
         ),
     );
 
+    public function confirmarSenha($data) {
+        // $data will contain array('password' => 'value')
+        if (isset($this->data[$this->alias]['confirmar_senha'])) {
+            return $this->data[$this->alias]['confirmar_senha'] === current($data);
+        }
+        return true;
+    }
+
     public function beforeSave($options = array()) {
+
+        if (isset($this->data[$this->alias]['senha']) && isset($this->data[$this->alias]['confirmar_senha'])) {
+            if ($this->data[$this->alias]['senha'] <> $this->data[$this->alias]['confirmar_senha']) {
+                return false;
+            }
+        }
 
         if (isset($this->data[$this->alias]['senha'])) {
             $this->data[$this->alias]['senha'] = AuthComponent::password($this->data[$this->alias]['senha']);
@@ -56,15 +79,4 @@ class Usuario extends AppModel {
         return true;
     }
 
-//    public function validaLogin($login) {
-//        $busca = $this->find('first', array(
-//            'conditions' => array(
-//                'usuario' => $login
-//            )
-//                ));
-//        if (!empty($busca)) {
-//            return false;
-//        }
-//        return true;
-//    }
 }
