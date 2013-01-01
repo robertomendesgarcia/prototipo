@@ -54,17 +54,22 @@ class AppController extends Controller {
      * @var array
      * @access public
      */
-    var $helpers = array(
+    public $helpers = array(
         'Html',
         'Form',
         'Session',
-        'Paginator'
+        'Paginator',
+        'Uteis'
     );
 
     function beforeRender() {
         parent::beforeRender();
         if (!defined("DEFAULT_URL")) {
             define("DEFAULT_URL", Router::url("/", true));
+        }
+
+        if (isset($this->params['admin'])) {
+            $this->layout = 'admin';
         }
     }
 
@@ -84,7 +89,6 @@ class AppController extends Controller {
 
         $this->Auth->fields = array(
             'username' => 'usuario', // Troque o segundo parametro se desejar
-
             'password' => 'senha', // Troque o segundo parametro se desejar
         );
 
@@ -103,14 +107,14 @@ class AppController extends Controller {
         );
 
         $this->Auth->loginRedirect = array(
-            'controller' => 'pages',
-            'action' => 'index',
+            'controller' => 'usuarios',
+            'action' => 'bemVindo',
             'admin' => true
         );
 
         $this->Auth->logoutRedirect = array(
-            'controller' => 'pages',
-            'action' => 'home',
+            'controller' => 'usuarios',
+            'action' => 'login',
             'admin' => false
         );
 

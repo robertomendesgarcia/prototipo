@@ -8,7 +8,6 @@ class InstaladorController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        //$this->Auth->allow('add', 'logout');
         $this->layout = 'instalador';
     }
 
