@@ -123,7 +123,7 @@ class AppController extends Controller {
 
         // Libera acesso para actions sem prefixo admin
         if (!(isset($this->params['admin']))) {
-            $this->Auth->allow('*');
+//            $this->Auth->allow('*');
         }
     }
 
