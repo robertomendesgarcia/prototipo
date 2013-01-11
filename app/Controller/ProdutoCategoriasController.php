@@ -22,7 +22,7 @@ class ProdutoCategoriasController extends AppController {
 
         $lista_categorias = $this->ProdutoCategoria->find('list', array('fields' => array('id', 'nome')));
         $this->set('lista_categorias', $lista_categorias);
-        $this->render('edit');
+//        $this->render('edit');
     }
 
     public function admin_edit($id = null) {

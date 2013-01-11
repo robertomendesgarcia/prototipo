@@ -4,21 +4,26 @@ App::uses('AppController', 'Controller');
 
 class UsuariosController extends AppController {
 
-    public function login() {
-        if ($this->Auth->login($this->request)) {
-            $this->redirect($this->Auth->redirect());
-            $this->Session->setFlash(__('Bem Vindo!'));
-        } else {
-            $this->Session->setFlash(__('Invalid usuario or senha, try again'));
+    function login() {
+        if ($this->request->is('post')) {
+            if ($this->Auth->login($this->request)) {
+                $this->redirect($this->Auth->redirect(array(
+                            'controller' => 'usuarios',
+                            'action' => 'bem_vindo',
+                            'admin' => true
+                        )));
+            } else {
+                $this->Session->setFlash(__('Your username or password was incorrect.'));
+            }
         }
     }
 
-    public function logout() {
+    function logout() {
         $this->redirect($this->Auth->logout());
     }
 
-    public function admin_bemVindo() {
-        
+    public function admin_bem_vindo() {
+        die('Bem Vindo!!');
     }
 
 //    public function index() {

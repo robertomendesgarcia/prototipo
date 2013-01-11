@@ -45,7 +45,17 @@ class AppController extends Controller {
     public $components = array(
         'DebugKit.Toolbar',
         'Session',
-        'Auth'
+        'Auth' => array(
+            'authenticate' => array(
+                'all' => array(
+                    'userModel' => 'Usuario',
+                    'fields' => array(
+                        'username' => 'usuario',
+                        'password' => 'senha'
+                    )
+                )
+            )
+        )
     );
 
     /**
@@ -85,8 +95,6 @@ class AppController extends Controller {
 
         Security::setHash('md5'); // Método de Hash da senha
 
-        $this->Auth->userModel = "Usuario"; // Nome do modelo para os usuários
-
         $this->Auth->fields = array(
             'username' => 'usuario', // Troque o segundo parametro se desejar
             'password' => 'senha', // Troque o segundo parametro se desejar
@@ -95,7 +103,7 @@ class AppController extends Controller {
 //        $this->Auth->userScope = array(
 //            'User.active' => '1' // Permite apenas usuários ativos
 //        );
-
+//
         $this->Auth->authorize = 'controller'; // Utiliza a função isAuthorize para autorizar os usuários
 
         $this->Auth->autoRedirect = true; // Redireciona o usuário para a requisição anterior que foi negada após o login
@@ -108,7 +116,7 @@ class AppController extends Controller {
 
         $this->Auth->loginRedirect = array(
             'controller' => 'usuarios',
-            'action' => 'bemVindo',
+            'action' => 'bem_vindo',
             'admin' => true
         );
 
@@ -123,7 +131,7 @@ class AppController extends Controller {
 
         // Libera acesso para actions sem prefixo admin
         if (!(isset($this->params['admin']))) {
-//            $this->Auth->allow('*');
+            $this->Auth->allow();
         }
     }
 

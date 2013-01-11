@@ -42,8 +42,8 @@ class Usuario extends AppModel {
                 'message' => 'This field cannot be left blank'
             ),
             'Tamanho' => array(
-                'rule' => array('between', 8, 60),
-                'message' => 'Password should be at least 8 chars long'
+                'rule' => array('between', 6, 60),
+                'message' => 'Password should be at least 6 chars long'
             ),
             'AlphaNumerico' => array(
                 'rule' => 'alphaNumeric',

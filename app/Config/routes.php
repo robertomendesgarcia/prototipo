@@ -37,6 +37,7 @@
         
         Router::connect('/usuarios/bem-vindo', array('controller' => 'usuarios', 'action' => 'bemVindo', 'admin' => true));
         Router::connect('/login', array('controller' => 'usuarios', 'action' => 'login', 'admin' => false));
+        Router::connect('/logout', array('controller' => 'usuarios', 'action' => 'logout', 'admin' => false));
         Router::connect('/admin', array('controller' => 'usuarios', 'action' => 'login', 'admin' => false));
         
         
