@@ -24,6 +24,7 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 App::uses('Controller', 'Controller');
+App::import('Core', 'l10n');
 
 /**
  * Application Controller

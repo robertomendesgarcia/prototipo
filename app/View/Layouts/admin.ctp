@@ -8,8 +8,11 @@
         <meta name="keywords" content="" />
         <meta name="author" content="Ederson Micheleto, Ramores Oliveira, Roberto Mendes Garcia" />
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-1.8.3.js"></script>
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uniform/jquery.uniform.min.js"></script>
+        <link href="<?php echo DEFAULT_URL; ?>js/uniform/css/uniform.default.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
         <link href="<?php echo DEFAULT_URL; ?>css/reset.css" media="all" rel="stylesheet" type="text/css" />
         <link href="<?php echo DEFAULT_URL; ?>css/geral.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="<?php echo DEFAULT_URL; ?>css/admin.css" media="all" rel="stylesheet" type="text/css" />
         <?php
         $arquivo_css = "./css/" . $this->params["controller"] . ".css";
         if (file_exists($arquivo_css)) {
@@ -22,10 +25,10 @@
         <?php echo $this->Session->flash("auth"); ?>
 
         <div id="topo" class="janela">
-            
+
         </div>
 
-        <div id="conteudo" class="janela">
+        <div id="conteudo">
             <?php echo $content_for_layout; ?>
         </div>
 
@@ -34,9 +37,9 @@
         </div>
 
         <script type="text/javascript">
-            var DEFAULT_URL = <?php echo DEFAULT_URL; ?>
+            var DEFAULT_URL = '<?php echo DEFAULT_URL; ?>';
             $(document).ready(function(){
-			
+                $("select, input, button, textarea").uniform(); 	
             });
         </script>
     </body>

@@ -279,4 +279,4 @@ Cache::config('_cake_model_', array(
 
 
 //-- Internacionalizacao __() com arquivo .po
-Configure::write('Config.language', 'pt_br');
+Configure::write('Config.language', 'pt-br');

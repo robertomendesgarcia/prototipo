@@ -1,0 +1,23 @@
+html {
+    background: transparent url('./../img/admin/layout/bg_html.png') 0 0 repeat;
+}
+
+/* --- Topo --- */
+#topo  {
+    margin-top: 2px;
+
+}
+
+/* --- Login --- */
+#c-usuarios.a-login div.form_login {
+    display: block;
+    width: 350px;
+    margin: 100px auto;
+}
+#c-usuarios.a-login div.form_login label {
+    display: inline-block;
+    width: 60px;
+}
+#c-usuarios.a-login div.form_login input {
+    width: 150px;   
+}

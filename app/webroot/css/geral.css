@@ -1,19 +1,42 @@
 body {
     display: block;
-    width: 550px;
+    width: 980px;
     margin: 0 auto;
-    padding-top: 100px;
+    font-family: Arial, Tahoma;
+    font-size: 12px;
+    color: #333;
 }
 
+.janela {
+    background-color: #FFF;
+    padding: 20px 18px;
+    border: #009630 2px solid;
 
-ul {
-    display: block;    
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+
+
 }
 
-ul li {
-    display: inline-block;    
+/* --- Formularios --- */
+form div.input {
+    display: block;
+    margin-bottom: 8px;
 }
+fieldset legend {
+    display: block;
+    width: 100%;
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+div.submit {
+    padding-top: 15px;
 
-ul li a {
-    padding: 5px 15px;
 }

@@ -16,6 +16,7 @@ class UsuariosController extends AppController {
                 $this->Session->setFlash(__('Your username or password was incorrect.'));
             }
         }
+        $this->layout = 'admin';
     }
 
     function logout() {
