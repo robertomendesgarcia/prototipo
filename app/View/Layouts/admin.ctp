@@ -9,6 +9,7 @@
         <meta name="author" content="Ederson Micheleto, Ramores Oliveira, Roberto Mendes Garcia" />
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-1.8.3.js"></script>
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uniform/jquery.uniform.min.js"></script>
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/geral.js"></script>
         <link href="<?php echo DEFAULT_URL; ?>js/uniform/css/uniform.default.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
         <link href="<?php echo DEFAULT_URL; ?>css/reset.css" media="all" rel="stylesheet" type="text/css" />
         <link href="<?php echo DEFAULT_URL; ?>css/geral.css" media="all" rel="stylesheet" type="text/css" />
@@ -22,11 +23,18 @@
     </head>
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">
 
-        <?php echo $this->Session->flash("auth"); ?>
-
         <div id="topo" class="janela">
-
+            <ul id="language">
+                <li class="portuguese">
+                    <a href="<?php echo DEFAULT_URL; ?>" title="Portuguese">Portuguese</a>
+                </li>
+                <li class="english">
+                    <a href="<?php echo DEFAULT_URL; ?>" title="English">English</a>
+                </li>
+            </ul>
         </div>
+
+        <?php echo $this->Session->flash("admin"); ?>
 
         <div id="conteudo">
             <?php echo $content_for_layout; ?>
@@ -38,9 +46,6 @@
 
         <script type="text/javascript">
             var DEFAULT_URL = '<?php echo DEFAULT_URL; ?>';
-            $(document).ready(function(){
-                $("select, input, button, textarea").uniform(); 	
-            });
         </script>
     </body>
 </html>

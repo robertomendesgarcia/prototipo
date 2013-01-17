@@ -7,7 +7,8 @@
             'label' => __('Username:')
         ));
         echo $this->Form->input('senha', array(
-            'label' => __('Password:')
+            'label' => __('Password:'),
+            'type' => 'password'
         ));
         ?>
     </fieldset>

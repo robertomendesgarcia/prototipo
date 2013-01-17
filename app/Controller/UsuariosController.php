@@ -6,14 +6,14 @@ class UsuariosController extends AppController {
 
     function login() {
         if ($this->request->is('post')) {
-            if ($this->Auth->login($this->request)) {
+            if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect(array(
                             'controller' => 'usuarios',
                             'action' => 'bem_vindo',
                             'admin' => true
                         )));
             } else {
-                $this->Session->setFlash(__('Your username or password was incorrect.'));
+                $this->Session->setFlash(__('Your username or password was incorrect.'), 'flash_message', array('tipo' => 'warning'), 'admin');
             }
         }
         $this->layout = 'admin';

@@ -2,6 +2,53 @@ html {
     background: transparent url('./../img/admin/layout/bg_html.png') 0 0 repeat;
 }
 
+/* --- Flash Message --- */
+#adminMessage {
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px #555;
+    color: #FFF;
+}
+#adminMessage a {
+    float: right;
+    display: inline;
+    text-decoration: none;
+}
+#adminMessage.warning {
+    background: transparent url('./../img/flash_message/bg_warning.png') 0 0 repeat-x;
+    border-color: #D5C584;
+    color: #444;
+    text-shadow: 1px 1px 1px #FFF;
+}
+#adminMessage.warning a {
+    color: #B3A779;
+}
+#adminMessage.info {
+    background: transparent url('./../img/flash_message/bg_info.png') 0 0 repeat-x;
+    border-color: #2E8BA6;
+}
+#adminMessage.info a {
+    color: #2C7C94;
+}
+#adminMessage.error {
+    background: transparent url('./../img/flash_message/bg_error.png') 0 0 repeat-x;
+    border-color: #B0352F;
+}
+#adminMessage.error a {
+    color: #AF403B;
+    text-shadow: 1px 1px 1px #FFF;
+}
+#adminMessage.success {
+    background: transparent url('./../img/flash_message/bg_success.png') 0 0 repeat-x;
+    border-color: #4E974E;
+}
+#adminMessage.success a {
+    color: #4B954B;
+}
+
 /* --- Topo --- */
 #topo  {
     margin-top: 2px;
@@ -13,10 +60,6 @@ html {
     display: block;
     width: 350px;
     margin: 100px auto;
-}
-#c-usuarios.a-login div.form_login label {
-    display: inline-block;
-    width: 60px;
 }
 #c-usuarios.a-login div.form_login input {
     width: 150px;   

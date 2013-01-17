@@ -2,7 +2,6 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-DROP SCHEMA IF EXISTS `prototipo_tcc` ;
 CREATE SCHEMA IF NOT EXISTS `prototipo_tcc` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `prototipo_tcc` ;
 
@@ -55,7 +54,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticia_categorias` (
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `categoria_id_idx` (`categoria_id` ASC) ,
   CONSTRAINT `noticia_categoria_fk_noticia_categoria`
     FOREIGN KEY (`categoria_id` )
     REFERENCES `prototipo_tcc`.`noticia_categorias` (`id` )
@@ -64,6 +62,8 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticia_categorias` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+CREATE INDEX `categoria_id_idx` ON `prototipo_tcc`.`noticia_categorias` (`categoria_id` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -82,7 +82,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticias` (
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `categoria_id_idx` (`categoria_id` ASC) ,
   CONSTRAINT `noticia_fk_noticia_categoria`
     FOREIGN KEY (`categoria_id` )
     REFERENCES `prototipo_tcc`.`noticia_categorias` (`id` )
@@ -91,6 +90,8 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticias` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+CREATE INDEX `categoria_id_idx` ON `prototipo_tcc`.`noticias` (`categoria_id` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -106,7 +107,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticia_imagens` (
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `noticia_id_idx` (`noticia_id` ASC) ,
   CONSTRAINT `noticia_imagem_fk_noticia`
     FOREIGN KEY (`noticia_id` )
     REFERENCES `prototipo_tcc`.`noticias` (`id` )
@@ -115,6 +115,8 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticia_imagens` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+CREATE INDEX `noticia_id_idx` ON `prototipo_tcc`.`noticia_imagens` (`noticia_id` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -132,7 +134,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produto_categorias` (
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `categoria_id_idx` (`parent_id` ASC) ,
   CONSTRAINT `produto_categoria_fk_produto_categoria`
     FOREIGN KEY (`parent_id` )
     REFERENCES `prototipo_tcc`.`produto_categorias` (`id` )
@@ -141,6 +142,8 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produto_categorias` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+CREATE INDEX `categoria_id_idx` ON `prototipo_tcc`.`produto_categorias` (`parent_id` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -157,7 +160,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produtos` (
   `ativo` TINYINT(1) NOT NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
-  INDEX `categoria_id_idx` (`categoria_id` ASC) ,
   PRIMARY KEY (`id`) ,
   CONSTRAINT `produto_fk_produto_categoria`
     FOREIGN KEY (`categoria_id` )
@@ -167,6 +169,8 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produtos` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+CREATE INDEX `categoria_id_idx` ON `prototipo_tcc`.`produtos` (`categoria_id` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -181,7 +185,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produto_imagens` (
   `destaque` TINYINT(1) NOT NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
-  INDEX `produto_id_idx` (`produto_id` ASC) ,
+  PRIMARY KEY (`id`) ,
   CONSTRAINT `produto_imagem_fk_produto`
     FOREIGN KEY (`produto_id` )
     REFERENCES `prototipo_tcc`.`produtos` (`id` )
@@ -190,6 +194,8 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produto_imagens` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+CREATE INDEX `produto_id_idx` ON `prototipo_tcc`.`produto_imagens` (`produto_id` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -264,8 +270,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`menu` (
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `menu_id_idx` (`menu_id` ASC) ,
-  INDEX `pagina_id_idx` (`pagina_id` ASC) ,
   CONSTRAINT `menu_fk_menu`
     FOREIGN KEY (`menu_id` )
     REFERENCES `prototipo_tcc`.`menu` (`id` )
@@ -279,6 +283,10 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`menu` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+CREATE INDEX `menu_id_idx` ON `prototipo_tcc`.`menu` (`menu_id` ASC) ;
+
+CREATE INDEX `pagina_id_idx` ON `prototipo_tcc`.`menu` (`pagina_id` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -311,7 +319,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`banners` (
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `banner_tipo_is_idx` (`banner_tipo_id` ASC) ,
   CONSTRAINT `banner_fk_banner_tipo`
     FOREIGN KEY (`banner_tipo_id` )
     REFERENCES `prototipo_tcc`.`banner_tipos` (`id` )
@@ -320,6 +327,8 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`banners` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+CREATE INDEX `banner_tipo_is_idx` ON `prototipo_tcc`.`banners` (`banner_tipo_id` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -334,11 +343,12 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`newsletter` (
   `data_inscricao` DATETIME NOT NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
-  PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
+  PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+CREATE UNIQUE INDEX `email_UNIQUE` ON `prototipo_tcc`.`newsletter` (`email` ASC) ;
 
 
 -- -----------------------------------------------------
@@ -355,8 +365,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticia_comentarios` (
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
-  INDEX `noticia_id_idx` (`noticia_id` ASC) ,
-  INDEX `noticia_comentario_id_idx` (`noticia_comentario_id` ASC) ,
   CONSTRAINT `noticia_comentario_fk_noticia`
     FOREIGN KEY (`noticia_id` )
     REFERENCES `prototipo_tcc`.`noticias` (`id` )
@@ -370,6 +378,10 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticia_comentarios` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;
+
+CREATE INDEX `noticia_id_idx` ON `prototipo_tcc`.`noticia_comentarios` (`noticia_id` ASC) ;
+
+CREATE INDEX `noticia_comentario_id_idx` ON `prototipo_tcc`.`noticia_comentarios` (`noticia_comentario_id` ASC) ;
 
 
 

@@ -251,3 +251,48 @@
 #1 C:\xampp\htdocs\Dropbox\tcc\prototipo\lib\Cake\Routing\Dispatcher.php(161): Dispatcher->_invoke(Object(UsuariosController), Object(CakeRequest), Object(CakeResponse))
 #2 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
 #3 {main}
+2013-01-16 15:39:22 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-16 15:39:54 Error: [MissingControllerException] Controller class JsController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-16 15:39:55 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-16 15:39:55 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-16 15:39:55 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-16 15:39:56 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-16 15:39:56 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-16 15:39:57 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-16 15:39:57 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-16 15:39:57 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-17 00:31:37 Error: [MissingControllerException] Controller class ImagensController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-17 00:31:45 Error: [MissingControllerException] Controller class ImagensController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-17 00:31:47 Error: [MissingControllerException] Controller class ImagensController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-17 00:31:48 Error: [MissingControllerException] Controller class ImagensController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
+2013-01-17 00:44:07 Error: [MissingControllerException] Controller class ImgController could not be found.
+#0 C:\xampp\htdocs\Dropbox\tcc\prototipo\app\webroot\index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}

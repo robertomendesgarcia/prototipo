@@ -24,9 +24,13 @@ body {
 }
 
 /* --- Formularios --- */
+form label {
+    display: block;  
+    margin-bottom: 4px;    
+}
 form div.input {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 fieldset legend {
     display: block;
@@ -37,6 +41,5 @@ fieldset legend {
     font-weight: bold;
 }
 div.submit {
-    padding-top: 15px;
-
+    padding-top: 5px;
 }
