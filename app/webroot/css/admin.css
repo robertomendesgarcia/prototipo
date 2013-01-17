@@ -1,5 +1,5 @@
 html {
-    background: transparent url('./../img/admin/layout/bg_html.png') 0 0 repeat;
+    background: transparent url('./../img/admin/layout/bg_html.png') 0 0 repeat-x;
 }
 
 /* --- Flash Message --- */
@@ -52,7 +52,28 @@ html {
 /* --- Topo --- */
 #topo  {
     margin-top: 2px;
+    padding: 15px;
 
+}
+#topo #language {
+    float: right;
+    display: inline;
+}
+#topo #language li {
+   display: inline-block;
+   width: auto;
+   margin-left: 5px
+}
+#topo #language li a {
+    font-size: 11px;
+    padding-left: 20px;
+    text-decoration: none;
+}
+#topo #language li.portuguese a {
+    background: transparent url('./../img/admin/layout/flags/pt-br.gif') 0 center no-repeat;
+}
+#topo #language li.english a {
+    background: transparent url('./../img/admin/layout/flags/en-us.gif') 0 center no-repeat;
 }
 
 /* --- Login --- */

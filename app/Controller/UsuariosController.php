@@ -6,7 +6,8 @@ class UsuariosController extends AppController {
 
     function login() {
         if ($this->request->is('post')) {
-            if ($this->Auth->login()) {
+//            if ($this->Auth->login()) {
+            if ($this->Auth->login($this->request->data)) {
                 $this->redirect($this->Auth->redirect(array(
                             'controller' => 'usuarios',
                             'action' => 'bem_vindo',
@@ -86,5 +87,11 @@ class UsuariosController extends AppController {
 //        $this->Session->setFlash(__('Usuario was not deleted'));
 //        $this->redirect(array('action' => 'index'));
 //    }
+
+    public function choose_language($language = 'pt-br') {
+        $this->Session->write('Config.language', $language);
+        $this->redirect($this->referer());
+    }
+
 }
 

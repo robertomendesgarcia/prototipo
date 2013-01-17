@@ -26,10 +26,10 @@
         <div id="topo" class="janela">
             <ul id="language">
                 <li class="portuguese">
-                    <a href="<?php echo DEFAULT_URL; ?>" title="Portuguese">Portuguese</a>
+                    <a href="<?php echo DEFAULT_URL; ?>choose-language/pt-br" title="Portuguese">Portuguese</a>
                 </li>
                 <li class="english">
-                    <a href="<?php echo DEFAULT_URL; ?>" title="English">English</a>
+                    <a href="<?php echo DEFAULT_URL; ?>choose-language/en-us" title="English">English</a>
                 </li>
             </ul>
         </div>

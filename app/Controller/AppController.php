@@ -49,7 +49,7 @@ class AppController extends Controller {
         'Auth' => array(
             'authenticate' => array(
                 'all' => array(
-                    'userModel' => 'Usuario',
+                    'userModel' => 'Users.Usuario',
                     'fields' => array(
                         'username' => 'usuario',
                         'password' => 'senha'
@@ -93,6 +93,8 @@ class AppController extends Controller {
      * @link http://book.cakephp.org/pt/view/984/Callbacks
      */
     function beforeFilter() {
+
+        Configure::write('Config.language', $this->Session->read('Config.language'));
 
         Security::setHash('md5'); // Método de Hash da senha
 

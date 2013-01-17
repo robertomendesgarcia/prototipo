@@ -40,6 +40,8 @@
         Router::connect('/logout', array('controller' => 'usuarios', 'action' => 'logout', 'admin' => false));
         Router::connect('/admin', array('controller' => 'usuarios', 'action' => 'login', 'admin' => false));
         
+        Router::connect('/choose-language/*', array('controller' => 'usuarios', 'action' => 'choose_language', 'admin' => false));
+        
         
                 
 /**
