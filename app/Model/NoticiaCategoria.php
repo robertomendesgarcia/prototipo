@@ -1,12 +1,11 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * ProdutoCategoria Model
+ * NoticiaCategoria Model
  *
- * @property ProdutoCategoria $ParentProdutoCategoria
- * @property ProdutoCategoria $ChildProdutoCategoria
+ * @property Categoria $Categoria
  */
-class ProdutoCategoria extends AppModel {
+class NoticiaCategoria extends AppModel {
 
 /**
  * Display field
@@ -22,8 +21,24 @@ class ProdutoCategoria extends AppModel {
  */
 	public $validate = array(
 		'nome' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
+			'maxlength' => array(
+				'rule' => array('maxlength'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'alphanumeric' => array(
+				'rule' => array('alphanumeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'minlength' => array(
+				'rule' => array('minlength'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -31,7 +46,7 @@ class ProdutoCategoria extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'inativo' => array(
+		'ativo' => array(
 			'boolean' => array(
 				'rule' => array('boolean'),
 				//'message' => 'Your custom message here',
@@ -51,34 +66,12 @@ class ProdutoCategoria extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'ParentProdutoCategoria' => array(
-			'className' => 'ProdutoCategoria',
-			'foreignKey' => 'parent_id',
+		'NoticiaCategoria' => array(
+			'className' => 'NoticiaCategoria',
+			'foreignKey' => 'categoria_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
 	);
-
-/**
- * hasMany associations
- *
- * @var array
- */
-	public $hasMany = array(
-		'ChildProdutoCategoria' => array(
-			'className' => 'ProdutoCategoria',
-			'foreignKey' => 'parent_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
-
 }

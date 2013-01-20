@@ -1,19 +1,18 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * ProdutoCategoria Model
+ * ProdutoImagen Model
  *
- * @property ProdutoCategoria $ParentProdutoCategoria
- * @property ProdutoCategoria $ChildProdutoCategoria
+ * @property Produto $Produto
  */
-class ProdutoCategoria extends AppModel {
+class ProdutoImagen extends AppModel {
 
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'nome';
+	public $displayField = 'titulo';
 
 /**
  * Validation rules
@@ -21,7 +20,7 @@ class ProdutoCategoria extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'nome' => array(
+		'produto_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -31,7 +30,7 @@ class ProdutoCategoria extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'inativo' => array(
+		'destaque' => array(
 			'boolean' => array(
 				'rule' => array('boolean'),
 				//'message' => 'Your custom message here',
@@ -51,34 +50,12 @@ class ProdutoCategoria extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'ParentProdutoCategoria' => array(
-			'className' => 'ProdutoCategoria',
-			'foreignKey' => 'parent_id',
+		'Produto' => array(
+			'className' => 'Produto',
+			'foreignKey' => 'produto_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
 	);
-
-/**
- * hasMany associations
- *
- * @var array
- */
-	public $hasMany = array(
-		'ChildProdutoCategoria' => array(
-			'className' => 'ProdutoCategoria',
-			'foreignKey' => 'parent_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
-		)
-	);
-
 }

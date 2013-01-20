@@ -1,19 +1,18 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * ProdutoCategoria Model
+ * Pagina Model
  *
- * @property ProdutoCategoria $ParentProdutoCategoria
- * @property ProdutoCategoria $ChildProdutoCategoria
+ * @property Menu $Menu
  */
-class ProdutoCategoria extends AppModel {
+class Pagina extends AppModel {
 
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'nome';
+	public $displayField = 'titulo';
 
 /**
  * Validation rules
@@ -21,7 +20,7 @@ class ProdutoCategoria extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'nome' => array(
+		'pin' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
@@ -30,10 +29,26 @@ class ProdutoCategoria extends AppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+			'maxlength' => array(
+				'rule' => array('maxlength'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
 		),
-		'inativo' => array(
-			'boolean' => array(
-				'rule' => array('boolean'),
+		'titulo' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+			'maxlength' => array(
+				'rule' => array('maxlength'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -46,29 +61,14 @@ class ProdutoCategoria extends AppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
- * belongsTo associations
- *
- * @var array
- */
-	public $belongsTo = array(
-		'ParentProdutoCategoria' => array(
-			'className' => 'ProdutoCategoria',
-			'foreignKey' => 'parent_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
-
-/**
  * hasMany associations
  *
  * @var array
  */
 	public $hasMany = array(
-		'ChildProdutoCategoria' => array(
-			'className' => 'ProdutoCategoria',
-			'foreignKey' => 'parent_id',
+		'Menu' => array(
+			'className' => 'Menu',
+			'foreignKey' => 'pagina_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

@@ -24,14 +24,27 @@
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">
 
         <div id="topo" class="janela">
-            <ul id="language">
-                <li class="portuguese">
-                    <a href="<?php echo DEFAULT_URL; ?>choose-language/pt-br" title="Portuguese">Portuguese</a>
-                </li>
-                <li class="english">
-                    <a href="<?php echo DEFAULT_URL; ?>choose-language/en-us" title="English">English</a>
-                </li>
-            </ul>
+
+
+            <?php // $usuario = $this->Session->read("Auth.Usuario");  if ($this->Session->valid('Auth.Usuario')) { ?>
+
+                <a href="<?php echo DEFAULT_URL; ?>logout" alt="<?php echo __('Logout'); ?>">
+                    <?php echo __('Logout'); ?>
+                </a>
+
+            <?php // } else { ?>
+
+                <ul id="language">
+                    <li class="portuguese">
+                        <a href="<?php echo DEFAULT_URL; ?>choose-language/pt-br" title="Portuguese">Portuguese</a>
+                    </li>
+                    <li class="english">
+                        <a href="<?php echo DEFAULT_URL; ?>choose-language/en-us" title="English">English</a>
+                    </li>
+                </ul>
+
+            <?php // } ?>
+
         </div>
 
         <?php echo $this->Session->flash("admin"); ?>

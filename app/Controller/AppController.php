@@ -1,8 +1,5 @@
 <?php
 
-//-- Créditos a Pedro Elsner
-//-- http://pedroelsner.com/2011/07/criando-uma-area-restrita-no-cakephp/
-
 /**
  * Application level Controller
  *
@@ -49,11 +46,25 @@ class AppController extends Controller {
         'Auth' => array(
             'authenticate' => array(
                 'all' => array(
-                    'userModel' => 'Users.Usuario',
+                    'userModel' => 'Usuario',
                     'fields' => array(
                         'username' => 'usuario',
                         'password' => 'senha'
-                    )
+                    ),
+                ),
+                'Form',
+            ),
+            'loginAction' => array(
+                'controller' => 'usuarios',
+                'action' => 'login',
+                'admin' => false
+            ),
+            'authError' => 'You are not authorized to access that location.',
+            'flash' => array(
+                'element' => 'flash_message',
+                'key' => 'admin',
+                'params' => array(
+                    'tipo' => 'warning'
                 )
             )
         )
@@ -93,62 +104,15 @@ class AppController extends Controller {
      * @link http://book.cakephp.org/pt/view/984/Callbacks
      */
     function beforeFilter() {
-
         Configure::write('Config.language', $this->Session->read('Config.language'));
 
-        Security::setHash('md5'); // Método de Hash da senha
-
-        $this->Auth->fields = array(
-            'username' => 'usuario', // Troque o segundo parametro se desejar
-            'password' => 'senha', // Troque o segundo parametro se desejar
-        );
-
-//        $this->Auth->userScope = array(
-//            'User.active' => '1' // Permite apenas usuários ativos
-//        );
-//
-        $this->Auth->authorize = 'controller'; // Utiliza a função isAuthorize para autorizar os usuários
-
-        $this->Auth->autoRedirect = true; // Redireciona o usuário para a requisição anterior que foi negada após o login
-
-        $this->Auth->loginAction = array(
-            'controller' => 'usuarios',
-            'action' => 'login',
-            'admin' => false
-        );
-
-        $this->Auth->loginRedirect = array(
-            'controller' => 'usuarios',
-            'action' => 'bem_vindo',
-            'admin' => true
-        );
-
-        $this->Auth->logoutRedirect = array(
-            'controller' => 'usuarios',
-            'action' => 'login',
-            'admin' => false
-        );
-
-        $this->Auth->loginError = __('Usuário ou senha inválidos.', true);
-        $this->Auth->authError = __('Você não tem permissão para acessar.', true);
+        // Método de Hash da senha
+        Security::setHash('md5');
 
         // Libera acesso para actions sem prefixo admin
         if (!(isset($this->params['admin']))) {
             $this->Auth->allow();
         }
-    }
-
-    /**
-     * Is Authorized
-     *
-     * Faz a autorização do usuário
-     *
-     * @return boolean
-     * @access public
-     */
-    function isAuthorized() {
-        // Pode ser mais complexo antes de liberar o acesso
-        return true;
     }
 
 }

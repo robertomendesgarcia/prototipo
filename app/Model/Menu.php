@@ -1,12 +1,20 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * ProdutoCategoria Model
+ * Menu Model
  *
- * @property ProdutoCategoria $ParentProdutoCategoria
- * @property ProdutoCategoria $ChildProdutoCategoria
+ * @property Menu $Menu
+ * @property Pagina $Pagina
+ * @property Menu $Menu
  */
-class ProdutoCategoria extends AppModel {
+class Menu extends AppModel {
+
+/**
+ * Use table
+ *
+ * @var mixed False or table name
+ */
+	public $useTable = 'menu';
 
 /**
  * Display field
@@ -31,9 +39,9 @@ class ProdutoCategoria extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'inativo' => array(
-			'boolean' => array(
-				'rule' => array('boolean'),
+		'link' => array(
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -51,9 +59,16 @@ class ProdutoCategoria extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'ParentProdutoCategoria' => array(
-			'className' => 'ProdutoCategoria',
-			'foreignKey' => 'parent_id',
+		'Menu' => array(
+			'className' => 'Menu',
+			'foreignKey' => 'menu_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Pagina' => array(
+			'className' => 'Pagina',
+			'foreignKey' => 'pagina_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -66,9 +81,9 @@ class ProdutoCategoria extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'ChildProdutoCategoria' => array(
-			'className' => 'ProdutoCategoria',
-			'foreignKey' => 'parent_id',
+		'Menu' => array(
+			'className' => 'Menu',
+			'foreignKey' => 'menu_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

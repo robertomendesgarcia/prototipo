@@ -1,12 +1,12 @@
 <?php
 App::uses('AppModel', 'Model');
 /**
- * ProdutoCategoria Model
+ * Produto Model
  *
- * @property ProdutoCategoria $ParentProdutoCategoria
- * @property ProdutoCategoria $ChildProdutoCategoria
+ * @property Categoria $Categoria
+ * @property ProdutoImagen $ProdutoImagen
  */
-class ProdutoCategoria extends AppModel {
+class Produto extends AppModel {
 
 /**
  * Display field
@@ -31,7 +31,17 @@ class ProdutoCategoria extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'inativo' => array(
+		'categoria_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'ativo' => array(
 			'boolean' => array(
 				'rule' => array('boolean'),
 				//'message' => 'Your custom message here',
@@ -51,9 +61,9 @@ class ProdutoCategoria extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'ParentProdutoCategoria' => array(
-			'className' => 'ProdutoCategoria',
-			'foreignKey' => 'parent_id',
+		'Categoria' => array(
+			'className' => 'Categoria',
+			'foreignKey' => 'categoria_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
@@ -66,9 +76,9 @@ class ProdutoCategoria extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'ChildProdutoCategoria' => array(
-			'className' => 'ProdutoCategoria',
-			'foreignKey' => 'parent_id',
+		'ProdutoImagen' => array(
+			'className' => 'ProdutoImagen',
+			'foreignKey' => 'produto_id',
 			'dependent' => false,
 			'conditions' => '',
 			'fields' => '',

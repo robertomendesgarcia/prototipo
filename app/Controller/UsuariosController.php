@@ -6,8 +6,7 @@ class UsuariosController extends AppController {
 
     function login() {
         if ($this->request->is('post')) {
-//            if ($this->Auth->login()) {
-            if ($this->Auth->login($this->request->data)) {
+            if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect(array(
                             'controller' => 'usuarios',
                             'action' => 'bem_vindo',
