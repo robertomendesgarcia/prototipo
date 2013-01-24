@@ -51,7 +51,7 @@ html {
 
 /* --- Topo --- */
 #topo  {
-    margin-top: 2px;
+    margin: 2px 0 15px 0;
     padding: 15px;
 
 }
@@ -60,9 +60,9 @@ html {
     display: inline;
 }
 #topo #language li {
-   display: inline-block;
-   width: auto;
-   margin-left: 5px
+    display: inline-block;
+    width: auto;
+    margin-left: 5px
 }
 #topo #language li a {
     font-size: 11px;
@@ -75,6 +75,36 @@ html {
 #topo #language li.english a {
     background: transparent url('./../img/admin/layout/flags/en-us.gif') 0 center no-repeat;
 }
+#topo h2 {
+    color: #3B5998;
+    font-size: 20px;
+    letter-spacing: -1px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* --- BreadCrumbs --- */
+#breadcrumbs {
+    display: block;
+    font-size: 11px;
+    margin-top: 5px;
+    color: #555;
+}
+
+/* --- Menu --- */
+#menu {
+    float: left;
+    display: inline;
+    width: 125px;
+}
+
+/* --- Centro --- */
+#centro {
+    float: right;
+    display: inline;
+    width: 760px;
+}
+
 
 /* --- Login --- */
 #c-usuarios.a-login div.form_login {
@@ -85,3 +115,33 @@ html {
 #c-usuarios.a-login div.form_login input {
     width: 150px;   
 }
+
+
+/* --- Rodape --- */
+#rodape {
+    clear: both;
+    margin-top: 15px;
+}
+
+/* --- Listagem de itens --- */
+table.listagem {
+    margin: 15px 0;
+    width: 100%;
+}
+table.listagem tr th,
+table.listagem tr td {
+    padding: 2px 0;
+    border: 1px solid #333;
+}
+table.listagem tr th {
+    background-color: #3B5998;
+    color: #FFF;
+    font-weight: bold;
+}
+table.listagem tr:nth-child(odd) {
+    background-color: #E5F1FF;   
+}
+table.listagem tr td.centralizado {
+    text-align: center;
+}
+

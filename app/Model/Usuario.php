@@ -14,22 +14,22 @@ class Usuario extends AppModel {
         'nome' => array(
             'Obrigatorio' => array(
                 'rule' => 'notEmpty',
-                'message' => 'This field cannot be left blank'
+                'message' => 'This field cannot be left blank.'
             ),
         ),
         'email' => 'email',
         'usuario' => array(
             'Obrigatorio' => array(
                 'rule' => 'notEmpty',
-                'message' => 'This field cannot be left blank'
+                'message' => 'This field cannot be left blank.'
             ),
             'Tamanho' => array(
                 'rule' => array('between', 5, 15),
-                'message' => 'Between 5 to 15 characters'
+                'message' => 'Between 5 to 15 characters.'
             ),
             'AlphaNumerico' => array(
                 'rule' => 'alphaNumeric',
-                'message' => 'Only alphabets and numbers allowed'
+                'message' => 'Only alphabets and numbers allowed.'
             ),
             'Unico' => array(
                 'rule' => 'isUnique',
@@ -39,15 +39,15 @@ class Usuario extends AppModel {
         'senha' => array(
             'Obrigatorio' => array(
                 'rule' => 'notEmpty',
-                'message' => 'This field cannot be left blank'
+                'message' => 'This field cannot be left blank.'
             ),
             'Tamanho' => array(
                 'rule' => array('between', 6, 60),
-                'message' => 'Password should be at least 6 chars long'
+                'message' => 'Password should be at least 6 chars long.'
             ),
             'AlphaNumerico' => array(
                 'rule' => 'alphaNumeric',
-                'message' => 'Only alphabets and numbers allowed'
+                'message' => 'Only alphabets and numbers allowed.'
             ),
             'confirmarSenha' => array(
                 'rule' => array('confirmarSenha'),
