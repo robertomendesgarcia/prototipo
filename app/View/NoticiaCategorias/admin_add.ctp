@@ -1,30 +1,24 @@
 <?php
-//        print_r('<pre>');
-//        print_r($categorias);
-//        print_r('</pre>');
-//        exit;
-
-
-$this->Html->addCrumb(__('Categories for News'));
-
+$titulo = explode(' - ', $title_for_layout);
+$this->Html->addCrumb($titulo[0]);
 ?>
 
 <?php echo $this->Form->create('NoticiaCategoria'); ?>
 
 <fieldset>
-    
-    <legend><?php echo __('Add news category'); ?></legend>
-    
-        <?php
-        echo $this->Form->input('nome', array('label' => __('Name:')));
-        echo $this->Form->input('ativo', array('label' => 'Ativo:', 'type' => 'checkbox', array(
-            '1' => __('Sim'),
-            '0' => __('Não')
-        )));
-        echo $this->Form->input('parent_id', array('label' => __('Categoria Pai:'), 'type' => 'select', 'options' => $noticiaCategorias));
+    <?php
+    echo $this->Form->input('nome', array('label' => __('Category:')));
+    echo $this->Form->input('parent_id', array('label' => __('Parent:'), 'type' => 'select', 'options' => $noticiaCategorias, 'empty' => 'Selecione...'));
+    echo $this->Form->input('ativo', array('label' => __('Active:'), 'type' => 'select', 'options' => array(
+            '1' => __('Yes'),
+            '0' => __('No')
+            )));
+    ?>
+</fieldset>
 
-        
-        ?>
-    </fieldset>
+<div class="botoes">
+    <?php echo $this->Form->submit(__('Submit'), array('div' => false)); ?>
+    <?php echo $this->Form->end(); ?>
+    <?php echo $this->Form->postLink(__('Cancel'), array('action' => 'index'), array('class' => 'botao'), __('Do you really want to cancel this category?')); ?>
+</div>
 
-<?php echo $this->Form->end(__('Submit')); ?>

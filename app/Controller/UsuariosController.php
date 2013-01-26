@@ -17,6 +17,7 @@ class UsuariosController extends AppController {
             }
         }
         $this->layout = 'login';
+        $this->set('title_for_layout', __('Login') . ' - ' . $this->title_for_layout);
     }
 
     function logout() {

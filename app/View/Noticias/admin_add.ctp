@@ -1,28 +1,30 @@
-<div class="noticias form">
-<?php echo $this->Form->create('Noticia'); ?>
-	<fieldset>
-		<legend><?php echo __('Admin Add Noticia'); ?></legend>
-	<?php
-		echo $this->Form->input('titulo');
-		echo $this->Form->input('texto');
-		echo $this->Form->input('fonte');
-		echo $this->Form->input('data');
-		echo $this->Form->input('ativo');
-		echo $this->Form->input('categoria_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<?php echo $this->Html->script('ckeditor/ckeditor'); ?>
 
-		<li><?php echo $this->Html->link(__('List Noticias'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Noticia Categorias'), array('controller' => 'noticia_categorias', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Noticia Categoria'), array('controller' => 'noticia_categorias', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Noticia Comentarios'), array('controller' => 'noticia_comentarios', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Noticia Comentario'), array('controller' => 'noticia_comentarios', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Noticia Imagens'), array('controller' => 'noticia_imagens', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Noticia Imagen'), array('controller' => 'noticia_imagens', 'action' => 'add')); ?> </li>
-	</ul>
+<?php
+$titulo = explode(' - ', $title_for_layout);
+$this->Html->addCrumb($titulo[0]);
+?>
+
+<?php echo $this->Form->create('Noticia'); ?>
+
+<fieldset>
+    <?php
+    echo $this->Form->input('titulo', array('label' => __('Title:')));
+    echo $this->Form->input('categoria_id', array('label' => __('Category:'), 'type' => 'select', 'options' => $categorias, 'empty' => 'Selecione...'));
+    echo $this->Form->label('texto', __('Content:'));
+    echo $this->Form->textarea('texto', array('class' => 'ckeditor'));
+    echo $this->Form->input('fonte', array('label' => __('Source:')));
+    echo $this->Form->input('data', array('label' => __('Date:'), 'type' => 'text'));    
+    echo $this->Form->input('ativo', array('label' => __('Active:'), 'type' => 'select', 'options' => array(
+            '1' => __('Yes'),
+            '0' => __('No')
+            )));
+    ?>
+</fieldset>
+
+<div class="botoes">
+    <?php echo $this->Form->submit(__('Submit'), array('div' => false)); ?>
+    <?php echo $this->Form->end(); ?>
+    <?php echo $this->Form->postLink(__('Cancel'), array('action' => 'index'), array('class' => 'botao'), __('Do you really want to cancel this news?')); ?>
 </div>
+

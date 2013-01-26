@@ -24,12 +24,17 @@
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">
 
         <div id="topo" class="janela">
-            <ul id="language">
-                <li class="portuguese">
-                    <a href="<?php echo DEFAULT_URL; ?>choose-language/pt-br" title="Portuguese">Portuguese</a>
+            <div class="esquerda">
+                <?php $titulo = explode('-', $title_for_layout); ?>
+                <h2><?php echo trim($titulo[0]); ?></h2>
+                <?php echo $this->element('breadcrumbs'); ?>
+            </div>
+            <ul>
+                <li class="lang_portuguese">
+                    <a href="<?php echo DEFAULT_URL; ?>choose-language/pt-br" title="<?php echo __('Portuguese'); ?>"><?php echo __('Portuguese'); ?></a>
                 </li>
-                <li class="english">
-                    <a href="<?php echo DEFAULT_URL; ?>choose-language/en-us" title="English">English</a>
+                <li class="lang_english">
+                    <a href="<?php echo DEFAULT_URL; ?>choose-language/en-us" title="<?php echo __('English'); ?>"><?php echo __('English'); ?></a>
                 </li>
             </ul>
         </div>

@@ -5,7 +5,7 @@ html {
 /* --- Flash Message --- */
 #adminMessage {
     padding: 10px;
-    margin-top: 10px;
+    margin-bottom: 15px;
     text-align: center;
     font-weight: bold;
     font-size: 14px;
@@ -49,31 +49,19 @@ html {
     color: #4B954B;
 }
 
+/* --- Mensagem de Validacao da Model --- */
+div.error-message {
+    color: #F00;
+    font-weight: bold;
+}
+
 /* --- Topo --- */
 #topo  {
     margin: 2px 0 15px 0;
     padding: 15px;
-
 }
-#topo #language {
-    float: right;
-    display: inline;
-}
-#topo #language li {
+#topo div.esquerda {
     display: inline-block;
-    width: auto;
-    margin-left: 5px
-}
-#topo #language li a {
-    font-size: 11px;
-    padding-left: 20px;
-    text-decoration: none;
-}
-#topo #language li.portuguese a {
-    background: transparent url('./../img/admin/layout/flags/pt-br.gif') 0 center no-repeat;
-}
-#topo #language li.english a {
-    background: transparent url('./../img/admin/layout/flags/en-us.gif') 0 center no-repeat;
 }
 #topo h2 {
     color: #3B5998;
@@ -81,6 +69,33 @@ html {
     letter-spacing: -1px;
     font-weight: bold;
     display: inline-block;
+}
+#topo ul {
+    float: right;
+    display: inline;
+    margin-top: 10px
+}
+#c-usuarios.a-login #topo ul {
+    margin-top: 0;
+}
+#topo ul li {
+    display: inline-block;
+    width: auto;
+    margin-left: 5px
+}
+#topo ul li a {
+    font-size: 11px;
+    padding: 4px 0 4px 22px;
+    text-decoration: none;
+}
+#topo ul li.lang_portuguese a {
+    background: transparent url('./../img/admin/layout/icones/pt-br.gif') 0 center no-repeat;
+}
+#topo ul li.lang_english a {
+    background: transparent url('./../img/admin/layout/icones/en-us.gif') 0 center no-repeat;
+}
+#topo ul li.logout a {
+    background: transparent url('./../img/admin/layout/icones/logout.png') 0 center no-repeat;
 }
 
 /* --- BreadCrumbs --- */
@@ -127,11 +142,20 @@ html {
 table.listagem {
     margin: 15px 0;
     width: 100%;
+    /*    -webkit-border-radius: 8px;
+        -moz-border-radius: 8px;
+        border-radius: 8px;*/
 }
 table.listagem tr th,
 table.listagem tr td {
     padding: 2px 0;
     border: 1px solid #333;
+}
+table.listagem tr th a {
+    color: #FFF;
+}
+table.listagem tr td:first-child {
+    padding-left: 4px;
 }
 table.listagem tr th {
     background-color: #3B5998;
@@ -144,4 +168,26 @@ table.listagem tr:nth-child(odd) {
 table.listagem tr td.centralizado {
     text-align: center;
 }
+table.listagem tr td.acoes {
+    text-align: center;
+    width: 180px;
+}
 
+/* --- Formularios --- */
+#ProdutoCategoriaNome,
+#NoticiaCategoriaNome {
+    width: 200px;
+}
+
+#NoticiaFonte,
+#NoticiaTitulo {
+    width: 300px;
+}
+
+#NoticiaData {
+    width: 80px;
+}
+
+div.botoes {
+    padding-top: 15px;
+}

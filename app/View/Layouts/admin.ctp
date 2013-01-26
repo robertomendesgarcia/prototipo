@@ -9,8 +9,11 @@
         <meta name="author" content="Ederson Micheleto, Ramores Oliveira, Roberto Mendes Garcia" />
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-1.8.3.js"></script>
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uniform/jquery.uniform.min.js"></script>
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-ui/js/jquery-ui-1.10.0.custom.min.js"></script>
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/masked-input/jquery.maskedinput.min.js"></script>
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/geral.js"></script>
         <link href="<?php echo DEFAULT_URL; ?>js/uniform/css/uniform.default.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
+        <link href="<?php echo DEFAULT_URL; ?>js/jquery-ui/css/smoothness/jquery-ui-1.10.0.custom.min.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
         <link href="<?php echo DEFAULT_URL; ?>css/reset.css" media="all" rel="stylesheet" type="text/css" />
         <link href="<?php echo DEFAULT_URL; ?>css/geral.css" media="all" rel="stylesheet" type="text/css" />
         <link href="<?php echo DEFAULT_URL; ?>css/admin.css" media="all" rel="stylesheet" type="text/css" />
@@ -24,32 +27,19 @@
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">
 
         <div id="topo" class="janela">
-            <?php $titulo = explode('-', $title_for_layout);?>
-            <h2><?php echo trim($titulo[0]); ?></h2>
-            <?php echo $this->element('breadcrumbs'); ?>
-
-
-
-
-            <?php // $usuario = $this->Session->read("Auth.Usuario");  if ($this->Session->valid('Auth.Usuario')) { ?>
-
-            <a href="<?php echo DEFAULT_URL; ?>logout" alt="<?php echo __('Logout'); ?>">
-                <?php echo __('Logout'); ?>
-            </a>
-
-            <?php // } else {  ?>
-
-            <ul id="language">
-                <li class="portuguese">
-                    <a href="<?php echo DEFAULT_URL; ?>choose-language/pt-br" title="Portuguese">Portuguese</a>
-                </li>
-                <li class="english">
-                    <a href="<?php echo DEFAULT_URL; ?>choose-language/en-us" title="English">English</a>
+            <div class="esquerda">
+                <?php $titulo = explode('-', $title_for_layout);                        
+//                pr($titulo); ?>
+                <h2><?php echo trim($titulo[0]); ?></h2>
+                <?php echo $this->element('breadcrumbs'); ?>
+            </div>
+            <ul>
+                <li class="logout">
+                    <a href="<?php echo DEFAULT_URL; ?>logout" title="<?php echo __('Logout'); ?>">
+                        <?php echo __('Logout'); ?>
+                    </a>
                 </li>
             </ul>
-
-            <?php // }  ?>
-
         </div>
 
         <?php echo $this->Session->flash("admin"); ?>
@@ -59,9 +49,6 @@
             <?php echo $this->element('menu'); ?>
 
             <div id="centro" class="janela">
-
-
-
                 <?php echo $content_for_layout; ?>
             </div>
         </div>

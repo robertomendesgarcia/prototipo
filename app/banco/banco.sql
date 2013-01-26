@@ -126,7 +126,7 @@ DROP TABLE IF EXISTS `prototipo_tcc`.`produto_categorias` ;
 CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produto_categorias` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(60) NOT NULL ,
-  `inativo` TINYINT(1) NOT NULL ,
+  `ativo` TINYINT(1) NOT NULL ,
   `parent_id` INT(10) UNSIGNED NULL ,
   `lft` INT(10) NULL ,
   `rght` INT(10) NULL ,

@@ -15,7 +15,6 @@ class NoticiaCategoria extends AppModel {
      * @var string
      */
     public $displayField = 'nome';
-    
     public $actsAs = array('Tree');
 
     /**
@@ -31,7 +30,7 @@ class NoticiaCategoria extends AppModel {
             ),
             'maxlength' => array(
                 'rule' => array('maxlength', 60),
-                'message' => 'Your custom message here.',
+                'message' => 'This field must be less than 60 characters.',
             //'allowEmpty' => false,
             //'required' => false,
             //'last' => false, // Stop validation after this rule
@@ -39,7 +38,7 @@ class NoticiaCategoria extends AppModel {
             ),
             'minlength' => array(
                 'rule' => array('minlength', 6),
-                'message' => 'Your custom message here',
+                'message' => 'This field must be at least 6 characters.',
             //'allowEmpty' => false,
             //'required' => false,
             //'last' => false, // Stop validation after this rule
@@ -66,7 +65,7 @@ class NoticiaCategoria extends AppModel {
      * @var array
      */
     public $belongsTo = array(
-        'Categoria' => array(
+        'CategoriaPai' => array(
             'className' => 'NoticiaCategoria',
             'foreignKey' => 'parent_id',
             'conditions' => '',
@@ -74,5 +73,43 @@ class NoticiaCategoria extends AppModel {
             'order' => ''
         )
     );
+    public $hasMany = array(
+        'CategoriaFilha' => array(
+            'className' => 'NoticiaCategoria',
+            'foreignKey' => 'parent_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
+        'Noticia' => array(
+            'className' => 'Noticia',
+            'foreignKey' => 'categoria_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        )
+    );
+
+    public function beforeDelete($cascade = false) {
+        parent::beforeDelete($cascade);
+
+        $categoria = $this->find('first', array(
+            'conditions' => array(
+                'NoticiaCategoria.id' => $this->id
+            )
+                ));
+//        pr($categoria);exit;
+        if (!empty($categoria['CategoriaFilha'][0]['id'])) {
+//            $this->Session->setFlash(__('This category can not be deleted because there are other categories related to it.'));
+            return false;
+        }
+
+        if (!empty($categoria['Noticia'][0]['id'])) {
+//            $this->Session->setFlash(__('This category cannot be deleted because there are news related to it.'));
+            return false;
+        }
+
+        return true;
+    }
 
 }

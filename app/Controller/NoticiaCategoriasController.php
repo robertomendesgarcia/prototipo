@@ -15,33 +15,14 @@ class NoticiaCategoriasController extends AppController {
      * @return void
      */
     public function admin_index() {
-//        $this->NoticiaCategoria->recursive = 0;
-//        $this->set('categorias', $this->paginate());
-
         $categorias = $this->NoticiaCategoria->generateTreeList(null, null, null, '&nbsp;&nbsp;&nbsp;&nbsp;');
         $this->set('categorias', $categorias);
-        
+
         $ativos = $this->NoticiaCategoria->find('list', array('fields' => array('id', 'ativo')));
         $this->set('ativos', $ativos);
-        
-        $this->set('title_for_layout', __('Categories for News') . ' - ' . $this->title_for_layout);
-        
-    }
 
-    /**
-     * admin_view method
-     *
-     * @throws NotFoundException
-     * @param string $id
-     * @return void
-     */
-//    public function admin_view($id = null) {
-//        $this->NoticiaCategoria->id = $id;
-//        if (!$this->NoticiaCategoria->exists()) {
-//            throw new NotFoundException(__('Invalid noticia categoria'));
-//        }
-//        $this->set('noticiaCategoria', $this->NoticiaCategoria->read(null, $id));
-//    }
+        $this->set('title_for_layout', __('Categories for News') . ' - ' . $this->title_for_layout);
+    }
 
     /**
      * admin_add method
@@ -52,17 +33,17 @@ class NoticiaCategoriasController extends AppController {
         if ($this->request->is('post')) {
             $this->NoticiaCategoria->create();
             if ($this->NoticiaCategoria->save($this->request->data)) {
-                $this->Session->setFlash(__('The noticia categoria has been saved'));
+                $this->Session->setFlash(__('Category saved successfully.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The noticia categoria could not be saved. Please, try again.'));
+                if (empty($this->NoticiaCategoria->validationErrors)) {
+                    $this->Session->setFlash(__('The category could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                }
             }
         }
-//        $noticiaCategorias = $this->NoticiaCategoria->NoticiaCategorium->find('list');
         $noticiaCategorias = $this->NoticiaCategoria->find('list');
         $this->set(compact('noticiaCategorias'));
-//        $lista_categorias = $this->NoticiaCategoria->find('list', array('fields' => array('id', 'nome')));
-//        $this->set('lista_categorias', $lista_categorias);
+        $this->set('title_for_layout', __('Add New Category') . ' - ' . $this->title_for_layout);
     }
 
     /**
@@ -72,24 +53,25 @@ class NoticiaCategoriasController extends AppController {
      * @param string $id
      * @return void
      */
-//    public function admin_edit($id = null) {
-//        $this->NoticiaCategoria->id = $id;
-//        if (!$this->NoticiaCategoria->exists()) {
-//            throw new NotFoundException(__('Invalid noticia categoria'));
-//        }
-//        if ($this->request->is('post') || $this->request->is('put')) {
-//            if ($this->NoticiaCategoria->save($this->request->data)) {
-//                $this->Session->setFlash(__('The noticia categoria has been saved'));
-//                $this->redirect(array('action' => 'index'));
-//            } else {
-//                $this->Session->setFlash(__('The noticia categoria could not be saved. Please, try again.'));
-//            }
-//        } else {
-//            $this->request->data = $this->NoticiaCategoria->read(null, $id);
-//        }
-//        $noticiaCategorias = $this->NoticiaCategoria->NoticiaCategorium->find('list');
-//        $this->set(compact('noticiaCategorias'));
-//    }
+    public function admin_edit($id = null) {
+        $this->NoticiaCategoria->id = $id;
+        if (!$this->NoticiaCategoria->exists()) {
+            throw new NotFoundException(__('Invalid category.'));
+        }
+        if ($this->request->is('post') || $this->request->is('put')) {
+            if ($this->NoticiaCategoria->save($this->request->data)) {
+                $this->Session->setFlash(__('Category saved successfully.'));
+                $this->redirect(array('action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('The category could not be saved. Please, try again.'));
+            }
+        } else {
+            $this->request->data = $this->NoticiaCategoria->read(null, $id);
+        }
+        $noticiaCategorias = $this->NoticiaCategoria->find('list');
+        $this->set(compact('noticiaCategorias'));
+        $this->set('title_for_layout', __('Edit Category') . ' - ' . $this->title_for_layout);
+    }
 
     /**
      * admin_delete method
@@ -99,19 +81,21 @@ class NoticiaCategoriasController extends AppController {
      * @param string $id
      * @return void
      */
-//    public function admin_delete($id = null) {
-//        if (!$this->request->is('post')) {
-//            throw new MethodNotAllowedException();
-//        }
-//        $this->NoticiaCategoria->id = $id;
-//        if (!$this->NoticiaCategoria->exists()) {
-//            throw new NotFoundException(__('Invalid noticia categoria'));
-//        }
-//        if ($this->NoticiaCategoria->delete()) {
-//            $this->Session->setFlash(__('Noticia categoria deleted'));
-//            $this->redirect(array('action' => 'index'));
-//        }
-//        $this->Session->setFlash(__('Noticia categoria was not deleted'));
-//        $this->redirect(array('action' => 'index'));
-//    }
+    public function admin_delete($id = null) {
+        if (!$this->request->is('post')) {
+            throw new MethodNotAllowedException();
+        }
+        $this->NoticiaCategoria->id = $id;
+        if (!$this->NoticiaCategoria->exists()) {
+            throw new NotFoundException(__('Invalid category.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+        }
+        if ($this->NoticiaCategoria->delete()) {
+            $this->Session->setFlash(__('Category successfully deleted.'), 'flash_message', array('tipo' => 'success'), 'admin');
+            $this->redirect(array('action' => 'index'));
+        } else {
+            $this->Session->setFlash(__('This category can not be deleted because there are other categories or news related to it.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
+
 }

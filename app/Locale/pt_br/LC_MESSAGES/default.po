@@ -1,23 +1,145 @@
-msgid  "Please enter your username and password."
-msgstr "Informe o usuário e sua senha."
-
+# --- Mensagens
 msgid "Your username or password was incorrect."
 msgstr "Usuário ou senha inválida."
 
 msgid "You are not authorized to access that location."
 msgstr "Acesso negado."
 
-msgid "Close"
-msgstr "Fechar"
+msgid "Are you sure you want to delete this category?"
+msgstr "Deseja realmente excluir esta categoria?"
 
+msgid "Invalid category."
+msgstr "Categoria inválida."
+
+msgid "Category successfully deleted."
+msgstr "Categoria excluida com sucesso."
+
+msgid "This category cannot be deleted because there are news related to it."
+msgstr "Esta categoria não pode ser excluida porque existem notícias vinculadas a ela."
+
+msgid "This category can not be deleted because there are other categories related to it."
+msgstr "Esta categoria não pode ser excluído porque existem outras categorias relacionadas a ele."
+
+msgid "This category can not be deleted because there are other categories or news related to it."
+msgstr "Esta categoria não pode ser excluído porque existem notícias ou outras categorias relacionadas a ele."
+
+msgid "Do you really want to cancel this category?"
+msgstr "Deseja realmente cancelar esta categoria?"
+
+
+msgid "Do you really want to cancel the changes?"
+msgstr "Deseja realmente cancelar as alterações?"
+
+msgid "The category could not be saved. Please, try again."
+msgstr "A categoria não pode ser salvo. Por favor, tente novamente."
+
+msgid "Category saved successfully."
+msgstr "Categoria salva com sucesso."
+
+msgid "Do you really want to cancel this news?"
+msgstr "Deseja realmente cancelar esta notícia?"
+
+
+# --- Mensagem de validacao da Model
+msgid "This field cannot be left blank."
+msgstr "Este campo não pode ser vazio."
+
+msgid "This field must be less than 60 characters."
+msgstr "Este campo deve ter menos de 60 caracteres."
+
+msgid "This field must be at least 6 characters."
+msgstr "Este campo deve ter pelo menos 6 caracteres."
+
+
+# --- Campos
 msgid "Username:"
 msgstr "Usuário:"
 
 msgid "Password:"
 msgstr "Senha:"
 
+msgid "Active:"
+msgstr "Ativo:"
+
+msgid "Parent:"
+msgstr "Cateogoria Pai:"
+
+msgid "Category:"
+msgstr "Categoria:"
+
+msgid "Title:"
+msgstr "Título:"
+
+msgid "Content:"
+msgstr "Conteúdo:"
+
+msgid "Source:"
+msgstr "Fonte:"
+
+msgid "Date:"
+msgstr "Data:"
+
+
+
+# --- Titulo das Paginas
+msgid  "Please enter your username and password."
+msgstr "Informe o usuário e sua senha."
+
 msgid "Categories for News"
 msgstr "Categorias para as Notícias"
 
+msgid "Add New Category"
+msgstr "Adicionar Nova Categoria"
+
+msgid "Edit Category"
+msgstr "Editar Categoria"
+
+msgid "Categories for Products"
+msgstr "Categorias para os Produtos"
+
+msgid "News"
+msgstr "Notícias"
+
+msgid "Add New News"
+msgstr "Adicionar Nova Notícia"
+
+
+
+# --- Botoes
 msgid "New News"
 msgstr "Nova Notícia"
+
+msgid "New Category"
+msgstr "Nova Categoria"
+
+msgid "Edit"
+msgstr "Editar"
+
+msgid "Delete"
+msgstr "Excluir"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+
+# --- Geral
+msgid "Yes"
+msgstr "Sim"
+
+msgid "No"
+msgstr "Não"
+
+msgid "Close"
+msgstr "Fechar"
+
+msgid "Category"
+msgstr "Categoria"
+
+msgid "Active"
+msgstr "Ativo"
+
+msgid "Actions"
+msgstr "Ações"
+
+msgid "Submit"
+msgstr "Gravar"

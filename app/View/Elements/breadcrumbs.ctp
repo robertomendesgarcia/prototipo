@@ -5,6 +5,12 @@ switch ($this->params['controller']) {
     case 'noticiacategorias':
         $texto = __('Categories for News');
         break;
+    case 'produtocategorias':
+        $texto = __('Categories for Products');
+        break;
+    case 'noticias':
+        $texto = __('News');
+        break;
 }
 
 $url = null;

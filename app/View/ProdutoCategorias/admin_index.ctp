@@ -1,18 +1,30 @@
-<h3>Categorias para os Produtos</h3>
+<div class="actions">
+    <ul>
+        <li><?php echo $this->Html->link(__('New Category'), array('action' => 'add'), array('class' => 'botao')); ?></li>
+    </ul>
+</div>
+<?php // echo $this->element("filtro");  ?>
 
-<table>
-    <thead>
+<?php // echo $this->element('paginacao_contador'); ?>
+
+<table cellpadding="0" cellspacing="0" class="listagem">
+    <tr>
+        <th><?php echo __('Category'); ?></th>
+        <th><?php echo __('Active'); ?></th>
+        <th class="actions"><?php echo __('Actions'); ?></th>
+    </tr>
+    <?php foreach ($categorias as $key => $value) { ?>
         <tr>
-            <th>Categoria</th>
-            <th>A&ccedil;&otilde;es</th>
+            <td><?php echo $value; ?></td>
+            <td class="centralizado"><?php echo ($ativos[$key] == 1) ? __('Yes') : __('No'); ?></td>
+
+            <td class="acoes">
+                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $key), array('class' => 'botao')); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $key), array('class' => 'botao'), __('Are you sure you want to delete this category?')); ?>
+            </td>
         </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($categorias as $key => $value) { ?>
-            <tr>
-                <td><?php echo $value; ?></td>
-                <td><?php echo $this->element('botoes_de_acao', array('id' => $key, 'label' => $value, 'botoes' => '{update} {delete}')); ?></td>
-            </tr>
-        <?php } ?>
-    </tbody>
+    <?php } ?>
 </table>
+
+<?php
+// echo $this->element('paginacao'); ?>

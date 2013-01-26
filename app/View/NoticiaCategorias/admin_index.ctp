@@ -1,9 +1,8 @@
 <div class="actions">
     <ul>
-        <li><?php echo $this->Html->link(__('New News'), array('action' => 'add')); ?></li>
+        <li><?php echo $this->Html->link(__('New Category'), array('action' => 'add'), array('class' => 'botao')); ?></li>
     </ul>
 </div>
-
 <?php // echo $this->element("filtro");  ?>
 
 <?php // echo $this->element('paginacao_contador'); ?>
@@ -19,12 +18,13 @@
             <td><?php echo $value; ?></td>
             <td class="centralizado"><?php echo ($ativos[$key] == 1) ? __('Yes') : __('No'); ?></td>
 
-            <td class="actions">
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $key)); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $key), null, __('Are you sure you want to delete # %s?', $key)); ?>
+            <td class="acoes">
+                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $key), array('class' => 'botao')); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $key), array('class' => 'botao'), __('Are you sure you want to delete this category?')); ?>
             </td>
         </tr>
     <?php } ?>
 </table>
 
-<?php // echo $this->element('paginacao'); ?>
+<?php
+// echo $this->element('paginacao'); ?>
