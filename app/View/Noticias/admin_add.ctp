@@ -1,11 +1,9 @@
-<?php echo $this->Html->script('ckeditor/ckeditor'); ?>
-
 <?php
 $titulo = explode(' - ', $title_for_layout);
 $this->Html->addCrumb($titulo[0]);
 ?>
 
-<?php echo $this->Form->create('Noticia'); ?>
+<?php echo $this->Form->create('Noticia', array('type' => 'file')); ?>
 
 <fieldset>
     <?php
@@ -19,7 +17,11 @@ $this->Html->addCrumb($titulo[0]);
             '1' => __('Yes'),
             '0' => __('No')
             )));
+    echo $this->Form->label('imagens', 'Galeria:');
+    echo $this->Form->file('imagens', array('multiple' => 'multiple', 'name' => 'NoticiaImagens'));
     ?>
+    
+    
 </fieldset>
 
 <div class="botoes">

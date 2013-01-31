@@ -139,4 +139,10 @@ class Noticia extends AppModel {
         return true;
     }
 
+    public function beforeSave($options = array()) {
+        parent::beforeSave();
+        $this->data['Noticia']['data'] = date('Y-m-d', strtotime($this->data['Noticia']['data']));
+        return true;
+    }
+
 }

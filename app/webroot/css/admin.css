@@ -150,11 +150,12 @@ table.listagem tr th,
 table.listagem tr td {
     padding: 2px 0;
     border: 1px solid #333;
+    vertical-align: middle;
 }
 table.listagem tr th a {
     color: #FFF;
 }
-table.listagem tr td:first-child {
+table.listagem tr td {
     padding-left: 4px;
 }
 table.listagem tr th {
@@ -167,10 +168,17 @@ table.listagem tr:nth-child(odd) {
 }
 table.listagem tr td.centralizado {
     text-align: center;
+    padding: 0;
 }
 table.listagem tr td.acoes {
     text-align: center;
-    width: 180px;
+    vertical-align: middle;
+    width: 180px;    
+}
+table.listagem tr td.acoes_3_botoes {
+    text-align: center;
+    vertical-align: middle;
+    width: 230px;    
 }
 
 /* --- Formularios --- */

@@ -70,6 +70,11 @@ class NoticiasController extends AppController {
      */
     public function admin_add() {
         if ($this->request->is('post')) {
+            
+            print_r('<pre>');
+            print_r($_FILES);exit;
+            print_r('</pre>');
+            
             $this->Noticia->create();
             if ($this->Noticia->save($this->request->data)) {
                 $this->Session->setFlash(__('The noticia has been saved'));

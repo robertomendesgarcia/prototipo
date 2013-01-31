@@ -23,13 +23,26 @@
             echo "<link href='" . DEFAULT_URL . $arquivo_css . "' media='all' rel='stylesheet' type='text/css' />";
         }
         ?>
+
+
+        <?php
+        if (($this->params["controller"] == 'noticias') && (in_array($this->params["action"], array('admin_add', 'admin_edit')))) {
+            echo $this->Html->script('ckeditor/ckeditor');
+            echo $this->Html->script('uploadify/jquery.uploadify.min');
+            ?>
+            <link href="<?php echo DEFAULT_URL; ?>js/uploadify/uploadify.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />          
+        <?php } ?>
+
+
     </head>
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">
 
         <div id="topo" class="janela">
             <div class="esquerda">
-                <?php $titulo = explode('-', $title_for_layout);                        
-//                pr($titulo); ?>
+                <?php
+                $titulo = explode('-', $title_for_layout);
+//                pr($titulo); 
+                ?>
                 <h2><?php echo trim($titulo[0]); ?></h2>
                 <?php echo $this->element('breadcrumbs'); ?>
             </div>

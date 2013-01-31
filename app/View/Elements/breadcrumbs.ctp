@@ -11,6 +11,9 @@ switch ($this->params['controller']) {
     case 'noticias':
         $texto = __('News');
         break;
+    case 'bannertipos':
+        $texto = __('Banner Types');
+        break;
 }
 
 $url = null;
