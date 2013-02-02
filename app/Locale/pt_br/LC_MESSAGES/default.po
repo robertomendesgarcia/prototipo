@@ -56,6 +56,25 @@ msgstr "Tipo inválido."
 msgid "Are you sure you want to delete this banner?"
 msgstr "Deseja realmente excluir este banner?"
 
+msgid "Do you really want to cancel layout settings?"
+msgstr "Deseja realmente cancelar as configurações de layout?"
+
+msgid "The settings could not be saved. Please, try again."
+msgstr "As configurações não poderam ser salvas. Por favor, tente novamente."
+
+msgid "Failed to save the settings."
+msgstr "Falha ao salvar as configurações."
+
+msgid "Settings saved successfully."
+msgstr "Configurações salvas com sucesso."
+
+msgid "Do you really want to cancel settings?"
+msgstr "Deseja realmente cancelar as configurações?"
+
+msgid "Invalid file."
+msgstr "Arquivo inválido."
+
+
 
 # --- Mensagem de validacao da Model
 msgid "This field cannot be left blank."
@@ -66,6 +85,10 @@ msgstr "Este campo deve ter menos de 60 caracteres."
 
 msgid "This field must be at least 6 characters."
 msgstr "Este campo deve ter pelo menos 6 caracteres."
+
+msgid "This field must be less than 100 characters."
+msgstr "Este campo deve ter menos de 100 caracteres."
+
 
 
 # --- Campos
@@ -99,6 +122,83 @@ msgstr "Data:"
 msgid "Type:"
 msgstr "Tipo:"
 
+msgid "Background color:"
+msgstr "Cor de fundo:"
+
+msgid "Background color of the site:"
+msgstr "Cor de fundo do site:"
+
+msgid "Font color:"
+msgstr "Cor da fonte:"
+
+msgid "Background image:"
+msgstr "Imagem de fundo:"
+
+msgid "Background image for the site:"
+msgstr "Imagem de fundo para o site:"
+
+msgid "Menu position:"
+msgstr "Posição do menu:"
+
+msgid "Sidebar:"
+msgstr "Barra Lateral:"
+
+msgid "Footer:"
+msgstr "Rodapé:"
+
+msgid "Gradient background:"
+msgstr "Fundo degradê:"
+
+msgid "Menu with gradient background:"
+msgstr "Menu com fundo degradê:"
+
+msgid "Show news on home:"
+msgstr "Mostrar notícias na capa:"
+
+msgid "Quantity news on home:"
+msgstr "Quantidade de notícias na capa:"
+
+msgid "Show news on sidebar:"
+msgstr "Mostrar notícias na lateral:"
+
+msgid "Quantity news on sidebar:"
+msgstr "Quantidade de notícias na lateral:"
+
+msgid "Show products on home:"
+msgstr "Mostrar produtos na capa:"
+
+msgid "Quantity products on home:"
+msgstr "Quantidade de produtos na capa:"
+
+msgid "Show products on sidebar:"
+msgstr "Mostrar produtos na lateral:"
+
+msgid "Quantity products on sidebar:"
+msgstr "Quantidade de produtos na lateral:"
+
+msgid "I want to have banners."
+msgstr "Quero ter banners."
+
+msgid "I want to have a right sidebar."
+msgstr "Quero ter uma barra lateral direita."
+
+msgid "I want to have a footer."
+msgstr "Quero ter um rodapé."
+
+msgid "I want to have news."
+msgstr "Quero ter notícias."
+
+msgid "I want to have products."
+msgstr "Quero ter produtos."
+
+msgid "Products:"
+msgstr "Produtos:"
+
+msgid "Position the background image:"
+msgstr "Posição da imagem de fundo:"
+
+msgid "Image for logo:"
+msgstr "Imagem para logo:"
 
 
 # --- Titulo das Paginas
@@ -131,6 +231,9 @@ msgstr "Adicionar Novo Tipo"
 
 msgid "Add New Banner"
 msgstr "Adicionar Novo Banner"
+
+msgid "Layout Settings"
+msgstr "Configurações de Layout"
 
 
 
@@ -181,3 +284,36 @@ msgstr "Ações"
 
 msgid "Submit"
 msgstr "Gravar"
+
+msgid "Colors"
+msgstr "Cores"
+
+msgid "Top"
+msgstr "Topo"
+
+msgid "Left"
+msgstr "Esquerda"
+
+msgid "Content"
+msgstr "Conteúdo"
+
+msgid "Products"
+msgstr "Produtos"
+
+msgid "Layout Of The Site"
+msgstr "Layout do Site"
+
+msgid "Do not repeat"
+msgstr "Não repetir"
+
+msgid "Horizontal repeat" 
+msgstr "Repetir na horizontal"
+
+msgid "Vertical repeat" 
+msgstr "Repetir na vertical"
+
+msgid "Horizontal and vertical repeat"
+msgstr "Repetir na horizontal e na vertical"
+
+msgid "Content Of The Site"
+msgstr "Conteúdo do Site"

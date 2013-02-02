@@ -24,15 +24,16 @@
         }
         ?>
 
-
-        <?php
-        if (($this->params["controller"] == 'noticias') && (in_array($this->params["action"], array('admin_add', 'admin_edit')))) {
-            echo $this->Html->script('ckeditor/ckeditor');
-            echo $this->Html->script('uploadify/jquery.uploadify.min');
-            ?>
+        <?php if (($this->params["controller"] == 'noticias') && (in_array($this->params["action"], array('admin_add', 'admin_edit')))) { ?>
+            <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/ckeditor/ckeditor.js"></script>
+            <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uploadify/jquery.uploadify.min.js"></script>
             <link href="<?php echo DEFAULT_URL; ?>js/uploadify/uploadify.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />          
         <?php } ?>
 
+        <?php if (($this->params["controller"] == 'configuracoes') && (in_array($this->params["action"], array('admin_layout')))) { ?>
+            <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/colorpicker/js/colorpicker.js"></script>
+            <link href="<?php echo DEFAULT_URL; ?>js/colorpicker/css/colorpicker.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />          
+        <?php } ?>
 
     </head>
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">

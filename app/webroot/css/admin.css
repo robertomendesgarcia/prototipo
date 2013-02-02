@@ -199,3 +199,41 @@ table.listagem tr td.acoes_3_botoes {
 div.botoes {
     padding-top: 15px;
 }
+
+/* --- Configuracoes de Layour --- */
+#conteudo div.input {
+    display: block;
+}
+#conteudo div.input input {
+    margin-top: 2px;
+}
+#conteudo div.checkbox label {
+    display: inline-block;
+    vertical-align: bottom;
+}
+#conteudo div.input div.preview {
+    display: inline-block;
+    width: 25px;
+    height: 25px;    
+    vertical-align: top;
+    margin-left: 8px;
+    border: #009630 1px solid;
+
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+#centro fieldset {
+    border: 1px solid #009630;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    padding: 8px 20px;
+    margin-bottom: 8px;
+}
+#centro fieldset legend {
+    color: #3B5998;
+    font-weight: bold;
+    padding: 0 2px;
+}
