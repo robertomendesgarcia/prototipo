@@ -7,16 +7,18 @@
         <meta name="description" content="Protótipo para o Trabalho de Conculão de Curso - ESUCRI - Segundo semestre de 2013" />
         <meta name="keywords" content="" />
         <meta name="author" content="Ederson Micheleto, Ramores Oliveira, Roberto Mendes Garcia" />
+
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-1.8.3.js"></script>
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uniform/jquery.uniform.min.js"></script>
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-ui/js/jquery-ui-1.10.0.custom.min.js"></script>
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/masked-input/jquery.maskedinput.min.js"></script>
-        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/geral.js"></script>
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/geral_admin.js"></script>
+
         <link href="<?php echo DEFAULT_URL; ?>js/uniform/css/uniform.default.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
         <link href="<?php echo DEFAULT_URL; ?>js/jquery-ui/css/smoothness/jquery-ui-1.10.0.custom.min.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
         <link href="<?php echo DEFAULT_URL; ?>css/reset.css" media="all" rel="stylesheet" type="text/css" />
-        <link href="<?php echo DEFAULT_URL; ?>css/geral.css" media="all" rel="stylesheet" type="text/css" />
         <link href="<?php echo DEFAULT_URL; ?>css/admin.css" media="all" rel="stylesheet" type="text/css" />
+
         <?php
         $arquivo_css = "./css/" . $this->params["controller"] . ".css";
         if (file_exists($arquivo_css)) {
@@ -60,7 +62,7 @@
 
         <div id="conteudo">
 
-            <?php echo $this->element('menu'); ?>
+            <?php echo $this->element('menu_admin'); ?>
 
             <div id="centro" class="janela">
                 <?php echo $content_for_layout; ?>

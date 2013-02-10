@@ -9,15 +9,19 @@ $(document).ready(function(){
         event.preventDefault();
     });
     
+    $.each($('#wrapper form input.obrigatorio'), function(index, value){
+        $(this).prev('label').append('<span class="requerido"> *</span>');
+    });
+    
     $('#NoticiaData').datepicker();
     $('#NoticiaData').mask("99/99/9999");
     
     if ($('body#c-configuracoes.a-admin_layout').length) {
         
         $('input:file').uniform({
-//            fileButtonText: 'Selecione o arquivo',
-//            fileDefaultText: 'Selecione...'
-        }); 
+            //            fileButtonText: 'Selecione o arquivo',
+            //            fileDefaultText: 'Selecione...'
+            }); 
         
         var input = null;
         var div_preview = null;

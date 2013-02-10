@@ -25,7 +25,10 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'usuarios', 'action' => 'login', 'admin' => false));
+	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'capa', 'admin' => false));
+        Router::connect('/a-empresa', array('controller' => 'pages', 'action' => 'display', 'a-empresa', 'admin' => false));
+        Router::connect('/trabalhe-conosco', array('controller' => 'pages', 'action' => 'trabalhe_conosco', 'admin' => false));
+        Router::connect('/contato', array('controller' => 'pages', 'action' => 'contato', 'admin' => false));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */

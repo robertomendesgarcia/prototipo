@@ -13,10 +13,10 @@ INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `cr
 VALUES ('banners', 'Site usa banners.', '0', NOW(), NOW());
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
-VALUES ('barra_lateral', 'Site usa barra lateral direita.', '0', NOW(), NOW());
+VALUES ('barra_lateral', 'Site usa barra lateral direita.', '1', NOW(), NOW());
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
-VALUES ('rodape', 'Site usa rodapé.', '0', NOW(), NOW());
+VALUES ('rodape', 'Site usa rodapé.', '1', NOW(), NOW());
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
 VALUES ('cor_fonte', 'Cor da fonte.', '#333333', NOW(), NOW());
@@ -40,34 +40,81 @@ INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `cr
 VALUES ('cor_fonte_menu', 'Cor da fonte dos itens do menu.', '#FFFFFF', NOW(), NOW());
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
-VALUES ('mostrar_noticias_capa', 'Mostrar notícias na capa.', '0', NOW(), NOW());
+VALUES ('mostrar_noticias_capa', 'Mostrar notícias na capa.', '1', NOW(), NOW());
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
-VALUES ('qtde_noticias_capa', 'Quantidade de notícias na capa.', '3', NOW(), NOW());
+VALUES ('qtde_noticias_capa', 'Quantidade de notícias na capa.', '5', NOW(), NOW());
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
-VALUES ('mostrar_noticias_lateral', 'Mostrar notícias na barra lateral direita.', '0', NOW(), NOW());           
+VALUES ('mostrar_noticias_lateral', 'Mostrar notícias na barra lateral direita.', '1', NOW(), NOW());           
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
 VALUES ('qtde_noticias_lateral', 'Quantidade de notícias na barra lateral direita.', '3', NOW(), NOW()); 
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
-VALUES ('mostrar_produtos_capa', 'Mostrar produtos na capa.', '0', NOW(), NOW()); 
+VALUES ('mostrar_produtos_capa', 'Mostrar produtos na capa.', '1', NOW(), NOW()); 
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
-VALUES ('qtde_produtos_capa', 'Quantidade de produtos na capa.', '3', NOW(), NOW()); 
+VALUES ('qtde_produtos_capa', 'Quantidade de produtos na capa.', '5', NOW(), NOW()); 
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
-VALUES ('mostrar_produtos_lateral', 'Mostrar produtos na barra lateral direita.', '0', NOW(), NOW());           
+VALUES ('mostrar_produtos_lateral', 'Mostrar produtos na barra lateral direita.', '1', NOW(), NOW());           
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
 VALUES ('qtde_produtos_lateral', 'Quantidade de produtos na barra lateral direita.', '3', NOW(), NOW()); 
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
-VALUES ('img_bg_html', 'Imagem background tag html.', '3', NOW(), NOW()); 
+VALUES ('img_bg_html', 'Imagem background tag html.', '', NOW(), NOW()); 
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
 VALUES ('img_logo', 'Imagem de logo.', 'logo.png', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('cor_titulo', 'Cor para os títulos.', '#333333', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('conteudo_rodape', 'Conteúdo para o rodapé.', '<p>...</p>', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('img_bg_topo', 'Imagem para background do topo.', '', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('titulo_site', 'Título para o site externo.', '...', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('keywords', 'Palavras chave para meta tag.', '...', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('description', 'Descrição meta tag.', '...', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('author', 'Autor para meta tag.', '...', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('tamanho_centro', 'Tamanho da área central.', 'medio', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('email_contato', 'E-mail para receber os contatos.', '', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('trabalhe_conosco', 'Ter página de Trabalhe Conosco.', '1', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('email_trabalhe_conosco', 'E-mail para receber os currículos enviados pelo site.', '', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('pagina_institucional', 'Site tem uma págia institucional.', '1', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('endereco', 'Endereço físico da empresa.', '...', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('telefone_1', 'Telefone 1.', '...', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('telefone_2', 'Telefone 2.', '...', NOW(), NOW()); 
+
+
 
 
 -- -----------------------------------------------------

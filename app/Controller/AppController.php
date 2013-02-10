@@ -95,6 +95,24 @@ class AppController extends Controller {
         if (isset($this->params['admin'])) {
             $this->layout = 'admin';
         }
+
+        $this->loadModel('Configuracao');
+        $config = $this->Configuracao->find('list', array(
+            'fields' => array(
+                'pin',
+                'conteudo'
+            )
+                ));
+        $this->set('config', $config);
+
+        $this->loadModel('Menu');
+        $menu = $this->Menu->find('list', array(
+            'fields' => array(
+                'link',
+                'nome'
+            )
+                ));
+        $this->set('menu', $menu);
     }
 
     /**

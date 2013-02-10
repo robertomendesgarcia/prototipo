@@ -22,6 +22,15 @@ $this->Html->addCrumb($titulo[0]);
         <div class="img"></div>
     </div>
     <div class="input">
+        <?php echo $this->Form->label('img_bg_topo', __('Background image on top:')); ?>
+        <?php echo $this->Form->file('img_bg_topo', array('div' => false)); ?>
+        <div class="img"></div>
+    </div>
+    <div class="input">
+        <?php echo $this->Form->input('cor_titulo', array('class' => 'color_picker', 'label' => __('Title color:'), 'div' => false)); ?>
+        <div class="preview"></div>
+    </div>
+    <div class="input">
         <?php echo $this->Form->input('cor_fonte', array('class' => 'color_picker', 'label' => __('Font color:'), 'div' => false)); ?>
         <div class="preview"></div>
     </div>

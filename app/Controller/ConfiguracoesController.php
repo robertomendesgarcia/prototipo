@@ -115,7 +115,7 @@ class ConfiguracoesController extends AppController {
 
 
                 foreach ($this->request->data['Configuracao'] as $key => $value) {
-                    if (!in_array($key, array('img_bg_html', 'img_logo'))) {
+                    if (!in_array($key, array('img_bg_html', 'img_logo', 'img_bg_topo'))) {
                         $config = $this->Configuracao->find('first', array(
                             'conditions' => array(
                                 'pin' => $key

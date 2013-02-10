@@ -2,6 +2,54 @@ html {
     background: transparent url('./../img/admin/layout/bg_html.png') 0 0 repeat-x;
 }
 
+body {
+    display: block;
+    width: 980px;
+    margin: 0 auto;
+    font-family: Arial, Tahoma;
+    font-size: 12px;
+    color: #333;
+}
+
+.janela {
+    background-color: #FFF;
+    padding: 20px 18px;
+    border: #009630 2px solid;
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* --- Formularios --- */
+form label {
+    display: block;  
+    margin-bottom: 4px;    
+}
+form div.cke,
+form div.input {
+    display: block;
+    margin-bottom: 10px;
+}
+/*fieldset legend {
+    display: block;
+    width: 100%;
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}*/
+div.submit {
+    padding-top: 5px;
+}
+
 /* --- Flash Message --- */
 #adminMessage {
     padding: 10px;

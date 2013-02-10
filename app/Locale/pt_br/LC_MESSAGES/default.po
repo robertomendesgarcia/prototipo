@@ -200,6 +200,14 @@ msgstr "Posição da imagem de fundo:"
 msgid "Image for logo:"
 msgstr "Imagem para logo:"
 
+msgid "Title color:"
+msgstr "Cor do título:"
+
+msgid "Background image on top:"
+msgstr "Imagem de fundo do topo:"
+
+
+
 
 # --- Titulo das Paginas
 msgid  "Please enter your username and password."
@@ -317,3 +325,12 @@ msgstr "Repetir na horizontal e na vertical"
 
 msgid "Content Of The Site"
 msgstr "Conteúdo do Site"
+
+msgid "Contact"
+msgstr "Contato"
+
+msgid "Work with us"
+msgstr "Trabalhe conosco"
+
+msgid "Company"
+msgstr "A Empresa"
