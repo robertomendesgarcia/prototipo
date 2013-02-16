@@ -1,8 +1,12 @@
 $(document).ready(function(){
     
-    $('select, input, button, textarea').uniform(); 	
+    $('select, input, button, textarea').uniform(); 
     
-    if ($('body#c-pages.a-contato').length || $('body#c-pages.a-trabalhe_conosco').length) {
+    $.each($('#wrapper form .obrigatorio'), function(index, value){
+        $(this).prev('label').append('<span class="requerido"> *</span>');
+    });
+    
+    if ($('body#c-pages.a-contato').length) {
         
         $('#ContatoNome').focus();
         
@@ -35,22 +39,42 @@ $(document).ready(function(){
             }
         });
         
-        $.each($('#wrapper form .obrigatorio'), function(index, value){
-            $(this).prev('label').append('<span class="requerido"> *</span>');
-        });
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
     }
     
-
+    if ($('body#c-pages.a-trabalhe_conosco').length) {
+        
+        $('#CurriculoNome').focus();
+        
+        $('#CurriculoTelefone').mask('(99) 9999-9999?9');
+        
+        $('#CurriculoTrabalheConoscoForm').validate({
+            rules: {
+                'data[Curriculo][nome]': 'required',
+                'data[Curriculo][email]': {
+                    required: true,
+                    email: true
+                },
+                'data[Curriculo][mensagem]': {
+                    required: true,
+                    maxlength: 600 
+                },
+                'data[Curriculo][curriculo]': 'required'
+            },
+            messages: {
+                'data[Curriculo][nome]': 'Informe seu nome.',
+                'data[Curriculo][email]': {
+                    required: 'Informe seu e-mail.',
+                    email: 'E-mail inválido.'
+                },
+                'data[Curriculo][mensagem]': {
+                    required: 'Informe sua mensagem.',
+                    maxlength: 'Máximo de 600 caracteres.'
+                },
+                'data[Curriculo][curriculo]': 'Envie seu currículo.'
+            }
+        });
+        
+    }
 
 
 

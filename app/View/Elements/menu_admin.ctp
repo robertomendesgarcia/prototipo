@@ -1,10 +1,73 @@
 
 <div id="menu" class="janela">
-    <ul>
 
+    <ul>
         <li>
-            <a href="<?php echo DEFAULT_URL; ?>" title="<?php echo __('News'); ?>"><?php echo __('News'); ?></a>
+            <?php echo $this->Html->link(__('Welcome'), array('controller' => 'usuarios', 'action' => 'bem_vindo', 'admin' => true)); ?>
         </li>
+        <li>
+            <?php echo $this->Html->link(__('Logout'), array('controller' => 'usuarios', 'action' => 'logout', 'admin' => true)); ?>
+        </li>
+        <li>
+            <h3><?php echo __('News'); ?></h3>
+            <ul>
+                <li>
+                    <?php echo $this->Html->link(__('Categories'), array('controller' => 'noticiacategorias', 'action' => 'index', 'admin' => true)); ?>            
+                </li>
+                <li>
+                    <?php echo $this->Html->link(__('News'), array('controller' => 'noticias', 'action' => 'index', 'admin' => true)); ?>
+                </li>
+            </ul>
+        </li>
+        <li>   
+            <h3><?php echo __('Products'); ?></h3>
+            <ul>
+                <li>
+                    <?php echo $this->Html->link(__('Categories'), array('controller' => 'produtocategorias', 'action' => 'index', 'admin' => true)); ?>
+                </li>
+                <li>
+                    <?php echo $this->Html->link(__('Products'), array('controller' => 'produtos', 'action' => 'index', 'admin' => true)); ?>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3><?php echo __('Products'); ?></h3>
+            <ul>
+                <li>
+                    <?php echo $this->Html->link(__('Newsletter'), array('controller' => 'newsletters', 'action' => 'index', 'admin' => true)); ?>
+                </li>
+                <li>
+                    <?php echo $this->Html->link(__('Resumes'), array('controller' => 'curriculos', 'action' => 'index', 'admin' => true)); ?>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3><?php echo __('Settings'); ?></h3>
+            <ul>
+                <li>
+                    <?php echo $this->Html->link(__('Layout'), array('controller' => 'configuracoes', 'action' => 'layout', 'admin' => true)); ?>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3><?php echo __('Banners'); ?></h3>
+            <ul>
+                <li>
+                    <?php echo $this->Html->link(__('Banners'), array('controller' => 'banners', 'action' => 'index', 'admin' => true)); ?>
+                </li>
+                 <li>
+                    <?php echo $this->Html->link(__('Tipo de Banner'), array('controller' => 'bannertipos', 'action' => 'index', 'admin' => true)); ?>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3><?php echo __('Páginas Editáveis'); ?></h3>
+            <ul>
+                <li>
+                    <?php echo $this->Html->link(__('Páginas'), array('controller' => 'paginas', 'action' => 'index', 'admin' => true)); ?>
+                </li>
+            </ul>
+        </li>  
     </ul>
 
 </div>

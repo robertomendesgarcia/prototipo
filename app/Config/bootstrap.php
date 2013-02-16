@@ -179,3 +179,7 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+if (!defined('UPLOADS_URL')) {
+	define('UPLOADS_URL', 'uploads/');
+}

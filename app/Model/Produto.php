@@ -61,8 +61,8 @@ class Produto extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Categoria' => array(
-			'className' => 'Categoria',
+		'ProdutoCategoria' => array(
+			'className' => 'ProdutoCategoria',
 			'foreignKey' => 'categoria_id',
 			'conditions' => '',
 			'fields' => '',

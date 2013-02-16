@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Routes configuration
  *
@@ -25,36 +26,39 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'capa', 'admin' => false));
-        Router::connect('/a-empresa', array('controller' => 'pages', 'action' => 'display', 'a-empresa', 'admin' => false));
-        Router::connect('/trabalhe-conosco', array('controller' => 'pages', 'action' => 'trabalhe_conosco', 'admin' => false));
-        Router::connect('/contato', array('controller' => 'pages', 'action' => 'contato', 'admin' => false));
+Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'capa', 'admin' => false));
+Router::connect('/a-empresa', array('controller' => 'pages', 'action' => 'display', 'a-empresa', 'admin' => false));
+Router::connect('/trabalhe-conosco', array('controller' => 'pages', 'action' => 'trabalhe_conosco', 'admin' => false));
+Router::connect('/contato', array('controller' => 'pages', 'action' => 'contato', 'admin' => false));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
-	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
-        
-        //-- URLs amigáveis
-        Router::connect('/instalador/criar-usuario-admin', array('controller' => 'instalador', 'action' => 'criarUsuarioAdmin', 'admin' => false));
-        
-        Router::connect('/usuarios/bem-vindo', array('controller' => 'usuarios', 'action' => 'bemVindo', 'admin' => true));
-        Router::connect('/login', array('controller' => 'usuarios', 'action' => 'login', 'admin' => false));
-        Router::connect('/logout', array('controller' => 'usuarios', 'action' => 'logout', 'admin' => false));
-        Router::connect('/admin', array('controller' => 'usuarios', 'action' => 'login', 'admin' => false));
-        
-        Router::connect('/choose-language/*', array('controller' => 'usuarios', 'action' => 'choose_language', 'admin' => false));
-        
-        
-                
+Router::connect('/noticia-categorias', array('controller' => 'noticiacategorias', 'action' => 'index', 'admin' => true));
+Router::connect('/noticia-categorias/*', array('controller' => 'noticiacategorias', 'admin' => true));
+Router::connect('/produto-categorias/*', array('controller' => 'produtocategorias', 'admin' => true));
+
+Router::connect('/instalador/criar-usuario-admin', array('controller' => 'instalador', 'action' => 'criar_usuario_admin', 'admin' => false));
+
+Router::connect('/usuarios/bem-vindo', array('controller' => 'usuarios', 'action' => 'bem_vindo', 'admin' => true));
+Router::connect('/login', array('controller' => 'usuarios', 'action' => 'login', 'admin' => false));
+Router::connect('/logout', array('controller' => 'usuarios', 'action' => 'logout', 'admin' => false));
+Router::connect('/admin', array('controller' => 'usuarios', 'action' => 'login', 'admin' => false));
+
+Router::connect('/choose-language/*', array('controller' => 'usuarios', 'action' => 'choose_language', 'admin' => false));
+
+
+
 /**
  * Load all plugin routes.  See the CakePlugin documentation on 
  * how to customize the loading of plugin routes.
  */
-	CakePlugin::routes();
+CakePlugin::routes();
 
 /**
  * Load the CakePHP default routes. Only remove this if you do not want to use
  * the built-in default routes.
  */
-	require CAKE . 'Config' . DS . 'routes.php';       
+require CAKE . 'Config' . DS . 'routes.php';
+

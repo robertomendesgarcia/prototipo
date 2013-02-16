@@ -1,29 +1,13 @@
 <?php
 App::uses('AppController', 'Controller');
-/**
- * NoticiaImagens Controller
- *
- * @property NoticiaImagen $NoticiaImagen
- */
+
 class NoticiaImagensController extends AppController {
 
-/**
- * admin_index method
- *
- * @return void
- */
 	public function admin_index() {
 		$this->NoticiaImagen->recursive = 0;
 		$this->set('noticiaImagens', $this->paginate());
 	}
 
-/**
- * admin_view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function admin_view($id = null) {
 		$this->NoticiaImagen->id = $id;
 		if (!$this->NoticiaImagen->exists()) {
@@ -32,11 +16,6 @@ class NoticiaImagensController extends AppController {
 		$this->set('noticiaImagen', $this->NoticiaImagen->read(null, $id));
 	}
 
-/**
- * admin_add method
- *
- * @return void
- */
 	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->NoticiaImagen->create();
@@ -51,13 +30,6 @@ class NoticiaImagensController extends AppController {
 		$this->set(compact('noticias'));
 	}
 
-/**
- * admin_edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function admin_edit($id = null) {
 		$this->NoticiaImagen->id = $id;
 		if (!$this->NoticiaImagen->exists()) {
@@ -77,14 +49,6 @@ class NoticiaImagensController extends AppController {
 		$this->set(compact('noticias'));
 	}
 
-/**
- * admin_delete method
- *
- * @throws MethodNotAllowedException
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function admin_delete($id = null) {
 		if (!$this->request->is('post')) {
 			throw new MethodNotAllowedException();

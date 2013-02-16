@@ -77,15 +77,65 @@ class PagesController extends AppController {
     public function contato() {
 
         if ($this->request->is('post')) {
-            
+
             if (empty($this->request->data['author']) && empty($this->request->data['msg'])) {
-                
-                
-                
+
+                $email = new CakeEmail('smtp');
+//                $email->viewVars(array('value' => 12345));
+//                $email->deliver('smtp');
+                $email->template('contato');
+                $email->emailFormat('html');
+                $email->to('giganteguerreirodaileom@hotmail.com');
+                $email->subject('Contato efetuado pelo site');
+                $email->from('robertomendesgarcia@gmail.com');
+
+                if ($email->send()) {
+                    die('1');
+                } else {
+                    die('0');
+                }
             }
-            
+
             var_dump($this->request->data);
             exit;
+        }
+    }
+
+    public function trabalhe_conosco() {
+
+        if ($this->request->is('post')) {
+
+            $this->loadModel('Curriculo');
+
+            if (empty($this->request->data['author']) && empty($this->request->data['msg'])) {
+
+                $arquivo = null;
+                $data = $this->request->data['Curriculo'];
+
+                if ((!empty($data['curriculo']['name'])) && ($data['curriculo']['error'] == 0)) {
+
+                    $extensao = explode('.', $data['curriculo']['name']);
+                    $extensao = $extensao[count($extensao) - 1];
+
+                    if (in_array($extensao, $this->Curriculo->file['extensoes'])) {
+                        $arquivo = uniqid() . '.' . $extensao;
+                        if (!move_uploaded_file($data['curriculo']['tmp_name'], $this->Curriculo->file['path'] . $arquivo)) {
+                            $this->Session->setFlash(__('Problemas ao sarvar o arquivo. Por favor, tente novamente.'));
+                        }
+                    } else {
+                        $this->Session->setFlash(__('Arquivo inválido.'));
+                    }
+                }
+
+                $data['arquivo'] = $arquivo;
+                $data['data'] = date('Y-m-d H:i:s');
+
+                if ($this->Curriculo->save($data)) {
+                    $this->Session->setFlash(__('Currículo salvo com sucesso.</br>Obrigado.'));
+                } else {
+                    $this->Session->setFlash(__('Problemas ao salvar seu currículo. Por favor, tente novamente.'));
+                }
+            }
         }
     }
 

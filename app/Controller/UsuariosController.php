@@ -25,7 +25,41 @@ class UsuariosController extends AppController {
     }
 
     public function admin_bem_vindo() {
-        die('Bem Vindo!!');
+        $this->loadModel('NoticiaCategoria');
+        $noticia_categorias = $this->NoticiaCategoria->find('count');
+
+        $this->loadModel('Noticia');
+        $noticias = $this->Noticia->find('count');
+
+        $this->loadModel('ProdutoCategoria');
+        $produto_categorias = $this->ProdutoCategoria->find('count');
+
+        $this->loadModel('Produto');
+        $produtos = $this->Produto->find('count');
+
+        $this->loadModel('Banner');
+        $banners = $this->Banner->find('count');
+        
+        $this->loadModel('Newsletter');
+        $newsletter = $this->Newsletter->find('count');
+
+        $this->loadModel('Curriculo');
+        $curriculos = $this->Curriculo->find('count');
+        
+        $this->loadModel('Usuario');
+        $usuarios = $this->Usuario->find('count');
+        
+        $this->set('noticia_categorias', $noticia_categorias);
+        $this->set('noticias', $noticias);
+        $this->set('produto_categorias', $produto_categorias);
+        $this->set('produtos', $produtos);
+        $this->set('banners', $banners);
+        $this->set('newsletter', $newsletter);
+        $this->set('curriculos', $curriculos);
+        $this->set('usuarios', $usuarios);
+                
+        $this->set('title_for_layout', __('Welcome') . ' - ' . $this->title_for_layout);
+        
     }
 
 //    public function index() {

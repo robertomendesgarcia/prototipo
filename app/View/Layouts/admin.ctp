@@ -26,7 +26,7 @@
         }
         ?>
 
-        <?php if (($this->params["controller"] == 'noticias') && (in_array($this->params["action"], array('admin_add', 'admin_edit')))) { ?>
+        <?php if (($this->params["controller"] == 'noticias' || $this->params["controller"] == 'paginas') && (in_array($this->params["action"], array('admin_add', 'admin_edit')))) { ?>
             <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/ckeditor/ckeditor.js"></script>
             <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uploadify/jquery.uploadify.min.js"></script>
             <link href="<?php echo DEFAULT_URL; ?>js/uploadify/uploadify.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />          

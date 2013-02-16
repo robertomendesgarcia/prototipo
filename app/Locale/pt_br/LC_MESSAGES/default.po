@@ -74,6 +74,31 @@ msgstr "Deseja realmente cancelar as configurações?"
 msgid "Invalid file."
 msgstr "Arquivo inválido."
 
+msgid "Do you really want to cancel this product?"
+msgstr "Deseja realmente cancelar este produto?"
+
+msgid "Do you really want to cancel this page?"
+msgstr "Deseja realmente cancelar esta página?"
+
+msgid "Are you sure you want to delete this page?"
+msgstr "Você tem certeza que quer excluir esta página?"
+
+msgid "Are you sure you want to delete this email user list news?"
+msgstr "Você tem certeza que deseja remover este e-mail da lista de novidades?"
+
+msgid "Do you really want to cancel this e-mail from receive newsletters"
+msgstr "Você deseja retirar o seu e-mail da lista de recebimento de novidades?"
+
+msgid "Do you really want to cancel this banner?"
+msgstr "Você tem certeza que deseja cancelar este banner?"
+
+msgid "Add Banner Type"
+msgstr "Adicionar Tipo de Banner"
+
+msgid "Edit Banner Type"
+msgstr "Editar Tipo de Banner"
+
+
 
 
 # --- Mensagem de validacao da Model
@@ -88,6 +113,10 @@ msgstr "Este campo deve ter pelo menos 6 caracteres."
 
 msgid "This field must be less than 100 characters."
 msgstr "Este campo deve ter menos de 100 caracteres."
+
+msgid "Number of records found:"
+msgstr "Número de registros encontrados:"
+
 
 
 
@@ -121,6 +150,33 @@ msgstr "Data:"
 
 msgid "Type:"
 msgstr "Tipo:"
+
+msgid "Comments"
+msgstr "Comentários"
+
+msgid "Images"
+msgstr "Imagens"
+
+msgid "Name:"
+msgstr "Nome:"
+
+msgid "Value:"
+msgstr "Valor:"
+
+msgid "Description:"
+msgstr "Descrição:"
+
+msgid "Banner Type:"
+msgstr "Tipo de Banner:"
+
+msgid "File:"
+msgstr "Arquivo:"
+
+msgid "Validate:"
+msgstr "Validade:"
+
+msgid "Newsletter"
+msgstr "Novidades"
 
 msgid "Background color:"
 msgstr "Cor de fundo:"
@@ -206,6 +262,37 @@ msgstr "Cor do título:"
 msgid "Background image on top:"
 msgstr "Imagem de fundo do topo:"
 
+msgid "Edit News"
+msgstr "Editar Notícia"
+
+msgid "Edit Banner"
+msgstr "Editar Banner"
+
+msgid "Products"
+msgstr "Produtos"
+
+msgid "Add Product"
+msgstr "Adicionar Produto"
+
+msgid "New Product"
+msgstr "Novo Produto"
+
+msgid "Pages Editable"
+msgstr "Páginas Editáveis"
+
+msgid "Pages"
+msgstr "Páginas"
+
+msgid "Add Page"
+msgstr "Adicionar Página"
+
+msgid "Edit Page"
+msgstr "Editar Página"
+
+msgid "New Page"
+msgstr "Nova Página"
+
+
 
 
 
@@ -228,8 +315,8 @@ msgstr "Categorias para os Produtos"
 msgid "News"
 msgstr "Notícias"
 
-msgid "Add New News"
-msgstr "Adicionar Nova Notícia"
+msgid "Add News"
+msgstr "Adicionar Notícia"
 
 msgid "Banner Types"
 msgstr "Tipos de Banner"
@@ -237,11 +324,14 @@ msgstr "Tipos de Banner"
 msgid "Add New Type"
 msgstr "Adicionar Novo Tipo"
 
-msgid "Add New Banner"
-msgstr "Adicionar Novo Banner"
+msgid "Add Banner"
+msgstr "Adicionar Banner"
 
 msgid "Layout Settings"
 msgstr "Configurações de Layout"
+
+msgid "New Page"
+msgstr "Nova Página"
 
 
 
@@ -334,3 +424,30 @@ msgstr "Trabalhe conosco"
 
 msgid "Company"
 msgstr "A Empresa"
+
+msgid "Download"
+msgstr "Baixar"
+
+msgid "Categories"
+msgstr "Categorias"
+
+msgid "Resumes"
+msgstr "Currículos"
+
+msgid "Welcome"
+msgstr "Bem Vindo"
+
+msgid "Product Categories"
+msgstr "Categorias de Produtos"
+
+msgid "News Categories"
+msgstr "Categorias de Notícias"
+
+msgid "Users"
+msgstr "Usuários"
+
+msgid "Settings"
+msgstr "Configurações"
+
+msgid "Created"
+msgstr "Data de criação"

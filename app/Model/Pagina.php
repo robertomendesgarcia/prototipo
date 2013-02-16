@@ -18,7 +18,7 @@ class Pagina extends AppModel {
  * Validation rules
  *
  * @var array
- */
+ *//*
 	public $validate = array(
 		'pin' => array(
 			'notempty' => array(
@@ -30,7 +30,7 @@ class Pagina extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxlength' => array(
-				'rule' => array('maxlength'),
+				'rule' => array('maxlength' => 255),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -48,7 +48,7 @@ class Pagina extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 			'maxlength' => array(
-				'rule' => array('maxlength'),
+				'rule' => array('maxlength' => 255),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -57,7 +57,7 @@ class Pagina extends AppModel {
 			),
 		),
 	);
-
+*/
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**

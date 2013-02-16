@@ -44,6 +44,7 @@ class AppController extends Controller {
      */
     public $components = array(
         'DebugKit.Toolbar',
+        'Uteis',
         'Session',
         'Auth' => array(
             'authenticate' => array(

@@ -2,27 +2,33 @@
 
 $texto = null;
 switch ($this->params['controller']) {
-    case 'noticiacategorias':
-        $texto = __('Categories for News');
-        break;
-    case 'produtocategorias':
-        $texto = __('Categories for Products');
-        break;
-    case 'noticias':
-        $texto = __('News');
-        break;
-    case 'bannertipos':
-        $texto = __('Banner Types');
-        break;
+      case 'noticiacategorias':
+            $texto = __('Categories for News');
+            break;
+      case 'produtocategorias':
+            $texto = __('Categories for Products');
+            break;
+      case 'noticias':
+            $texto = __('News');
+            break;
+      case 'bannertipos':
+            $texto = __('Banner Types');
+            break;
+      case 'paginas':
+            $texto = __('Pages Editable');
+            break;
+      case 'banners':
+            $texto = __('Banner');
+            break;
 }
 
 $url = null;
 if ($this->params['action'] <> 'admin_index') {
-    $url = array(
-        'controller' => $this->params['controller'],
-        'action' => 'index',
-        'admin' => true
-    );
+      $url = array(
+          'controller' => $this->params['controller'],
+          'action' => 'index',
+          'admin' => true
+      );
 }
 
 echo '<div id="breadcrumbs">';

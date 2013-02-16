@@ -41,7 +41,7 @@
 
         </div>
 
-        <?php // echo $this->Session->flash("admin");  ?>
+        <?php echo $this->Session->flash();  ?>
 
         <div id="conteudo">
 
@@ -75,7 +75,7 @@
             $('#conteudo h3').css('color', '<?php echo $config['cor_titulo']; ?>');
             
             
-            carregarMapa('Rua Joaquim Nabuco, Criciúma - SC');
+//            carregarMapa('Rua Joaquim Nabuco, Criciúma - SC');
             
             
         </script>
