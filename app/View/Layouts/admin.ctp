@@ -40,7 +40,9 @@
     </head>
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">
 
-        <div id="topo" class="janela">
+        <?php echo $this->Session->flash("admin"); ?>
+
+        <div id="topo">
             <div class="esquerda">
                 <?php
                 $titulo = explode('-', $title_for_layout);
@@ -58,18 +60,16 @@
             </ul>
         </div>
 
-        <?php echo $this->Session->flash("admin"); ?>
-
-        <div id="conteudo">
+        <div id="conteudo" class="clearfix">
 
             <?php echo $this->element('menu_admin'); ?>
 
-            <div id="centro" class="janela">
+            <div id="centro">
                 <?php echo $content_for_layout; ?>
             </div>
         </div>
 
-        <div id="rodape" class="janela">
+        <div id="rodape">
 
         </div>
 

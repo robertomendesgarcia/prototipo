@@ -15,8 +15,8 @@
         <tr>
             <td><?php echo h($bannerTipo['BannerTipo']['tipo']); ?></td>
             <td class="acoes">
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $bannerTipo['BannerTipo']['id']), array('class' => 'botao')); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $bannerTipo['BannerTipo']['id']), array('class' => 'botao'), __('Are you sure you want to delete this type?', $bannerTipo['BannerTipo']['id'])); ?>
+                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $bannerTipo['BannerTipo']['id']), array('class' => 'editar')); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $bannerTipo['BannerTipo']['id']), array('class' => 'excluir'), __('Are you sure you want to delete this type?', $bannerTipo['BannerTipo']['id'])); ?>
             </td>
         </tr>
     <?php }; ?>

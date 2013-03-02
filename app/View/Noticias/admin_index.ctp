@@ -21,9 +21,9 @@
             <td class="centralizado"><?php echo ($noticia['Noticia']['ativo'] == 1) ? __('Yes') : __('No'); ?></td>
             <td><?php echo $noticia['NoticiaCategoria']['nome']; ?></td>
             <td class="acoes_3_botoes">
-                <?php echo $this->Html->link(__('View'), array('action' => 'view', $noticia['Noticia']['id']), array('class' => 'botao')); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $noticia['Noticia']['id']), array('class' => 'botao')); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $noticia['Noticia']['id']), array('class' => 'botao'), __('Are you sure you want to delete # %s?', $noticia['Noticia']['id'])); ?>
+                <?php echo $this->Html->link(__('View'), array('action' => 'view', $noticia['Noticia']['id']), array('class' => 'ver')); ?>
+                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $noticia['Noticia']['id']), array('class' => 'editar')); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $noticia['Noticia']['id']), array('class' => 'excluir'), __('Are you sure you want to delete # %s?', $noticia['Noticia']['id'])); ?>
             </td>
         </tr>
     <?php }; ?>

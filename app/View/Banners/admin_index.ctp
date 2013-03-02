@@ -21,8 +21,8 @@
                   <td><?php echo date("d/m/Y", strtotime($banner['Banner']['validade'])); ?></td>
                   <td><?php echo h($banner['BannerTipo']['tipo']); ?></td>
                   <td class="acoes">
-                        <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $banner['Banner']['id']), array('class' => 'botao')); ?>
-                        <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $banner['Banner']['id']), array('class' => 'botao'), __('Are you sure you want to delete this banner?', $banner['Banner']['id'])); ?>
+                        <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $banner['Banner']['id']), array('class' => 'editar')); ?>
+                        <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $banner['Banner']['id']), array('class' => 'excluir'), __('Are you sure you want to delete this banner?', $banner['Banner']['id'])); ?>
                   </td>
             </tr>
       <?php }; ?>
