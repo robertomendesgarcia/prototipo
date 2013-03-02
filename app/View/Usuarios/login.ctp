@@ -1,7 +1,7 @@
 <div class="janela form_login">
+    <h3><?php echo __('Please enter your username and password.'); ?></h3>
     <?php echo $this->Form->create('Usuario'); ?>
     <fieldset>
-        <legend><?php echo __('Please enter your username and password.'); ?></legend>
         <?php
         echo $this->Form->input('usuario', array(
             'label' => __('Username:')

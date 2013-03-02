@@ -144,6 +144,10 @@ Cache::config('default', array('engine' => 'File'));
  */
 CakePlugin::load('DebugKit');
 
+Configure::load('config');
+CakePlugin::load('PhpThumb');
+
+
 /**
  * You can attach event listeners to the request lifecyle as Dispatcher Filter . By Default CakePHP bundles two filters:
  *
@@ -183,3 +187,7 @@ CakeLog::config('error', array(
 if (!defined('UPLOADS_URL')) {
 	define('UPLOADS_URL', 'uploads/');
 }
+
+//if (!defined("DEFAULT_URL")) {
+//    define("DEFAULT_URL", Router::url("/", true));
+//}

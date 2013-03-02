@@ -4,7 +4,7 @@
     </ul>
 </div>
 
-<?php // echo $this->element("filtro"); ?>
+<?php echo $this->element('filtro'); ?>
 
 <table cellpadding="0" cellspacing="0" class="listagem">
     <tr>

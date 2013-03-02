@@ -11,3 +11,5 @@
 !/app/Config/
 !/plugins/
 !/vendors/
+/app/webroot/uploads/
+/app/webroot/thumbs/

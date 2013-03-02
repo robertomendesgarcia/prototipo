@@ -1,19 +1,19 @@
 <?php
 $opcoes = array(
-    "codigo" => "Código<br/>",
+    "codigo" => "Título",
 );
 
-switch ($this->params["controller"]) {
-    case "veiculos":
-        $opcoes["placa"] = "Placa<br/>";
-        break;
-    case "usuarios":
-        $opcoes["usuario"] = "Usuário<br/>";
-        break;
-    default:
-        $opcoes["nome"] = "Nome<br/>";
-        break;
-}
+//switch ($this->params["controller"]) {
+//    case "veiculos":
+//        $opcoes["placa"] = "Placa<br/>";
+//        break;
+//    case "usuarios":
+//        $opcoes["usuario"] = "Usuário<br/>";
+//        break;
+//    default:
+//        $opcoes["nome"] = "Nome<br/>";
+//        break;
+//}
 
 if ($this->params["controller"] == "lancamentos") {
     unset($opcoes["nome"]);
@@ -32,25 +32,11 @@ if ($this->params["controller"] == "lancamentos") {
     <fieldset  class="janela">
         <legend>Filtro</legend>
         <?php
-        if ($this->params["controller"] == "lancamentos") {
-            echo "<div style='display: block'>";
-            echo $this->Form->checkbox("exibir_finalizados");
-            echo "<label style='vertical-align: top;' for='FiltroExibirFinalizados'>&nbsp;Exibir finalizados.</label>";
-            echo "</div>";
-        }
+        echo $this->Form->input('ativo', array('label' => __('Filtrar por:'), 'type' => 'select', 'options' => $opcoes));
         ?>
-        <div class="radio">
-            <?php
-            echo $this->Form->radio("tipo", $opcoes, array(
-                "fieldset" => false,
-                "legend" => false
-                    )
-            );
-            ?>
-        </div>
         <?php
         echo $this->Form->input("filtro", array(
-            "label" => "Filtrar por:"
+            "label" => "Que contenha:"
         ));
         ?>
         <div class="botoes">

@@ -2,6 +2,7 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+DROP SCHEMA IF EXISTS `prototipo_tcc` ;
 CREATE SCHEMA IF NOT EXISTS `prototipo_tcc` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `prototipo_tcc` ;
 
@@ -13,10 +14,46 @@ DROP TABLE IF EXISTS `prototipo_tcc`.`estruturas` ;
 CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`estruturas` (
   `id` INT(1) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(60) NOT NULL ,
-  `posicao_menu` INT(1) NOT NULL ,
-  `barra_lateral_direita` TINYINT(1) NOT NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
+  `usa_produtos` VARCHAR(100) NULL ,
+  `usa_noticias` VARCHAR(100) NULL ,
+  `usa_banners` VARCHAR(100) NULL ,
+  `usa_barra_lateral` VARCHAR(100) NULL ,
+  `usa_rodape` VARCHAR(100) NULL ,
+  `cor_fonte_texto` VARCHAR(100) NULL ,
+  `cor_bg_html` VARCHAR(100) NULL ,
+  `img_bg_html_repeat` VARCHAR(100) NULL ,
+  `posicao_menu` VARCHAR(100) NULL ,
+  `menu_degade` VARCHAR(100) NULL ,
+  `cor_bg_menu` VARCHAR(100) NULL ,
+  `cor_fonte_menu` VARCHAR(100) NULL ,
+  `mostrar_noticias_capa` VARCHAR(100) NULL ,
+  `qtde_noticias_capa` VARCHAR(100) NULL ,
+  `mostrar_noticias_lateral` VARCHAR(100) NULL ,
+  `qtde_noticias_lateral` VARCHAR(100) NULL ,
+  `mostrar_produtos_capa` VARCHAR(100) NULL ,
+  `qtde_produtos_capa` VARCHAR(100) NULL ,
+  `mostrar_produtos_lateral` VARCHAR(100) NULL ,
+  `qtde_produtos_lateral` VARCHAR(100) NULL ,
+  `img_bg_html` VARCHAR(100) NULL ,
+  `img_logo` VARCHAR(100) NULL ,
+  `cor_titulo` VARCHAR(100) NULL ,
+  `conteudo_rodape` TEXT NULL ,
+  `img_bg_topo` VARCHAR(100) NULL ,
+  `titulo_site` VARCHAR(100) NULL ,
+  `keywords` VARCHAR(100) NULL ,
+  `description` VARCHAR(100) NULL ,
+  `author` VARCHAR(100) NULL ,
+  `tamanho_centro` VARCHAR(100) NULL ,
+  `email_contato` VARCHAR(100) NULL ,
+  `trabalhe_conosco` VARCHAR(100) NULL ,
+  `email_trabalhe_conosco` VARCHAR(100) NULL ,
+  `pagina_institucional` TEXT NULL ,
+  `endereco` VARCHAR(200) NULL ,
+  `telefone_1` VARCHAR(100) NULL ,
+  `telefone_2` VARCHAR(100) NULL ,
+  `slogan` VARCHAR(200) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -225,6 +262,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`curriculos` (
   `data` DATETIME NOT NULL ,
   `observacao` VARCHAR(500) NULL ,
   `arquivo` VARCHAR(60) NULL ,
+  `ativo` TINYINT(1) NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) )
@@ -244,6 +282,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`usuarios` (
   `usuario` VARCHAR(60) NOT NULL ,
   `senha` VARCHAR(60) NOT NULL ,
   `email` VARCHAR(60) NOT NULL ,
+  `ativo` TINYINT(1) NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) )
@@ -310,6 +349,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`banners` (
   `arquivo` VARCHAR(60) NOT NULL ,
   `validade` DATETIME NULL ,
   `banner_tipo_id` INT(10) UNSIGNED NOT NULL ,
+  `ativo` TINYINT(1) NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
@@ -334,6 +374,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`newsletter` (
   `nome` VARCHAR(60) NOT NULL ,
   `email` VARCHAR(60) NOT NULL ,
   `data_inscricao` DATETIME NOT NULL ,
+  `ativo` TINYINT(1) NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) ,

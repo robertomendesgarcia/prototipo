@@ -43,14 +43,6 @@ form div.input {
     display: block;
     margin-bottom: 10px;
 }
-/*fieldset legend {
-    display: block;
-    width: 100%;
-    margin-bottom: 18px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-}*/
 div.submit {
     padding-top: 5px;
 }
@@ -199,7 +191,16 @@ div.error-message {
     display: inline;
     width: 760px;
 }
-
+#c-usuarios.a-login #conteudo h3,
+#centro h3 {
+    display: block;
+    width: 100%;
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #3B5998;
+}
 
 /* --- Login --- */
 #c-usuarios.a-login div.form_login {
@@ -214,6 +215,23 @@ div.error-message {
 
 /* --- Rodape --- */
 #rodape {
+}
+
+/* --- Filtro --- */
+#conteudo #filtro {
+    float: right;
+    display: inline;
+}
+#conteudo #filtro div.input,
+#conteudo #filtro div.botoes {
+    display: inline-block;
+}
+
+
+/* --- Actions (botoes no topo da listagem) --- */
+div.actions {
+    float: left;
+    display: inline;
 }
 
 /* --- Listagem de itens --- */
@@ -314,4 +332,10 @@ div.botoes {
     color: #3B5998;
     font-weight: bold;
     padding: 0 2px;
+}
+
+/* --- Bem Vindo --- */
+#c-usuarios.a-admin_bem_vindo #conteudo #centro table tr th,
+#c-usuarios.a-admin_bem_vindo #conteudo #centro table tr td {
+    text-align: center;
 }

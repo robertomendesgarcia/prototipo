@@ -1,7 +1,8 @@
-<table cellspacing="0" cellpadding="0">
+<table cellspacing="0" cellpadding="0" class="listagem">
     <tr>
+        <th>&nbsp;</th>
         <th><?php echo __('Registered'); ?></th>
-        <th><?php echo __('Active'); ?></th>
+        <th><?php echo __('Actives'); ?></th>
         <th><?php echo __('Last Record'); ?></th>
     </tr>
     <tr>

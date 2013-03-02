@@ -39,6 +39,8 @@ Router::connect('/noticia-categorias', array('controller' => 'noticiacategorias'
 Router::connect('/noticia-categorias/*', array('controller' => 'noticiacategorias', 'admin' => true));
 Router::connect('/produto-categorias/*', array('controller' => 'produtocategorias', 'admin' => true));
 
+Router::connect('/noticias/excluir-imagem/*', array('controller' => 'noticias', 'action' => 'excluir_imagem', 'admin' => false));
+
 Router::connect('/instalador/criar-usuario-admin', array('controller' => 'instalador', 'action' => 'criar_usuario_admin', 'admin' => false));
 
 Router::connect('/usuarios/bem-vindo', array('controller' => 'usuarios', 'action' => 'bem_vindo', 'admin' => true));

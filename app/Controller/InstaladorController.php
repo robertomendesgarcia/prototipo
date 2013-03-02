@@ -16,7 +16,7 @@ class InstaladorController extends AppController {
         //$this->redirect($this->passo1());
     }
 
-    public function criarUsuarioAdmin() {
+    public function criar_usuario_admin() {
 
         if ($this->request->is('post')) {
             $this->loadModel('Usuario');

@@ -451,3 +451,12 @@ msgstr "Configurações"
 
 msgid "Created"
 msgstr "Data de criação"
+
+msgid "Registered"
+msgstr "Cadastrados"
+
+msgid "Last Record"
+msgstr "Último Registro"
+
+msgid "Actives"
+msgstr "Ativos"
