@@ -5,10 +5,24 @@ App::uses('AppController', 'Controller');
 class NoticiasController extends AppController {
 
     public function admin_index() {
+
         $options = array(
             'order' => array('Noticia.data' => 'DESC'),
             'limit' => 10
         );
+
+        if ((!empty($this->data)) && (!empty($this->data['Filtro']['filtro']))) {
+
+            if ($this->data['Filtro']['campo'] == 'titulo') {
+                $options['conditions'] = array(
+                    'Noticia.titulo LIKE' => '%' . $this->data['Filtro']['filtro'] . '%'
+                );
+            } else {
+                $options['conditions'] = array(
+                    'NoticiaCategoria.nome LIKE' => '%' . $this->data['Filtro']['filtro'] . '%'
+                );
+            }
+        }
 
         $this->paginate = $options;
         $noticias = $this->paginate('Noticia');
@@ -61,10 +75,10 @@ class NoticiasController extends AppController {
                         }
                     }
 
-                    $this->Session->setFlash(__('The noticia has been saved.'));
+                    $this->Session->setFlash(__('The noticia has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
                     $this->redirect(array('action' => 'index'));
                 } else {
-                    $this->Session->setFlash(__('The noticia could not be saved. Please, try again.'));
+                    $this->Session->setFlash(__('The noticia could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'warning'), 'admin');
                 }
             }
         }
@@ -75,7 +89,7 @@ class NoticiasController extends AppController {
                 'NoticiaCategoria.ativo' => 1
                 )));
         $this->set(compact('categorias'));
-        $this->set('title_for_layout', __('Add News') . ' - ' . $this->title_for_layout);
+        $this->set('title_for_layout', __('Nova Notícia') . ' - ' . $this->title_for_layout);
     }
 
     public function admin_edit($id = null) {
@@ -117,10 +131,10 @@ class NoticiasController extends AppController {
                     }
                 }
 
-                $this->Session->setFlash(__('The noticia has been saved.'));
+                $this->Session->setFlash(__('The noticia has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The noticia could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The noticia could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'warning'), 'admin');
             }
         } else {
             $this->request->data = $this->Noticia->read(null, $id);
@@ -151,9 +165,9 @@ class NoticiasController extends AppController {
 
         if ($this->Noticia->NoticiaImagem->deleteAll(array('noticia_id' => $id), false)) {
             if ($this->Noticia->delete()) {
-                $this->Session->setFlash(__('Noticia deleted.'));
+                $this->Session->setFlash(__('Noticia deleted.'), 'flash_message', array('tipo' => 'warning'), 'admin');
             } else {
-                $this->Session->setFlash(__('Noticia was not deleted'));
+                $this->Session->setFlash(__('Noticia was not deleted.'), 'flash_message', array('tipo' => 'warning'), 'admin');
             }
         } else {
             $this->Session->setFlash(__('Noticia was not deleted'));

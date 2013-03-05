@@ -62,9 +62,11 @@ body {
     padding: 20px 15px;
 }
 
+#barra_lateral #newsletter input {
 
+    width: auto;
 
-
+}
 /* --- Formularios --- */
 #conteudo p.campos_obrigatorios {
     font-style: italic;
@@ -119,6 +121,8 @@ body {
     height: 100px;
 
 }
+
+
 
 
 

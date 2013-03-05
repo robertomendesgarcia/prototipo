@@ -3,13 +3,13 @@
 App::uses('AppModel', 'Model');
 
 /**
- * NoticiaImagem Model
+ * ProdutoImagem Model
  *
- * @property Noticia $Noticia
+ * @property Produto $Produto
  */
-class NoticiaImagem extends AppModel {
+class ProdutoImagem extends AppModel {
 
-    public $useTable = 'noticia_imagens';
+    public $useTable = 'produto_imagens';
 
     /**
      * Display field
@@ -18,7 +18,7 @@ class NoticiaImagem extends AppModel {
      */
     public $displayField = 'titulo';
     public $img = array(
-        'path' => 'uploads/noticias/',
+        'path' => 'uploads/produtos/',
         'formatos' => array(
             'jpg',
             'jpeg',
@@ -27,15 +27,16 @@ class NoticiaImagem extends AppModel {
         )
     );
 
+
     /**
      * Validation rules
      *
      * @var array
      */
     public $validate = array(
-        'noticia_id' => array(
-            'numeric' => array(
-                'rule' => array('numeric'),
+        'produto_id' => array(
+            'notempty' => array(
+                'rule' => array('notempty'),
             //'message' => 'Your custom message here',
             //'allowEmpty' => false,
             //'required' => false,
@@ -63,9 +64,9 @@ class NoticiaImagem extends AppModel {
      * @var array
      */
     public $belongsTo = array(
-        'Noticia' => array(
-            'className' => 'Noticia',
-            'foreignKey' => 'noticia_id',
+        'Produto' => array(
+            'className' => 'Produto',
+            'foreignKey' => 'produto_id',
             'conditions' => '',
             'fields' => '',
             'order' => ''

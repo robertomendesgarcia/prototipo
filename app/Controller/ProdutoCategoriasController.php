@@ -43,7 +43,7 @@ class ProdutoCategoriasController extends AppController {
         }
         $noticiaCategorias = $this->ProdutoCategoria->find('list');
         $this->set(compact('noticiaCategorias'));
-        $this->set('title_for_layout', __('Add New Category') . ' - ' . $this->title_for_layout);
+        $this->set('title_for_layout', __('New Category') . ' - ' . $this->title_for_layout);
     }
 
     /**

@@ -1,6 +1,7 @@
 $(document).ready(function(){
     
-    $('select, input, button, textarea, a.botao').not('input:file').uniform(); 	
+    //    $('select, input, button, textarea, a.botao').not('input:file').uniform(); 	
+    $('input:file').uniform(); 	
     
     $('form input').first().focus();
 
@@ -22,12 +23,20 @@ $(document).ready(function(){
         dateFormat: 'dd/mm/yy'
     });
     
+    $('fieldset.galeria ul li a.excluir').on('click', function(){
+        if (confirm('Deseja realmente excluir esta imagem?')) {
+            return true;   
+        } else {
+            return false;   
+        }
+    });
+    
     if ($('body#c-configuracoes.a-admin_layout').length) {
         
         $('input:file').uniform({
             //            fileButtonText: 'Selecione o arquivo',
             //            fileDefaultText: 'Selecione...'
-            }); 
+        }); 
         
         var input = null;
         var div_preview = null;
@@ -53,17 +62,17 @@ $(document).ready(function(){
         
     }
     
-//    if ($('body#c-noticias.a-admin_add').length || $('body#c-noticias.a-admin_edit').length) {
-//        $('#NoticiaImagens').uploadify({
-//            'swf': DEFAULT_URL + 'js/uploadify/uploadify.swf',
-//            'uploader': DEFAULT_URL + 'js/uploadify/uploadify.php',
-//            'buttonText': 'Selecione as imagens...',
-//            'width': 190,
-//            'height': 20,
-//            'auto': true,
-//            'removeCompleted': false
-//        }); 
-//    }
+    //    if ($('body#c-noticias.a-admin_add').length || $('body#c-noticias.a-admin_edit').length) {
+    //        $('#NoticiaImagens').uploadify({
+    //            'swf': DEFAULT_URL + 'js/uploadify/uploadify.swf',
+    //            'uploader': DEFAULT_URL + 'js/uploadify/uploadify.php',
+    //            'buttonText': 'Selecione as imagens...',
+    //            'width': 190,
+    //            'height': 20,
+    //            'auto': true,
+    //            'removeCompleted': false
+    //        }); 
+    //    }
   
     
     

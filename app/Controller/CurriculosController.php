@@ -83,21 +83,21 @@ class CurriculosController extends AppController {
      * @param string $id
      * @return void
      */
-//	public function admin_delete($id = null) {
-//		if (!$this->request->is('post')) {
-//			throw new MethodNotAllowedException();
-//		}
-//		$this->Curriculo->id = $id;
-//		if (!$this->Curriculo->exists()) {
-//			throw new NotFoundException(__('Invalid curriculo'));
-//		}
-//		if ($this->Curriculo->delete()) {
-//			$this->Session->setFlash(__('Curriculo deleted'));
-//			$this->redirect(array('action' => 'index'));
-//		}
-//		$this->Session->setFlash(__('Curriculo was not deleted'));
-//		$this->redirect(array('action' => 'index'));
-//	}
+    public function admin_delete($id = null) {
+        if (!$this->request->is('post')) {
+            throw new MethodNotAllowedException();
+        }
+        $this->Curriculo->id = $id;
+        if (!$this->Curriculo->exists()) {
+            throw new NotFoundException(__('Invalid curriculo'));
+        }
+        if ($this->Curriculo->delete()) {
+            $this->Session->setFlash(__('Curriculo deleted'));
+            $this->redirect(array('action' => 'index'));
+        }
+        $this->Session->setFlash(__('Curriculo was not deleted'));
+        $this->redirect(array('action' => 'index'));
+    }
 
     public function admin_download($id) {
         set_time_limit(0);
@@ -132,7 +132,7 @@ class CurriculosController extends AppController {
                 readfile($aquivoNome);
             }
         }
-        
+
         $this->redirect($this->admin_index());
     }
 

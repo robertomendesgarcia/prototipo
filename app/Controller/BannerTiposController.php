@@ -20,7 +20,7 @@ class BannerTiposController extends AppController {
                         $this->Session->setFlash(__('The type could not be saved. Please, try again.'));
                   }
             }
-            $this->set('title_for_layout', __('Add Banner Type') . ' - ' . $this->title_for_layout);
+            $this->set('title_for_layout', __('New Banner Type') . ' - ' . $this->title_for_layout);
       }
 
       public function admin_edit($id = null) {

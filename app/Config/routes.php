@@ -40,6 +40,7 @@ Router::connect('/noticia-categorias/*', array('controller' => 'noticiacategoria
 Router::connect('/produto-categorias/*', array('controller' => 'produtocategorias', 'admin' => true));
 
 Router::connect('/noticias/excluir-imagem/*', array('controller' => 'noticias', 'action' => 'excluir_imagem', 'admin' => false));
+Router::connect('/produtos/excluir-imagem/*', array('controller' => 'produtos', 'action' => 'excluir_imagem', 'admin' => false));
 
 Router::connect('/instalador/criar-usuario-admin', array('controller' => 'instalador', 'action' => 'criar_usuario_admin', 'admin' => false));
 
@@ -47,6 +48,8 @@ Router::connect('/usuarios/bem-vindo', array('controller' => 'usuarios', 'action
 Router::connect('/login', array('controller' => 'usuarios', 'action' => 'login', 'admin' => false));
 Router::connect('/logout', array('controller' => 'usuarios', 'action' => 'logout', 'admin' => false));
 Router::connect('/admin', array('controller' => 'usuarios', 'action' => 'login', 'admin' => false));
+
+Router::connect('/usuarios/esqueci-meu-usuario-senha', array('controller' => 'usuarios', 'action' => 'esqueci_meu_usuario_senha', 'admin' => false));
 
 Router::connect('/choose-language/*', array('controller' => 'usuarios', 'action' => 'choose_language', 'admin' => false));
 

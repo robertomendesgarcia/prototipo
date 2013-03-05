@@ -9,6 +9,7 @@
         <meta name="author" content="Ederson Micheleto, Ramores Oliveira, Roberto Mendes Garcia" />
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-1.8.3.js"></script>
         <!-- <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uniform/jquery.uniform.min.js"></script> //-->
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-validation-1.11.0/dist/jquery.validate.min.js"></script>  
         <link href="<?php echo DEFAULT_URL; ?>js/uniform/css/uniform.default.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
         <link href="<?php echo DEFAULT_URL; ?>css/reset.css" media="all" rel="stylesheet" type="text/css" />
         <link href="<?php echo DEFAULT_URL; ?>css/admin.css" media="all" rel="stylesheet" type="text/css" />
@@ -16,6 +17,7 @@
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">
 
         <?php echo $this->Session->flash("admin"); ?>
+        <?php echo $this->Session->flash(); ?>
 
         <div id="topo">
             <div class="esquerda">
@@ -44,9 +46,47 @@
         <script type="text/javascript">
             var DEFAULT_URL = '<?php echo DEFAULT_URL; ?>';
             
+            $('#adminMessage a').on('click', function(event){
+                $('#adminMessage').fadeOut();
+                event.preventDefault();
+            });
+            
             $(document).ready(function(){
-                $('select, input, button, textarea, a.botao').not('input:file').uniform(); 	
-                $('#UsuarioUsuario').focus();
+                //                $('select, input, button, textarea, a.botao').not('input:file').uniform(); 	
+                //                $('#UsuarioUsuario').focus();
+                if ($('body#c-usuarios.a-login').length) {        
+                    $('#UsuarioUsuario').focus();        
+                    $('#UsuarioLoginForm').validate({
+                        rules: {
+                            'data[Usuario][usuario]': 'required',
+                            'data[Usuario][senha]': 'required'
+                        },
+                        messages: {
+                            'data[Usuario][usuario]': 'Informe seu usuário.',
+                            'data[Usuario][senha]': 'Informe sua senha.'
+                        }
+                    });        
+                }
+                
+                if ($('body#c-usuarios.a-esqueci_meu_usuario_senha').length) {        
+                    $('#UsuarioEmail').focus();        
+                    $('#UsuarioEsqueciMeuUsuarioSenhaForm').validate({
+                        rules: {
+                            'data[Usuario][email]': {
+                                required: true,
+                                email: true
+                            }
+                        },
+                        messages: {
+                            'data[Usuario][email]': {
+                                required: 'Informe seu e-mail.',
+                                email: 'E-mail inválido.'
+                            }
+                        }
+                    });        
+                }
+                
+                
             });
         </script>
     </body>

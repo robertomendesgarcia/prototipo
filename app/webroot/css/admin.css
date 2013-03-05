@@ -9,15 +9,15 @@
     line-height: 0;
     height: 0;
 }
- 
+
 .clearfix {
     display: inline-block;
 }
- 
+
 html[xmlns] .clearfix {
     display: block;
 }
- 
+
 * html .clearfix {
     height: 1%;
 }
@@ -42,6 +42,9 @@ body {
     background: #fff;
 }
 
+label.error {
+    color: #F00;
+}
 
 form .submit input {
     border: none;
@@ -106,12 +109,19 @@ div.submit {
 /* --- Flash Message --- */
 #adminMessage {
     padding: 10px;
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
     text-align: center;
     font-weight: bold;
     font-size: 14px;
     text-shadow: 1px 1px 1px #555;
     color: #FFF;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 98%;
 }
 #adminMessage a {
     float: right;
@@ -281,6 +291,7 @@ div.error-message {
     width: 760px;
     padding: 20px 20px 20px 0;
 }
+#c-usuarios.a-esqueci_meu_usuario_senha #conteudo h3,
 #c-usuarios.a-login #conteudo h3,
 #centro h3 {
     display: block;
@@ -296,19 +307,34 @@ div.error-message {
 #c-usuarios.a-login {
     width: 300px;
 }
-#c-usuarios.a-login h2 { font-size: 28px; }
-
+#c-usuarios.a-esqueci_meu_usuario_senha {
+    width: 450px;
+}
+#c-usuarios.a-esqueci_meu_usuario_senha h2,
+#c-usuarios.a-login h2 { 
+    font-size: 28px; 
+}
+#c-usuarios.a-esqueci_meu_usuario_senha div.form_login,
 #c-usuarios.a-login div.form_login {
     display: block;
     width: 260px;
     padding: 0 20px;
 }
+#c-usuarios.a-esqueci_meu_usuario_senha div.form_login {
+    width: auto;
+}
+#c-usuarios.a-esqueci_meu_usuario_senha div.form_login fieldset input,
 #c-usuarios.a-login div.form_login fieldset input {
     width: 150px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
 }
+
+#c-usuarios.a-esqueci_meu_usuario_senha #UsuarioEmail {
+    width: 250px;
+}
+#c-usuarios.a-esqueci_meu_usuario_senha #topo,
 #c-usuarios.a-login #topo {
     height: 70px;
     margin-top: 140px;
@@ -321,17 +347,27 @@ div.error-message {
     border-top-right-radius: 8px;
     background: url('./../img/admin/layout/bg_head_login.png');
 }
+#c-usuarios.a-esqueci_meu_usuario_senha  #topo ul li a,
 #c-usuarios.a-login #topo ul li a {
     text-indent: -9999em;
     overflow: hidden;
     float: right; display: inline;
 }
+#c-usuarios.a-esqueci_meu_usuario_senha #topo ul,
 #c-usuarios.a-login #topo ul {
     margin-top: 10px;
     margin-right: 10px;
 }
-
-
+#c-usuarios.a-login div.form_login a {
+    color: #656565;
+    font-size: 12px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+#c-usuarios.a-login div.form_login a:hover {
+    color: #3589ba;
+}
 
 /* --- Rodape --- */
 #rodape {
@@ -583,4 +619,41 @@ form .botoes a.cancelar {
 }
 #conteudo .paging span {
     margin-right: 10px;
+}
+
+/* --- Galeria --- */
+fieldset.galeria {
+    border: 1px solid #3589BA;
+    padding: 6px;
+    margin-bottom: 10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+fieldset.galeria legend {
+    margin: 0 !important;
+    padding: 0 2px;
+}
+fieldset.galeria ul li {
+    display: inline-block;
+    padding: 8px;
+}
+fieldset.galeria ul li img {
+    border: 1px solid #333;
+}
+fieldset.galeria ul li a {
+    display: block;   
+    text-align: center;
+    text-decoration: none;
+}
+
+/* --- Produtos --- */
+#ProdutoNome {
+    width: 300px;
+}
+
+/* --- Banner --- */
+#c-banners div.preview {
+    padding: 8px;
+    margin-bottom: 10px;
 }

@@ -98,6 +98,9 @@ msgstr "Adicionar Tipo de Banner"
 msgid "Edit Banner Type"
 msgstr "Editar Tipo de Banner"
 
+msgid "Image successfully deleted."
+msgstr "Imagem excluída com sucesso."
+
 
 
 

@@ -8,13 +8,13 @@
             </li>
         <?php } ?>   
 
-        <?php if ($config['produtos']) { ?>
+        <?php if ($config['usa_produtos']) { ?>
             <li>
                 <a href="<?php echo DEFAULT_URL; ?>produtos" title="<?php echo __('Products'); ?>"><?php echo __('Products'); ?></a>
             </li>
         <?php } ?>   
 
-        <?php if ($config['noticias']) { ?>
+        <?php if ($config['usa_noticias']) { ?>
             <li>
                 <a href="<?php echo DEFAULT_URL; ?>noticias" title="<?php echo __('News'); ?>"><?php echo __('News'); ?></a>
             </li>

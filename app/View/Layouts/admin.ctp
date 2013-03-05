@@ -41,6 +41,7 @@
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">
 
         <?php echo $this->Session->flash("admin"); ?>
+        <?php echo $this->Session->flash("flash"); ?>
 
         <div id="topo">
             <div class="esquerda">

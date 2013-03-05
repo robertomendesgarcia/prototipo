@@ -78,6 +78,28 @@ $(document).ready(function(){
 
 
 
+
+    if ($('#NewsletterDisplayForm').length) {
+        
+        $('#NewsletterDisplayForm').validate({
+            rules: {
+                'data[Newsletter][nome]': 'required',
+                'data[Newsletter][email]': {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                'data[Newsletter][nome]': 'Informe seu nome.',
+                'data[Newsletter][email]': {
+                    required: 'Informe seu e-mail.',
+                    email: 'E-mail inválido.'
+                }
+            }
+        });
+        
+    }
+
     
 //
 //    $('#adminMessage a').on('click', function(event){

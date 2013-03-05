@@ -33,7 +33,7 @@
 
 
 
-            <?php
+            <?php 
             if ($config['posicao_menu'] == 1) {
                 echo $this->element('menu_externo', array('tipo' => $config['posicao_menu']));
             }
@@ -56,7 +56,7 @@
             </div>
 
             <?php
-            if ($config['barra_lateral']) {
+            if ($config['usa_barra_lateral']) {
                 echo $this->element('barra_lateral');
             }
             ?>
@@ -65,7 +65,7 @@
 
 
         <?php
-        if ($config['rodape']) {
+        if ($config['usa_rodape']) {
             echo $this->element('rodape');
         }
         ?>

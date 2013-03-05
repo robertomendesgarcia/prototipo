@@ -44,7 +44,16 @@
             <h3><?php echo __('Settings'); ?></h3>
             <ul>
                 <li>
-                    <?php echo $this->Html->link(__('Layout'), array('controller' => 'configuracoes', 'action' => 'layout', 'admin' => true)); ?>
+                    <?php echo $this->Html->link(__('Layout'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'layout')); ?>
+                </li>
+                <li>
+                    <?php echo $this->Html->link(__('Menu'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'menu')); ?>
+                </li>
+                <li>
+                    <?php echo $this->Html->link(__('News'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'noticias')); ?>
+                </li>
+                <li>
+                    <?php echo $this->Html->link(__('Products'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'produtos')); ?>
                 </li>
             </ul>
         </li>

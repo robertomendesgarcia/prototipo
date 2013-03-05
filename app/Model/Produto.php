@@ -4,7 +4,7 @@ App::uses('AppModel', 'Model');
  * Produto Model
  *
  * @property Categoria $Categoria
- * @property ProdutoImagen $ProdutoImagen
+ * @property ProdutoImagem $ProdutoImagem
  */
 class Produto extends AppModel {
 
@@ -76,8 +76,8 @@ class Produto extends AppModel {
  * @var array
  */
 	public $hasMany = array(
-		'ProdutoImagen' => array(
-			'className' => 'ProdutoImagen',
+		'ProdutoImagem' => array(
+			'className' => 'ProdutoImagem',
 			'foreignKey' => 'produto_id',
 			'dependent' => false,
 			'conditions' => '',

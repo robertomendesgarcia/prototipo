@@ -17,12 +17,55 @@ class BannersController extends AppController {
         $this->set(compact('banners', 'bannerTipos'));
     }
 
-    public function admin_view($id = null) {
-        $this->Banner->id = $id;
-        if (!$this->Banner->exists()) {
-            throw new NotFoundException(__('Invalid banner'));
+//    public function admin_view($id = null) {
+//        $this->Banner->id = $id;
+//        if (!$this->Banner->exists()) {
+//            throw new NotFoundException(__('Invalid banner'));
+//        }
+//        $this->set('banner', $this->Banner->read(null, $id));
+//    }
+
+    public function admin_add() {
+        if ($this->request->is('post')) {
+            if (!empty($this->data)) {
+
+                if (!empty($this->request->data['Banner']['arquivo'])) {
+
+                    $arquivo = $this->request->data['Banner']['arquivo'];
+
+                    if (isset($arquivo['name']) && $arquivo["error"] == 0) {
+
+                        $extensao = strrchr($arquivo['name'], '.');
+                        $extensao = strtolower(str_replace('.', '', $extensao));
+
+                        if (in_array($extensao, $this->Banner->file['formatos'])) {
+
+                            $nome_arquivo = uniqid() . '.' . $extensao;
+                            $destino = $this->Banner->file['path'] . $nome_arquivo;
+
+                            if (move_uploaded_file($arquivo['tmp_name'], $destino)) {
+                                $this->request->data['Banner']['arquivo'] = $nome_arquivo;
+                                if ($this->Banner->save($this->request->data)) {
+                                    $this->Session->setFlash(__('The banner has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                                    $this->redirect(array('action' => 'index'));
+                                }
+                            }
+                        } else {
+                            $this->Session->setFlash(__('São permitidos apenas arquivos ' . implode(', ', $this->Banner->file['formatos']) . '.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                        }
+                    } else {
+                        $this->Session->setFlash(__('Arquivo inválido.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                    }
+                }
+            } else {
+                $this->Session->setFlash(__('The noticia could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+            }
         }
-        $this->set('banner', $this->Banner->read(null, $id));
+
+
+        $bannerTipos = $this->Banner->BannerTipo->find('list');
+        $this->set(compact('bannerTipos'));
+        $this->set('title_for_layout', __('New Banner') . ' - ' . $this->title_for_layout);
     }
 
     public function admin_edit($id = null) {
@@ -32,16 +75,49 @@ class BannersController extends AppController {
             throw new NotFoundException(__('Invalid banner'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
+
             if ($this->Banner->save($this->request->data)) {
-                $this->Session->setFlash(__('The banner has been saved'));
+
+                if (!empty($this->request->data['Banner']['arquivo'])) {
+
+                    $arquivo = $this->request->data['Banner']['arquivo'];
+
+                    if (isset($arquivo['name']) && $arquivo["error"] == 0) {
+
+                        $extensao = strrchr($arquivo['name'], '.');
+                        $extensao = strtolower(str_replace('.', '', $extensao));
+
+                        if (in_array($extensao, $this->Banner->file['formatos'])) {
+
+                            $nome_arquivo = uniqid() . '.' . $extensao;
+                            $destino = $this->Banner->file['path'] . $nome_arquivo;
+
+                            if (move_uploaded_file($arquivo['tmp_name'], $destino)) {
+                                $this->request->data['Banner']['arquivo'] = $nome_arquivo;
+                                if ($this->Banner->save($this->request->data)) {
+                                    $this->Session->setFlash(__('The banner has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                                    $this->redirect(array('action' => 'index'));
+                                }
+                            }
+                        } else {
+                            $this->Session->setFlash(__('São permitidos apenas arquivos ' . implode(', ', $this->Banner->file['formatos']) . '.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                        }
+                    } else {
+                        $this->Session->setFlash(__('Arquivo inválido.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                    }
+                }
+
+                $this->Session->setFlash(__('The noticia has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The banner could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('The noticia could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'warning'), 'admin');
             }
         } else {
             $this->request->data = $this->Banner->read(null, $id);
         }
+
         $bannerTipos = $this->Banner->BannerTipo->find('list');
+        $this->set('src', $this->Banner->file['path']);
         $this->set(compact('bannerTipos'));
         $this->set('title_for_layout', __('Edit Banner') . ' - ' . $this->title_for_layout);
     }
@@ -61,29 +137,6 @@ class BannersController extends AppController {
         }
         $this->Session->setFlash(__('Banner was not deleted'));
         $this->redirect(array('action' => 'index'));
-    }
-
-    public function admin_add() {
-        if (!empty($this->data)) {
-            $tempFile = $this->data['Banner']['arquivo']['tmp_name'];
-            $targetPath = UPLOADS_URL . 'banner/';
-            $targetFile = $this->data['Banner']['arquivo']['name'];
-            $targetFile = str_replace(" ", "", microtime()) . "." . strtolower(end(explode(".", $targetFile))); // renomeia o arquivo com data/hora precisão de milisegundos 
-            $pathImage = $targetPath . $targetFile;
-            $this->request->data['Banner']['arquivo'] = $targetFile;
-            if ($this->Banner->save($this->request->data)) {
-                if (is_uploaded_file($tempFile)) {
-                    move_uploaded_file($tempFile, $pathImage);
-                }
-                $this->Session->setFlash(__('The banner has been saved'));
-                $this->redirect(array('action' => 'index'));
-            } else {
-                $this->Session->setFlash(__('The banner could not be saved. Please, try again.'));
-            }
-        }
-        $bannerTipos = $this->Banner->BannerTipo->find('list');
-        $this->set(compact('bannerTipos'));
-        $this->set('title_for_layout', __('Add Banner') . ' - ' . $this->title_for_layout);
     }
 
 }

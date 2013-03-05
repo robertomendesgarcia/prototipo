@@ -6,8 +6,6 @@
 
 <?php // echo $this->element("filtro"); ?>
 
-
-
 <table cellpadding="0" cellspacing="0" class="listagem">
       <tr>
             <th><?php echo $this->Paginator->sort('descricao'); ?></th>
@@ -18,7 +16,7 @@
       <?php foreach ($banners as $banner) { ?>
             <tr>
                   <td><?php echo h($banner['Banner']['descricao']); ?></td>
-                  <td><?php echo date("d/m/Y", strtotime($banner['Banner']['validade'])); ?></td>
+                  <td class="centralizado"><?php echo date("d/m/Y", strtotime($banner['Banner']['validade'])); ?></td>
                   <td><?php echo h($banner['BannerTipo']['tipo']); ?></td>
                   <td class="acoes">
                         <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $banner['Banner']['id']), array('class' => 'editar')); ?>

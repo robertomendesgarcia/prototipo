@@ -1,6 +1,7 @@
 <?php
 
 App::uses('AppController', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 
 class UsuariosController extends AppController {
 
@@ -194,7 +195,6 @@ class UsuariosController extends AppController {
         }
     }
 
-
     public function admin_edit($id = null) {
         $this->Usuario->id = $id;
         if (!$this->Usuario->exists()) {
@@ -212,6 +212,7 @@ class UsuariosController extends AppController {
             unset($this->request->data['Usuario']['senha']);
         }
     }
+
 //
 //    public function delete($id = null) {
 //        if (!$this->request->is('post')) {
@@ -232,6 +233,58 @@ class UsuariosController extends AppController {
     public function choose_language($language = 'pt-br') {
         $this->Session->write('Config.language', $language);
         $this->redirect($this->referer());
+    }
+
+    public function esqueci_meu_usuario_senha() {
+
+        if ($this->request->is('post')) {
+
+            $usuario = $this->Usuario->find('first', array(
+                'conditions' => array(
+                    'Usuario.email' => $this->request->data['Usuario']['email']
+                )
+                    ));
+            if (!empty($usuario)) {
+
+                $nova_senha = uniqid();
+
+                $usuario['Usuario']['senha'] = $nova_senha;
+
+//                if ($this->Usuario->save($usuario)) {
+
+                $email = new CakeEmail('smtp');
+                $email->viewVars(array('value' => 12345));
+//                $email->deliver('smtp');
+                $email->template('contato');
+                $email->emailFormat('html');
+                $email->to($usuario['Usuario']['email']);
+                $email->subject('Nova senha');
+                $email->from('robertomendesgarcia@gmail.com');
+
+
+                if ($email->send()) {
+                    die('1');
+
+                    $this->Session->setFlash(__('Você receberá um e-mail com seu usuário e sua nova senha.'), 'flash_message', array('tipo' => 'success'), 'admin');
+                    $this->redirect(array('action' => 'login'));
+                } else {
+                    die('0');
+                }
+
+                pr($email);
+                exit;
+//                }
+
+                pr($usuario);
+                exit;
+            } else {
+
+                $this->Session->setFlash(__('E-mail não cadastrado.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+            }
+        }
+
+        $this->layout = 'login';
+        $this->set('title_for_layout', __('Esqueci meu usuário/senha') . ' - ' . $this->title_for_layout);
     }
 
 }

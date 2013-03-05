@@ -102,17 +102,13 @@ class ConfiguracoesController extends AppController {
 //        $this->redirect(array('action' => 'index'));
 //    }
 
-    public function admin_layout() {
-
+    public function admin_config($pin) {
+        
         if ($this->request->is('post')) {
 
             $dataSource = $this->Configuracao->getDataSource();
             $dataSource->begin();
             try {
-
-
-
-
 
                 foreach ($this->request->data['Configuracao'] as $key => $value) {
                     if (!in_array($key, array('img_bg_html', 'img_logo', 'img_bg_topo'))) {
@@ -146,9 +142,6 @@ class ConfiguracoesController extends AppController {
                     }
                 }
 
-
-
-
                 $dataSource->commit();
                 $this->Session->setFlash(__('Settings saved successfully.'), 'flash_message', array('tipo' => 'success'), 'admin');
             } catch (Exception $e) {
@@ -173,6 +166,7 @@ class ConfiguracoesController extends AppController {
 
 
         $this->set('title_for_layout', __('Layout Settings') . ' - ' . $this->title_for_layout);
+        $this->render('admin_' . $pin);
     }
 
 }
