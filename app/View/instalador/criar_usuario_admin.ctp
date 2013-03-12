@@ -8,9 +8,9 @@
         echo $this->Form->input('nome', array('label' => 'Nome:'));
         echo $this->Form->input('email', array('label' => 'Email:'));
         echo $this->Form->input('usuario', array('label' => 'Usuário:'));
-        echo $this->Form->input('senha', array('label' => 'Senha:'));
-        echo $this->Form->input('confirmar_senha', array('label' => 'Confirmar senha:'));
-        
+        echo $this->Form->input('senha', array('label' => 'Senha:', 'type' => 'password'));
+        echo $this->Form->input('confirmar_senha', array('label' => 'Confirmar senha:', 'type' => 'password'));
+		 
         
         ?>
     </fieldset>
