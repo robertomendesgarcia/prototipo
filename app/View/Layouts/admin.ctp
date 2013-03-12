@@ -26,13 +26,13 @@
         }
         ?>
 
-        <?php if (($this->params["controller"] == 'noticias' || $this->params["controller"] == 'paginas') && (in_array($this->params["action"], array('admin_add', 'admin_edit')))) { ?>
+        <?php if (in_array($this->params["controller"], array('noticias', 'paginas', 'configuracoes')) && (in_array($this->params["action"], array('admin_add', 'admin_edit', 'admin_config')))) { ?>
             <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/ckeditor/ckeditor.js"></script>
             <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uploadify/jquery.uploadify.min.js"></script>
             <link href="<?php echo DEFAULT_URL; ?>js/uploadify/uploadify.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />          
         <?php } ?>
 
-        <?php if (($this->params["controller"] == 'configuracoes') && (in_array($this->params["action"], array('admin_layout')))) { ?>
+        <?php if ($this->params["controller"] == 'configuracoes') { ?>
             <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/colorpicker/js/colorpicker.js"></script>
             <link href="<?php echo DEFAULT_URL; ?>js/colorpicker/css/colorpicker.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />          
         <?php } ?>

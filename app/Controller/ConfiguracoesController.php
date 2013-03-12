@@ -103,7 +103,7 @@ class ConfiguracoesController extends AppController {
 //    }
 
     public function admin_config($pin) {
-        
+
         if ($this->request->is('post')) {
 
             $dataSource = $this->Configuracao->getDataSource();
@@ -125,20 +125,17 @@ class ConfiguracoesController extends AppController {
                         }
                     } else {
 
-                        if ($value['error'] == 0) {
-                            $extensao = explode('.', $value['name']);
-                            $extensao = $extensao[count($extensao) - 1];
-                            if (!in_array(strtolower($extensao), $this->Configuracao->img['formatos'])) {
-                                throw new Exception(__('Invalid file.'));
-                            }
-
-
-
-                            print_r('<pre>');
-                            print_r($this->Configuracao->img['formatos']);
-                            print_r('</pre>');
-                            exit;
-                        }
+//                        if ($value['error'] == 0) {
+//                            $extensao = explode('.', $value['name']);
+//                            $extensao = $extensao[count($extensao) - 1];
+//                            if (!in_array(strtolower($extensao), $this->Configuracao->img['formatos'])) {
+//                                throw new Exception(__('Invalid file.'));
+//                            }
+//                            print_r('<pre>');
+//                            print_r($this->Configuracao->img['formatos']);
+//                            print_r('</pre>');
+//                            exit;
+//                        }
                     }
                 }
 
@@ -148,24 +145,27 @@ class ConfiguracoesController extends AppController {
                 $this->Session->setFlash($e->getMessage(), 'flash_message', array('tipo' => 'error'), 'admin');
                 $dataSource->rollback();
             }
-
-//            print_r('<pre>');
-////                print_r($this->request->data);
-//            print_r($config);
-//            print_r('</pre>');
-//            exit;
-//            $this->Configuraco->create();
-//            if ($this->Configuraco->save($this->request->data)) {
-//                $this->Session->setFlash(__('The configuraco has been saved'));
-//                $this->redirect(array('action' => 'index'));
-//            } else {
-//                $this->Session->setFlash(__('The configuraco could not be saved. Please, try again.'));
-//            }
+        } else {
+            $configuracoes = $this->Configuracao->find('all');
+            foreach ($configuracoes as $configuracao) {
+                $this->request->data['Configuracao'][$configuracao['Configuracao']['pin']] = $configuracao['Configuracao']['conteudo'];
+            }
         }
 
+        $titulo = __('Configurações do Layout');
+        switch ($pin) {
+            case 'noticias':
+                $titulo = __('Configurações das Notícias');
+                break;
+            case 'produtos':
+                $titulo = __('Configurações dos Produtos');
+                break;
+            case 'menu':
+                $titulo = __('Configurações do Menu');
+                break;
+        }
 
-
-        $this->set('title_for_layout', __('Layout Settings') . ' - ' . $this->title_for_layout);
+        $this->set('title_for_layout', $titulo . ' - ' . $this->title_for_layout);
         $this->render('admin_' . $pin);
     }
 

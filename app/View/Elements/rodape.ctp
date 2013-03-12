@@ -1,6 +1,6 @@
 <div id="rodape">
 
-    <div id="wrapper">
+    <div class="wrapper">
 
         <?php echo $config['conteudo_rodape']; ?>
 

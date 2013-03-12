@@ -10,6 +10,7 @@
     <tr>
         <th><?php echo $this->Paginator->sort('titulo'); ?></th>
         <th><?php echo $this->Paginator->sort('data'); ?></th>
+        <th><?php echo $this->Paginator->sort('destaque'); ?></th>
         <th><?php echo $this->Paginator->sort('ativo'); ?></th>
         <th><?php echo $this->Paginator->sort('categoria_id'); ?></th>
         <th class="actions"><?php echo __('Actions'); ?></th>
@@ -18,6 +19,7 @@
         <tr>
             <td><?php echo h($noticia['Noticia']['titulo']); ?></td>
             <td class="centralizado"><?php echo date("d/m/Y", strtotime($noticia['Noticia']['data'])); ?></td>
+            <td class="centralizado"><?php echo ($noticia['Noticia']['destaque'] == 1) ? __('Yes') : __('No'); ?></td>
             <td class="centralizado"><?php echo ($noticia['Noticia']['ativo'] == 1) ? __('Yes') : __('No'); ?></td>
             <td><?php echo $noticia['NoticiaCategoria']['nome']; ?></td>
             <td class="acoes_3_botoes">

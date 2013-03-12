@@ -38,4 +38,7 @@ CKEDITOR.editorConfig = function( config ) {
         config.filebrowserImageUploadUrl = DEFAULT_URL + '/js/kcfinder/upload.php?type=images';
         config.filebrowserFlashUploadUrl = DEFAULT_URL + '/js/kcfinder/upload.php?type=flash';
    
+//        config.toolbar_Basic = [
+//             ['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink','-','About']
+//         ];
 };

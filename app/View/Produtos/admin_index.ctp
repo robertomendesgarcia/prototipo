@@ -10,6 +10,7 @@
     <tr>
         <th><?php echo $this->Paginator->sort('nome'); ?></th>
         <th><?php echo $this->Paginator->sort('valor'); ?></th>
+        <th><?php echo $this->Paginator->sort('destaque'); ?></th>
         <th><?php echo $this->Paginator->sort('ativo'); ?></th>
         <th><?php echo $this->Paginator->sort('categoria_id'); ?></th>
         <th class="actions"><?php echo __('Actions'); ?></th>
@@ -18,6 +19,7 @@
         <tr>
             <td><?php echo $produto['Produto']['nome']; ?></td>
             <td class="centralizado"><?php echo $this->Number->currency($produto['Produto']['valor'], 'R$ '); ?></td>
+            <td class="centralizado"><?php echo ($produto['Produto']['destaque'] == 1) ? __('Yes') : __('No'); ?></td>
             <td class="centralizado"><?php echo ($produto['Produto']['ativo'] == 1) ? __('Yes') : __('No'); ?></td>
             <td class="centralizado"><?php echo $produto['ProdutoCategoria']['nome']; ?></td>
             <td class="acoes_3_botoes">

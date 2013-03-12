@@ -122,6 +122,7 @@ div.submit {
     top: 0;
     left: 0;
     width: 98%;
+    cursor: pointer;
 }
 #adminMessage a {
     float: right;

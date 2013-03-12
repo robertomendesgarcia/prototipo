@@ -5,7 +5,7 @@ $(document).ready(function(){
     
     $('form input').first().focus();
 
-    $('#adminMessage a').on('click', function(event){
+    $('#adminMessage').on('click', function(event){
         $('#adminMessage').fadeOut();
         event.preventDefault();
     });
@@ -31,12 +31,18 @@ $(document).ready(function(){
         }
     });
     
-    if ($('body#c-configuracoes.a-admin_layout').length) {
+    if ($('body#c-configuracoes').length) {
         
-        $('input:file').uniform({
-            //            fileButtonText: 'Selecione o arquivo',
-            //            fileDefaultText: 'Selecione...'
-        }); 
+        //        config.toolbar_Basic = [
+        //        ['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink','-','About']
+        //        ];        
+        //        CKEDITOR.editorConfig(['Bold', 'Italic', '-', 'NumberedList', 'BulletedList', '-', 'Link', 'Unlink','-','About']);
+        //        CKEDITOR.tools = 'Basic';
+        
+        toogleCampos();
+        $('#ConfiguracaoUsaProdutos, #ConfiguracaoUsaNoticias').on('change', function(){
+            toogleCampos();
+        });
         
         var input = null;
         var div_preview = null;
@@ -60,20 +66,34 @@ $(document).ready(function(){
             }
         });
         
+        $('input.color_picker').each(function(){
+            if ($(this).val()) {
+                $(this).next('div.preview').css('backgroundColor', $(this).val());
+            }
+        });
+        
     }
     
-    //    if ($('body#c-noticias.a-admin_add').length || $('body#c-noticias.a-admin_edit').length) {
-    //        $('#NoticiaImagens').uploadify({
-    //            'swf': DEFAULT_URL + 'js/uploadify/uploadify.swf',
-    //            'uploader': DEFAULT_URL + 'js/uploadify/uploadify.php',
-    //            'buttonText': 'Selecione as imagens...',
-    //            'width': 190,
-    //            'height': 20,
-    //            'auto': true,
-    //            'removeCompleted': false
-    //        }); 
-    //    }
+//    if ($('body#c-noticias.a-admin_add').length || $('body#c-noticias.a-admin_edit').length) {
+//        $('#NoticiaImagens').uploadify({
+//            'swf': DEFAULT_URL + 'js/uploadify/uploadify.swf',
+//            'uploader': DEFAULT_URL + 'js/uploadify/uploadify.php',
+//            'buttonText': 'Selecione as imagens...',
+//            'width': 190,
+//            'height': 20,
+//            'auto': true,
+//            'removeCompleted': false
+//        }); 
+//    }
   
     
     
 });
+
+function toogleCampos(){
+    if ($('#ConfiguracaoUsaProdutos').is(':checked') || $('#ConfiguracaoUsaNoticias').is(':checked')) {
+        $('div.campos input, select').removeAttr('disabled');
+    } else {
+        $('div.campos input, select').attr('disabled', true);
+    }
+}

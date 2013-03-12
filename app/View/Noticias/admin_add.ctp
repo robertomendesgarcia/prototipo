@@ -13,6 +13,10 @@ $this->Html->addCrumb($titulo[0]);
       echo $this->Form->textarea('texto', array('class' => 'ckeditor'));
       echo $this->Form->input('fonte', array('label' => __('Source:')));
       echo $this->Form->input('data', array('label' => __('Date:'), 'type' => 'text', 'dateFormat' => 'dd/mm/YYYY', 'class' => 'data'));
+      echo $this->Form->input('destaque', array('label' => __('Destaque:'), 'type' => 'select', 'options' => array(
+              '1' => __('Yes'),
+              '0' => __('No')
+              )));
       echo $this->Form->input('ativo', array('label' => __('Active:'), 'type' => 'select', 'options' => array(
               '1' => __('Yes'),
               '0' => __('No')

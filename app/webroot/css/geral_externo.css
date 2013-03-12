@@ -10,6 +10,9 @@ body {
 /* --- Topo --- */
 #topo {
     overflow: auto;
+
+    background-color: #eee;
+
 }
 #topo h1 {
     float: left;
@@ -26,6 +29,17 @@ body {
     width: 120px;
     padding: 20px 15px;
 }
+
+#menu.topo {
+    float: right;
+    display: inline;    
+    margin: 85px 30px 0 0;
+}
+#menu.topo ul li {
+    display: inline-block;
+    padding: 0 4px;
+}
+
 
 #conteudo {
     overflow: auto;
@@ -119,6 +133,8 @@ body {
 #rodape {
     clear: both;
     height: 100px;
+
+    background-color: #eee;
 
 }
 

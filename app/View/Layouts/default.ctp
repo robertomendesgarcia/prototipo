@@ -21,6 +21,20 @@
 
         <link href="<?php echo DEFAULT_URL; ?>js/uniform/css/uniform.default.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
         <link href="<?php echo DEFAULT_URL; ?>css/geral_externo.css" media="all" rel="stylesheet" type="text/css" />
+
+
+        <style type="text/css">
+            #wrapper {
+                background-color: <?php echo!empty($config['cor_bg_html']) ? $config['cor_bg_html'] : '#FFFFFF'; ?>;
+            }            
+            #wrapper p {
+                color: <?php echo!empty($config['cor_fonte_texto']) ? $config['cor_fonte_texto'] : '#333333'; ?>;
+            }            
+            #wrapper h3 {
+                color: <?php echo!empty($config['cor_titulo']) ? $config['cor_titulo'] : '#333333'; ?>;
+            }
+
+        </style>
     </head>
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">
 
@@ -31,9 +45,7 @@
                 </a>
             </h1>
 
-
-
-            <?php 
+            <?php
             if ($config['posicao_menu'] == 1) {
                 echo $this->element('menu_externo', array('tipo' => $config['posicao_menu']));
             }
@@ -41,7 +53,7 @@
 
         </div>
 
-        <?php echo $this->Session->flash();  ?>
+        <?php echo $this->Session->flash(); ?>
 
         <div id="conteudo">
 
@@ -72,10 +84,12 @@
 
         <script type="text/javascript">
             var DEFAULT_URL = '<?php echo DEFAULT_URL; ?>';
-            $('#conteudo h3').css('color', '<?php echo $config['cor_titulo']; ?>');
             
             
-//            carregarMapa('Rua Joaquim Nabuco, Criciúma - SC');
+            //            $('#conteudo h3').css('color', '<?php echo $config['cor_titulo']; ?>');
+            
+            
+            //            carregarMapa('Rua Joaquim Nabuco, Criciúma - SC');
             
             
         </script>

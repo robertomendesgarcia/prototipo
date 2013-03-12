@@ -12,6 +12,10 @@ $this->Html->addCrumb($titulo[0]);
     echo $this->Form->input('categoria_id', array('label' => __('Category:'), 'type' => 'select', 'options' => $categorias, 'empty' => 'Selecione...'));
     echo $this->Form->input('valor', array('label' => __('Value:')));
     echo $this->Form->input('descricao', array('label' => __('Description:')));
+    echo $this->Form->input('destaque', array('label' => __('Destaque:'), 'type' => 'select', 'options' => array(
+            '1' => __('Yes'),
+            '0' => __('No')
+            )));
     echo $this->Form->input('ativo', array('label' => __('Active:'), 'type' => 'select', 'options' => array(
             '1' => __('Yes'),
             '0' => __('No')

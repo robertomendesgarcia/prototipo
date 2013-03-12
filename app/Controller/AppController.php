@@ -107,14 +107,52 @@ class AppController extends Controller {
                 ));
         $this->set('config', $config);
 
-        $this->loadModel('Menu');
-        $menu = $this->Menu->find('list', array(
+        if ($config['mostrar_noticias_lateral']) {
+            $this->loadModel('Noticia');
+            $noticias = $this->Noticia->find('all', array(
+                'conditions' => array(
+                    'Noticia.ativo' => 1
+                ),
+                'order' => 'Noticia.destaque ASC, Noticia.data DESC',
+                'limit' => !empty($config['qtde_noticias_lateral']) ? $config['qtde_noticias_lateral'] : 5,
+                    ));
+            $this->set('noticias_lateral', $noticias);
+        }
+
+        if ($config['mostrar_produtos_lateral']) {
+            $this->loadModel('Produto');
+            $produtos = $this->Produto->find('all', array(
+                'conditions' => array(
+                    'Produto.ativo' => 1
+                ),
+                'order' => 'Produto.destaque ASC',
+                'limit' => !empty($config['qtde_produtos_lateral']) ? $config['qtde_produtos_lateral'] : 5,
+                    ));
+            $this->set('produtos_lateral', $produtos);
+        }
+
+        $this->loadModel('Pagina');
+        $paginas = $this->Pagina->find('all', array(
+            'conditions' => array(
+                'Pagina.ativo' => 1
+            ),
             'fields' => array(
-                'link',
-                'nome'
+                'pin',
+                'titulo',
             )
                 ));
-        $this->set('menu', $menu);
+        $this->set('opcoes_menu', $paginas);
+
+
+
+//        $this->loadModel('Menu');
+//        $menu = $this->Menu->find('list', array(
+//            'fields' => array(
+//                'link',
+//                'nome'
+//            )
+//                ));
+//        $this->set('menu', $menu);
     }
 
     /**
@@ -134,6 +172,14 @@ class AppController extends Controller {
         // Libera acesso para actions sem prefixo admin
         if (!(isset($this->params['admin']))) {
             $this->Auth->allow();
+
+            $this->loadModel('Configuracao');
+            $cfg = $this->Configuracao->find('first', array(
+                'conditions' => array(
+                    'Configuracao.pin' => 'titulo_site'
+                )
+                    ));
+            $this->title_for_layout = $cfg['Configuracao']['conteudo'];
         }
     }
 
