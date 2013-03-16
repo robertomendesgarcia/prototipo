@@ -70,7 +70,7 @@ class Configuracao extends AppModel {
         $posicao_menu = null;
         $tamanho = 'grande';
 
-        if ($this->data['Configuracao']['pin'] == 'barra_lateral') {
+        if ($this->data['Configuracao']['pin'] == 'usa_barra_lateral') {
             $barra_lateral = $this->data['Configuracao']['conteudo'];
             $registro = $this->find('first', array(
                 'conditions' => array(
@@ -82,11 +82,13 @@ class Configuracao extends AppModel {
             $posicao_menu = $this->data['Configuracao']['conteudo'];
             $registro = $this->find('first', array(
                 'conditions' => array(
-                    'pin' => 'barra_lateral'
+                    'pin' => 'usa_barra_lateral'
                 )
                     ));
             $barra_lateral = $registro['Configuracao']['conteudo'];
         }
+        
+//        die($barra_lateral . ' --- ' . $posicao_menu);
 
         if (!empty($posicao_menu) && !empty($barra_lateral)) {
 

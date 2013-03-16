@@ -92,8 +92,8 @@ $(document).ready(function(){
 
 function toogleCampos(){
     if ($('#ConfiguracaoUsaProdutos').is(':checked') || $('#ConfiguracaoUsaNoticias').is(':checked')) {
-        $('div.campos input, select').removeAttr('disabled');
+        $('div.campos input, div.campos select').removeAttr('disabled');
     } else {
-        $('div.campos input, select').attr('disabled', true);
+        $('div.campos input, div.campos select').attr('disabled', true);
     }
 }

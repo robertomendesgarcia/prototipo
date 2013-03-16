@@ -370,6 +370,16 @@ div.error-message {
     color: #3589ba;
 }
 
+/* --- Usuarios --- */
+#c-usuarios.a-admin_add #UsuarioNome,
+#c-usuarios.a-admin_edit #UsuarioNome,
+#c-usuarios.a-admin_add #UsuarioEmail,
+#c-usuarios.a-admin_edit #UsuarioEmail,
+#c-usuarios.a-admin_add #UsuarioUsuario,
+#c-usuarios.a-admin_edit #UsuarioUsuario {
+    width: 300px;
+}
+
 /* --- Rodape --- */
 #rodape {
     height: 51px;

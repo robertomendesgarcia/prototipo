@@ -46,29 +46,38 @@
                 </li>
             </ul>
         </li>  
-        <li>
-            <h3><?php echo __('Settings'); ?></h3>
-            <ul>
-                <li>
-                    <?php echo $this->Html->link(__('Geral'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'geral')); ?>
-                </li>
-                <li>
-                    <?php echo $this->Html->link(__('Layout'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'layout')); ?>
-                </li>
-                <li>
-                    <?php echo $this->Html->link(__('Menu'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'menu')); ?>
-                </li>
-                <li>
-                    <?php echo $this->Html->link(__('News'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'noticias')); ?>
-                </li>
-                <li>
-                    <?php echo $this->Html->link(__('Products'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'produtos')); ?>
-                </li>
-                <li>
-                    <?php echo $this->Html->link(__('Users'), array('controller' => 'usuarios', 'action' => 'index', 'admin' => true)); ?>
-                </li>
-            </ul>
-        </li>
+
+        <?php
+        $tipo_usuario = $this->Session->read('Auth.User.UsuarioTipo.id');
+        if ($tipo_usuario == 1) {
+            ?>
+
+            <li>
+                <h3><?php echo __('Settings'); ?></h3>
+                <ul>
+                    <li>
+                        <?php echo $this->Html->link(__('Geral'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'geral')); ?>
+                    </li>
+                    <li>
+                        <?php echo $this->Html->link(__('Layout'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'layout')); ?>
+                    </li>
+                    <li>
+                        <?php echo $this->Html->link(__('Menu'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'menu')); ?>
+                    </li>
+                    <li>
+                        <?php echo $this->Html->link(__('News'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'noticias')); ?>
+                    </li>
+                    <li>
+                        <?php echo $this->Html->link(__('Products'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'produtos')); ?>
+                    </li>
+                    <li>
+                        <?php echo $this->Html->link(__('Users'), array('controller' => 'usuarios', 'action' => 'index', 'admin' => true)); ?>
+                    </li>
+                </ul>
+            </li>
+
+        <?php } ?>
+
     </ul>
 
 </div>

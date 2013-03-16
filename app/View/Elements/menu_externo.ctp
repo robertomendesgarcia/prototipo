@@ -17,6 +17,24 @@
         <?php if ($config['usa_produtos']) { ?>
             <li>
                 <a href="<?php echo DEFAULT_URL; ?>produtos" title="<?php echo __('Products'); ?>"><?php echo __('Products'); ?></a>
+
+                <ul>
+
+                    <?php foreach ($produto_categorias as $categoria) { ?>
+                    
+                        <li>
+                            
+                            <a href="<?php echo DEFAULT_URL; ?>produtos/categoria/" title="<?php echo $categoria['ProdutoCategoria']['nome']; ?>"><?php echo $categoria['ProdutoCategoria']['nome']; ?></a>            
+                            
+
+                        </li>
+
+                    <?php } ?>
+
+                </ul>
+
+
+
             </li>
         <?php } ?>   
 

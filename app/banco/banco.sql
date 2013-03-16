@@ -274,6 +274,22 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
+-- Table `prototipo_tcc`.`usuario_tipos`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `prototipo_tcc`.`usuario_tipos` ;
+
+CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`usuario_tipos` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `tipo` VARCHAR(60) NOT NULL ,
+  `created` DATETIME NULL ,
+  `modified` DATETIME NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_general_ci;
+
+
+-- -----------------------------------------------------
 -- Table `prototipo_tcc`.`usuarios`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `prototipo_tcc`.`usuarios` ;
@@ -285,9 +301,15 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`usuarios` (
   `senha` VARCHAR(60) NOT NULL ,
   `email` VARCHAR(60) NOT NULL ,
   `ativo` TINYINT(1) NULL ,
+  `tipo_id` INT(10) UNSIGNED NOT NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
-  PRIMARY KEY (`id`) )
+  PRIMARY KEY (`id`) ,
+  CONSTRAINT `usuario_fk_usuario_tipo`
+    FOREIGN KEY (`tipo_id` )
+    REFERENCES `prototipo_tcc`.`usuario_tipos` (`id` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;

@@ -5,11 +5,10 @@ App::uses('AuthComponent', 'Controller/Component');
 class Usuario extends AppModel {
 
     public $name = 'Usuario';
-    
 //    public $virtualFields = array(
 //        'confirmar_senha' => ''
 //    );
-    
+
     public $validate = array(
         'nome' => array(
             'Obrigatorio' => array(
@@ -54,6 +53,15 @@ class Usuario extends AppModel {
                 'message' => 'A senha e sua confirmação não são iguais.'
             )
         ),
+    );
+    public $belongsTo = array(
+        'UsuarioTipo' => array(
+            'className' => 'UsuarioTipo',
+            'foreignKey' => 'tipo_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        )
     );
 
     public function confirmarSenha($data) {

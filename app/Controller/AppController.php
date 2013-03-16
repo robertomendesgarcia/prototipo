@@ -143,6 +143,16 @@ class AppController extends Controller {
                 ));
         $this->set('opcoes_menu', $paginas);
 
+        if ($config['usa_produtos']) {
+            $this->loadModel('ProdutoCategoria');
+            $produto_categorias = $this->ProdutoCategoria->find('all', array(
+                'conditions' => array(
+                    'ProdutoCategoria.ativo' => 1
+                ),
+                'order' => 'ProdutoCategoria.nome ASC'
+                    ));
+            $this->set('produto_categorias', $produto_categorias);
+        }
 
 
 //        $this->loadModel('Menu');

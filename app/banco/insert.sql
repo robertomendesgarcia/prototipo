@@ -170,3 +170,14 @@ INSERT INTO `prototipo_tcc`.`estruturas` (	`nome`, 				`created`, 	`modified`,	`
 -- Menu no Topo sem Barra Lateral
 INSERT INTO `prototipo_tcc`.`estruturas` (	`nome`, 				`created`, 	`modified`,	`usa_produtos`,	`usa_noticias`,	`usa_banners`,	`usa_barra_lateral`,	`usa_rodape`, 	`cor_fonte_texto`, 	`cor_bg_html`, 	`img_bg_html_repeat`, 	`posicao_menu`,	`menu_degade`,	`cor_bg_menu`, `cor_fonte_menu`,	`mostrar_noticias_capa`,	`qtde_noticias_capa`,	`mostrar_noticias_lateral`,	`qtde_noticias_lateral`,	`mostrar_produtos_capa`,	`qtde_produtos_capa`,	`mostrar_produtos_lateral`,	`qtde_produtos_lateral`,	`img_bg_html`,	`img_logo`,	`cor_titulo`,	`conteudo_rodape`,	`img_bg_topo`,	`titulo_site`,	`keywords`,	`description`,	`author`,	`tamanho_centro`,	`email_contato`,	`usa_trabalhe_conosco`,	`email_trabalhe_conosco`,	`pagina_institucional`,	`endereco`,	`telefone_1`,	`telefone_2`,	`slogan`)
 								  VALUES (	'Estrutura Padrão 04', 	NOW(), 		NOW(), 		'1', 			'1', 			'1', 			'0', 					'1', 			'#333333', 			'#FFFFFF', 		'repeat-x', 			'1', 			'0', 			'#444444', 		'#FFFFFF',			'1',						'5',					'1',						'3',						'1',						'5',					'1',						'3',						NULL,			NULL,		'#777777',		NULL,				NULL,			'WebFacility',	NULL,		NULL,			NULL,		'medio',			NULL,				'1',				NULL,						'<p>...</p>',			NULL,		NULL,			NULL,			NULL);
+
+-- -----------------------------------------------------
+-- Table `prototipo_tcc`.`usuario_tipos`
+-- -----------------------------------------------------
+DELETE FROM `prototipo_tcc`.`usuario_tipos`;
+
+INSERT INTO `prototipo_tcc`.`usuario_tipos` (`tipo`, `created`, `modified`)
+VALUES ('Administrador', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`usuario_tipos` (`tipo`, `created`, `modified`)
+VALUES ('Restrito', NOW(), NOW()); 

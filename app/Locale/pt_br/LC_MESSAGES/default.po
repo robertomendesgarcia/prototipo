@@ -463,3 +463,6 @@ msgstr "Último Registro"
 
 msgid "Actives"
 msgstr "Ativos"
+
+msgid "New User"
+msgstr "Novo Usuario"

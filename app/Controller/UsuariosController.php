@@ -193,6 +193,11 @@ class UsuariosController extends AppController {
                 $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
             }
         }
+
+        $tipos = $this->Usuario->UsuarioTipo->find('list', array());
+        $this->set(compact('tipos'));
+
+        $this->set('title_for_layout', __('Novo Usuário') . ' - ' . $this->title_for_layout);
     }
 
     public function admin_edit($id = null) {
@@ -211,24 +216,28 @@ class UsuariosController extends AppController {
             $this->request->data = $this->Usuario->read(null, $id);
             unset($this->request->data['Usuario']['senha']);
         }
+
+        $tipos = $this->Usuario->UsuarioTipo->find('list', array());
+        $this->set(compact('tipos'));
+
+        $this->set('title_for_layout', __('Editar Usuário') . ' - ' . $this->title_for_layout);
     }
 
-//
-//    public function delete($id = null) {
-//        if (!$this->request->is('post')) {
-//            throw new MethodNotAllowedException();
-//        }
-//        $this->Usuario->id = $id;
-//        if (!$this->Usuario->exists()) {
-//            throw new NotFoundException(__('Invalid user'));
-//        }
-//        if ($this->Usuario->delete()) {
-//            $this->Session->setFlash(__('Usuario deleted'));
-//            $this->redirect(array('action' => 'index'));
-//        }
-//        $this->Session->setFlash(__('Usuario was not deleted'));
-//        $this->redirect(array('action' => 'index'));
-//    }
+    public function admin_delete($id = null) {
+        if (!$this->request->is('post')) {
+            throw new MethodNotAllowedException();
+        }
+        $this->Usuario->id = $id;
+        if (!$this->Usuario->exists()) {
+            throw new NotFoundException(__('Invalid user'));
+        }
+        if ($this->Usuario->delete()) {
+            $this->Session->setFlash(__('Usuario deleted'));
+            $this->redirect(array('action' => 'index'));
+        }
+        $this->Session->setFlash(__('Usuario was not deleted'));
+        $this->redirect(array('action' => 'index'));
+    }
 
     public function choose_language($language = 'pt-br') {
         $this->Session->write('Config.language', $language);
@@ -285,6 +294,50 @@ class UsuariosController extends AppController {
 
         $this->layout = 'login';
         $this->set('title_for_layout', __('Esqueci meu usuário/senha') . ' - ' . $this->title_for_layout);
+    }
+
+    public function admin_nova_senha($id = null) {
+
+        $usuario = $this->Usuario->find('first', array(
+            'conditions' => array(
+                'Usuario.id' => $id
+            )
+                ));
+
+        $nova_senha = uniqid();
+
+        $usuario['Usuario']['senha'] = $nova_senha;
+
+//      if ($this->Usuario->save($usuario)) {
+
+        $email = new CakeEmail('smtp');
+        $email->viewVars(array('value' => 12345));
+//                $email->deliver('smtp');
+        $email->template('contato');
+        $email->emailFormat('html');
+        $email->to($usuario['Usuario']['email']);
+        $email->subject('Nova senha');
+        $email->from('robertomendesgarcia@gmail.com');
+
+        if ($email->send()) {
+            die('1');
+
+            $this->Session->setFlash(__('Você receberá um e-mail com seu usuário e sua nova senha.'), 'flash_message', array('tipo' => 'success'), 'admin');
+            $this->redirect(array('action' => 'login'));
+        } else {
+            die('0');
+        }
+
+//        pr($email);
+//        exit;
+////      }
+//
+//        pr($usuario);
+//        exit;
+
+        $this->Session->setFlash(__('Teste!!.'), 'flash_message', array('tipo' => 'success'), 'admin');
+
+        $this->redirect(array('action' => 'admin_index'));
     }
 
 }

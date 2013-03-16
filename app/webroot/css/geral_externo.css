@@ -26,6 +26,8 @@ body {
 
 /* --- Base --- */
 #menu.esquerda {
+    float: left;
+    display: inline;
     width: 120px;
     padding: 20px 15px;
 }
