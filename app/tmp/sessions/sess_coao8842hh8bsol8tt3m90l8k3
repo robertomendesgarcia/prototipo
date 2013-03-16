@@ -1,1 +1,0 @@
-Config|a:4:{s:9:"userAgent";s:32:"dfd29f2486fed4a6438fa95cb927818c";s:4:"time";i:1358480634;s:9:"countdown";i:10;s:8:"language";s:5:"pt-br";}Message|a:0:{}Auth|a:2:{s:4:"User";a:1:{s:7:"Usuario";a:2:{s:7:"usuario";s:7:"gerente";s:5:"senha";s:3:"123";}}s:8:"redirect";a:3:{s:10:"controller";s:8:"usuarios";s:6:"action";s:9:"bem_vindo";s:5:"admin";b:1;}}
