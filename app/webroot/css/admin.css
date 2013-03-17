@@ -46,6 +46,14 @@ label.error {
     color: #F00;
 }
 
+p.campos_obrigatorios {    
+    display: block;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    text-transform: italic;
+    color: #939393;    
+}
+
 form .submit input {
     border: none;
     margin: 0;
@@ -292,8 +300,10 @@ div.error-message {
     width: 760px;
     padding: 20px 20px 20px 0;
 }
+#c-wizard #conteudo h3,
 #c-usuarios.a-esqueci_meu_usuario_senha #conteudo h3,
 #c-usuarios.a-login #conteudo h3,
+#c-instalador #conteudo h3,
 #centro h3 {
     display: block;
     width: 100%;
@@ -301,7 +311,8 @@ div.error-message {
     padding-top: 10px;
     text-align: center;
     font-size: 12px;
-    color: #c3c3c3;
+    /*color: #c3c3c3;*/
+    color: #939393;
 }
 
 /* --- Login --- */
@@ -348,12 +359,16 @@ div.error-message {
     border-top-right-radius: 8px;
     background: url('./../img/admin/layout/bg_head_login.png');
 }
-#c-usuarios.a-esqueci_meu_usuario_senha  #topo ul li a,
+#c-instalador #topo ul li a,
+#c-wizard #topo ul li a,
+#c-usuarios.a-esqueci_meu_usuario_senha #topo ul li a,
 #c-usuarios.a-login #topo ul li a {
     text-indent: -9999em;
     overflow: hidden;
     float: right; display: inline;
 }
+#c-instalador #topo ul,
+#c-wizard #topo ul,
 #c-usuarios.a-esqueci_meu_usuario_senha #topo ul,
 #c-usuarios.a-login #topo ul {
     margin-top: 10px;

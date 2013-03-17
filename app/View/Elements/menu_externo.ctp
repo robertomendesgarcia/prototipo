@@ -20,7 +20,7 @@
 
                 <ul>
 
-                    <?php foreach ($produto_categorias as $categoria) { ?>
+                    <?php foreach ($itens_produto_categorias as $categoria) { ?>
                     
                         <li>
                             

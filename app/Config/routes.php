@@ -43,7 +43,7 @@ Router::connect('/produto-categorias/*', array('controller' => 'produtocategoria
 Router::connect('/noticias/excluir-imagem/*', array('controller' => 'noticias', 'action' => 'excluir_imagem', 'admin' => false));
 Router::connect('/produtos/excluir-imagem/*', array('controller' => 'produtos', 'action' => 'excluir_imagem', 'admin' => false));
 
-Router::connect('/instalador/criar-usuario-admin', array('controller' => 'instalador', 'action' => 'criar_usuario_admin', 'admin' => false));
+Router::connect('/instalador/criar-usuario-admin', array('controller' => 'instalador', 'action' => 'criarUsuarioAdmin', 'admin' => false));
 
 Router::connect('/usuarios/bem-vindo', array('controller' => 'usuarios', 'action' => 'bem_vindo', 'admin' => true));
 Router::connect('/login', array('controller' => 'usuarios', 'action' => 'login', 'admin' => false));

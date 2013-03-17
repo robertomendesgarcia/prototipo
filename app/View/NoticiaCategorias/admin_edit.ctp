@@ -3,6 +3,8 @@ $titulo = explode(' - ', $title_for_layout);
 $this->Html->addCrumb($titulo[0]);
 ?>
 
+<p class="campos_obrigatorios">* Campos Obrigatórios</p>
+
 <?php echo $this->Form->create('NoticiaCategoria'); ?>
 
 <fieldset>

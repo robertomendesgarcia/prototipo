@@ -1,19 +1,39 @@
-body {
+
+/* --- Instalador --- */
+#c-instalador {
+    width: 450px;
+}
+
+#c-instalador.a-criarUsuarioAdmin {
+    width: 570px;
+}
+
+#conteudo {
+    overflow: auto;
+}
+
+form {
     display: block;
-    width: 550px;
-    margin: 0 auto;
-    padding-top: 100px;
+    padding: 0 20px;
 }
 
-
-ul {
-    display: block;    
+form fieldset input {
+    width: 300px;   
 }
 
-ul li {
-    display: inline-block;    
+div.botoes {
+    margin-bottom: 20px;
+    display: block;
+    overflow: auto;
 }
 
-ul li a {
-    padding: 5px 15px;
+/* --- Wizard --- */
+#c-wizard {
+    width: 500px;
+    
+}
+
+fieldset.passo_2,
+fieldset.passo_3 {
+    display: none;
 }

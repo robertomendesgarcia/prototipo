@@ -151,7 +151,7 @@ class AppController extends Controller {
                 ),
                 'order' => 'ProdutoCategoria.nome ASC'
                     ));
-            $this->set('produto_categorias', $produto_categorias);
+            $this->set('itens_produto_categorias', $produto_categorias);
         }
 
 

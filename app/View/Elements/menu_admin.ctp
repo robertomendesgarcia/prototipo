@@ -9,6 +9,9 @@
             <?php echo $this->Html->link(__('Logout'), array('controller' => 'usuarios', 'action' => 'logout', 'admin' => true)); ?>
         </li>
         <li>
+            <?php echo $this->Html->link(__('Change Password'), array('controller' => 'usuarios', 'action' => 'alterar_senha', 'admin' => true)); ?>
+        </li>
+        <li>
             <h3><?php echo __('Content'); ?></h3>
             <ul>
                 <?php if ($config['usa_noticias']) { ?>

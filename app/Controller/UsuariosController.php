@@ -185,12 +185,18 @@ class UsuariosController extends AppController {
 
     public function admin_add() {
         if ($this->request->is('post')) {
-            $this->Usuario->create();
-            if ($this->Usuario->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
-                $this->redirect(array('action' => 'index'));
+
+            if ($this->request->data['Usuario']['senha'] == $this->request->data['Usuario']['confirmar_senha']) {
+
+                $this->Usuario->create();
+                if ($this->Usuario->save($this->request->data)) {
+                    $this->Session->setFlash(__('The user has been saved'));
+                    $this->redirect(array('action' => 'index'));
+                } else {
+                    $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                }
             } else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('A senha e sua confirmação estão diferentes.'), 'flash_message', array('tipo' => 'warning'), 'admin');
             }
         }
 
@@ -338,6 +344,48 @@ class UsuariosController extends AppController {
         $this->Session->setFlash(__('Teste!!.'), 'flash_message', array('tipo' => 'success'), 'admin');
 
         $this->redirect(array('action' => 'admin_index'));
+    }
+
+    public function admin_alterar_senha() {
+
+        if ($this->request->is('post') || $this->request->is('put')) {
+
+            $usuario = $this->Usuario->find('first', array(
+                'conditions' => array(
+                    'Usuario.id' => $this->request->data['Usuario']['id']
+                )
+                    ));
+
+            $senha_atual = AuthComponent::password($this->request->data['Usuario']['senha_atual']);
+
+            if ($senha_atual == $usuario['Usuario']['senha']) {
+
+                if ($this->request->data['Usuario']['nova_senha'] == $this->request->data['Usuario']['confirmar_senha']) {
+
+                    $usuario['Usuario']['senha'] = $this->request->data['Usuario']['nova_senha'];
+                    
+                    if ($this->Usuario->save($usuario)) {
+                        $this->Session->setFlash(__('Senha alterada com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
+                        $this->redirect($this->referer());
+                    } else {
+                        $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                    }
+//                } else {
+//                    $this->request->data = $this->Usuario->read(null, $id);
+//                    unset($this->request->data['Usuario']['senha']);
+//                }
+                } else {
+                    $this->Session->setFlash(__('A senha e sua confirmação estão diferentes.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                }
+            } else {
+                $this->Session->setFlash(__('Senha atual incorreta.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+            }
+            
+            unset($this->request->data['Usuario']);
+            
+        }
+
+        $this->set('title_for_layout', __('Change Password') . ' - ' . $this->title_for_layout);
     }
 
 }

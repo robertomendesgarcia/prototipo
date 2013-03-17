@@ -3,13 +3,15 @@ $titulo = explode(' - ', $title_for_layout);
 $this->Html->addCrumb($titulo[0]);
 ?>
 
+<p class="campos_obrigatorios">* Campos Obrigatórios</p>
+
 <?php echo $this->Form->create('Usuario'); ?>
 <fieldset>
     <?php
     echo $this->Form->input('nome', array('label' => 'Nome:'));
     echo $this->Form->input('email', array('label' => 'E-mail:'));
     echo $this->Form->input('usuario', array('label' => 'Usuário:'));
-    echo $this->Form->input('tipo_id', array('label' => __('Tipo:'), 'type' => 'select', 'options' => $tipos, 'empty' => 'Selecione...'));
+    echo $this->Form->input('tipo_id', array('label' => __('Tipo:'), 'type' => 'select', 'options' => $tipos, 'value' => 2));
     echo $this->Form->input('senha', array('label' => 'Senha:', 'type' => 'password'));
     echo $this->Form->input('confirmar_senha', array('label' => 'Confirmar senha:', 'type' => 'password'));
     ?>
