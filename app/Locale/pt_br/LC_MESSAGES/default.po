@@ -466,3 +466,6 @@ msgstr "Ativos"
 
 msgid "New User"
 msgstr "Novo Usuario"
+
+msgid "Change Password"
+msgstr "Alterar Senha"

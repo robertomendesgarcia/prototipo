@@ -15,32 +15,22 @@
         ?>   
 
         <?php if ($config['usa_produtos']) { ?>
+
             <li>
-                <a href="<?php echo DEFAULT_URL; ?>produtos" title="<?php echo __('Products'); ?>"><?php echo __('Products'); ?></a>
-
-                <ul>
-
-                    <?php foreach ($itens_produto_categorias as $categoria) { ?>
-                    
-                        <li>
-                            
-                            <a href="<?php echo DEFAULT_URL; ?>produtos/categoria/" title="<?php echo $categoria['ProdutoCategoria']['nome']; ?>"><?php echo $categoria['ProdutoCategoria']['nome']; ?></a>            
-                            
-
-                        </li>
-
-                    <?php } ?>
-
-                </ul>
+                <a href="<?php echo DEFAULT_URL . 'produtos'; ?>" title="<?php echo __('Products'); ?>"><?php echo __('Products'); ?></a>            
 
 
+                <?php echo $this->element('monta_menu_categorias', array('tipo' => 'produtos')); ?>
 
             </li>
-        <?php } ?>   
+        <?php } ?>    
 
         <?php if ($config['usa_noticias']) { ?>
             <li>
                 <a href="<?php echo DEFAULT_URL; ?>noticias" title="<?php echo __('News'); ?>"><?php echo __('News'); ?></a>
+
+                <?php echo $this->element('monta_menu_categorias', array('tipo' => 'noticias')); ?>
+
             </li>
         <?php } ?>          
 

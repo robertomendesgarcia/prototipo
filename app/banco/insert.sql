@@ -111,13 +111,16 @@ INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `cr
 VALUES ('pagina_institucional', 'Site tem uma págia institucional.', '1', NOW(), NOW()); 
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
-VALUES ('endereco', 'Endereço físico da empresa.', '...', NOW(), NOW()); 
+VALUES ('endereco_fisico_empresa', 'Endereço físico da empresa.', '...', NOW(), NOW()); 
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
 VALUES ('telefone_1', 'Telefone 1.', '...', NOW(), NOW()); 
 
 INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
 VALUES ('telefone_2', 'Telefone 2.', '...', NOW(), NOW()); 
+
+INSERT INTO `prototipo_tcc`.`configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('json_configuracao_smtp', 'Configurações SMTP (json).', '', NOW(), NOW()); 
 
 -- -----------------------------------------------------
 -- Table `prototipo_tcc`.`banner_tipos`

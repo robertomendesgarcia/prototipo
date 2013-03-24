@@ -70,6 +70,8 @@ class NoticiasController extends AppController {
                                             die('Erro no upload!');
                                         }
                                     }
+                                } else {
+//                                    $this->Session->setFlash(__('Formato de arquvo inválido.'), 'flash_message', array('tipo' => 'warning'), 'admin');
                                 }
                             }
                         }

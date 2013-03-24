@@ -1,15 +1,25 @@
 
 /* --- Instalador --- */
 #c-instalador {
-    width: 450px;
+    width: 580px;
 }
 
 #c-instalador.a-criarUsuarioAdmin {
-    width: 570px;
+    /*width: 700px;*/
+}
+
+#wrapper {
+    float: left;
+    display: inline;
+    width: 450px;
 }
 
 #conteudo {
     overflow: auto;
+}
+
+p.campos_obrigatorios {    
+    padding-left: 20px; 
 }
 
 form {
@@ -29,11 +39,29 @@ div.botoes {
 
 /* --- Wizard --- */
 #c-wizard {
-    width: 500px;
-    
+    width: 630px;
+
 }
 
 fieldset.passo_2,
 fieldset.passo_3 {
-    display: none;
+    /*display: none;*/
 }
+
+
+/* --- Menu dos Passos --- */
+#menu_passos {
+    float: right;
+    display: inline;
+    width: 125px;
+    margin: 50px 0 0 0;
+}
+
+#menu_passos li {
+    margin: 15px 0;
+    height: 20px;
+    /*    width: 20px;*/
+    display: block;
+    padding: 5px;
+
+} 

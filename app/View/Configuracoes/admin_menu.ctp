@@ -13,6 +13,7 @@ $this->Html->addCrumb($titulo[0]);
             )));
     ?>
     <?php echo $this->Form->input('usa_trabalhe_conosco', array('label' => __('Quero ter um link Trabalhe Conosco.'), 'type' => 'checkbox')); ?>
+    <?php echo $this->Form->input('email_trabalhe_conosco', array('label' => __('E-mail para receber os contatos Trabalhe Conosco.'))); ?>
     <?php echo $this->Form->input('menu_degade', array('label' => __('Menu with gradient background.'), 'type' => 'checkbox')); ?>
     <div class="input">
         <?php echo $this->Form->input('cor_bg_menu', array('class' => 'color_picker', 'label' => __('Background color:'), 'div' => false)); ?>

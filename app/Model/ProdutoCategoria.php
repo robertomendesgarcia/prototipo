@@ -16,7 +16,7 @@ class ProdutoCategoria extends AppModel {
      * @var string
      */
     public $displayField = 'nome';
-    public $actsAs = array('Tree');
+    public $actsAs = array('Tree', 'Containable');
 
     /**
      * Validation rules

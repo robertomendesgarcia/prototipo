@@ -9,9 +9,9 @@ $this->Html->addCrumb($titulo[0]);
 <fieldset>
     <?php
     echo $this->Form->input('id', array('type' => 'hidden', 'value' => $this->Session->read('Auth.User.id')));
-echo $this->Form->input('senha_atual', array('label' => 'Senha atual:', 'type' => 'password'));
-    echo $this->Form->input('nova_senha', array('label' => 'Nova senha:', 'type' => 'password'));
-    echo $this->Form->input('confirmar_senha', array('label' => 'Confirmar nova senha:', 'type' => 'password'));
+echo $this->Form->input('senha_atual', array('label' => 'Senha atual:', 'type' => 'password', 'class' => 'obrigatorio'));
+    echo $this->Form->input('nova_senha', array('label' => 'Nova senha:', 'type' => 'password', 'class' => 'obrigatorio'));
+    echo $this->Form->input('confirmar_senha', array('label' => 'Confirmar nova senha:', 'type' => 'password', 'class' => 'obrigatorio'));
     ?>
 </fieldset>
 <div class="botoes">

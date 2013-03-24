@@ -37,7 +37,10 @@
         </div>
 
         <div id="conteudo">
-            <?php echo $content_for_layout; ?>
+            <?php echo $this->element('menu_passos'); ?>
+            <div id="wrapper">
+                <?php echo $content_for_layout; ?>
+            </div>
         </div>
 
         <div id="rodape">

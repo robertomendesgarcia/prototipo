@@ -148,6 +148,10 @@ class InstaladorController extends AppController {
     }
 
     public function configuraEmail() {
+        
+        
+        pr($this->request->data);
+        exit;
 
         /* App::uses('ConnectionManager', 'Model');
           $dataSource = ConnectionManager::getDataSource('default');

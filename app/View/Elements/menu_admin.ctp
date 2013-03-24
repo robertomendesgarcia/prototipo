@@ -59,6 +59,12 @@
                 <h3><?php echo __('Settings'); ?></h3>
                 <ul>
                     <li>
+                        <?php echo $this->Html->link(__('Dados Iniciais'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'dados')); ?>
+                    </li>
+                    <li>
+                        <?php echo $this->Html->link(__('E-mail'), array('controller' => 'configuracoes', 'action' => 'email', 'admin' => true)); ?>
+                    </li>
+                    <li>
                         <?php echo $this->Html->link(__('Geral'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'geral')); ?>
                     </li>
                     <li>

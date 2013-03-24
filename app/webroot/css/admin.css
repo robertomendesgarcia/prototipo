@@ -49,7 +49,6 @@ label.error {
 p.campos_obrigatorios {    
     display: block;
     margin-bottom: 15px;
-    padding-left: 20px;
     text-transform: italic;
     color: #939393;    
 }
@@ -93,6 +92,8 @@ form label {
     color: #3589ba;
     font-weight: bold;  
 }
+
+form div.textarea textarea,
 form .select select,
 form .input input {
     padding: 6px;
@@ -631,6 +632,12 @@ form .botoes a.cancelar {
 #c-configuracoes #conteudo fieldset:first-child {
     margin-top: 0;
 }
+
+#c-configuracoes form.form_email div.input input,
+#c-configuracoes form.form_dados div.input input {
+    width: 250px;
+}
+
 
 /* --- Bem Vindo --- */
 #c-usuarios.a-admin_bem_vindo #conteudo #centro table tr th,

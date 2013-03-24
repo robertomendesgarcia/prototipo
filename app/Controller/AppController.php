@@ -147,11 +147,106 @@ class AppController extends Controller {
             $this->loadModel('ProdutoCategoria');
             $produto_categorias = $this->ProdutoCategoria->find('all', array(
                 'conditions' => array(
-                    'ProdutoCategoria.ativo' => 1
+                    'ProdutoCategoria.ativo' => 1,
+                    'ProdutoCategoria.parent_id' => null
                 ),
-                'order' => 'ProdutoCategoria.nome ASC'
+                'order' => 'ProdutoCategoria.nome ASC',
+                'fields' => array(
+                    'ProdutoCategoria.id',
+                    'ProdutoCategoria.nome',
+                ),
+                'recursive' => 5,
+                'contain' => array(
+                    'CategoriaFilha' => array(
+                        'fields' => array(
+                            'CategoriaFilha.id',
+                            'CategoriaFilha.nome',
+                        ),
+                        'CategoriaFilha' => array(
+                            'fields' => array(
+                                'CategoriaFilha.id',
+                                'CategoriaFilha.nome',
+                            ),
+                            'CategoriaFilha' => array(
+                                'fields' => array(
+                                    'CategoriaFilha.id',
+                                    'CategoriaFilha.nome',
+                                ),
+                                'CategoriaFilha' => array(
+                                    'fields' => array(
+                                        'CategoriaFilha.id',
+                                        'CategoriaFilha.nome',
+                                    ),
+                                    'CategoriaFilha' => array(
+                                        'fields' => array(
+                                            'CategoriaFilha.id',
+                                            'CategoriaFilha.nome',
+                                        ),
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
                     ));
+
+
+//            $produto_categorias = $this->ProdutoCategoria->generateTreeList(array('ProdutoCategoria.ativo' => 1), null, null, '<ul><li>');
+
             $this->set('itens_produto_categorias', $produto_categorias);
+        }
+        
+        if ($config['usa_noticias']) {
+            $this->loadModel('NoticiaCategoria');
+            $noticia_categorias = $this->NoticiaCategoria->find('all', array(
+                'conditions' => array(
+                    'NoticiaCategoria.ativo' => 1,
+                    'NoticiaCategoria.parent_id' => null
+                ),
+                'order' => 'NoticiaCategoria.nome ASC',
+                'fields' => array(
+                    'NoticiaCategoria.id',
+                    'NoticiaCategoria.nome',
+                ),
+                'recursive' => 5,
+                'contain' => array(
+                    'CategoriaFilha' => array(
+                        'fields' => array(
+                            'CategoriaFilha.id',
+                            'CategoriaFilha.nome',
+                        ),
+                        'CategoriaFilha' => array(
+                            'fields' => array(
+                                'CategoriaFilha.id',
+                                'CategoriaFilha.nome',
+                            ),
+                            'CategoriaFilha' => array(
+                                'fields' => array(
+                                    'CategoriaFilha.id',
+                                    'CategoriaFilha.nome',
+                                ),
+                                'CategoriaFilha' => array(
+                                    'fields' => array(
+                                        'CategoriaFilha.id',
+                                        'CategoriaFilha.nome',
+                                    ),
+                                    'CategoriaFilha' => array(
+                                        'fields' => array(
+                                            'CategoriaFilha.id',
+                                            'CategoriaFilha.nome',
+                                        ),
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+                    ));
+
+
+//            $produto_categorias = $this->ProdutoCategoria->generateTreeList(array('ProdutoCategoria.ativo' => 1), null, null, '<ul><li>');
+
+            $this->set('itens_noticia_categorias', $noticia_categorias);
         }
 
 

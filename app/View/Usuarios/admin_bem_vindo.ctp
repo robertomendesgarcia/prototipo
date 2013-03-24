@@ -6,16 +6,16 @@
         <th><?php echo __('Last Record'); ?></th>
     </tr>
     <tr>
+        <th><?php echo __('Banners'); ?></th>
+        <td><?php echo $banners; ?></td>        
+        <td><?php echo $banner_ativos; ?></td>
+        <td><?php echo $banner_ultimo; ?></td>
+    </tr>
+    <tr>
         <th><?php echo __('News Categories'); ?></th>
         <td><?php echo $noticia_categorias; ?></td>
         <td><?php echo $noticia_categoria_ativos; ?></td>
         <td><?php echo $noticia_categoria_ultima; ?></td>
-    </tr>
-    <tr>
-        <th><?php echo __('News'); ?></th>
-        <td><?php echo $noticias; ?></td>
-        <td><?php echo $noticia_ativas; ?></td>
-        <td><?php echo $noticia_ultima; ?></td>
     </tr>
     <tr>
         <th><?php echo __('Product Categories'); ?></th>
@@ -24,16 +24,16 @@
         <td><?php echo $produto_categoria_ultima; ?></td>
     </tr>
     <tr>
-        <th><?php echo __('Products'); ?></th>
-        <td><?php echo $produtos; ?></td>
-        <td><?php echo $produto_ativos; ?></td>
-        <td><?php echo $produto_ultimo; ?></td>
+        <th><?php echo __('Resumes'); ?></th>
+        <td><?php echo $curriculos; ?></td>        
+        <td><?php echo $curriculo_ativos; ?></td>
+        <td><?php echo $curriculo_ultimo; ?></td>
     </tr>
     <tr>
-        <th><?php echo __('Banners'); ?></th>
-        <td><?php echo $banners; ?></td>        
-        <td><?php echo $banner_ativos; ?></td>
-        <td><?php echo $banner_ultimo; ?></td>
+        <th><?php echo __('News'); ?></th>
+        <td><?php echo $noticias; ?></td>
+        <td><?php echo $noticia_ativas; ?></td>
+        <td><?php echo $noticia_ultima; ?></td>
     </tr>
     <tr>
         <th><?php echo __('Newsletter'); ?></th>
@@ -42,10 +42,10 @@
         <td><?php echo $newsletter_ultimo; ?></td>
     </tr>
     <tr>
-        <th><?php echo __('Resumes'); ?></th>
-        <td><?php echo $curriculos; ?></td>        
-        <td><?php echo $curriculo_ativos; ?></td>
-        <td><?php echo $curriculo_ultimo; ?></td>
+        <th><?php echo __('Products'); ?></th>
+        <td><?php echo $produtos; ?></td>
+        <td><?php echo $produto_ativos; ?></td>
+        <td><?php echo $produto_ultimo; ?></td>
     </tr>
     <tr>
         <th><?php echo __('Users'); ?></th>

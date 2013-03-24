@@ -15,6 +15,7 @@ class ProdutoCategoriasController extends AppController {
      * @return void
      */
     public function admin_index() {
+//        $categorias = $this->ProdutoCategoria->generateTreeList(null, null, null, '<ul><li>');
         $categorias = $this->ProdutoCategoria->generateTreeList(null, null, null, '&nbsp;&nbsp;&nbsp;&nbsp;');
         $this->set('categorias', $categorias);
 
