@@ -172,6 +172,9 @@ class UsuariosController extends AppController {
 
     public function admin_index() {
         $this->Usuario->recursive = 0;
+
+        $this->set('title_for_layout', __('Usuários') . ' - ' . $this->title_for_layout);
+
         $this->set('usuarios', $this->paginate());
     }
 
@@ -363,7 +366,7 @@ class UsuariosController extends AppController {
                 if ($this->request->data['Usuario']['nova_senha'] == $this->request->data['Usuario']['confirmar_senha']) {
 
                     $usuario['Usuario']['senha'] = $this->request->data['Usuario']['nova_senha'];
-                    
+
                     if ($this->Usuario->save($usuario)) {
                         $this->Session->setFlash(__('Senha alterada com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                         $this->redirect($this->referer());
@@ -380,9 +383,8 @@ class UsuariosController extends AppController {
             } else {
                 $this->Session->setFlash(__('Senha atual incorreta.'), 'flash_message', array('tipo' => 'warning'), 'admin');
             }
-            
+
             unset($this->request->data['Usuario']);
-            
         }
 
         $this->set('title_for_layout', __('Change Password') . ' - ' . $this->title_for_layout);

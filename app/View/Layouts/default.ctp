@@ -1,3 +1,5 @@
+<?php // echo '<pre>'; pr($config); echo '</pre>';    ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
     <head>
@@ -14,19 +16,51 @@
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/masked-input/jquery.maskedinput.min.js"></script>
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/geral_externo.js"></script>
 
-
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 
-
-
+        <link href="<?php echo DEFAULT_URL; ?>css/reset.css" media="all" rel="stylesheet" type="text/css" />
         <link href="<?php echo DEFAULT_URL; ?>js/uniform/css/uniform.default.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
         <link href="<?php echo DEFAULT_URL; ?>css/geral_externo.css" media="all" rel="stylesheet" type="text/css" />
 
-
         <style type="text/css">
-            #wrapper {
-                background-color: <?php echo!empty($config['cor_bg_html']) ? $config['cor_bg_html'] : '#FFFFFF'; ?>;
-            }            
+            html {
+                <?php
+                if (!empty($config['img_bg_html'])) {
+                    echo "background: transparent url('" . DEFAULT_URL . $config['img_bg_html'] . "') 0 0 " . $config['img_bg_html_repeat'] . ";";
+                }
+                ?>
+            }
+            #topo {
+                <?php
+                if (!empty($config['img_bg_topo'])) {
+                    echo "background: transparent url('" . DEFAULT_URL . $config['img_bg_topo'] . "') 0 0 no-repeat;";
+                }
+                ?>
+            }
+            #topo h1 a {
+                <?php
+                if (!empty($config['img_logo'])) {
+                    echo "background: transparent url('" . DEFAULT_URL . $config['img_logo'] . "') 0 0 no-repeat;";
+                }
+                ?>
+            }
+            #menu ul li {
+                <?php
+                if (!empty($config['cor_bg_menu'])) {
+                    echo "background-color: " . $config['cor_bg_menu'] . ";";
+                }
+                ?>
+            }
+            #menu ul li a {
+                <?php
+                if (!empty($config['cor_fonte_menu'])) {
+                    echo "color: " . $config['cor_fonte_menu'] . ";";
+                }
+                ?>
+            }
+            #conteudo {
+                background-color: #FFF;
+            }
             #wrapper p {
                 color: <?php echo!empty($config['cor_fonte_texto']) ? $config['cor_fonte_texto'] : '#333333'; ?>;
             }            
@@ -44,7 +78,9 @@
                     <?php echo $config['titulo_site']; ?>
                 </a>
             </h1>
-
+            <h2>
+                <?php echo $config['slogan']; ?>
+            </h2>
             <?php
             if ($config['posicao_menu'] == 1) {
                 echo $this->element('menu_externo', array('tipo' => $config['posicao_menu']));

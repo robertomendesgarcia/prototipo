@@ -8,6 +8,11 @@
 
     <?php if ($config['mostrar_noticias_lateral'] && isset($noticias_lateral)) { ?>
         <h3><?php echo __('News'); ?></h3>
+
+        <?php echo $this->Form->create('Noticia', array('class' => 'form_busca', 'url' => array('controller' => 'noticias', 'action' => 'index'))); ?>
+        <?php echo $this->Form->input('titulo', array('label' => false, 'div' => false)); ?>
+        <?php echo $this->Form->end('OK'); ?>
+
         <ul>
             <?php foreach ($noticias_lateral as $noticia_lateral) { ?>
                 <li>
@@ -32,6 +37,11 @@
 
     <?php if ($config['mostrar_produtos_lateral'] && isset($noticias_lateral)) { ?>
         <h3><?php echo __('Products'); ?></h3>
+
+        <?php echo $this->Form->create('Produto', array('class' => 'form_busca', 'url' => array('controller' => 'produtos', 'action' => 'index'))); ?>
+        <?php echo $this->Form->input('nome', array('label' => false, 'div' => false)); ?>
+        <?php echo $this->Form->end('OK'); ?>
+
         <ul>
             <?php foreach ($produtos_lateral as $produto_lateral) { ?>
                 <li>
@@ -39,9 +49,11 @@
                         <strong>
                             <?php echo $produto_lateral['Produto']['nome']; ?>
                         </strong>
-                        <strong>
-                            <?php echo $produto_lateral['Produto']['valor']; ?>
-                        </strong>
+                        <?php
+                        if (!empty($produto_lateral['Produto']['valor'])) {
+                            echo '<span> R$ ' . number_format($produto_lateral['Produto']['valor'], 2, ',', '') . '</span>';
+                        }
+                        ?>
                     </a>
                 </li>
             <?php } ?>

@@ -153,7 +153,7 @@ class ConfiguracoesController extends AppController {
                     'pin' => 'json_configuracao_smtp'
                 )
                     ));
-            if (!empty($config)) {                
+            if (!empty($config)) {
 //                $config = json_decode($config['Configuracao']['conteudo']);
 //                pr(get_object_vars($config)); exit;                
                 $this->request->data['Configuracao'] = get_object_vars(json_decode($config['Configuracao']['conteudo']));
@@ -162,77 +162,83 @@ class ConfiguracoesController extends AppController {
 
         $this->set('title_for_layout', __('Configurações de E&#45;mail') . ' - ' . $this->title_for_layout);
     }
-    
 
     public function admin_config($pin) {
 
         if ($this->request->is('post')) {
 
-            $dataSource = $this->Configuracao->getDataSource();
-            $dataSource->begin();
-            try {
+            if (!empty($this->request->data['Configuracao'])) {
 
-                foreach ($this->request->data['Configuracao'] as $key => $value) {
 
-                    if (!in_array($key, array('img_bg_html', 'img_logo', 'img_bg_topo'))) {
+                $dataSource = $this->Configuracao->getDataSource();
+                $dataSource->begin();
+                try {
 
-                        $config = $this->Configuracao->find('first', array(
-                            'conditions' => array(
-                                'pin' => $key
-                            )
-                                ));
-                        if (!empty($config)) {
-                            $config['Configuracao']['conteudo'] = $value;
-                            if (!$this->Configuracao->save($config)) {
-                                throw new Exception(__('The settings could not be saved. Please, try again.'));
+                    foreach ($this->request->data['Configuracao'] as $key => $value) {
+
+                        if (!in_array($key, array('img_bg_html', 'img_logo', 'img_bg_topo'))) {
+
+                            $config = $this->Configuracao->find('first', array(
+                                'conditions' => array(
+                                    'pin' => $key
+                                )
+                                    ));
+                            if (!empty($config)) {
+                                $config['Configuracao']['conteudo'] = $value;
+                                if (!$this->Configuracao->save($config)) {
+                                    throw new Exception(__('The settings could not be saved. Please, try again.'));
+                                }
                             }
-                        }
-                    } else {
+                        } else {
 
-                        if ($value['error'] == 0) {
+                            if ($value['error'] == 0) {
 
-                            $extensao = strrchr($value['name'], '.');
-                            $extensao = strtolower(str_replace('.', '', $extensao));
+                                $extensao = strrchr($value['name'], '.');
+                                $extensao = strtolower(str_replace('.', '', $extensao));
 
-                            if (in_array($extensao, $this->Configuracao->img['formatos'])) {
+                                if (in_array($extensao, $this->Configuracao->img['formatos'])) {
 
-                                $destino = $this->Configuracao->img['path'] . $key . '.' . $extensao;
+                                    $destino = $this->Configuracao->img['path'] . $key . '.' . $extensao;
 
-                                if (move_uploaded_file($value['tmp_name'], $destino)) {
+                                    if (move_uploaded_file($value['tmp_name'], $destino)) {
 
-                                    $config = $this->Configuracao->find('first', array(
-                                        'conditions' => array(
-                                            'pin' => $key
-                                        )
-                                            ));
-                                    if (!empty($config)) {
-                                        $config['Configuracao']['conteudo'] = $destino;
-                                        if (!$this->Configuracao->save($config)) {
-                                            throw new Exception(__('The settings could not be saved. Please, try again.'));
+                                        $config = $this->Configuracao->find('first', array(
+                                            'conditions' => array(
+                                                'pin' => $key
+                                            )
+                                                ));
+                                        if (!empty($config)) {
+                                            $config['Configuracao']['conteudo'] = $destino;
+                                            if (!$this->Configuracao->save($config)) {
+                                                throw new Exception(__('The settings could not be saved. Please, try again.'));
+                                            }
                                         }
+                                    } else {
+                                        throw new Exception(__('Erro no upload do arquivo.'));
                                     }
                                 } else {
-                                    throw new Exception(__('Erro no upload do arquivo.'));
+                                    throw new Exception(__('Arquivo inválido.'));
                                 }
-                            } else {
-                                throw new Exception(__('Arquivo inválido.'));
                             }
                         }
                     }
-                }
 
-                $dataSource->commit();
-                $this->Session->setFlash(__('Settings saved successfully.'), 'flash_message', array('tipo' => 'success'), 'admin');
-            } catch (Exception $e) {
-                $this->Session->setFlash($e->getMessage(), 'flash_message', array('tipo' => 'error'), 'admin');
-                $dataSource->rollback();
-            }
-        } else {
-            $configuracoes = $this->Configuracao->find('all');
-            foreach ($configuracoes as $configuracao) {
-                $this->request->data['Configuracao'][$configuracao['Configuracao']['pin']] = $configuracao['Configuracao']['conteudo'];
+                    $dataSource->commit();
+                    $this->Session->setFlash(__('Settings saved successfully.'), 'flash_message', array('tipo' => 'success'), 'admin');
+                } catch (Exception $e) {
+                    $this->Session->setFlash($e->getMessage(), 'flash_message', array('tipo' => 'error'), 'admin');
+                    $dataSource->rollback();
+                }
+            } else {
+                $this->Session->setFlash(__('Alterações canceladas.'), 'flash_message', array('tipo' => 'info'), 'admin');
             }
         }
+
+        $configuracoes = $this->Configuracao->find('all');
+        foreach ($configuracoes as $configuracao) {
+            $this->request->data['Configuracao'][$configuracao['Configuracao']['pin']] = $configuracao['Configuracao']['conteudo'];
+        }
+        
 
         $titulo = __('Configurações do Layout');
         switch ($pin) {

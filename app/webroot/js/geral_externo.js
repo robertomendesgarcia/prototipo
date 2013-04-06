@@ -6,13 +6,21 @@ $(document).ready(function(){
         $(this).prev('label').append('<span class="requerido"> *</span>');
     });
     
-    if ($('body#c-pages.a-contato').length) {
+    var height_li = 0;
+    $.each($('ul.listagem li'), function(index, value){
+        if ($(this).height() > height_li) {
+            height_li = $(this).height();
+        }
+    });
+    $('ul.listagem li').height(height_li);
+    
+    if ($('body#c-paginas.a-contato').length) {
         
         $('#ContatoNome').focus();
         
         $('#ContatoTelefone').mask('(99) 9999-9999?9');
         
-        $('#ContatoContatoForm').validate({
+        $('#form_contato').validate({
             rules: {
                 'data[Contato][nome]': 'required',
                 'data[Contato][email]': {
@@ -41,13 +49,13 @@ $(document).ready(function(){
         
     }
     
-    if ($('body#c-pages.a-trabalhe_conosco').length) {
+    if ($('body#c-paginas.a-trabalhe_conosco').length) {
         
         $('#CurriculoNome').focus();
         
         $('#CurriculoTelefone').mask('(99) 9999-9999?9');
         
-        $('#CurriculoTrabalheConoscoForm').validate({
+        $('#form_trabalhe_conosco').validate({
             rules: {
                 'data[Curriculo][nome]': 'required',
                 'data[Curriculo][email]': {

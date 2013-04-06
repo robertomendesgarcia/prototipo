@@ -1,8 +1,8 @@
 <table cellpadding="0" cellspacing="0" class="listagem">
       <tr>
             <th><?php echo $this->Paginator->sort('nome'); ?></th>
-            <th><?php echo $this->Paginator->sort('email'); ?></th>
-            <th><?php echo $this->Paginator->sort('data_inscricao'); ?></th>
+            <th><?php echo $this->Paginator->sort('email', 'E-mail'); ?></th>
+            <th><?php echo $this->Paginator->sort('data_inscricao', 'Data de Inscrição'); ?></th>
             <th class="actions"><?php echo __('Actions'); ?></th>
       </tr>
       <?php foreach ($newsletters as $newsletter) { ?>

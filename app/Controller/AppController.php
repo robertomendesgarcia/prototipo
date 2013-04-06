@@ -94,74 +94,76 @@ class AppController extends Controller {
             define("DEFAULT_URL", Router::url("/", true));
         }
 
+        if (!isset($config)) {
+            $this->loadModel('Configuracao');
+            $config = $this->Configuracao->find('list', array(
+                'fields' => array(
+                    'pin',
+                    'conteudo'
+                )
+                    ));
+            $this->set('config', $config);
+
+//            $this->Session->write('Storage.config', $config);
+        }
+
         if (isset($this->params['admin'])) {
             $this->layout = 'admin';
-        }
+        } else {
 
-        $this->loadModel('Configuracao');
-        $config = $this->Configuracao->find('list', array(
-            'fields' => array(
-                'pin',
-                'conteudo'
-            )
-                ));
-        $this->set('config', $config);
+            if (($config['mostrar_noticias_lateral']) && (!isset($noticias_lateral))) {
+                $this->loadModel('Noticia');
+                $noticias = $this->Noticia->find('all', array(
+                    'conditions' => array(
+                        'Noticia.ativo' => 1
+                    ),
+                    'order' => 'Noticia.destaque ASC, Noticia.data DESC',
+                    'limit' => !empty($config['qtde_noticias_lateral']) ? $config['qtde_noticias_lateral'] : 5,
+                        ));
+                $this->set('noticias_lateral', $noticias);
+            }
 
-        if ($config['mostrar_noticias_lateral']) {
-            $this->loadModel('Noticia');
-            $noticias = $this->Noticia->find('all', array(
-                'conditions' => array(
-                    'Noticia.ativo' => 1
-                ),
-                'order' => 'Noticia.destaque ASC, Noticia.data DESC',
-                'limit' => !empty($config['qtde_noticias_lateral']) ? $config['qtde_noticias_lateral'] : 5,
-                    ));
-            $this->set('noticias_lateral', $noticias);
-        }
+            if (($config['mostrar_produtos_lateral']) && (!isset($produtos_lateral))) {
+                $this->loadModel('Produto');
+                $produtos = $this->Produto->find('all', array(
+                    'conditions' => array(
+                        'Produto.ativo' => 1
+                    ),
+                    'order' => 'Produto.destaque ASC',
+                    'limit' => !empty($config['qtde_produtos_lateral']) ? $config['qtde_produtos_lateral'] : 5,
+                        ));
+                $this->set('produtos_lateral', $produtos);
+            }
 
-        if ($config['mostrar_produtos_lateral']) {
-            $this->loadModel('Produto');
-            $produtos = $this->Produto->find('all', array(
-                'conditions' => array(
-                    'Produto.ativo' => 1
-                ),
-                'order' => 'Produto.destaque ASC',
-                'limit' => !empty($config['qtde_produtos_lateral']) ? $config['qtde_produtos_lateral'] : 5,
-                    ));
-            $this->set('produtos_lateral', $produtos);
-        }
+            if (!isset($opcoes_menu)) {
 
-        $this->loadModel('Pagina');
-        $paginas = $this->Pagina->find('all', array(
-            'conditions' => array(
-                'Pagina.ativo' => 1
-            ),
-            'fields' => array(
-                'pin',
-                'titulo',
-            )
-                ));
-        $this->set('opcoes_menu', $paginas);
+                $this->loadModel('Pagina');
+                $paginas = $this->Pagina->find('all', array(
+                    'conditions' => array(
+                        'Pagina.ativo' => 1
+                    ),
+                    'fields' => array(
+                        'pin',
+                        'titulo',
+                    )
+                        ));
+                $this->set('opcoes_menu', $paginas);
+            }
 
-        if ($config['usa_produtos']) {
-            $this->loadModel('ProdutoCategoria');
-            $produto_categorias = $this->ProdutoCategoria->find('all', array(
-                'conditions' => array(
-                    'ProdutoCategoria.ativo' => 1,
-                    'ProdutoCategoria.parent_id' => null
-                ),
-                'order' => 'ProdutoCategoria.nome ASC',
-                'fields' => array(
-                    'ProdutoCategoria.id',
-                    'ProdutoCategoria.nome',
-                ),
-                'recursive' => 5,
-                'contain' => array(
-                    'CategoriaFilha' => array(
-                        'fields' => array(
-                            'CategoriaFilha.id',
-                            'CategoriaFilha.nome',
-                        ),
+            if (($config['usa_produtos']) && (!isset($itens_produto_categorias))) {
+                $this->loadModel('ProdutoCategoria');
+                $produto_categorias = $this->ProdutoCategoria->find('all', array(
+                    'conditions' => array(
+                        'ProdutoCategoria.ativo' => 1,
+                        'ProdutoCategoria.parent_id' => null
+                    ),
+                    'order' => 'ProdutoCategoria.nome ASC',
+                    'fields' => array(
+                        'ProdutoCategoria.id',
+                        'ProdutoCategoria.nome',
+                    ),
+                    'recursive' => 5,
+                    'contain' => array(
                         'CategoriaFilha' => array(
                             'fields' => array(
                                 'CategoriaFilha.id',
@@ -182,39 +184,39 @@ class AppController extends Controller {
                                             'CategoriaFilha.id',
                                             'CategoriaFilha.nome',
                                         ),
+                                        'CategoriaFilha' => array(
+                                            'fields' => array(
+                                                'CategoriaFilha.id',
+                                                'CategoriaFilha.nome',
+                                            ),
+                                        )
                                     )
                                 )
                             )
                         )
                     )
-                )
-                    ));
+                        ));
 
 
 //            $produto_categorias = $this->ProdutoCategoria->generateTreeList(array('ProdutoCategoria.ativo' => 1), null, null, '<ul><li>');
 
-            $this->set('itens_produto_categorias', $produto_categorias);
-        }
-        
-        if ($config['usa_noticias']) {
-            $this->loadModel('NoticiaCategoria');
-            $noticia_categorias = $this->NoticiaCategoria->find('all', array(
-                'conditions' => array(
-                    'NoticiaCategoria.ativo' => 1,
-                    'NoticiaCategoria.parent_id' => null
-                ),
-                'order' => 'NoticiaCategoria.nome ASC',
-                'fields' => array(
-                    'NoticiaCategoria.id',
-                    'NoticiaCategoria.nome',
-                ),
-                'recursive' => 5,
-                'contain' => array(
-                    'CategoriaFilha' => array(
-                        'fields' => array(
-                            'CategoriaFilha.id',
-                            'CategoriaFilha.nome',
-                        ),
+                $this->set('itens_produto_categorias', $produto_categorias);
+            }
+
+            if (($config['usa_noticias']) && (!isset($itens_noticia_categorias))) {
+                $this->loadModel('NoticiaCategoria');
+                $noticia_categorias = $this->NoticiaCategoria->find('all', array(
+                    'conditions' => array(
+                        'NoticiaCategoria.ativo' => 1,
+                        'NoticiaCategoria.parent_id' => null
+                    ),
+                    'order' => 'NoticiaCategoria.nome ASC',
+                    'fields' => array(
+                        'NoticiaCategoria.id',
+                        'NoticiaCategoria.nome',
+                    ),
+                    'recursive' => 5,
+                    'contain' => array(
                         'CategoriaFilha' => array(
                             'fields' => array(
                                 'CategoriaFilha.id',
@@ -235,19 +237,24 @@ class AppController extends Controller {
                                             'CategoriaFilha.id',
                                             'CategoriaFilha.nome',
                                         ),
+                                        'CategoriaFilha' => array(
+                                            'fields' => array(
+                                                'CategoriaFilha.id',
+                                                'CategoriaFilha.nome',
+                                            ),
+                                        )
                                     )
                                 )
                             )
                         )
                     )
-                )
-                    ));
+                        ));
 
 
 //            $produto_categorias = $this->ProdutoCategoria->generateTreeList(array('ProdutoCategoria.ativo' => 1), null, null, '<ul><li>');
 
-            $this->set('itens_noticia_categorias', $noticia_categorias);
-        }
+                $this->set('itens_noticia_categorias', $noticia_categorias);
+            }
 
 
 //        $this->loadModel('Menu');
@@ -258,6 +265,7 @@ class AppController extends Controller {
 //            )
 //                ));
 //        $this->set('menu', $menu);
+        }
     }
 
     /**

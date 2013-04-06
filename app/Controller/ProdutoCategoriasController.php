@@ -94,7 +94,7 @@ class ProdutoCategoriasController extends AppController {
             $this->Session->setFlash(__('Category successfully deleted.'), 'flash_message', array('tipo' => 'success'), 'admin');
             $this->redirect(array('action' => 'index'));
         } else {
-            $this->Session->setFlash(__('This category can not be deleted because there are other categories or news related to it.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+            $this->Session->setFlash(__('This category can not be deleted because there are other categories or products related to it.'), 'flash_message', array('tipo' => 'warning'), 'admin');
             $this->redirect(array('action' => 'index'));
         }
     }

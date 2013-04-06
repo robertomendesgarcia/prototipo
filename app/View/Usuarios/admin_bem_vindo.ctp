@@ -1,3 +1,8 @@
+<?php
+$titulo = explode(' - ', $title_for_layout);
+$this->Html->addCrumb($titulo[0]);
+?>
+
 <table cellspacing="0" cellpadding="0" class="listagem">
     <tr class="cabecalho">
         <th>&nbsp;</th>

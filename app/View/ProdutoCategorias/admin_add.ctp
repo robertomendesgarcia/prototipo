@@ -5,11 +5,11 @@ $this->Html->addCrumb($titulo[0]);
 
 <p class="campos_obrigatorios">* Campos Obrigatórios</p>
 
-<?php echo $this->Form->create('ProdutoCategoria'); ?>
+<?php echo $this->Form->create('ProdutoCategoria', array('id' => 'form_categoria')); ?>
 
 <fieldset>
     <?php
-    echo $this->Form->input('nome', array('label' => __('Category:')));
+    echo $this->Form->input('nome', array('label' => __('Category:'), 'class' => 'obrigatorio'));
     echo $this->Form->input('parent_id', array('label' => __('Parent:'), 'type' => 'select', 'options' => $noticiaCategorias, 'empty' => 'Selecione...'));
     echo $this->Form->input('ativo', array('label' => __('Active:'), 'type' => 'select', 'options' => array(
             '1' => __('Yes'),
@@ -25,3 +25,16 @@ $this->Html->addCrumb($titulo[0]);
     <?php echo $this->Form->postLink(__('Cancel'), array('action' => 'index'), array('class' => 'cancelar'), __('Do you really want to cancel this category?')); ?>
 </div>
 
+<script type="text/javascript">
+    if ($('#form_categoria').length) {        
+        $('#ProdutoCategoriaNome').focus();        
+        $('#form_categoria').validate({
+            rules: {
+                'data[ProdutoCategoria][nome]': 'required'
+            },
+            messages: {
+                'data[ProdutoCategoria][nome]': 'Informe o nome da categoria.'
+            }
+        });        
+    }                
+</script>

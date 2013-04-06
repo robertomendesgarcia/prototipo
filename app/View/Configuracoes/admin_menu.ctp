@@ -14,7 +14,7 @@ $this->Html->addCrumb($titulo[0]);
     ?>
     <?php echo $this->Form->input('usa_trabalhe_conosco', array('label' => __('Quero ter um link Trabalhe Conosco.'), 'type' => 'checkbox')); ?>
     <?php echo $this->Form->input('email_trabalhe_conosco', array('label' => __('E-mail para receber os contatos Trabalhe Conosco.'))); ?>
-    <?php echo $this->Form->input('menu_degade', array('label' => __('Menu with gradient background.'), 'type' => 'checkbox')); ?>
+    <?php // echo $this->Form->input('menu_degade', array('label' => __('Menu with gradient background.'), 'type' => 'checkbox')); ?>
     <div class="input">
         <?php echo $this->Form->input('cor_bg_menu', array('class' => 'color_picker', 'label' => __('Background color:'), 'div' => false)); ?>
         <div class="preview"></div>
@@ -29,6 +29,6 @@ $this->Html->addCrumb($titulo[0]);
     <?php //echo $this->Form->submit(__('Submit'), array('div' => false)); ?>
     <input type="image" src="<?php echo $this->webroot; ?>img/admin/layout/bt_gravar.png" alt="submit">
     <?php echo $this->Form->end(); ?>
-    <?php echo $this->Form->postLink(__('Cancel'), array('action' => $this->params['action'], 'layout'), array('class' => 'cancelar'), __('Deseja realmente cancelar as alterações?')); ?>
+    <?php echo $this->Form->postLink(__('Cancel'), array('action' => $this->params['action'], 'menu'), array('class' => 'cancelar'), __('Deseja realmente cancelar as alterações?')); ?>
 </div>
 

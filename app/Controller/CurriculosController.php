@@ -17,6 +17,7 @@ class CurriculosController extends AppController {
     public function admin_index() {
         $this->Curriculo->recursive = 0;
         $this->set('curriculos', $this->paginate());
+        $this->set('title_for_layout', __('Resumes') . ' - ' . $this->title_for_layout);
     }
 
     /**

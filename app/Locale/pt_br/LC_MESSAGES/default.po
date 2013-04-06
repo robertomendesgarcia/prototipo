@@ -23,6 +23,9 @@ msgstr "Esta categoria não pode ser excluído porque existem outras categorias 
 msgid "This category can not be deleted because there are other categories or news related to it."
 msgstr "Esta categoria não pode ser excluído porque existem notícias ou outras categorias relacionadas a ele."
 
+msgid "This category can not be deleted because there are other categories or products related to it."
+msgstr "Esta categoria não pode ser excluído porque existem produtos ou outras categorias relacionadas a ele."
+
 msgid "Do you really want to cancel this category?"
 msgstr "Deseja realmente cancelar esta categoria?"
 
@@ -178,8 +181,8 @@ msgstr "Arquivo:"
 msgid "Validate:"
 msgstr "Validade:"
 
-msgid "Newsletter"
-msgstr "Novidades"
+msgid "Newsletter-"
+msgstr "Novidades-"
 
 msgid "Background color:"
 msgstr "Cor de fundo:"
@@ -295,7 +298,11 @@ msgstr "Editar Página"
 msgid "New Page"
 msgstr "Nova Página"
 
+msgid "Show products on home."
+msgstr "Mostrar produtos na capa."
 
+msgid "Show products on sidebar."
+msgstr "Mostrar produtos na barra lateral."
 
 
 
@@ -469,3 +476,15 @@ msgstr "Novo Usuario"
 
 msgid "Change Password"
 msgstr "Alterar Senha"
+
+msgid "Show news on home."
+msgstr "Mostrar notícias na capa."
+
+msgid "Show news on sidebar."
+msgstr "Mostrar notícias na barra lateral."
+
+msgid "I want to have news on my site."
+msgstr "Desejo ter notícias no meu site."
+
+msgid "I want to have products on my site."
+msgstr "Desejo ter produtos no meu site."

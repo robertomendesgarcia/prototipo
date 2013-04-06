@@ -26,7 +26,7 @@
                 <h2><?php echo trim($titulo[0]); ?></h2>
                 <?php echo $this->element('breadcrumbs'); ?>
             </div>
-            <ul>
+            <ul class="choose_language">
                 <li class="lang_portuguese">
                     <a href="<?php echo DEFAULT_URL; ?>choose-language/pt-br" title="<?php echo __('Portuguese'); ?>"><?php echo __('Portuguese'); ?></a>
                 </li>
@@ -100,6 +100,32 @@
                             'data[Email][usuario]': 'Informe o usuário do e-mail.',
                             'data[Email][senha]': 'Informe a senha do e-mail.',
                             'data[Email][porta]': 'Informe a porta do e-mail.'                            
+                        }
+                    });        
+                }
+                
+                if ($('#form_cria_usuario_adm').length) {        
+                    $('#UsuarioNome').focus();        
+                    $('#form_cria_usuario_adm').validate({
+                        rules: {
+                            'data[Usuario][nome]': 'required',
+                            'data[Usuario][email]': {                                
+                                required : true,
+                                email : true
+                            },                            
+                            'data[Usuario][usuario]': 'required',                            
+                            'data[Usuario][senha]': 'required',                            
+                            'data[Usuario][confirmar_senha]': 'required'
+                        },
+                        messages: {
+                            'data[Usuario][smtp]': 'Informe o nome.',
+                            'data[Usuario][email]': {
+                                required: 'Informe o e-mail.',
+                                email: 'E-mail inválido.'
+                            },                            
+                            'data[Usuario][usuario]': 'Informe o usuário.',                            
+                            'data[Usuario][senha]': 'Informe a senha.',                            
+                            'data[Usuario][confirmar_senha]': 'Confirme a senha.'                            
                         }
                     });        
                 }

@@ -17,19 +17,19 @@ if ($this->params['controller'] == 'instalador') {
 
     <li class="passo_1">
         <a href="<?php echo DEFAULT_URL . $this->params['controller'] . '/' . $passos[1] . '/passo-1'; ?>" title="<?php echo __('Passo 1'); ?>">
-            <?php echo __('Passo 1'); ?>
+            <?php echo __('1'); ?>
         </a>
     </li>
 
     <li class="passo_2">
         <a href="<?php echo DEFAULT_URL . $this->params['controller'] . '/' . $passos[2] . '/passo-2'; ?>" title="<?php echo __('Passo 2'); ?>">
-            <?php echo __('Passo 2'); ?>
+            <?php echo __('2'); ?>
         </a>
     </li>
 
     <li class="passo_3">
         <a href="<?php echo DEFAULT_URL . $this->params['controller'] . '/' . $passos[3] . '/passo-3'; ?>" title="<?php echo __('Passo 3'); ?>">
-            <?php echo __('Passo 3'); ?>
+            <?php echo __('3'); ?>
         </a>
     </li>
 

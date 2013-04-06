@@ -107,13 +107,29 @@ class Banner extends AppModel {
         )
     );
 
-    public function beforeSave($options = array()) {
-        parent::beforeSave();
-
-        $date = new DateTime(str_replace('/', '-', $this->data['Banner']['validade']));
-        $this->data['Banner']['validade'] = $date->format('Y-m-d H:i:s');
-
-        return true;
-    }
+//    public function beforeSave($options = array()) {
+//        parent::beforeSave();
+//
+//        $date = new DateTime(str_replace('/', '-', $this->data['Banner']['validade']));
+//        $this->data['Banner']['validade'] = $date->format('Y-m-d H:i:s');
+//
+//        return true;
+//    }
+//    
+//    public function afterFind($results, $primary = false) {
+//        parent::afterFind($results, $primary);
+//               
+//        
+//        pr($results[0]['Banner']['validade']);
+//        
+//        foreach($results as $result) {
+//            $exp = explode(' ', $result['Banner']['validade']);            
+//            $result['Banner']['validade'] = date('d/m/Y', strtotime($exp[0]));
+//        }
+//        
+//        pr($results[0]['Banner']['validade']);
+//        exit;
+//        
+//    }
 
 }

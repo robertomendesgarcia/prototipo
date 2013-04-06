@@ -1,13 +1,13 @@
 <?php // echo $this->element("filtro");  ?>
 
-<?php echo $this->element('paginacao_contador'); ?>
+<?php // echo $this->element('paginacao_contador'); ?>
 
 <table cellpadding="0" cellspacing="0" class="listagem">
     <tr>
         <th><?php echo $this->Paginator->sort('nome'); ?></th>
-        <th><?php echo $this->Paginator->sort('email'); ?></th>
+        <th><?php echo $this->Paginator->sort('email', 'E-mail'); ?></th>
         <th><?php echo $this->Paginator->sort('telefone'); ?></th>
-        <th><?php echo $this->Paginator->sort('data'); ?></th>
+        <th><?php echo $this->Paginator->sort('data', 'Data de Cadastro'); ?></th>
         <th class="actions"><?php echo __('Actions'); ?></th>
     </tr>
     <?php foreach ($curriculos as $curriculo) { ?>
@@ -24,4 +24,4 @@
     <?php }; ?>
 </table>
 
-<?php echo $this->element('paginacao'); ?>
+<?php // echo $this->element('paginacao'); ?>

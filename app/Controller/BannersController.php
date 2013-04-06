@@ -62,8 +62,8 @@ class BannersController extends AppController {
             }
         }
 
-
         $bannerTipos = $this->Banner->BannerTipo->find('list');
+        $this->set('file', $this->Banner->file);
         $this->set(compact('bannerTipos'));
         $this->set('title_for_layout', __('New Banner') . ' - ' . $this->title_for_layout);
     }
@@ -76,11 +76,17 @@ class BannersController extends AppController {
         }
         if ($this->request->is('post') || $this->request->is('put')) {
 
+//            pr($this->request->data['Banner']);
+
+            $arquivo = $this->request->data['Banner']['arquivo'];
+            unset($this->request->data['Banner']['arquivo']);
+
+//            pr($this->request->data['Banner']);
+//            exit;
+
             if ($this->Banner->save($this->request->data)) {
 
-                if (!empty($this->request->data['Banner']['arquivo'])) {
-
-                    $arquivo = $this->request->data['Banner']['arquivo'];
+                if (!empty($arquivo)) {
 
                     if (isset($arquivo['name']) && $arquivo["error"] == 0) {
 
@@ -117,7 +123,7 @@ class BannersController extends AppController {
         }
 
         $bannerTipos = $this->Banner->BannerTipo->find('list');
-        $this->set('src', $this->Banner->file['path']);
+        $this->set('file', $this->Banner->file);
         $this->set(compact('bannerTipos'));
         $this->set('title_for_layout', __('Edit Banner') . ' - ' . $this->title_for_layout);
     }

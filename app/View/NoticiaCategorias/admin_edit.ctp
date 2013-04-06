@@ -5,11 +5,11 @@ $this->Html->addCrumb($titulo[0]);
 
 <p class="campos_obrigatorios">* Campos Obrigatórios</p>
 
-<?php echo $this->Form->create('NoticiaCategoria'); ?>
+<?php echo $this->Form->create('NoticiaCategoria', array('id' => 'form_categoria')); ?>
 
 <fieldset>
     <?php
-    echo $this->Form->input('nome', array('label' => __('Category:')));
+    echo $this->Form->input('nome', array('label' => __('Category:'), 'class' => 'obrigatorio'));
     echo $this->Form->input('parent_id', array('label' => __('Parent:'), 'type' => 'select', 'options' => $noticiaCategorias, 'empty' => 'Selecione...'));
     echo $this->Form->input('ativo', array('label' => __('Active:'), 'type' => 'select', 'options' => array(
             '1' => __('Sim'),
@@ -25,3 +25,16 @@ $this->Html->addCrumb($titulo[0]);
     <?php echo $this->Form->postLink(__('Cancel'), array('action' => 'index'), array('class' => 'cancelar'), __('Do you really want to cancel the changes?')); ?>
 </div>
 
+<script type="text/javascript">
+    if ($('#form_categoria').length) {        
+        $('#NoticiaCategoriaNome').focus();        
+        $('#form_categoria').validate({
+            rules: {
+                'data[NoticiaCategoria][nome]': 'required'
+            },
+            messages: {
+                'data[NoticiaCategoria][nome]': 'Informe o nome da categoria.'
+            }
+        });        
+    }                
+</script>

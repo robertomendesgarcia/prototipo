@@ -7,15 +7,15 @@
 
 <table cellpadding="0" cellspacing="0" class="listagem">
     <tr>
-        <th><?php echo $this->Paginator->sort('pin'); ?></th>
-        <th><?php echo $this->Paginator->sort('titulo'); ?></th>
+        <!-- th><?php // echo $this->Paginator->sort('pin'); ?></th -->
+        <th><?php echo $this->Paginator->sort('titulo', 'Título'); ?></th>
         <th><?php echo $this->Paginator->sort('ativo'); ?></th>
-        <th><?php echo $this->Paginator->sort('modified'); ?></th>
+        <th><?php echo $this->Paginator->sort('modified', 'Modificado'); ?></th>
         <th class="actions"><?php echo __('Actions'); ?></th>
     </tr>
     <?php foreach ($paginas as $pagina) { ?>
         <tr>
-            <td class="centralizado"><?php echo h($pagina['Pagina']['pin']); ?></td>
+            <!-- td class="centralizado"><?php // echo h($pagina['Pagina']['pin']); ?></td -->
             <td><?php echo h($pagina['Pagina']['titulo']); ?></td>
             <td class="centralizado"><?php echo ($pagina['Pagina']['ativo'] == 1) ? __('Yes') : __('No'); ?></td>
             <td class="centralizado"><?php echo date("d/m/Y", strtotime($pagina['Pagina']['modified'])); ?></td>

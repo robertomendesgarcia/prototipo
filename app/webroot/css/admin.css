@@ -115,6 +115,10 @@ div.submit {
     padding-top: 5px;
 }
 
+input.color_picker {
+    width: 70px;
+}
+
 /* --- Flash Message --- */
 #adminMessage {
     padding: 10px;
@@ -609,8 +613,8 @@ form .botoes a.cancelar {
 }
 #conteudo div.input div.preview {
     display: inline-block;
-    width: 25px;
-    height: 25px;    
+    width: 28px;
+    height: 28px;    
     vertical-align: top;
     margin-left: 8px;
     border: #009630 1px solid;
@@ -633,6 +637,7 @@ form .botoes a.cancelar {
     margin-top: 0;
 }
 
+#ConfiguracaoEmailTrabalheConosco,
 #c-configuracoes form.form_email div.input input,
 #c-configuracoes form.form_dados div.input input {
     width: 250px;
@@ -689,4 +694,21 @@ fieldset.galeria ul li a {
 #c-banners div.preview {
     padding: 8px;
     margin-bottom: 10px;
+}
+
+#BannerDescricao,
+#BannerLink {
+    width: 250px;
+}
+
+
+/* --- Itens Desativados --- */
+ul.choose_language {
+    display: none !important;
+}
+
+
+
+#PaginaTitulo {
+    width: 250px;
 }

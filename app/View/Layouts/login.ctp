@@ -23,9 +23,9 @@
             <div class="esquerda">
                 <?php $titulo = explode('-', $title_for_layout); ?>
                 <h2><?php echo trim($titulo[0]); ?></h2>
-                <?php echo $this->element('breadcrumbs'); ?>
+                <?php // echo $this->element('breadcrumbs'); ?>
             </div>
-            <ul>
+            <ul class="choose_language">
                 <li class="lang_portuguese">
                     <a href="<?php echo DEFAULT_URL; ?>choose-language/pt-br" title="<?php echo __('Portuguese'); ?>"><?php echo __('Portuguese'); ?></a>
                 </li>

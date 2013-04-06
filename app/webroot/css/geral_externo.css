@@ -10,21 +10,49 @@ body {
 /* --- Topo --- */
 #topo {
     overflow: auto;
-
-    background-color: #eee;
-
 }
 #topo h1 {
     float: left;
 }
 #topo h1 a {
-    background: transparent url('../uploads/layout/logo.png') 0 0 no-repeat;
+    /*background: transparent url('../uploads/layout/logo.png') 0 0 no-repeat;*/
     display: block;
     width: 300px;
     height: 120px;    
+    text-indent: -1000em;
+    overflow: hidden;
+}
+#topo h2 {
+    display: none;
 }
 
 /* --- Base --- */
+#menu ul {
+    background-color: #FFF;
+}
+#menu ul li ul,
+#menu ul li ul li ul, 
+#menu ul li ul li ul li ul {
+    display: none;
+    background-color: #FFF;
+}
+#menu ul li:hover ul,
+#menu ul li:hover ul li ul, 
+#menu ul li:hover ul li ul li ul {
+    display: block;
+    position absolute;
+    z-index: 9999;
+}
+
+#menu ul li {
+    list-style: none;
+}
+#menu ul li a {
+    text-decoration: none;
+}
+
+
+
 #menu.esquerda {
     float: left;
     display: inline;
@@ -43,12 +71,17 @@ body {
 }
 
 
+
+
+
+
+
 #conteudo {
     overflow: auto;
-    border-top: none;
-    border-left: 1px solid #777;
-    border-bottom: none;
-    border-right: 1px solid #777;
+    /*    border-top: none;
+        border-left: 1px solid #777;
+        border-bottom: none;
+        border-right: 1px solid #777;*/
 }
 #conteudo #wrapper {
     float: left;
@@ -70,6 +103,34 @@ body {
     font-size: 22px;
 }
 
+/* --- Produtos --- */
+#c-produtos ul.listagem li {
+    display: inline-block;
+    width: 120px;
+    vertical-align: top;ba
+    padding: 4px;
+    margin: 4px;    
+
+    border: 1px solid #DDD;
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+
+
+}
+
+#c-produtos ul.listagem li:hover {
+    background-color: #DDD;
+}
+
+#c-produtos ul.listagem li a {
+    display: block;
+    text-decoration: none;
+}
+
+
+
 /* --- Barras Laterais --- */
 #barra_lateral {
     float: right;
@@ -77,6 +138,16 @@ body {
     width: 200px;
     padding: 20px 15px;
 }
+
+form.form_busca input {
+    width: 130px;
+    display: inline-block;
+}
+form.form_busca div.submit {
+    display: inline-block;
+    overflow: hidden;
+}
+
 
 #barra_lateral #newsletter input {
 

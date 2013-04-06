@@ -91,6 +91,7 @@ class NoticiasController extends AppController {
                 'NoticiaCategoria.ativo' => 1
                 )));
         $this->set(compact('categorias'));
+        $this->set('img', $this->Noticia->NoticiaImagem->img);
         $this->set('title_for_layout', __('Nova Notícia') . ' - ' . $this->title_for_layout);
     }
 
@@ -150,7 +151,7 @@ class NoticiasController extends AppController {
                 ));
 
         $noticia = $this->Noticia->findById($id);
-        $this->set('img', $this->Noticia->NoticiaImagem->img['path']);
+        $this->set('img', $this->Noticia->NoticiaImagem->img);
         $this->set(compact('categorias', 'noticia'));
         $this->set('title_for_layout', __('Edit News') . ' - ' . $this->title_for_layout);
     }

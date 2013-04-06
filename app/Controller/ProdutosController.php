@@ -4,6 +4,44 @@ App::uses('AppController', 'Controller');
 
 class ProdutosController extends AppController {
 
+    public function index($categoria = null) {
+        $options = array(
+            'Produto.ativo' => 1,
+            'order' => array('Produto.id' => 'DESC'),
+            'limit' => 20
+        );
+
+        if (!empty($categoria)) {
+            $options['conditions']['Produto.categoria_id'] = $categoria;
+        }
+
+        if ((!empty($this->data)) && (!empty($this->data['Produto']['nome']))) {
+            $options['conditions'] = array(
+                'Produto.nome LIKE' => '%' . $this->data['Produto']['nome'] . '%'
+            );
+        }
+
+        $this->paginate = $options;
+        $produtos = $this->paginate('Produto');
+
+        $this->set('img', $this->Produto->ProdutoImagem->img['path']);
+        $this->set(compact('produtos'));
+        $this->set('title_for_layout', __('Products') . ' - ' . $this->title_for_layout);
+    }
+
+    public function ver($id) {
+
+        $produto = $this->Produto->find('first', array(
+            'conditions' => array(
+                'Produto.id' => $id
+            )
+                ));
+
+        $this->set('img', $this->Produto->ProdutoImagem->img['path']);
+        $this->set(compact('produto'));
+        $this->set('title_for_layout', __('Products') . ' - ' . $this->title_for_layout);
+    }
+
     public function admin_index() {
         $options = array(
             'order' => array('Produto.id' => 'DESC'),
@@ -89,6 +127,7 @@ class ProdutosController extends AppController {
                 )));
 
         $this->set(compact('categorias'));
+        $this->set('img', $this->Produto->ProdutoImagem->img);
         $this->set('title_for_layout', __('Add Product') . ' - ' . $this->title_for_layout);
     }
 
@@ -145,9 +184,9 @@ class ProdutosController extends AppController {
                 )));
 
         $produto = $this->Produto->findById($id);
-        $this->set('img', $this->Produto->ProdutoImagem->img['path']);
+        $this->set('img', $this->Produto->ProdutoImagem->img);
         $this->set(compact('categorias', 'produto'));
-        $this->set('title_for_layout', __('Edit News') . ' - ' . $this->title_for_layout);
+        $this->set('title_for_layout', __('Editar Produto') . ' - ' . $this->title_for_layout);
     }
 
     public function admin_delete($id = null) {

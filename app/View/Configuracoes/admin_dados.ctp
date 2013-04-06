@@ -32,9 +32,6 @@ $this->Html->addCrumb($titulo[0]);
         'label' => 'Logo para o Site:',
         'type' => 'file',
     ));
-
-
-
     if (file_exists($this->data['Configuracao']['img_logo'])) {
         echo "<div class='input logo_atual'>";
         echo $this->Form->label('Logo Atual:');
@@ -50,7 +47,7 @@ $this->Html->addCrumb($titulo[0]);
     <?php //echo $this->Form->submit(__('Submit'), array('div' => false)); ?>
     <input type="image" src="<?php echo $this->webroot; ?>img/admin/layout/bt_gravar.png" alt="submit">
     <?php echo $this->Form->end(); ?>
-    <?php // echo $this->Form->postLink(__('Cancel'), array('action' => 'config', 'dados'), array('class' => 'cancelar'), __('Deseja realmente cancelar?')); ?>
+    <?php echo $this->Form->postLink(__('Cancel'), array('action' => 'config', 'dados'), array('class' => 'cancelar'), __('Deseja realmente cancelar?')); ?>
 </div>
 
 

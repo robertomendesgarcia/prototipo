@@ -8,7 +8,7 @@
 
 <table cellpadding="0" cellspacing="0" class="listagem">
     <tr>
-        <th><?php echo $this->Paginator->sort('titulo'); ?></th>
+        <th><?php echo $this->Paginator->sort('titulo', 'Título'); ?></th>
         <th><?php echo $this->Paginator->sort('data'); ?></th>
         <th><?php echo $this->Paginator->sort('destaque'); ?></th>
         <th><?php echo $this->Paginator->sort('ativo'); ?></th>

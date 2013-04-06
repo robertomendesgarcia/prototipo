@@ -6,7 +6,7 @@ $this->Html->addCrumb($titulo[0]);
 <?php echo $this->Form->create('Configuracao', array('type' => 'file')); ?>
 
 <fieldset>
-    <?php echo $this->Form->input('usa_noticias', array('label' => __('I want to have news.'), 'type' => 'checkbox')); ?>
+    <?php echo $this->Form->input('usa_noticias', array('label' => __('I want to have news on my site.'), 'type' => 'checkbox')); ?>
     <div class="campos">
         <?php echo $this->Form->input('mostrar_noticias_capa', array('label' => __('Show news on home.'), 'type' => 'checkbox')); ?>
         <?php
@@ -44,6 +44,6 @@ $this->Html->addCrumb($titulo[0]);
     <?php //echo $this->Form->submit(__('Submit'), array('div' => false)); ?>
     <input type="image" src="<?php echo $this->webroot; ?>img/admin/layout/bt_gravar.png" alt="submit">
     <?php echo $this->Form->end(); ?>
-    <?php echo $this->Form->postLink(__('Cancel'), array('action' => $this->params['action'], 'layout'), array('class' => 'cancelar'), __('Deseja realmente cancelar as alterações?')); ?>
+    <?php echo $this->Form->postLink(__('Cancel'), array('action' => $this->params['action'], 'noticias'), array('class' => 'cancelar'), __('Deseja realmente cancelar as alterações?')); ?>
 </div>
 

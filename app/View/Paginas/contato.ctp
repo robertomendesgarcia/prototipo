@@ -1,6 +1,6 @@
 <h3>Contato</h3>
 
-<?php echo $this->form->create('Contato'); ?>
+<?php echo $this->form->create('Contato', array('id' => 'form_contato')); ?>
 
 <p class="campos_obrigatorios"><span>*</span> Campos obrigatórios.</p>
 
@@ -37,7 +37,7 @@
 
     <?php echo $this->element('google_maps'); ?>
     <div class="informacoes">
-        <p><?php echo $config['endereco']; ?></p>
+        <p><?php echo $config['endereco_fisico_empresa']; ?></p>
         <p>Fone: <?php echo $config['telefone_1']; ?></p>
         <p>E-mail: <?php echo $config['email_contato']; ?></p>
 

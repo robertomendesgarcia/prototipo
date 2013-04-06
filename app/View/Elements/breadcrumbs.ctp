@@ -18,7 +18,19 @@ switch ($this->params['controller']) {
             $texto = __('Pages Editable');
             break;
       case 'banners':
-            $texto = __('Banner');
+            $texto = __('Banners');
+            break;
+      case 'usuarios':
+            $texto = __('Users');
+            break;
+      case 'produtos':
+            $texto = __('Products');
+            break;
+      case 'newsletters':
+            $texto = __('Newsletter');
+            break;
+      case 'curriculos':
+            $texto = __('Resumes');
             break;
 }
 

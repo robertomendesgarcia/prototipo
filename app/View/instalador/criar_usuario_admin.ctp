@@ -2,7 +2,7 @@
 
 <p class="campos_obrigatorios">* Campos Obrigatórios</p>
 
-<?php echo $this->Form->create('Usuario'); ?>
+<?php echo $this->Form->create('Usuario', array('id' => 'form_cria_usuario_adm')); ?>
 <fieldset>    
     <?php
     echo $this->Form->input('nome', array('label' => 'Nome:', 'class' => 'obrigatorio'));

@@ -10,7 +10,7 @@ $(document).ready(function(){
         event.preventDefault();
     });
     
-    $.each($('form input.obrigatorio'), function(index, value){
+    $.each($('form .obrigatorio'), function(index, value){
         $(this).prev('label').append('<span class="requerido"> *</span>');
     });
     

@@ -1,6 +1,6 @@
 <h3>Trabalhe Conosco</h3>
 
-<?php echo $this->form->create('Curriculo', array('type' => 'file')); ?>
+<?php echo $this->form->create('Curriculo', array('type' => 'file', 'id' => 'form_trabalhe_conosco')); ?>
 
 <p class="campos_obrigatorios"><span>*</span> Campos obrigatórios.</p>
 
