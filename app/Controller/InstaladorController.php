@@ -45,11 +45,10 @@ class InstaladorController extends AppController {
                  }
                  ?>";
             if (fwrite($handle, $txt) === FALSE) {
-                echo "Não foi possível escrever no arquivo";
-                exit;
+                $this->Session->setFlash(__('Não foi possível escrever no arquivo.'), 'flash_message', array('tipo' => 'error'), 'admin');
+            } else {
+                $this->redirect(array("action" => "configuraEmail"));
             }
-
-            $this->redirect(array("action" => "configuraEmail"));
         }
 
         $this->set('title_for_layout', __('Configurar Banco') . ' - ' . $this->title_for_layout);
@@ -136,20 +135,20 @@ class InstaladorController extends AppController {
             $this->loadModel('Usuario');
             $this->Usuario->create();
             if ($this->Usuario->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
+                $this->Session->setFlash(__('Usuário salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('controller' => 'usuarios', 'action' => 'login'));
             } else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Erro ao salvar o usuário.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         }
-        
+
         $this->set('title_for_layout', __('Criar Usuário Administrador') . ' - ' . $this->title_for_layout);
         $this->render('criar_usuario_admin');
     }
 
     public function configuraEmail() {
-        
-        
+
+
 //        pr($this->request->data);
 //        exit;
 
@@ -184,8 +183,7 @@ class InstaladorController extends AppController {
 
             $handle = fopen("../Config/email.php", "w+");
             if (fwrite($handle, $txt) === FALSE) {
-                echo "Não foi possível escrever no arquivo";
-                exit;
+                $this->Session->setFlash(__('Não foi possível escrever no arquivo.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
             $this->redirect(array("action" => "criarUsuarioAdmin"));
         }

@@ -14,7 +14,7 @@ class PaginasController extends AppController {
     public function admin_view($id = null) {
         $this->Pagina->id = $id;
         if (!$this->Pagina->exists()) {
-            throw new NotFoundException(__('Invalid pagina'));
+            throw new NotFoundException(__('Página inválida.'));
         }
         $this->set('pagina', $this->Pagina->read(null, $id));
     }
@@ -23,10 +23,10 @@ class PaginasController extends AppController {
         if ($this->request->is('post')) {
             $this->Pagina->create();
             if ($this->Pagina->save($this->request->data)) {
-                $this->Session->setFlash(__('The pagina has been saved'));
+                $this->Session->setFlash(__('Página salva com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The pagina could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Erro ao salvar a página.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         }
         $this->set('title_for_layout', __('Add Page') . ' - ' . $this->title_for_layout);
@@ -35,14 +35,14 @@ class PaginasController extends AppController {
     public function admin_edit($id = null) {
         $this->Pagina->id = $id;
         if (!$this->Pagina->exists()) {
-            throw new NotFoundException(__('Invalid pagina'));
+            throw new NotFoundException(__('Página inválida.'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Pagina->save($this->request->data)) {
-                $this->Session->setFlash(__('The pagina has been saved'));
+                $this->Session->setFlash(__('Página salva com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The pagina could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Erro ao salvar a página.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         } else {
             $this->request->data = $this->Pagina->read(null, $id);
@@ -56,13 +56,13 @@ class PaginasController extends AppController {
         }
         $this->Pagina->id = $id;
         if (!$this->Pagina->exists()) {
-            throw new NotFoundException(__('Invalid pagina'));
+            throw new NotFoundException(__('Página inválida.'));
         }
         if ($this->Pagina->delete()) {
-            $this->Session->setFlash(__('Pagina deleted'));
+            $this->Session->setFlash(__('Página excluída com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Pagina was not deleted'));
+        $this->Session->setFlash(__('Erro ao excluir a página.'), 'flash_message', array('tipo' => 'error'), 'admin');
         $this->redirect(array('action' => 'index'));
     }
 
@@ -93,7 +93,7 @@ class PaginasController extends AppController {
 
 //        $title_for_layout = $conteudo['Pagina']['titulo'] . ' - ' . $title_for_layout; 'title_for_layout',
 
-        $this->set(compact('page', 'subpage',  'conteudo'));
+        $this->set(compact('page', 'subpage', 'conteudo'));
 //        $this->render(implode('/', $path));
         $this->render('generica');
     }
@@ -144,7 +144,7 @@ class PaginasController extends AppController {
                     if (in_array($extensao, $this->Curriculo->file['extensoes'])) {
                         $arquivo = uniqid() . '.' . $extensao;
                         if (!move_uploaded_file($data['curriculo']['tmp_name'], $this->Curriculo->file['path'] . $arquivo)) {
-                            $this->Session->setFlash(__('Problemas ao sarvar o arquivo. Por favor, tente novamente.'));
+                            $this->Session->setFlash(__('Problemas ao salvar o arquivo. Por favor, tente novamente.'));
                         }
                     } else {
                         $this->Session->setFlash(__('Arquivo inválido.'));

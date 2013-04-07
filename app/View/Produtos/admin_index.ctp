@@ -25,7 +25,7 @@
             <td class="acoes_3_botoes">
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $produto['Produto']['id']), array('class' => 'ver')); ?>
                 <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $produto['Produto']['id']), array('class' => 'editar')); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $produto['Produto']['id']), array('class' => 'excluir'), __('Deseja realmente excluir este produto?', $produto['Produto']['id'])); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $produto['Produto']['id']), array('class' => 'excluir'), __('Deseja realmente excluir?', $produto['Produto']['id'])); ?>
             </td>
         </tr>
     <?php }; ?>

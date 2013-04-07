@@ -34,11 +34,11 @@ class ProdutoCategoriasController extends AppController {
         if ($this->request->is('post')) {
             $this->ProdutoCategoria->create();
             if ($this->ProdutoCategoria->save($this->request->data)) {
-                $this->Session->setFlash(__('Category saved successfully.'), 'flash_message', array('tipo' => 'success'), 'admin');
+                $this->Session->setFlash(__('Categoria salva com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
                 if (empty($this->ProdutoCategoria->validationErrors)) {
-                    $this->Session->setFlash(__('The category could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                    $this->Session->setFlash(__('Erro ao salvar a categoria.'), 'flash_message', array('tipo' => 'error'), 'admin');
                 }
             }
         }
@@ -57,14 +57,14 @@ class ProdutoCategoriasController extends AppController {
     public function admin_edit($id = null) {
         $this->ProdutoCategoria->id = $id;
         if (!$this->ProdutoCategoria->exists()) {
-            throw new NotFoundException(__('Invalid category.'));
+            throw new NotFoundException(__('Categoria inválida.'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->ProdutoCategoria->save($this->request->data)) {
-                $this->Session->setFlash(__('Category saved successfully.'));
+                $this->Session->setFlash(__('Categoria salva com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The category could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Erro ao salvar a categoria.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         } else {
             $this->request->data = $this->ProdutoCategoria->read(null, $id);
@@ -88,10 +88,10 @@ class ProdutoCategoriasController extends AppController {
         }
         $this->ProdutoCategoria->id = $id;
         if (!$this->ProdutoCategoria->exists()) {
-            throw new NotFoundException(__('Invalid category.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+            throw new NotFoundException(__('Categoria inválida.'));
         }
         if ($this->ProdutoCategoria->delete()) {
-            $this->Session->setFlash(__('Category successfully deleted.'), 'flash_message', array('tipo' => 'success'), 'admin');
+            $this->Session->setFlash(__('Categoria excluída com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
             $this->redirect(array('action' => 'index'));
         } else {
             $this->Session->setFlash(__('This category can not be deleted because there are other categories or products related to it.'), 'flash_message', array('tipo' => 'warning'), 'admin');

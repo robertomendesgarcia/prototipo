@@ -17,10 +17,13 @@ class ConfiguracoesController extends AppController {
      *
      * @return void
      */
-//    public function admin_index() {
+    public function admin_index() {
+
+        $this->redirect($this->admin_config('dados'));
+
 //        $this->Configuraco->recursive = 0;
 //        $this->set('configuracos', $this->paginate());
-//    }
+    }
 
     /**
      * admin_view method
@@ -144,7 +147,7 @@ class ConfiguracoesController extends AppController {
                     }
                     $this->Session->setFlash(__('Settings saved successfully.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 } else {
-                    $this->Session->setFlash(__('Problemas ao salvar as configurações.'), 'flash_message', array('tipo' => 'warnning'), 'admin');
+                    $this->Session->setFlash(__('Erro ao salvar as configurações.'), 'flash_message', array('tipo' => 'error'), 'admin');
                 }
             }
         } else {
@@ -169,7 +172,6 @@ class ConfiguracoesController extends AppController {
 
             if (!empty($this->request->data['Configuracao'])) {
 
-
                 $dataSource = $this->Configuracao->getDataSource();
                 $dataSource->begin();
                 try {
@@ -186,7 +188,7 @@ class ConfiguracoesController extends AppController {
                             if (!empty($config)) {
                                 $config['Configuracao']['conteudo'] = $value;
                                 if (!$this->Configuracao->save($config)) {
-                                    throw new Exception(__('The settings could not be saved. Please, try again.'));
+                                    throw new Exception(__('Erro ao salvar as configurações.'));
                                 }
                             }
                         } else {
@@ -210,7 +212,7 @@ class ConfiguracoesController extends AppController {
                                         if (!empty($config)) {
                                             $config['Configuracao']['conteudo'] = $destino;
                                             if (!$this->Configuracao->save($config)) {
-                                                throw new Exception(__('The settings could not be saved. Please, try again.'));
+                                                throw new Exception(__('Erro ao salvar as configurações.'));
                                             }
                                         }
                                     } else {
@@ -238,7 +240,7 @@ class ConfiguracoesController extends AppController {
         foreach ($configuracoes as $configuracao) {
             $this->request->data['Configuracao'][$configuracao['Configuracao']['pin']] = $configuracao['Configuracao']['conteudo'];
         }
-        
+
 
         $titulo = __('Configurações do Layout');
         switch ($pin) {
@@ -260,6 +262,7 @@ class ConfiguracoesController extends AppController {
         }
 
         $this->set('title_for_layout', $titulo . ' - ' . $this->title_for_layout);
+        $this->set('img', $this->Configuracao->img['formatos']);
         $this->render('admin_' . $pin);
     }
 

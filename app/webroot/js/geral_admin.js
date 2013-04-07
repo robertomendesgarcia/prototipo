@@ -4,6 +4,12 @@ $(document).ready(function(){
     $('input:file').uniform(); 	
     
     $('form input').first().focus();
+    
+    $('a.logout').on('click', function(event){
+        if (!confirm("Deseja realmente sair?")) {
+            event.preventDefault();
+        }
+    });
 
     $('#adminMessage').on('click', function(event){
         $('#adminMessage').fadeOut();

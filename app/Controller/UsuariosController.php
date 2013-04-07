@@ -193,10 +193,10 @@ class UsuariosController extends AppController {
 
                 $this->Usuario->create();
                 if ($this->Usuario->save($this->request->data)) {
-                    $this->Session->setFlash(__('The user has been saved'));
+                    $this->Session->setFlash(__('Usuário salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                     $this->redirect(array('action' => 'index'));
                 } else {
-                    $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                    $this->Session->setFlash(__('Erro ao salvar o usuário.'), 'flash_message', array('tipo' => 'error'), 'admin');
                 }
             } else {
                 $this->Session->setFlash(__('A senha e sua confirmação estão diferentes.'), 'flash_message', array('tipo' => 'warning'), 'admin');
@@ -212,14 +212,14 @@ class UsuariosController extends AppController {
     public function admin_edit($id = null) {
         $this->Usuario->id = $id;
         if (!$this->Usuario->exists()) {
-            throw new NotFoundException(__('Invalid user'));
+            throw new NotFoundException(__('Usuário inválido.'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Usuario->save($this->request->data)) {
-                $this->Session->setFlash(__('The user has been saved'));
+                $this->Session->setFlash(__('Usuário salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Erro ao salvar o usuário.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         } else {
             $this->request->data = $this->Usuario->read(null, $id);
@@ -238,13 +238,13 @@ class UsuariosController extends AppController {
         }
         $this->Usuario->id = $id;
         if (!$this->Usuario->exists()) {
-            throw new NotFoundException(__('Invalid user'));
+            throw new NotFoundException(__('Usuário inválido.'));
         }
         if ($this->Usuario->delete()) {
-            $this->Session->setFlash(__('Usuario deleted'));
+            $this->Session->setFlash(__('Usuário excluído com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Usuario was not deleted'));
+        $this->Session->setFlash(__('Erro ao excluir o usuário.'), 'flash_message', array('tipo' => 'error'), 'admin');
         $this->redirect(array('action' => 'index'));
     }
 
@@ -353,38 +353,43 @@ class UsuariosController extends AppController {
 
         if ($this->request->is('post') || $this->request->is('put')) {
 
-            $usuario = $this->Usuario->find('first', array(
-                'conditions' => array(
-                    'Usuario.id' => $this->request->data['Usuario']['id']
-                )
-                    ));
+            if (!empty($this->request->data['Configuracao'])) {
 
-            $senha_atual = AuthComponent::password($this->request->data['Usuario']['senha_atual']);
+                $usuario = $this->Usuario->find('first', array(
+                    'conditions' => array(
+                        'Usuario.id' => $this->request->data['Usuario']['id']
+                    )
+                        ));
 
-            if ($senha_atual == $usuario['Usuario']['senha']) {
+                $senha_atual = AuthComponent::password($this->request->data['Usuario']['senha_atual']);
 
-                if ($this->request->data['Usuario']['nova_senha'] == $this->request->data['Usuario']['confirmar_senha']) {
+                if ($senha_atual == $usuario['Usuario']['senha']) {
 
-                    $usuario['Usuario']['senha'] = $this->request->data['Usuario']['nova_senha'];
+                    if ($this->request->data['Usuario']['nova_senha'] == $this->request->data['Usuario']['confirmar_senha']) {
 
-                    if ($this->Usuario->save($usuario)) {
-                        $this->Session->setFlash(__('Senha alterada com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
-                        $this->redirect($this->referer());
-                    } else {
-                        $this->Session->setFlash(__('The user could not be saved. Please, try again.'));
-                    }
+                        $usuario['Usuario']['senha'] = $this->request->data['Usuario']['nova_senha'];
+
+                        if ($this->Usuario->save($usuario)) {
+                            $this->Session->setFlash(__('Senha alterada com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
+                            $this->redirect($this->referer());
+                        } else {
+                            $this->Session->setFlash(__('Erro ao alterar a senha.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                        }
 //                } else {
 //                    $this->request->data = $this->Usuario->read(null, $id);
 //                    unset($this->request->data['Usuario']['senha']);
 //                }
+                    } else {
+                        $this->Session->setFlash(__('A senha e sua confirmação estão diferentes.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                    }
                 } else {
-                    $this->Session->setFlash(__('A senha e sua confirmação estão diferentes.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                    $this->Session->setFlash(__('Senha atual incorreta.'), 'flash_message', array('tipo' => 'warning'), 'admin');
                 }
-            } else {
-                $this->Session->setFlash(__('Senha atual incorreta.'), 'flash_message', array('tipo' => 'warning'), 'admin');
-            }
 
-            unset($this->request->data['Usuario']);
+                unset($this->request->data['Usuario']);
+            } else {
+                $this->Session->setFlash(__('Alterações canceladas.'), 'flash_message', array('tipo' => 'info'), 'admin');
+            }
         }
 
         $this->set('title_for_layout', __('Change Password') . ' - ' . $this->title_for_layout);

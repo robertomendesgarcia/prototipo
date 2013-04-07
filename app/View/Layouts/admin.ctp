@@ -56,7 +56,7 @@
             </div>
             <ul>
                 <li class="logout">
-                    <a href="<?php echo DEFAULT_URL; ?>logout" title="<?php echo __('Logout'); ?>">
+                    <a href="<?php echo DEFAULT_URL; ?>logout" class="logout" title="<?php echo __('Logout'); ?>">
                         <?php echo __('Logout'); ?>
                     </a>
                 </li>

@@ -631,7 +631,7 @@ form .botoes a.cancelar {
     margin-bottom: 20px;
 }
 #c-configuracoes #conteudo fieldset {
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 } 
 #c-configuracoes #conteudo fieldset:first-child {
     margin-top: 0;

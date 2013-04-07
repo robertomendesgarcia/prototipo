@@ -22,7 +22,7 @@ class NewslettersController extends AppController {
     public function admin_view($id = null) {
         $this->Newsletter->id = $id;
         if (!$this->Newsletter->exists()) {
-            throw new NotFoundException(__('Invalid newsletter'));
+            throw new NotFoundException(__('Newsletter inválido.'));
         }
         $this->set('newsletter', $this->Newsletter->read(null, $id));
     }
@@ -33,10 +33,10 @@ class NewslettersController extends AppController {
             $this->request->data['Newsletter']['data_inscricao'] = date('Y-m-d H:i:s');
             if ($this->Newsletter->save($this->request->data)) {
                 $this->Newsletter->save($this->data);
-                $this->Session->setFlash(__('The newsletter has been saved'));
+                $this->Session->setFlash(__('Newsletter salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The newsletter could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Erro ao salvar o newsletter.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         }
         $this->set('title_for_layout', __('Newsletter') . ' - ' . $this->title_for_layout);
@@ -45,14 +45,14 @@ class NewslettersController extends AppController {
     public function admin_edit($id = null) {
         $this->Newsletter->id = $id;
         if (!$this->Newsletter->exists()) {
-            throw new NotFoundException(__('Invalid newsletter'));
+            throw new NotFoundException(__('Newsletter inválido.'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Newsletter->save($this->request->data)) {
-                $this->Session->setFlash(__('The newsletter has been saved'));
+                $this->Session->setFlash(__('Newsletter salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The newsletter could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Erro ao salvar o newsletter.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         } else {
             $this->request->data = $this->Newsletter->read(null, $id);
@@ -65,28 +65,28 @@ class NewslettersController extends AppController {
         }
         $this->Newsletter->id = $id;
         if (!$this->Newsletter->exists()) {
-            throw new NotFoundException(__('Invalid newsletter'));
+            throw new NotFoundException(__('Newsletter inválido.'));
         }
         if ($this->Newsletter->delete()) {
-            $this->Session->setFlash(__('Newsletter deleted'));
+            $this->Session->setFlash(__('Newsletter excluído com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Newsletter was not deleted'));
+        $this->Session->setFlash(__('Erro ao excluir o newsletter.'), 'flash_message', array('tipo' => 'error'), 'admin');
         $this->redirect(array('action' => 'index'));
     }
-    
-        public function add() {
+
+    public function add() {
         if ($this->request->is('post') && !empty($this->data)) {
             $this->Newsletter->create();
             $this->request->data['Newsletter']['data_inscricao'] = date('Y-m-d H:i:s');
             if ($this->Newsletter->save($this->request->data)) {
                 $this->Newsletter->save($this->data);
-                $this->Session->setFlash(__('The newsletter has been saved'));
+                $this->Session->setFlash(__('Newsletter salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
             } else {
-                $this->Session->setFlash(__('The newsletter could not be saved. Please, try again.'));
+                $this->Session->setFlash(__('Erro ao salvar o newsletter.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         }
-                $this->redirect($this->referer());
+        $this->redirect($this->referer());
     }
 
 }

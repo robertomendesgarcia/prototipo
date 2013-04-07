@@ -6,7 +6,7 @@
             <?php echo $this->Html->link(__('Welcome'), array('controller' => 'usuarios', 'action' => 'bem_vindo', 'admin' => true)); ?>
         </li>
         <li>
-            <?php echo $this->Html->link(__('Logout'), array('controller' => 'usuarios', 'action' => 'logout', 'admin' => false)); ?>
+            <?php echo $this->Html->link(__('Logout'), array('controller' => 'usuarios', 'action' => 'logout', 'admin' => false), array('class' => 'logout')); ?>
         </li>
         <li>
             <?php echo $this->Html->link(__('Change Password'), array('controller' => 'usuarios', 'action' => 'alterar_senha', 'admin' => true)); ?>
@@ -40,7 +40,7 @@
                     <li>
                         <?php echo $this->Html->link(__('Banners'), array('controller' => 'banners', 'action' => 'index', 'admin' => true)); ?>
                     </li>
-                    <li>
+                    <li style="display: none;">
                         <?php echo $this->Html->link(__('-- Tipo de Banner'), array('controller' => 'bannertipos', 'action' => 'index', 'admin' => true)); ?>
                     </li>
                 <?php } ?>
@@ -64,8 +64,8 @@
                     <li>
                         <?php echo $this->Html->link(__('E-mail'), array('controller' => 'configuracoes', 'action' => 'email', 'admin' => true)); ?>
                     </li>
-                    <li>
-                        -- <?php echo $this->Html->link(__('Geral'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'geral')); ?>
+                    <li style="display: none;">
+                        <?php echo $this->Html->link(__('--Geral'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'geral')); ?>
                     </li>
                     <li>
                         <?php echo $this->Html->link(__('Layout'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'layout')); ?>

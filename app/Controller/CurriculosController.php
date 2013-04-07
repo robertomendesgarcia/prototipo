@@ -90,13 +90,13 @@ class CurriculosController extends AppController {
         }
         $this->Curriculo->id = $id;
         if (!$this->Curriculo->exists()) {
-            throw new NotFoundException(__('Invalid curriculo'));
+            throw new NotFoundException(__('Currículo inválido.'));
         }
         if ($this->Curriculo->delete()) {
-            $this->Session->setFlash(__('Curriculo deleted'));
+            $this->Session->setFlash(__('Currículo excluído com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Curriculo was not deleted'));
+        $this->Session->setFlash(__('Erro ao excluir o currículo.'), 'flash_message', array('tipo' => 'error'), 'admin');
         $this->redirect(array('action' => 'index'));
     }
 
@@ -114,7 +114,7 @@ class CurriculosController extends AppController {
             $aquivoNome = $curriculo['Curriculo']['arquivo'];
             $arquivoLocal = $this->Curriculo->file['path'] . $aquivoNome;
             if (!file_exists($arquivoLocal)) {
-                $this->Session->setFlash(__('Arquivo náo encontrado.'));
+                $this->Session->setFlash(__('Arquivo não encontrado.'), 'flash_message', array('tipo' => 'warning'), 'admin');
             } else {
 
                 $extensao = explode('.', $aquivoNome);

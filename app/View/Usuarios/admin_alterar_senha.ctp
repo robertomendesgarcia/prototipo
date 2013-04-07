@@ -18,7 +18,7 @@ echo $this->Form->input('senha_atual', array('label' => 'Senha atual:', 'type' =
     <?php //echo $this->Form->submit(__('Submit'), array('div' => false)); ?>
     <input type="image" src="<?php echo $this->webroot; ?>img/admin/layout/bt_gravar.png" alt="submit">
     <?php echo $this->Form->end(); ?>
-    <?php // echo $this->Form->postLink(__('Cancel'), array('action' => 'alterar_senha'), array('class' => 'cancelar'), __('Deseja realmente cancelar?')); ?>
+    <?php echo $this->Form->postLink(__('Cancel'), array('action' => 'alterar_senha'), array('class' => 'cancelar'), __('Deseja realmente cancelar?')); ?>
 </div>
 
 <script type="text/javascript">

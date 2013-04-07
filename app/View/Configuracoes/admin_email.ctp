@@ -1,6 +1,6 @@
 <?php
-$titulo = explode(' - ', $title_for_layout);
-$this->Html->addCrumb($titulo[0]);
+//$titulo = explode(' - ', $title_for_layout);
+//$this->Html->addCrumb($titulo[0]);
 ?>
 
 <?php echo $this->Form->create('Configuracao', array('type' => 'file', 'class' => 'form_email', 'id' => 'configura_email')); ?>

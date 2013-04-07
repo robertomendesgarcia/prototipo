@@ -25,7 +25,7 @@
             <td class="acoes_3_botoes">
                 <?php echo $this->Html->link(__('View'), array('action' => 'view', $noticia['Noticia']['id']), array('class' => 'ver')); ?>
                 <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $noticia['Noticia']['id']), array('class' => 'editar')); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $noticia['Noticia']['id']), array('class' => 'excluir'), __('Deseja realmente excluir esta notícia?', $noticia['Noticia']['id'])); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $noticia['Noticia']['id']), array('class' => 'excluir'), __('Deseja realmente excluir?', $noticia['Noticia']['id'])); ?>
             </td>
         </tr>
     <?php }; ?>

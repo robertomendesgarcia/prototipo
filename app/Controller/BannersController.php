@@ -46,19 +46,19 @@ class BannersController extends AppController {
                             if (move_uploaded_file($arquivo['tmp_name'], $destino)) {
                                 $this->request->data['Banner']['arquivo'] = $nome_arquivo;
                                 if ($this->Banner->save($this->request->data)) {
-                                    $this->Session->setFlash(__('The banner has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                                    $this->Session->setFlash(__('Banner salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                                     $this->redirect(array('action' => 'index'));
                                 }
                             }
                         } else {
-                            $this->Session->setFlash(__('São permitidos apenas arquivos ' . implode(', ', $this->Banner->file['formatos']) . '.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                            $this->Session->setFlash(__('São permitidos apenas arquivos ' . implode(', ', $this->Banner->file['formatos']) . '.'), 'flash_message', array('tipo' => 'warning'), 'admin');
                         }
                     } else {
-                        $this->Session->setFlash(__('Arquivo inválido.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                        $this->Session->setFlash(__('Arquivo inválido.'), 'flash_message', array('tipo' => 'warning'), 'admin');
                     }
                 }
             } else {
-                $this->Session->setFlash(__('The noticia could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                $this->Session->setFlash(__('Erro ao salvar o banner.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         }
 
@@ -72,7 +72,7 @@ class BannersController extends AppController {
         $this->Banner->id = $id;
         //$this->Banner->imagem = null;
         if (!$this->Banner->exists()) {
-            throw new NotFoundException(__('Invalid banner'));
+            throw new NotFoundException(__('Banner inválido.'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
 
@@ -101,22 +101,22 @@ class BannersController extends AppController {
                             if (move_uploaded_file($arquivo['tmp_name'], $destino)) {
                                 $this->request->data['Banner']['arquivo'] = $nome_arquivo;
                                 if ($this->Banner->save($this->request->data)) {
-                                    $this->Session->setFlash(__('The banner has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                                    $this->Session->setFlash(__('Banner salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                                     $this->redirect(array('action' => 'index'));
                                 }
                             }
                         } else {
-                            $this->Session->setFlash(__('São permitidos apenas arquivos ' . implode(', ', $this->Banner->file['formatos']) . '.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                            $this->Session->setFlash(__('São permitidos apenas arquivos ' . implode(', ', $this->Banner->file['formatos']) . '.'), 'flash_message', array('tipo' => 'warning'), 'admin');
                         }
                     } else {
-                        $this->Session->setFlash(__('Arquivo inválido.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                        $this->Session->setFlash(__('Arquivo inválido.'), 'flash_message', array('tipo' => 'warning'), 'admin');
                     }
                 }
 
-                $this->Session->setFlash(__('The noticia has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                $this->Session->setFlash(__('Banner salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The noticia could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                $this->Session->setFlash(__('Erro ao salvar o banner.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         } else {
             $this->request->data = $this->Banner->read(null, $id);
@@ -134,14 +134,14 @@ class BannersController extends AppController {
         }
         $this->Banner->id = $id;
         if (!$this->Banner->exists()) {
-            throw new NotFoundException(__('Invalid banner'));
+            throw new NotFoundException(__('Banner inválido.'));
         }
         if ($this->Banner->delete()) {
             unlink(UPLOADS_URL . $this->Banner->arquivo);
-            $this->Session->setFlash(__('Banner deleted'));
+            $this->Session->setFlash(__('Banner excluído com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
             $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('Banner was not deleted'));
+        $this->Session->setFlash(__('Erro ao excluir o banner.'), 'flash_message', array('tipo' => 'error'), 'admin');
         $this->redirect(array('action' => 'index'));
     }
 

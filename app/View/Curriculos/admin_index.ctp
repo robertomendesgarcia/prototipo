@@ -18,7 +18,7 @@
             <td class="centralizado"><?php echo date("d/m/Y", strtotime($curriculo['Curriculo']['data'])); ?></td>
             <td class="acoes">
                 <?php echo $this->Html->link(__('Download'), array('action' => 'download', $curriculo['Curriculo']['id']), array('class' => 'excluir')); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $curriculo['Curriculo']['id']), array('class' => 'excluir'), __('Deseja realmente excluir este currículo?', $curriculo['Curriculo']['id'])); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $curriculo['Curriculo']['id']), array('class' => 'excluir'), __('Deseja realmente excluir?', $curriculo['Curriculo']['id'])); ?>
             </td>
         </tr>
     <?php }; ?>

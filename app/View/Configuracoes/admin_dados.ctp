@@ -1,6 +1,6 @@
 <?php
-$titulo = explode(' - ', $title_for_layout);
-$this->Html->addCrumb($titulo[0]);
+//$titulo = explode(' - ', $title_for_layout);
+//$this->Html->addCrumb($titulo[0]);
 ?>
 
 <?php echo $this->Form->create('Configuracao', array('type' => 'file', 'class' => 'form_dados', 'id' => 'configura_dados')); ?>
@@ -29,7 +29,7 @@ $this->Html->addCrumb($titulo[0]);
         'type' => 'textarea',
     ));
     echo $this->Form->input('img_logo', array(
-        'label' => 'Logo para o Site:',
+        'label' => 'Logo para o Site (imagens ' . implode(', ', $img) . '):',
         'type' => 'file',
     ));
     if (file_exists($this->data['Configuracao']['img_logo'])) {

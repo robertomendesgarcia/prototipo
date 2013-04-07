@@ -77,10 +77,10 @@ class NoticiasController extends AppController {
                         }
                     }
 
-                    $this->Session->setFlash(__('The noticia has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                    $this->Session->setFlash(__('Notícia salva com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                     $this->redirect(array('action' => 'index'));
                 } else {
-                    $this->Session->setFlash(__('The noticia could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                    $this->Session->setFlash(__('Erro ao salvar a notícia.'), 'flash_message', array('tipo' => 'error'), 'admin');
                 }
             }
         }
@@ -99,7 +99,7 @@ class NoticiasController extends AppController {
         $this->Noticia->id = $id;
 
         if (!$this->Noticia->exists()) {
-            throw new NotFoundException(__('Invalid News.'));
+            throw new NotFoundException(__('Notícia inválida.'));
         }
 
         if ($this->request->is('post') || $this->request->is('put')) {
@@ -134,10 +134,10 @@ class NoticiasController extends AppController {
                     }
                 }
 
-                $this->Session->setFlash(__('The noticia has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                $this->Session->setFlash(__('Notícia salva com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The noticia could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                $this->Session->setFlash(__('Erro ao salvar a notícia.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         } else {
             $this->request->data = $this->Noticia->read(null, $id);
@@ -163,17 +163,17 @@ class NoticiasController extends AppController {
 
         $this->Noticia->id = $id;
         if (!$this->Noticia->exists()) {
-            throw new NotFoundException(__('Invalid noticia'));
+            throw new NotFoundException(__('Notícia inválida.'));
         }
 
         if ($this->Noticia->NoticiaImagem->deleteAll(array('noticia_id' => $id), false)) {
             if ($this->Noticia->delete()) {
-                $this->Session->setFlash(__('Noticia deleted.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                $this->Session->setFlash(__('Notícia excluída com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
             } else {
-                $this->Session->setFlash(__('Noticia was not deleted.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                $this->Session->setFlash(__('Erro ao excluir a notícia.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         } else {
-            $this->Session->setFlash(__('Noticia was not deleted'));
+            $this->Session->setFlash(__('Erro ao excluir a notícia.'), 'flash_message', array('tipo' => 'error'), 'admin');
         }
 
         $this->redirect(array('action' => 'index'));
@@ -184,13 +184,13 @@ class NoticiasController extends AppController {
 
         $this->Noticia->NoticiaImagem->id = $id;
         if (!$this->Noticia->NoticiaImagem->exists()) {
-            throw new NotFoundException(__('Invalid image.'));
+            throw new NotFoundException(__('Imagem inválida.'));
         }
 
         if ($this->Noticia->NoticiaImagem->delete()) {
-            $this->Session->setFlash(__('Image successfully deleted.'), 'flash_message', array('tipo' => 'success'), 'admin');
+            $this->Session->setFlash(__('Imagem excluída com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
         } else {
-            $this->Session->setFlash(__('The image could not be deleted. Please, try again.'), 'flash_message', array('tipo' => 'error'), 'admin');
+            $this->Session->setFlash(__('Erro ao excluir a imagem.'), 'flash_message', array('tipo' => 'error'), 'admin');
         }
 
         $this->redirect($this->referer());

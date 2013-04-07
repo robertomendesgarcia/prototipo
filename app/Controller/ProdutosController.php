@@ -71,7 +71,7 @@ class ProdutosController extends AppController {
     public function admin_view($id = null) {
         $this->Produto->id = $id;
         if (!$this->Produto->exists()) {
-            throw new NotFoundException(__('Invalid produto'));
+            throw new NotFoundException(__('Produto inválido.'));
         }
         $this->set('produto', $this->Produto->read(null, $id));
     }
@@ -112,10 +112,10 @@ class ProdutosController extends AppController {
                         }
                     }
 
-                    $this->Session->setFlash(__('The product has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                    $this->Session->setFlash(__('Produto salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                     $this->redirect(array('action' => 'index'));
                 } else {
-                    $this->Session->setFlash(__('The product could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                    $this->Session->setFlash(__('Erro ao salvar o produto.'), 'flash_message', array('tipo' => 'error'), 'admin');
                 }
             }
         }
@@ -134,7 +134,7 @@ class ProdutosController extends AppController {
     public function admin_edit($id = null) {
         $this->Produto->id = $id;
         if (!$this->Produto->exists()) {
-            throw new NotFoundException(__('Invalid produto'));
+            throw new NotFoundException(__('Produto inválido.'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->Produto->save($this->request->data)) {
@@ -168,10 +168,10 @@ class ProdutosController extends AppController {
                     }
                 }
 
-                $this->Session->setFlash(__('The product has been saved.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                $this->Session->setFlash(__('Produto salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array('action' => 'index'));
             } else {
-                $this->Session->setFlash(__('The product could not be saved. Please, try again.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                $this->Session->setFlash(__('Erro ao salvar o produto.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         } else {
             $this->request->data = $this->Produto->read(null, $id);
@@ -196,17 +196,17 @@ class ProdutosController extends AppController {
 
         $this->Produto->id = $id;
         if (!$this->Produto->exists()) {
-            throw new NotFoundException(__('Invalid noticia'));
+            throw new NotFoundException(__('Produto inválido.'));
         }
 
         if ($this->Produto->ProdutoImagem->deleteAll(array('produto_id' => $id), false)) {
             if ($this->Produto->delete()) {
-                $this->Session->setFlash(__('Produto deleted.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                $this->Session->setFlash(__('Produto excluído com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
             } else {
-                $this->Session->setFlash(__('Produto was not deleted.'), 'flash_message', array('tipo' => 'warning'), 'admin');
+                $this->Session->setFlash(__('Erro ao excluir o produto.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         } else {
-            $this->Session->setFlash(__('Produto was not deleted'));
+            $this->Session->setFlash(__('Erro ao excluir o produto.'), 'flash_message', array('tipo' => 'error'), 'admin');
         }
 
         $this->redirect(array('action' => 'index'));
@@ -217,13 +217,13 @@ class ProdutosController extends AppController {
 
         $this->Produto->ProdutoImagem->id = $id;
         if (!$this->Produto->ProdutoImagem->exists()) {
-            throw new NotFoundException(__('Invalid image.'));
+            throw new NotFoundException(__('Imagem inválida.'));
         }
 
         if ($this->Produto->ProdutoImagem->delete()) {
-            $this->Session->setFlash(__('Image successfully deleted.'), 'flash_message', array('tipo' => 'success'), 'admin');
+            $this->Session->setFlash(__('Imagem excluída com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
         } else {
-            $this->Session->setFlash(__('The image could not be deleted. Please, try again.'), 'flash_message', array('tipo' => 'error'), 'admin');
+            $this->Session->setFlash(__('Erro ao excluir a imagem.'), 'flash_message', array('tipo' => 'error'), 'admin');
         }
 
         $this->redirect($this->referer());

@@ -21,7 +21,7 @@
             <td class="centralizado"><?php echo date("d/m/Y", strtotime($pagina['Pagina']['modified'])); ?></td>
             <td class="acoes_3_botoes">
                 <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $pagina['Pagina']['id']), array('class' => 'editar')); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $pagina['Pagina']['id']), array('class' => 'excluir'), __('Are you sure you want to delete this page?')); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $pagina['Pagina']['id']), array('class' => 'excluir'), __('Deseja realmente excluir?')); ?>
             </td>
         </tr>
     <?php }; ?>

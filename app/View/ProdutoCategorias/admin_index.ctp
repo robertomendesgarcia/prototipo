@@ -20,7 +20,7 @@
 
             <td class="acoes">
                 <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $key), array('class' => 'editar')); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $key), array('class' => 'excluir'), __('Are you sure you want to delete this category?')); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $key), array('class' => 'excluir'), __('Deseja realmente excluir?')); ?>
             </td>
         </tr>
     <?php } ?>
