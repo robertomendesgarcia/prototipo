@@ -89,4 +89,45 @@ class NewslettersController extends AppController {
         $this->redirect($this->referer());
     }
 
+    /**
+     *
+     * Dynamically generates a .csv file by looping through the results of a sql query.
+     *
+     */
+    function admin_export() {
+        ini_set('max_execution_time', 600); //increase max_execution_time to 10 min if data set is very large
+        //create a file
+        $filename = "newsletter_" . date("d_m_Y") . ".csv";
+        $csv_file = fopen('php://output', 'w');
+
+        header('Content-type: application/csv');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+
+//        $results = $this->ModelName->query($sql); // This is your sql query to pull that data you need exported
+        //or
+//        $results = $this->ModelName->find('all', array());
+        $results = $this->Newsletter->find('all', array(
+            'fields' => array('nome', 'email')
+                ));
+
+        // The column headings of your .csv file
+        $header_row = array('Nome', 'E-mail');
+        fputcsv($csv_file, $header_row, ',', '"');
+
+        // Each iteration of this while loop will be a row in your .csv file where each field corresponds to the heading of the column
+        foreach ($results as $result) {
+            // Array indexes correspond to the field names in your db table(s)
+            $row = array(
+                $result['Newsletter']['nome'],
+                $result['Newsletter']['email'],
+            );
+
+            fputcsv($csv_file, $row, ',', '"');
+        }
+
+        fclose($csv_file);
+        
+        $this->redirect($this->admin_index());
+    }
+
 }

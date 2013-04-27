@@ -89,7 +89,7 @@ class AppController extends Controller {
     );
 
     function beforeRender() {
-        parent::beforeRender();        
+        parent::beforeRender();
         if (!defined("DEFAULT_URL")) {
             define("DEFAULT_URL", Router::url("/", true));
         }
@@ -257,6 +257,9 @@ class AppController extends Controller {
             }
 
 
+            $this->set('banners', $this->getBanners());
+
+
 //        $this->loadModel('Menu');
 //        $menu = $this->Menu->find('list', array(
 //            'fields' => array(
@@ -293,6 +296,29 @@ class AppController extends Controller {
                 )
                     ));
             $this->title_for_layout = $cfg['Configuracao']['conteudo'];
+        }
+    }
+
+    public function getBanners() {
+
+        if (!$this->Session->check('__Banners')) {
+
+            $retorno = null;
+
+            $this->loadModel('Banner');
+            $banners = $this->Banner->find('all', array(
+                'conditions' => array(
+                    'Banner.ativo' => 1
+                ),
+                    ));
+
+            foreach ($banners as $banner) {
+                $retorno[$banner['BannerTipo']['pin']] = $banner['Banner'];
+            }
+
+            $retorno['path'] = $this->Banner->file['path'];
+
+            $this->Session->write('__Banners', $retorno);
         }
     }
 

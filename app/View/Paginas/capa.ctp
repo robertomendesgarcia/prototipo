@@ -1,3 +1,1 @@
-<?php echo $this->element('banners', array(
-    'pin_local' => 'capa'
-)); ?>
+<?php echo $this->element('banners', array('pin' => 'capa')); ?>

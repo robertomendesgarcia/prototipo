@@ -3,6 +3,10 @@
 App::uses('AppController', 'Controller');
 
 class WizardController extends AppController {
+    
+    public function index() {
+        $this->redirect(array("action" => "admin_configuraLayout", 'admin' => true));
+    }
 
     public function admin_index() {
         $this->redirect(array("action" => "admin_configuraLayout"));

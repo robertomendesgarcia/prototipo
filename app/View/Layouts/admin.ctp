@@ -22,16 +22,16 @@
         <link href="<?php echo DEFAULT_URL; ?>css/admin.css" media="all" rel="stylesheet" type="text/css" />
 
         <?php
-        $arquivo_css = "./css/" . $this->params["controller"] . ".css";
-        if (file_exists($arquivo_css)) {
-            echo "<link href='" . DEFAULT_URL . $arquivo_css . "' media='all' rel='stylesheet' type='text/css' />";
-        }
+//        $arquivo_css = "./css/" . $this->params["controller"] . ".css";
+//        if (file_exists($arquivo_css)) {
+//            echo "<link href='" . DEFAULT_URL . $arquivo_css . "' media='all' rel='stylesheet' type='text/css' />";
+//        }
         ?>
 
         <?php if (in_array($this->params["controller"], array('noticias', 'paginas', 'configuracoes')) && (in_array($this->params["action"], array('admin_add', 'admin_edit', 'admin_config')))) { ?>
             <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/ckeditor/ckeditor.js"></script>
-            <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uploadify/jquery.uploadify.min.js"></script>
-            <link href="<?php echo DEFAULT_URL; ?>js/uploadify/uploadify.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />          
+            <!-- script type="text/javascript" src="<?php // echo DEFAULT_URL; ?>js/uploadify/jquery.uploadify.min.js"></script -->
+            <!-- link href="<?php // echo DEFAULT_URL; ?>js/uploadify/uploadify.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" / -->          
         <?php } ?>
 
         <?php if ($this->params["controller"] == 'configuracoes') { ?>

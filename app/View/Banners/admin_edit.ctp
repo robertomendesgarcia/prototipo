@@ -29,6 +29,10 @@ $this->Html->addCrumb($titulo[0]);
     }
 
     echo $this->Form->input('link', array('label' => __('Link/URL:')));
+    echo $this->Form->input('ativo', array('label' => __('Active:'), 'type' => 'select', 'options' => array(
+            '1' => __('Yes'),
+            '0' => __('No')
+            )));
     ?>
 
 

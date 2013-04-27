@@ -130,23 +130,20 @@ VALUES ('json_configuracao_smtp', 'Configurações SMTP (json).', '', NOW(), NOW
 -- -----------------------------------------------------
 DELETE FROM `prototipo_tcc`.`banner_tipos`;
 
-INSERT INTO `prototipo_tcc`.`banner_tipos` (`tipo`, `created`, `modified`)
-VALUES ('Barra Lateral - Topo (120px de largura)', NOW(), NOW()); 
+INSERT INTO `prototipo_tcc`.`banner_tipos` (`pin`, `tipo`, `created`, `modified`)
+VALUES ('barra_lateral_topo', 'Barra Lateral - Topo', NOW(), NOW()); 
 
-INSERT INTO `prototipo_tcc`.`banner_tipos` (`tipo`, `created`, `modified`)
-VALUES ('Barra Lateral - Entre Notícias e Produtos (120px de largura)', NOW(), NOW()); 
+INSERT INTO `prototipo_tcc`.`banner_tipos` (`pin`, `tipo`, `created`, `modified`)
+VALUES ('barra_lateral_meio', 'Barra Lateral - Meio', NOW(), NOW()); 
 
-INSERT INTO `prototipo_tcc`.`banner_tipos` (`tipo`, `created`, `modified`)
-VALUES ('Barra Lateral - Abaixo (120px de largura)', NOW(), NOW());
+INSERT INTO `prototipo_tcc`.`banner_tipos` (`pin`, `tipo`, `created`, `modified`)
+VALUES ('barra_lateral_abaixo', 'Barra Lateral - Abaixo', NOW(), NOW());
 
-INSERT INTO `prototipo_tcc`.`banner_tipos` (`tipo`, `created`, `modified`)
-VALUES ('Topo (940px de largura)', NOW(), NOW());
+INSERT INTO `prototipo_tcc`.`banner_tipos` (`pin`, `tipo`, `created`, `modified`)
+VALUES ('centro', 'Centro', NOW(), NOW());
 
-INSERT INTO `prototipo_tcc`.`banner_tipos` (`tipo`, `created`, `modified`)
-VALUES ('Centro (750px de largura)', NOW(), NOW());
-
-INSERT INTO `prototipo_tcc`.`banner_tipos` (`tipo`, `created`, `modified`) 
-VALUES ('Rodapé (750px de largura)', NOW(), NOW());
+INSERT INTO `prototipo_tcc`.`banner_tipos` (`pin`, `tipo`, `created`, `modified`)
+VALUES ('capa', 'Capa', NOW(), NOW());
 
 -- -----------------------------------------------------
 -- Table `prototipo_tcc`.`paginas`
@@ -162,20 +159,20 @@ VALUES ('a-empresa', 'A Empresa', 'A empresa...', NOW(), NOW());
 DELETE FROM `prototipo_tcc`.`estruturas`;
 
 -- Menu no Topo com Barra Lateral
-INSERT INTO `prototipo_tcc`.`estruturas` (`pin`,	`nome`, 				`created`, 	`modified`,	`usa_produtos`,	`usa_noticias`,	`usa_banners`,	`usa_barra_lateral`,	`usa_rodape`, 	`cor_fonte_texto`, 	`cor_bg_html`, 	`img_bg_html_repeat`, 	`posicao_menu`,	`menu_degade`,	`cor_bg_menu`, `cor_fonte_menu`,	`mostrar_noticias_capa`,	`qtde_noticias_capa`,	`mostrar_noticias_lateral`,	`qtde_noticias_lateral`,	`mostrar_produtos_capa`,	`qtde_produtos_capa`,	`mostrar_produtos_lateral`,	`qtde_produtos_lateral`,	`img_bg_html`,								`img_logo`,	`cor_titulo`,	`conteudo_rodape`,	`img_bg_topo`,	`titulo_site`,	`keywords`,	`description`,	`author`,	`tamanho_centro`,	`email_contato`,	`usa_trabalhe_conosco`,	`email_trabalhe_conosco`,	`pagina_institucional`,	`endereco`,	`telefone_1`,	`telefone_2`,	`slogan`)
-								  VALUES ('ep_01',	'Estrutura Padrão 01', 	NOW(), 		NOW(), 		'1', 			'1', 			'1', 			'1', 					'1', 			'#333333', 			'#FFFFFF', 		'repeat-x', 			'1', 			'0', 			'#444444', 		'#FFFFFF',			'1',						'5',					'1',						'3',						'1',						'5',					'1',						'3',						'img/layouts_padroes/ep_01/bg_html.png',	NULL,		'#777777',		NULL,				NULL,			'WebFacility',	NULL,		NULL,			NULL,		'medio',			NULL,				'1',					NULL,						'<p>...</p>',			NULL,		NULL,			NULL,			NULL);
+INSERT INTO `prototipo_tcc`.`estruturas` (`pin`,	`nome`, 				`created`, 	`modified`,	`usa_barra_lateral`,	`usa_rodape`, 	`cor_fonte_texto`, 	`cor_bg_html`, 	`img_bg_html_repeat`, 	`posicao_menu`,	`menu_degade`,	`cor_bg_menu`, `cor_fonte_menu`,	`mostrar_noticias_capa`,	`qtde_noticias_capa`,	`mostrar_noticias_lateral`,	`qtde_noticias_lateral`,	`mostrar_produtos_capa`,	`qtde_produtos_capa`,	`mostrar_produtos_lateral`,	`qtde_produtos_lateral`,	`img_bg_html`,								`img_logo`,	`cor_titulo`,	`img_bg_topo`, `keywords`,	`description`,	`author`,	`tamanho_centro`,	`pagina_institucional`,	`telefone`)
+								  VALUES ('ep_01',	'Estrutura Padrão 01', 	NOW(), 		NOW(), 		'1', 					'1', 			'#333333', 			'#FFFFFF', 		'repeat-x', 			'1', 			'0', 			'#444444', 		'#FFFFFF',			'1',						'5',					'1',						'3',						'1',						'5',					'1',						'3',						'img/layouts_padroes/ep_01/bg_html.png',	NULL,		'#777777',		NULL,			NULL,		NULL,			NULL,		'medio',			'<p>...</p>',			NULL);
 
 -- Menu na Esquerda com Barra Lateral
-INSERT INTO `prototipo_tcc`.`estruturas` (`pin`,	`nome`, 				`created`, 	`modified`,	`usa_produtos`,	`usa_noticias`,	`usa_banners`,	`usa_barra_lateral`,	`usa_rodape`, 	`cor_fonte_texto`, 	`cor_bg_html`, 	`img_bg_html_repeat`, 	`posicao_menu`,	`menu_degade`,	`cor_bg_menu`, `cor_fonte_menu`,	`mostrar_noticias_capa`,	`qtde_noticias_capa`,	`mostrar_noticias_lateral`,	`qtde_noticias_lateral`,	`mostrar_produtos_capa`,	`qtde_produtos_capa`,	`mostrar_produtos_lateral`,	`qtde_produtos_lateral`,	`img_bg_html`,								`img_logo`,	`cor_titulo`,	`conteudo_rodape`,	`img_bg_topo`,	`titulo_site`,	`keywords`,	`description`,	`author`,	`tamanho_centro`,	`email_contato`,	`usa_trabalhe_conosco`,	`email_trabalhe_conosco`,	`pagina_institucional`,	`endereco`,	`telefone_1`,	`telefone_2`,	`slogan`)
-								  VALUES ('ep_02',	'Estrutura Padrão 02', 	NOW(), 		NOW(), 		'1', 			'1', 			'1', 			'1', 					'1', 			'#333333', 			'#FFFFFF', 		'repeat-x', 			'2', 			'0', 			'#444444', 		'#FFFFFF',			'1',						'5',					'1',						'3',						'1',						'5',					'1',						'3',						'img/layouts_padroes/ep_02/bg_html.png',	NULL,		'#777777',		NULL,				NULL,			'WebFacility',	NULL,		NULL,			NULL,		'medio',			NULL,				'1',					NULL,						'<p>...</p>',			NULL,		NULL,			NULL,			NULL);
+--INSERT INTO `prototipo_tcc`.`estruturas` (`pin`,	`nome`, 				`created`, 	`modified`,	`usa_barra_lateral`,	`usa_rodape`, 	`cor_fonte_texto`, 	`cor_bg_html`, 	`img_bg_html_repeat`, 	`posicao_menu`,	`menu_degade`,	`cor_bg_menu`, `cor_fonte_menu`,	`mostrar_noticias_capa`,	`qtde_noticias_capa`,	`mostrar_noticias_lateral`,	`qtde_noticias_lateral`,	`mostrar_produtos_capa`,	`qtde_produtos_capa`,	`mostrar_produtos_lateral`,	`qtde_produtos_lateral`,	`img_bg_html`,								`img_logo`,	`cor_titulo`,	`img_bg_topo`,	`keywords`,	`description`,	`author`,	`tamanho_centro`,	`pagina_institucional`,	`telefone`)
+--								  VALUES ('ep_02',	'Estrutura Padrão 02', 	NOW(), 		NOW(), 		'1', 					'1', 			'#333333', 			'#FFFFFF', 		'repeat-x', 			'2', 			'0', 			'#444444', 		'#FFFFFF',			'1',						'5',					'1',						'3',						'1',						'5',					'1',						'3',						'img/layouts_padroes/ep_02/bg_html.png',	NULL,		'#777777',		NULL,			NULL,		NULL,			NULL,		'medio',			'<p>...</p>',			NULL);
 
 -- Menu na Esquerda sem Barra Lateral
-INSERT INTO `prototipo_tcc`.`estruturas` (`pin`,	`nome`, 				`created`, 	`modified`,	`usa_produtos`,	`usa_noticias`,	`usa_banners`,	`usa_barra_lateral`,	`usa_rodape`, 	`cor_fonte_texto`, 	`cor_bg_html`, 	`img_bg_html_repeat`, 	`posicao_menu`,	`menu_degade`,	`cor_bg_menu`, `cor_fonte_menu`,	`mostrar_noticias_capa`,	`qtde_noticias_capa`,	`mostrar_noticias_lateral`,	`qtde_noticias_lateral`,	`mostrar_produtos_capa`,	`qtde_produtos_capa`,	`mostrar_produtos_lateral`,	`qtde_produtos_lateral`,	`img_bg_html`,								`img_logo`,	`cor_titulo`,	`conteudo_rodape`,	`img_bg_topo`,	`titulo_site`,	`keywords`,	`description`,	`author`,	`tamanho_centro`,	`email_contato`,	`usa_trabalhe_conosco`,	`email_trabalhe_conosco`,	`pagina_institucional`,	`endereco`,	`telefone_1`,	`telefone_2`,	`slogan`)
-								  VALUES ('ep_03',	'Estrutura Padrão 03', 	NOW(), 		NOW(), 		'1', 			'1', 			'1', 			'0', 					'1', 			'#333333', 			'#FFFFFF', 		'repeat-x', 			'2', 			'0', 			'#444444', 		'#FFFFFF',			'1',						'5',					'1',						'3',						'1',						'5',					'1',						'3',						'img/layouts_padroes/ep_03/bg_html.png',	NULL,		'#777777',		NULL,				NULL,			'WebFacility',	NULL,		NULL,			NULL,		'medio',			NULL,				'1',					NULL,						'<p>...</p>',			NULL,		NULL,			NULL,			NULL);
+--INSERT INTO `prototipo_tcc`.`estruturas` (`pin`,	`nome`, 				`created`, 	`modified`,	`usa_barra_lateral`,	`usa_rodape`, 	`cor_fonte_texto`, 	`cor_bg_html`, 	`img_bg_html_repeat`, 	`posicao_menu`,	`menu_degade`,	`cor_bg_menu`, `cor_fonte_menu`,	`mostrar_noticias_capa`,	`qtde_noticias_capa`,	`mostrar_noticias_lateral`,	`qtde_noticias_lateral`,	`mostrar_produtos_capa`,	`qtde_produtos_capa`,	`mostrar_produtos_lateral`,	`qtde_produtos_lateral`,	`img_bg_html`,								`img_logo`,	`cor_titulo`,	`img_bg_topo`,	`keywords`,	`description`,	`author`,	`tamanho_centro`,	`pagina_institucional`,	`telefone`)
+--								  VALUES ('ep_03',	'Estrutura Padrão 03', 	NOW(), 		NOW(), 		'0', 					'1', 			'#333333', 			'#FFFFFF', 		'repeat-x', 			'2', 			'0', 			'#444444', 		'#FFFFFF',			'1',						'5',					'1',						'3',						'1',						'5',					'1',						'3',						'img/layouts_padroes/ep_03/bg_html.png',	NULL,		'#777777',		NULL,			NULL,		NULL,			NULL,		'medio',			'<p>...</p>',			NULL);
 
 -- Menu no Topo sem Barra Lateral
-INSERT INTO `prototipo_tcc`.`estruturas` (`pin`,	`nome`, 				`created`, 	`modified`,	`usa_produtos`,	`usa_noticias`,	`usa_banners`,	`usa_barra_lateral`,	`usa_rodape`, 	`cor_fonte_texto`, 	`cor_bg_html`, 	`img_bg_html_repeat`, 	`posicao_menu`,	`menu_degade`,	`cor_bg_menu`, `cor_fonte_menu`,	`mostrar_noticias_capa`,	`qtde_noticias_capa`,	`mostrar_noticias_lateral`,	`qtde_noticias_lateral`,	`mostrar_produtos_capa`,	`qtde_produtos_capa`,	`mostrar_produtos_lateral`,	`qtde_produtos_lateral`,	`img_bg_html`,								`img_logo`,	`cor_titulo`,	`conteudo_rodape`,	`img_bg_topo`,	`titulo_site`,	`keywords`,	`description`,	`author`,	`tamanho_centro`,	`email_contato`,	`usa_trabalhe_conosco`,	`email_trabalhe_conosco`,	`pagina_institucional`,	`endereco`,	`telefone_1`,	`telefone_2`,	`slogan`)
-								  VALUES ('ep_04',	'Estrutura Padrão 04', 	NOW(), 		NOW(), 		'1', 			'1', 			'1', 			'0', 					'1', 			'#333333', 			'#FFFFFF', 		'repeat-x', 			'1', 			'0', 			'#444444', 		'#FFFFFF',			'1',						'5',					'1',						'3',						'1',						'5',					'1',						'3',						'img/layouts_padroes/ep_04/bg_html.png',	NULL,		'#777777',		NULL,				NULL,			'WebFacility',	NULL,		NULL,			NULL,		'medio',			NULL,				'1',					NULL,						'<p>...</p>',			NULL,		NULL,			NULL,			NULL);
+--INSERT INTO `prototipo_tcc`.`estruturas` (`pin`,	`nome`, 				`created`, 	`modified`,	`usa_barra_lateral`,	`usa_rodape`, 	`cor_fonte_texto`, 	`cor_bg_html`, 	`img_bg_html_repeat`, 	`posicao_menu`,	`menu_degade`,	`cor_bg_menu`, `cor_fonte_menu`,	`mostrar_noticias_capa`,	`qtde_noticias_capa`,	`mostrar_noticias_lateral`,	`qtde_noticias_lateral`,	`mostrar_produtos_capa`,	`qtde_produtos_capa`,	`mostrar_produtos_lateral`,	`qtde_produtos_lateral`,	`img_bg_html`,								`img_logo`,	`cor_titulo`,	`img_bg_topo`,	`keywords`,	`description`,	`author`,	`tamanho_centro`,	`pagina_institucional`,	`telefone`)
+--								  VALUES ('ep_04',	'Estrutura Padrão 04', 	NOW(), 		NOW(), 		'0', 					'1', 			'#333333', 			'#FFFFFF', 		'repeat-x', 			'1', 			'0', 			'#444444', 		'#FFFFFF',			'1',						'5',					'1',						'3',						'1',						'5',					'1',						'3',						'img/layouts_padroes/ep_04/bg_html.png',	NULL,		'#777777',		NULL,			NULL,		NULL,			NULL,		'medio',			'<p>...</p>',			NULL);
 
 -- -----------------------------------------------------
 -- Table `prototipo_tcc`.`usuario_tipos`

@@ -17,9 +17,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`estruturas` (
   `nome` VARCHAR(60) NOT NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
-  `usa_produtos` VARCHAR(100) NULL ,
-  `usa_noticias` VARCHAR(100) NULL ,
-  `usa_banners` VARCHAR(100) NULL ,
   `usa_barra_lateral` VARCHAR(100) NULL ,
   `usa_rodape` VARCHAR(100) NULL ,
   `cor_fonte_texto` VARCHAR(100) NULL ,
@@ -40,20 +37,12 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`estruturas` (
   `img_bg_html` VARCHAR(100) NULL ,
   `img_logo` VARCHAR(100) NULL ,
   `cor_titulo` VARCHAR(100) NULL ,
-  `conteudo_rodape` TEXT NULL ,
   `img_bg_topo` VARCHAR(100) NULL ,
-  `titulo_site` VARCHAR(100) NULL ,
   `keywords` VARCHAR(100) NULL ,
   `description` VARCHAR(100) NULL ,
   `author` VARCHAR(100) NULL ,
   `tamanho_centro` VARCHAR(100) NULL ,
-  `email_contato` VARCHAR(100) NULL ,
-  `usa_trabalhe_conosco` VARCHAR(100) NULL ,
-  `email_trabalhe_conosco` VARCHAR(100) NULL ,
-  `endereco_fisico_empresa` VARCHAR(500) NULL ,
-  `telefone_1` VARCHAR(100) NULL ,
-  `telefone_2` VARCHAR(100) NULL ,
-  `slogan` VARCHAR(200) NULL ,
+  `telefone` VARCHAR(100) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
@@ -281,6 +270,7 @@ DROP TABLE IF EXISTS `prototipo_tcc`.`usuario_tipos` ;
 
 CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`usuario_tipos` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `pin` VARCHAR(60) NOT NULL ,
   `tipo` VARCHAR(60) NOT NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
@@ -309,37 +299,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`usuarios` (
   CONSTRAINT `usuario_fk_usuario_tipo`
     FOREIGN KEY (`tipo_id` )
     REFERENCES `prototipo_tcc`.`usuario_tipos` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
-
--- -----------------------------------------------------
--- Table `prototipo_tcc`.`menu`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`menu` ;
-
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`menu` (
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `nome` VARCHAR(45) NOT NULL ,
-  `link` VARCHAR(100) NULL ,
-  `menu_id` INT(10) UNSIGNED NULL ,
-  `pagina_id` INT(10) UNSIGNED NULL ,
-  `created` DATETIME NULL ,
-  `modified` DATETIME NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `menu_id_idx` (`menu_id` ASC) ,
-  INDEX `pagina_id_idx` (`pagina_id` ASC) ,
-  CONSTRAINT `menu_fk_menu`
-    FOREIGN KEY (`menu_id` )
-    REFERENCES `prototipo_tcc`.`menu` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `menu_fk_pagina`
-    FOREIGN KEY (`pagina_id` )
-    REFERENCES `prototipo_tcc`.`paginas` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB

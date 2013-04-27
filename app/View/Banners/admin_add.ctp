@@ -14,6 +14,10 @@ $this->Html->addCrumb($titulo[0]);
     echo $this->Form->input('arquivo', array('type' => 'file', 'label' => 'Arquivo (' . implode(', ', $file['formatos']) . '):'));
 //    echo $this->Form->input('validade', array('label' => __('Validate:'), 'type' => 'text', 'dateFormat' => 'dd/mm/YYYY', 'class' => 'data'));
     echo $this->Form->input('link', array('label' => __('Link/URL:')));
+    echo $this->Form->input('ativo', array('label' => __('Active:'), 'type' => 'select', 'options' => array(
+            '1' => __('Yes'),
+            '0' => __('No')
+            )));
     ?>
 </fieldset>
 

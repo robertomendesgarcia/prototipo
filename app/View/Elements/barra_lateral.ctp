@@ -1,10 +1,6 @@
 <div id="barra_lateral">
 
-    <?php
-    if (!empty($banners[1])) {
-        echo 'Banner 1!!';
-    }
-    ?>
+    <?php echo $this->element('banners', array('pin' => 'barra_lateral_topo')); ?>
 
     <?php if ($config['mostrar_noticias_lateral'] && isset($noticias_lateral)) { ?>
         <h3><?php echo __('News'); ?></h3>
@@ -29,11 +25,7 @@
         </ul>
     <?php } ?>
 
-    <?php
-    if (!empty($banners[2])) {
-        echo 'Banner 2!!';
-    }
-    ?>
+    <?php echo $this->element('banners', array('pin' => 'barra_lateral_meio')); ?>
 
     <?php if ($config['mostrar_produtos_lateral'] && isset($noticias_lateral)) { ?>
         <h3><?php echo __('Products'); ?></h3>
@@ -79,5 +71,7 @@
         }
         ?>
     </div>
+
+    <?php echo $this->element('banners', array('pin' => 'barra_lateral_abaixo')); ?>
 
 </div>

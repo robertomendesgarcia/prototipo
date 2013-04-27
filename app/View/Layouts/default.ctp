@@ -32,9 +32,11 @@
             }
             #topo {
                 <?php
+                $cor_bg_topo = !empty($config['cor_bg_menu']) ? : 'transparent';
                 if (!empty($config['img_bg_topo'])) {
-                    echo "background: transparent url('" . DEFAULT_URL . $config['img_bg_topo'] . "') 0 0 no-repeat;";
+                    echo "background: " . $cor_bg_topo . " url('" . DEFAULT_URL . $config['img_bg_topo'] . "') 0 0 no-repeat;";
                 }
+                echo "background-color: " . $cor_bg_topo;
                 ?>
             }
             #topo h1 a {
@@ -72,6 +74,9 @@
     </head>
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">
 
+        <?php echo $this->Session->flash("admin"); ?>
+        <?php echo $this->Session->flash("flash"); ?>
+        
         <div id="topo">
             <h1>
                 <a href="<?php echo DEFAULT_URL; ?>" title="Capa">
@@ -89,8 +94,6 @@
 
         </div>
 
-        <?php echo $this->Session->flash(); ?>
-
         <div id="conteudo">
 
             <?php
@@ -100,6 +103,9 @@
             ?>
 
             <div id="wrapper" class="<?php echo $config['tamanho_centro']; ?>">
+                
+                <?php echo $this->element('banners', array('pin' => 'centro')); ?>
+                
                 <?php echo $content_for_layout; ?>
             </div>
 

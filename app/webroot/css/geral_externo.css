@@ -7,6 +7,79 @@ body {
     color: #333;
 }
 
+/* --- Flash Message --- */
+#adminMessage {
+    padding: 10px;
+    /*margin-bottom: 15px;*/
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 1px 1px 1px #555;
+    color: #FFF;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 98%;
+    cursor: pointer;
+}
+#adminMessage a {
+    float: right;
+    display: inline;
+    text-decoration: none;
+}
+#adminMessage.warning {
+    background: transparent url('./../img/flash_message/bg_warning.png') 0 0 repeat-x;
+    border-color: #D5C584;
+    color: #444;
+    text-shadow: 1px 1px 1px #FFF;
+}
+#adminMessage.warning a {
+    color: #B3A779;
+}
+#adminMessage.info {
+    background: transparent url('./../img/flash_message/bg_info.png') 0 0 repeat-x;
+    border-color: #2E8BA6;
+}
+#adminMessage.info a {
+    color: #2C7C94;
+}
+#adminMessage.error {
+    background: transparent url('./../img/flash_message/bg_error.png') 0 0 repeat-x;
+    border-color: #B0352F;
+}
+#adminMessage.error a {
+    color: #AF403B;
+    text-shadow: 1px 1px 1px #FFF;
+}
+#adminMessage.success {
+    background: transparent url('./../img/flash_message/bg_success.png') 0 0 repeat-x;
+    border-color: #4E974E;
+}
+#adminMessage.success a {
+    color: #4B954B;
+}
+
+/* --- Mensagem de Validacao da Model --- */
+div.error-message {
+    color: #F00;
+    font-weight: bold;
+}
+
+div.banners {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    overflow: hidden;
+}
+div.banners a {
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+}
+
 /* --- Topo --- */
 #topo {
     overflow: auto;

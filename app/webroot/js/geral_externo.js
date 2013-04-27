@@ -84,9 +84,6 @@ $(document).ready(function(){
         
     }
 
-
-
-
     if ($('#NewsletterDisplayForm').length) {
         
         $('#NewsletterDisplayForm').validate({
@@ -107,14 +104,21 @@ $(document).ready(function(){
         });
         
     }
-
     
-//
-//    $('#adminMessage a').on('click', function(event){
-//        $('#adminMessage').fadeOut();
-//        event.preventDefault();
-//    });
-//    
+
+    $('#adminMessage').on('click', function(event){
+        $('#adminMessage').fadeOut();
+        event.preventDefault();
+    });
+    
+    $('div.banners a').on('click', function() {
+        $(this).target = "_blank";
+        window.open($(this).prop('href'));
+        return false;
+    });
+    
+    
+    
 //    $('#NoticiaData').datepicker();
 //    $('#NoticiaData').mask("99/99/9999");
 //    

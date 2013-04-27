@@ -21,6 +21,10 @@
         'type' => 'text',
         'class' => 'obrigatorio'
     ));
+    echo $this->Form->input('telefone', array(
+        'label' => 'Telefone para Contato:',
+        'type' => 'text'
+    ));
     echo $this->Form->input('endereco_fisico_empresa', array(
         'label' => 'Endere&ccedil;o Físico da Empresa:',
         'type' => 'textarea',
