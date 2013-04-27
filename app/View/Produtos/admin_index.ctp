@@ -1,6 +1,6 @@
 <div class="actions">
     <ul>
-        <li><?php echo $this->Html->link(__('New Product'), array('action' => 'add'), array('class' => 'botao')); ?></li>
+        <li><?php echo $this->Html->link(__('New Product'), array('action' => 'add'), array('class' => 'botao', 'title' => __('New Product'))); ?></li>
     </ul>
 </div>
 
@@ -23,9 +23,9 @@
             <td class="centralizado"><?php echo ($produto['Produto']['ativo'] == 1) ? __('Yes') : __('No'); ?></td>
             <td class="centralizado"><?php echo $produto['ProdutoCategoria']['nome']; ?></td>
             <td class="acoes_3_botoes">
-                <?php echo $this->Html->link(__('View'), array('action' => 'view', $produto['Produto']['id']), array('class' => 'ver')); ?>
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $produto['Produto']['id']), array('class' => 'editar')); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $produto['Produto']['id']), array('class' => 'excluir'), __('Deseja realmente excluir?', $produto['Produto']['id'])); ?>
+                <?php echo $this->Html->link(__('View'), array('action' => 'ver', $produto['Produto']['id'] . '/' . $this->Uteis->slug($produto['Produto']['nome']), 'admin' => false), array('class' => 'ver nova_aba', 'title' => __('View'))); ?>
+                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $produto['Produto']['id']), array('class' => 'editar', 'title' => __('Edit'))); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $produto['Produto']['id']), array('class' => 'excluir', 'title' => __('Delete')), __('Deseja realmente excluir?', $produto['Produto']['id'])); ?>
             </td>
         </tr>
     <?php }; ?>

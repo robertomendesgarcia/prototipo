@@ -1,6 +1,6 @@
 <div class="actions">
       <ul>
-            <li><?php echo $this->Html->link(__('New Banner'), array('action' => 'add'), array('class' => 'botao')); ?></li>
+            <li><?php echo $this->Html->link(__('New Banner'), array('action' => 'add'), array('class' => 'botao', 'title' => __('New Banner'))); ?></li>
       </ul>
 </div>
 
@@ -19,8 +19,8 @@
                   <td class="centralizado"><?php echo date("d/m/Y", strtotime($banner['Banner']['validade'])); ?></td>
                   <td><?php echo h($banner['BannerTipo']['tipo']); ?></td>
                   <td class="acoes">
-                        <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $banner['Banner']['id']), array('class' => 'editar')); ?>
-                        <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $banner['Banner']['id']), array('class' => 'excluir'), __('Deseja realmente excluir?', $banner['Banner']['id'])); ?>
+                        <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $banner['Banner']['id']), array('class' => 'editar', 'title' => __('Edit'))); ?>
+                        <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $banner['Banner']['id']), array('class' => 'excluir', 'title' => __('Delete')), __('Deseja realmente excluir?', $banner['Banner']['id'])); ?>
                   </td>
             </tr>
       <?php }; ?>

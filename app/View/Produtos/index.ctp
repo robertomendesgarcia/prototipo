@@ -1,5 +1,7 @@
-
 <?php echo $this->element('breadcrumbs');?>
+
+<h3>Produtos</h3>
+
 
 <ul class="listagem">
 
@@ -10,7 +12,7 @@
             if (!empty($produto['ProdutoImagem'][0])) {
                 $src = $img . $produto['ProdutoImagem'][0]['id'] . '.jpg';
                 echo $this->PhpThumb->thumbnail($src, array(
-                    'w' => 120, 'h' => 120, 'zc' => 1
+                    'w' => 150, 'h' => 150, 'zc' => 1
                 ));
             }
             ?>

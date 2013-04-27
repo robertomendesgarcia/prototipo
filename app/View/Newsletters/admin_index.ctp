@@ -11,7 +11,7 @@
                   <td><?php echo h($newsletter['Newsletter']['email']); ?></td>
                   <td class="centralizado"><?php echo date("d/m/Y H:i:s", strtotime($newsletter['Newsletter']['data_inscricao'])); ?></td>
                   <td class="acoes">
-                        <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $newsletter['Newsletter']['id']), array('class' => 'excluir'), __('Deseja realmente excluir?', $newsletter['Newsletter']['id'])); ?>
+                        <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $newsletter['Newsletter']['id']), array('class' => 'excluir', 'title' => __('Delete')), __('Deseja realmente excluir?', $newsletter['Newsletter']['id'])); ?>
                   </td>
             </tr>
       <?php }; ?>

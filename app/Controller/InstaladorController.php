@@ -135,10 +135,23 @@ class InstaladorController extends AppController {
             $this->loadModel('Usuario');
             $this->Usuario->create();
             if ($this->Usuario->save($this->request->data)) {
-                $this->Session->setFlash(__('Usuário salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
-                $this->redirect(array('controller' => 'usuarios', 'action' => 'login'));
+                $this->Session->setFlash(__('Usuário administrador salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
+
+                $this->loadModel('Configuracao');
+                $etapa = $this->Configuracao->find('first', array(
+                    'conditions' => array(
+                        'Configuracao.pin' => 'etapa_cms'
+                    )
+                        ));
+                $etapa['Configuracao']['conteudo'] = '1';
+                if ($this->Configuracao->save($etapa)) {
+                    $this->redirect(array('controller' => 'usuarios', 'action' => 'login'));
+                } else {
+                    $this->Session->setFlash(__('Erro ao salvar o usuário administrador.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                }
+                
             } else {
-                $this->Session->setFlash(__('Erro ao salvar o usuário.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                $this->Session->setFlash(__('Erro ao salvar o usuário administrador.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         }
 

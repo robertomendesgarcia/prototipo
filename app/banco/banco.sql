@@ -13,6 +13,7 @@ DROP TABLE IF EXISTS `prototipo_tcc`.`estruturas` ;
 
 CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`estruturas` (
   `id` INT(1) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `pin` VARCHAR(60) NOT NULL ,
   `nome` VARCHAR(60) NOT NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,

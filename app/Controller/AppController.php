@@ -89,7 +89,7 @@ class AppController extends Controller {
     );
 
     function beforeRender() {
-        parent::beforeRender();
+        parent::beforeRender();        
         if (!defined("DEFAULT_URL")) {
             define("DEFAULT_URL", Router::url("/", true));
         }
@@ -107,7 +107,7 @@ class AppController extends Controller {
 //            $this->Session->write('Storage.config', $config);
         }
 
-        if (isset($this->params['admin'])) {
+        if ((isset($this->params['admin'])) && ($this->params['controller'] <> 'wizard')) {
             $this->layout = 'admin';
         } else {
 

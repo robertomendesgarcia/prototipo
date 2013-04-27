@@ -119,6 +119,10 @@ input.color_picker {
     width: 70px;
 }
 
+.desabilitado label {
+    color: #AAA;
+}
+
 /* --- Flash Message --- */
 #adminMessage {
     padding: 10px;
@@ -379,6 +383,10 @@ div.error-message {
     margin-top: 10px;
     margin-right: 10px;
 }
+#c-usuarios.a-esqueci_meu_usuario_senha div.submit input {
+    background: url('./../img/admin/layout/bt_enviar.png') no-repeat;
+    width: 70px;
+}
 #c-usuarios.a-login div.form_login a {
     color: #656565;
     font-size: 12px;
@@ -543,18 +551,25 @@ table.listagem tr td.acoes {
     vertical-align: middle;
     width: 148px;    
 }
+table.listagem tr td.acoes {
+    width: 160px;   
+}
 table.listagem tr td.acoes_3_botoes {
     text-align: center;
     vertical-align: middle;
     width: 206px;    
 }
+#c-usuarios.a-admin_index table.listagem tr td.acoes_3_botoes {
+    width: 250px;
+}
 #centro table.listagem tr td.acoes a,
 #centro table.listagem tr td.acoes_3_botoes a {
-    float: left; display: inline;
+    /*float: left;*/ 
+    display: inline-block;
     text-indent: -9999em;
     overflow: hidden;
     height: 20px;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 #centro table.listagem tr td.acoes a.ver,
 #centro table.listagem tr td.acoes_3_botoes a.ver {
@@ -571,6 +586,16 @@ table.listagem tr td.acoes_3_botoes {
     width: 66px;
     background: url('./../img/admin/layout/bt_excluir.png') no-repeat;
     margin: 0;
+}
+#centro table.listagem tr td.acoes a.download,
+#centro table.listagem tr td.acoes_3_botoes a.download {
+    width: 82px;
+    background: url('./../img/admin/layout/bt_download.png') no-repeat;
+}
+#centro table.listagem tr td.acoes a.enviar_senha,
+#centro table.listagem tr td.acoes_3_botoes a.enviar_senha {
+    width: 104px;
+    background: url('./../img/admin/layout/bt_enviar_senha.png') no-repeat;
 }
 
 /* --- Formularios --- */
@@ -683,6 +708,13 @@ fieldset.galeria ul li a {
     display: block;   
     text-align: center;
     text-decoration: none;
+}
+fieldset.galeria ul li a.excluir {
+    background: url('./../img/admin/layout/bt_excluir_galeria.png') no-repeat;
+    text-indent: -1000em;
+    overflow: hidden;
+    width: 102px;
+    height: 21px;
 }
 
 /* --- Produtos --- */

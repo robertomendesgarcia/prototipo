@@ -472,7 +472,7 @@ msgid "Actives"
 msgstr "Ativos"
 
 msgid "New User"
-msgstr "Novo Usuario"
+msgstr "Novo Usuário"
 
 msgid "Change Password"
 msgstr "Alterar Senha"

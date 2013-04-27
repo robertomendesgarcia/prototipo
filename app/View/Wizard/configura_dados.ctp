@@ -1,15 +1,16 @@
-<?php echo $this->Form->create('Layout'); ?>
+<h3>Passo 3: preencha as informações necessárias.</h3>
+
+<p class="campos_obrigatorios">* Campos Obrigatórios</p>
+
+<?php echo $this->Form->create('Layout', array('id' => 'form_configura_dados', 'type' => 'file')); ?>
 
 <fieldset class="passo_3">
-
-    <h3>Passo 3: preencha as informações necessárias.</h3>
-
-    <p class="campos_obrigatorios">* Campos Obrigatórios</p>
 
     <?php
     echo $this->Form->input('titulo_site', array(
         'label' => 'Titulo do Site:',
         'type' => 'text',
+        'class' => 'obrigatorio'
     ));
     echo $this->Form->input('slogan', array(
         'label' => 'Slogan do Site:',
@@ -18,6 +19,7 @@
     echo $this->Form->input('email_contato', array(
         'label' => 'Email para Contato:',
         'type' => 'text',
+        'class' => 'obrigatorio'
     ));
     echo $this->Form->input('endereco_fisico_empresa', array(
         'label' => 'Endere&ccedil;o Físico da Empresa:',

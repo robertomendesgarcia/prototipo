@@ -91,8 +91,7 @@ class PaginasController extends AppController {
             )
                 ));
 
-//        $title_for_layout = $conteudo['Pagina']['titulo'] . ' - ' . $title_for_layout; 'title_for_layout',
-
+        $this->set('title_for_layout', $conteudo['Pagina']['titulo'] . ' - ' . $this->title_for_layout);
         $this->set(compact('page', 'subpage', 'conteudo'));
 //        $this->render(implode('/', $path));
         $this->render('generica');
@@ -123,6 +122,8 @@ class PaginasController extends AppController {
             var_dump($this->request->data);
             exit;
         }
+
+        $this->set('title_for_layout', 'Contato - ' . $this->title_for_layout);
     }
 
     public function trabalhe_conosco() {
@@ -161,6 +162,40 @@ class PaginasController extends AppController {
                 }
             }
         }
+
+        $this->set('title_for_layout', 'Trabalhe Conosco - ' . $this->title_for_layout);
+    }
+
+    public function capa() {
+
+        $this->loadModel('Configuracao');
+        $etapa = $this->Configuracao->find('first', array(
+            'conditions' => array(
+                'Configuracao.pin' => 'etapa_cms'
+            )
+                ));
+        switch ($etapa['Configuracao']['conteudo']) {
+            case 0:
+                $this->redirect(array(
+                    'controller' => 'instalador',
+                    'action' => 'configuraBanco'
+                ));
+                break;
+            case 1:
+                $this->redirect(array(
+                    'controller' => 'usuarios',
+                    'action' => 'login'
+                ));
+                break;
+        }
+
+
+//        echo '<pre>';
+//        pr($etapa);
+//        echo '</pre>';
+//        exit;
+
+        $this->set('title_for_layout', $this->title_for_layout);
     }
 
 }

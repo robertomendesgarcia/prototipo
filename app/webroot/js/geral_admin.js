@@ -10,6 +10,12 @@ $(document).ready(function(){
             event.preventDefault();
         }
     });
+    
+    $('a.nova_aba').on('click', function(){
+        
+        console.log('Abre nova aba');
+        
+    });
 
     $('#adminMessage').on('click', function(event){
         $('#adminMessage').fadeOut();
@@ -99,7 +105,9 @@ $(document).ready(function(){
 function toogleCampos(){
     if ($('#ConfiguracaoUsaProdutos').is(':checked') || $('#ConfiguracaoUsaNoticias').is(':checked')) {
         $('div.campos input, div.campos select').removeAttr('disabled');
+        $('div.campos').removeClass('desabilitado');    
     } else {
         $('div.campos input, div.campos select').attr('disabled', true);
+        $('div.campos').addClass('desabilitado');
     }
 }

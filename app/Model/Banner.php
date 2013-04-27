@@ -131,5 +131,13 @@ class Banner extends AppModel {
 //        exit;
 //        
 //    }
+    
+    public function getBanner($pin_local) {
+        die('getBanner!');
+        
+        
+    }
+    
+    
 
 }

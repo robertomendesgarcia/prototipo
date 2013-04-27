@@ -1,6 +1,6 @@
 <div class="actions">
     <ul>
-        <li><?php echo $this->Html->link(__('New Page'), array('action' => 'add'), array('class' => 'botao')); ?></li>
+        <li><?php echo $this->Html->link(__('New Page'), array('action' => 'add'), array('class' => 'botao', 'title' => __('New Page'))); ?></li>
     </ul>
 </div>
 
@@ -20,8 +20,8 @@
             <td class="centralizado"><?php echo ($pagina['Pagina']['ativo'] == 1) ? __('Yes') : __('No'); ?></td>
             <td class="centralizado"><?php echo date("d/m/Y", strtotime($pagina['Pagina']['modified'])); ?></td>
             <td class="acoes_3_botoes">
-                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $pagina['Pagina']['id']), array('class' => 'editar')); ?>
-                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $pagina['Pagina']['id']), array('class' => 'excluir'), __('Deseja realmente excluir?')); ?>
+                <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $pagina['Pagina']['id']), array('class' => 'editar', 'title' => __('Edit'))); ?>
+                <?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $pagina['Pagina']['id']), array('class' => 'excluir', 'title' => __('Delete')), __('Deseja realmente excluir?')); ?>
             </td>
         </tr>
     <?php }; ?>

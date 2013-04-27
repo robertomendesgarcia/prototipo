@@ -11,6 +11,8 @@
         <!-- <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uniform/jquery.uniform.min.js"></script> //-->
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-validation-1.11.0/dist/jquery.validate.min.js"></script>  
         <!-- <link href="<?php echo DEFAULT_URL; ?>js/uniform/css/uniform.default.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />         -->
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uniform/jquery.uniform.min.js"></script>
+        <link href="<?php echo DEFAULT_URL; ?>js/uniform/css/uniform.default.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
         <link href="<?php echo DEFAULT_URL; ?>css/reset.css" media="all" rel="stylesheet" type="text/css" />
         <link href="<?php echo DEFAULT_URL; ?>css/admin.css" media="all" rel="stylesheet" type="text/css" />
         <link href="<?php echo DEFAULT_URL; ?>css/instalador.css" media="all" rel="stylesheet" type="text/css" />
@@ -37,10 +39,17 @@
         </div>
 
         <div id="conteudo">
-            <?php echo $this->element('menu_passos'); ?>
+
             <div id="wrapper">
                 <?php echo $content_for_layout; ?>
+
+                <?php
+                if ($this->params['action'] <> 'admin_wizard_concluido') {
+                    echo $this->element('menu_passos');
+                }
+                ?>
             </div>
+
         </div>
 
         <div id="rodape">
@@ -50,15 +59,31 @@
         <script type="text/javascript">
             $(document).ready(function(){
                 
+                // $('form input').first().focus();
+
+                $('#LayoutUsaTrabalheConosco').on('click', function(){
+                    if ($(this).prop('checked')) {
+                        $('#LayoutEmailTrabalheConosco').removeAttr('disabled').parent('div').removeClass('desabilitado');
+                        $('#LayoutEmailTrabalheConosco').focus();
+                    } else {
+                        $('#LayoutEmailTrabalheConosco').attr('disabled', 'disabled').val('').parent('div').addClass('desabilitado');                        
+                    }
+                });
+                
+                $('input:file').uniform();
+                
                 $.each($('form input.obrigatorio'), function(index, value){
                     $(this).prev('label').append('<span class="requerido"> *</span>');
                 });
                 
+                //                if ($('#menu_passos').length) {
+                //                    $('#menu_passos').css('margin-top', ($('#wrapper').height() - 52) * -1);
+                //                }                
                 
                 //                $("#tabs").tabs({
                 //                    collapsible: false
                 //                });
-                if ($('body#c-instalador.a-index').length || $('body#c-instalador.a-configurabanco').length) {        
+                if ($('body#c-instalador.a-index').length || $('body#c-instalador.a-configurabanco').length || $('body#c-instalador.a-configuraBanco').length) {        
                     $('#BancoHost').focus();        
                     $('#configura_banco').validate({
                         rules: {
@@ -118,7 +143,7 @@
                             'data[Usuario][confirmar_senha]': 'required'
                         },
                         messages: {
-                            'data[Usuario][smtp]': 'Informe o nome.',
+                            'data[Usuario][nome]': 'Informe o nome.',
                             'data[Usuario][email]': {
                                 required: 'Informe o e-mail.',
                                 email: 'E-mail inválido.'
@@ -126,6 +151,39 @@
                             'data[Usuario][usuario]': 'Informe o usuário.',                            
                             'data[Usuario][senha]': 'Informe a senha.',                            
                             'data[Usuario][confirmar_senha]': 'Confirme a senha.'                            
+                        }
+                    });        
+                }
+                
+                //-- Wizard
+                if ($('#form_selecao_layout').length) {
+                    
+                    $('#form_selecao_layout fieldset a').on('click', function(event){
+                        $('#form_selecao_layout fieldset input:radio').removeAttr('checked');
+                        $('#form_selecao_layout fieldset').removeClass('selecionado');                        
+                        $(this).parent('fieldset').find('input:radio').attr('checked', 'true');
+                        $(this).parent('fieldset').addClass('selecionado');
+                        event.preventDefault();
+                    });                    
+                    
+                }
+                
+                if ($('#form_configura_dados').length) {        
+                    $('#LayoutTituloSite').focus();        
+                    $('#form_configura_dados').validate({
+                        rules: {
+                            'data[Layout][titulo_site]': 'required',
+                            'data[Layout][email_contato]': {                                
+                                required : true,
+                                email : true
+                            }
+                        },
+                        messages: {
+                            'data[Layout][titulo_site]': 'Informe o título do site.',
+                            'data[Layout][email_contato]': {
+                                required: 'Informe o e-mail para contato.',
+                                email: 'E-mail inválido.'
+                            }                          
                         }
                     });        
                 }

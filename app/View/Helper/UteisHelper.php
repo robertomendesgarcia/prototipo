@@ -12,5 +12,5 @@ class UteisHelper extends AppHelper {
     function truncate($str, $len, $end = '...') {
         return substr($str, 0, strrpos(substr($str, 0, $len), ' ')) . $end;
     }
-
+    
 }

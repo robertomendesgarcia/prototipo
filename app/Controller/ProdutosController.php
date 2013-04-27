@@ -37,7 +37,7 @@ class ProdutosController extends AppController {
             )
                 ));
 
-        $this->set('img', $this->Produto->ProdutoImagem->img['path']);
+        $this->set('img', $this->Produto->ProdutoImagem->img);
         $this->set(compact('produto'));
         $this->set('title_for_layout', __('Products') . ' - ' . $this->title_for_layout);
     }
@@ -68,13 +68,13 @@ class ProdutosController extends AppController {
         $this->set('title_for_layout', __('Products') . ' - ' . $this->title_for_layout);
     }
 
-    public function admin_view($id = null) {
-        $this->Produto->id = $id;
-        if (!$this->Produto->exists()) {
-            throw new NotFoundException(__('Produto inválido.'));
-        }
-        $this->set('produto', $this->Produto->read(null, $id));
-    }
+//    public function admin_view($id = null) {
+//        $this->Produto->id = $id;
+//        if (!$this->Produto->exists()) {
+//            throw new NotFoundException(__('Produto inválido.'));
+//        }
+//        $this->set('produto', $this->Produto->read(null, $id));
+//    }
 
     public function admin_add() {
 

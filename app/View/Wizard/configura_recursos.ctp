@@ -1,8 +1,8 @@
+<h3>Passo 2: escolha os recursos desejados.</h3>
+
 <?php echo $this->Form->create('Layout'); ?>
 
 <fieldset class="passo_2">
-
-    <h3>Passo 2: escolha os recursos desejados.</h3>
 
     <?php
     echo $this->Form->input('usa_produtos', array(
@@ -21,10 +21,14 @@
         'label' => 'Trabalhe conosco',
         'type' => 'checkbox',
     ));
+    echo '<div class="input text desabilitado">';
     echo $this->Form->input('email_trabalhe_conosco', array(
         'label' => 'Email trabalhe conosco',
         'type' => 'text',
+        'disabled' => 'disabled',
+        'div' => false
     ));
+    echo '</div>'
     ?>
 </fieldset>
 

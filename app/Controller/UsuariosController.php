@@ -9,11 +9,27 @@ class UsuariosController extends AppController {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 $_SESSION['KCEDITOR']['disabled'] = false;
-                $this->redirect($this->Auth->redirect(array(
-                            'controller' => 'usuarios',
-                            'action' => 'bem_vindo',
-                            'admin' => true
-                        )));
+
+                $this->loadModel('Configuracao');
+                $etapa = $this->Configuracao->find('first', array(
+                    'conditions' => array(
+                        'Configuracao.pin' => 'etapa_cms'
+                    )
+                        ));
+                if ($etapa['Configuracao']['conteudo'] == 1) {
+                    $this->redirect($this->Auth->redirect(array(
+                                'controller' => 'wizard',
+                                'action' => 'configuraLayout',
+                                'admin' => true
+                            )));
+                } else {
+                    $this->redirect($this->Auth->redirect(array(
+                                'controller' => 'usuarios',
+                                'action' => 'bem_vindo',
+                                'admin' => true
+                            )));
+                }
+                
             } else {
                 $this->Session->setFlash(__('Your username or password was incorrect.'), 'flash_message', array('tipo' => 'warning'), 'admin');
             }

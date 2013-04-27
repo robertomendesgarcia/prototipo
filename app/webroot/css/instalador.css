@@ -3,15 +3,20 @@
 #c-instalador {
     width: 580px;
 }
+#c-instalador form {
+    display: inline;
+    float: left;
+    width: 360px;
+}
 
 #c-instalador.a-criarUsuarioAdmin {
     /*width: 700px;*/
 }
 
 #wrapper {
-    float: left;
+    /*float: left;*/
     display: inline;
-    width: 450px;
+    /*width: 450px;*/
 }
 
 #conteudo {
@@ -40,7 +45,39 @@ div.botoes {
 /* --- Wizard --- */
 #c-wizard {
     width: 630px;
-
+}
+#c-wizard.a-admin_index, 
+#c-wizard.a-admin_configuraLayout {
+    width: 700px;
+}
+#c-wizard form {
+    display: inline;
+    float: left;
+    width: 400px;
+}
+#c-wizard.a-admin_index form, 
+#c-wizard.a-admin_configuraLayout form {
+    width: 480px;
+}
+#form_selecao_layout fieldset {
+    display: inline-block;
+    padding: 0 12px 15px 0;
+}
+#form_selecao_layout fieldset label {
+    text-align: center;
+}
+#form_selecao_layout fieldset.selecionado label {
+    /*color: #F08D4B;*/
+}
+#form_selecao_layout fieldset a img {
+    border: 2px solid #FFF;  
+} 
+#form_selecao_layout fieldset a:hover img,
+#form_selecao_layout fieldset.selecionado a img {
+    border: 2px solid #F08D4B;    
+}
+#c-wizard form div.checkbox input {
+    width: auto;
 }
 
 fieldset.passo_2,
@@ -54,26 +91,51 @@ fieldset.passo_3 {
     float: right;
     display: inline;
     width: 125px;
-    margin: 50px 0 0 0;
+    margin: 15px 48px 0 0;
+}
+#c-wizard.a-admin_wizard_concluido #wrapper ul {
+    width: 465px;
+    margin: 0 auto;
+    padding: 125px 0;
+}
+#c-wizard.a-admin_wizard_concluido #wrapper ul li {
+    display: inline-block;
+}
+#c-wizard.a-admin_wizard_concluido #wrapper ul li:first-child {
+    margin-right: 50px;
 }
 #menu_passos li {
-    margin: 18px 0;
+    margin: 0 0 25px 0;
     display: block;
 } 
+#c-wizard.a-admin_wizard_concluido #wrapper ul li a,
 #menu_passos li a {
+    background: #FFF url('./../img/admin/layout/bg_input.png') 0 20px repeat-x;
     display: block;
     height: 30px; 
-    width: 30px;
-    font-size: 32px;
+    width: 100px;
+    font-size: 20px;
     line-height: 30px;
     font-weight: bold;
     text-decoration: none;
     text-align: center;
-    padding: 10px;
-    border: 3px solid #C6DAE5;
-    background-color: #FFF;
-    color: #656565;
-    -webkit-border-radius: 24px;
-    -moz-border-radius: 24px;
-    border-radius: 24px;
+    padding: 5px;
+    border: 2px solid #C6DAE5;
+    color: #AAA;
+    letter-spacing: -1px;
+    text-shadow: 1px 1px 1px #DDD;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
+#c-wizard.a-admin_wizard_concluido #wrapper ul li a {
+    width: auto;
+    padding: 5px 15px;
+}
+
+#c-wizard.a-admin_wizard_concluido #wrapper ul li a:hover,
+#menu_passos li a:hover,
+#menu_passos li a.selecionado {
+    /*background-color: #F3F3F3;*/
+    color: #3589BA;
 }
