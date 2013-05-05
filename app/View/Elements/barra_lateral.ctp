@@ -53,10 +53,10 @@
     <?php } ?>
 
     <div id="newsletter">
-        <?php echo $this->Form->create('Newsletter', array('controller' => 'Newsletters', 'action' => 'add')); ?>
+        <?php echo $this->Form->create('Newsletter', array('controller' => 'Newsletters', 'action' => 'add'), array('id' => 'NewsletterAddForm')); ?>
         <fieldset>
             <legend>Newsletter</legend>
-            <p>Fique por dentro das novidades, receba e-mails periódicos.</p>
+            <p>Receba informativos periódicos.</p>
             <?php
             echo $this->Form->input('nome', array('label' => __('Name:')));
             echo $this->Form->input('email', array('label' => __('E-mail:')));

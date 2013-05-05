@@ -174,6 +174,7 @@ class WizardController extends AppController {
 
             $endereco_fisico_empresa = $this->request->data['Layout']['endereco_fisico_empresa'];
             $sql = "update configuracoes set conteudo = '$endereco_fisico_empresa', modified=now() where pin='endereco_fisico_empresa'";
+            $sql = "update configuracoes set conteudo = '" . nl2br($endereco_fisico_empresa) . "', modified=now() where pin='conteudo_rodape'";
             $this->Configuracao->query($sql);
 
             if ($this->request->data['Layout']['img_logo']['error'] == 0) {

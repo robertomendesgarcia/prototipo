@@ -1,4 +1,4 @@
-<?php // echo '<pre>'; pr($config); echo '</pre>';    ?>
+<?php // echo '<pre>'; pr($config); echo '</pre>';     ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
@@ -25,18 +25,22 @@
         <style type="text/css">
             html {
                 <?php
+                $cor_bg_html = !empty($config['cor_bg_html']) ? $config['cor_bg_html'] : 'transparent';
                 if (!empty($config['img_bg_html'])) {
-                    echo "background: transparent url('" . DEFAULT_URL . $config['img_bg_html'] . "') 0 0 " . $config['img_bg_html_repeat'] . ";";
+                    echo "background: " . $cor_bg_html . " url('" . DEFAULT_URL . $config['img_bg_html'] . "') 0 0 " . $config['img_bg_html_repeat'] . ";";
+                } else {
+                    echo "background-color: " . $cor_bg_html;
                 }
                 ?>
             }
             #topo {
                 <?php
-                $cor_bg_topo = !empty($config['cor_bg_menu']) ? : 'transparent';
+                $cor_bg_topo = !empty($config['cor_bg_topo']) ? $config['cor_bg_topo'] : 'transparent';
                 if (!empty($config['img_bg_topo'])) {
                     echo "background: " . $cor_bg_topo . " url('" . DEFAULT_URL . $config['img_bg_topo'] . "') 0 0 no-repeat;";
+                } else {
+                    echo "background-color: " . $cor_bg_topo;
                 }
-                echo "background-color: " . $cor_bg_topo;
                 ?>
             }
             #topo h1 a {
@@ -66,7 +70,8 @@
             #wrapper p {
                 color: <?php echo!empty($config['cor_fonte_texto']) ? $config['cor_fonte_texto'] : '#333333'; ?>;
             }            
-            #wrapper h3 {
+            #wrapper h3,
+            #barra_lateral h3 {
                 color: <?php echo!empty($config['cor_titulo']) ? $config['cor_titulo'] : '#333333'; ?>;
             }
 
@@ -76,7 +81,7 @@
 
         <?php echo $this->Session->flash("admin"); ?>
         <?php echo $this->Session->flash("flash"); ?>
-        
+
         <div id="topo">
             <h1>
                 <a href="<?php echo DEFAULT_URL; ?>" title="Capa">
@@ -103,9 +108,9 @@
             ?>
 
             <div id="wrapper" class="<?php echo $config['tamanho_centro']; ?>">
-                
+
                 <?php echo $this->element('banners', array('pin' => 'centro')); ?>
-                
+
                 <?php echo $content_for_layout; ?>
             </div>
 

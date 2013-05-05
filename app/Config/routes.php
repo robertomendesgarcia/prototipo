@@ -68,3 +68,6 @@ CakePlugin::routes();
  */
 require CAKE . 'Config' . DS . 'routes.php';
 
+if (!defined("DEFAULT_URL")) {
+    define("DEFAULT_URL", Router::url("/", true));
+}

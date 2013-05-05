@@ -20,7 +20,7 @@
         echo "<div class='input logo_atual'>";
         echo $this->Form->label(__('Imagem de Fundo do Topo Atual:'));
         echo $this->PhpThumb->thumbnail($this->data['Configuracao']['img_bg_topo'], array(
-            'w' => 100, 'zc' => 1
+            'w' => 100, 'h' => 100, 'zc' => 1
         ));
         echo "</div>";
     }
@@ -48,7 +48,7 @@
         echo "<div class='input logo_atual'>";
         echo $this->Form->label(__('Imagem de Fundo Atual:'));
         echo $this->PhpThumb->thumbnail($this->data['Configuracao']['img_bg_html'], array(
-            'w' => 100, 'zc' => 1
+            'w' => 100, 'h' => 100, 'zc' => 1
         ));
         echo "</div>";
     }

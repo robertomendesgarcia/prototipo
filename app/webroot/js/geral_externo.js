@@ -84,9 +84,9 @@ $(document).ready(function(){
         
     }
 
-    if ($('#NewsletterDisplayForm').length) {
+    if ($('#NewsletterAddForm').length) {
         
-        $('#NewsletterDisplayForm').validate({
+        $('#NewsletterAddForm').validate({
             rules: {
                 'data[Newsletter][nome]': 'required',
                 'data[Newsletter][email]': {

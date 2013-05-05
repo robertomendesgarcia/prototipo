@@ -36,7 +36,7 @@
         echo "<div class='input logo_atual'>";
         echo $this->Form->label('Logo Atual:');
         echo $this->PhpThumb->thumbnail($this->data['Configuracao']['img_logo'], array(
-            'w' => 100, 'zc' => 1
+            'w' => 100, 'h' => 100, 'zc' => 1
         ));
         echo "</div>";
     }
