@@ -10,26 +10,26 @@ class UsuariosController extends AppController {
             if ($this->Auth->login()) {
                 $_SESSION['KCEDITOR']['disabled'] = false;
 
-                $this->loadModel('Configuracao');
-                $etapa = $this->Configuracao->find('first', array(
-                    'conditions' => array(
-                        'Configuracao.pin' => 'etapa_cms'
-                    )
-                        ));
-                if ($etapa['Configuracao']['conteudo'] == 1) {
+                if (file_exists("../Config/status_instalacao.cfg")) {
+                    $handle = fopen("../Config/status_instalacao.cfg", "r+");
+                } else {
+                    $handle = fopen("../Config/status_instalacao.cfg", "w+");
+                }
+                $status = fread($handle, 10);
+                fclose($handle);
+                if ($status == '1') {
                     $this->redirect($this->Auth->redirect(array(
                                 'controller' => 'wizard',
                                 'action' => 'configuraLayout',
                                 'admin' => true
-                            )));
+                    )));
                 } else {
                     $this->redirect($this->Auth->redirect(array(
                                 'controller' => 'usuarios',
                                 'action' => 'bem_vindo',
                                 'admin' => true
-                            )));
+                    )));
                 }
-                
             } else {
                 $this->Session->setFlash(__('Your username or password was incorrect.'), 'flash_message', array('tipo' => 'warning'), 'admin');
             }
@@ -54,10 +54,10 @@ class UsuariosController extends AppController {
             'conditions' => array(
                 'NoticiaCategoria.ativo' => 1
             )
-                ));
+        ));
         $noticia_categoria_ultima = $this->NoticiaCategoria->find('first', array(
             'order' => 'NoticiaCategoria.created DESC'
-                ));
+        ));
         $noticia_categoria_ultima = $noticia_categoria_ultima['NoticiaCategoria']['created'];
         $noticia_categoria_ultima = !empty($noticia_categoria_ultima) ? date('d/m/Y', strtotime($noticia_categoria_ultima)) : null;
         $this->set('noticia_categorias', $noticia_categorias);
@@ -71,10 +71,10 @@ class UsuariosController extends AppController {
             'conditions' => array(
                 'Noticia.ativo' => 1
             )
-                ));
+        ));
         $noticia_ultima = $this->Noticia->find('first', array(
             'order' => 'Noticia.created DESC'
-                ));
+        ));
         $noticia_ultima = $noticia_ultima['Noticia']['created'];
         $noticia_ultima = !empty($noticia_ultima) ? date('d/m/Y', strtotime($noticia_ultima)) : null;
         $this->set('noticias', $noticias);
@@ -88,10 +88,10 @@ class UsuariosController extends AppController {
             'conditions' => array(
                 'ProdutoCategoria.ativo' => 1
             )
-                ));
+        ));
         $produto_categoria_ultima = $this->ProdutoCategoria->find('first', array(
             'order' => 'ProdutoCategoria.created DESC'
-                ));
+        ));
         $produto_categoria_ultima = $produto_categoria_ultima['ProdutoCategoria']['created'];
         $produto_categoria_ultima = !empty($produto_categoria_ultima) ? date('d/m/Y', strtotime($produto_categoria_ultima)) : null;
         $this->set('produto_categorias', $produto_categorias);
@@ -105,10 +105,10 @@ class UsuariosController extends AppController {
             'conditions' => array(
                 'Produto.ativo' => 1
             )
-                ));
+        ));
         $produto_ultimo = $this->Produto->find('first', array(
             'order' => 'Produto.created DESC'
-                ));
+        ));
         $produto_ultimo = $produto_ultimo['Produto']['created'];
         $produto_ultimo = !empty($produto_ultimo) ? date('d/m/Y', strtotime($produto_ultimo)) : null;
         $this->set('produtos', $produtos);
@@ -122,10 +122,10 @@ class UsuariosController extends AppController {
             'conditions' => array(
                 'Banner.ativo' => 1
             )
-                ));
+        ));
         $banner_ultimo = $this->Banner->find('first', array(
             'order' => 'Banner.created DESC'
-                ));
+        ));
         $banner_ultimo = $banner_ultimo['Banner']['created'];
         $banner_ultimo = !empty($banner_ultimo) ? date('d/m/Y', strtotime($banner_ultimo)) : null;
         $this->set('banners', $banners);
@@ -139,10 +139,10 @@ class UsuariosController extends AppController {
             'conditions' => array(
                 'Newsletter.ativo' => 1
             )
-                ));
+        ));
         $newsletter_ultimo = $this->Newsletter->find('first', array(
             'order' => 'Newsletter.created DESC'
-                ));
+        ));
         $newsletter_ultimo = $newsletter_ultimo['Newsletter']['created'];
         $newsletter_ultimo = !empty($newsletter_ultimo) ? date('d/m/Y', strtotime($newsletter_ultimo)) : null;
         $this->set('newsletter', $newsletter);
@@ -156,10 +156,10 @@ class UsuariosController extends AppController {
             'conditions' => array(
                 'Curriculo.ativo' => 1
             )
-                ));
+        ));
         $curriculo_ultimo = $this->Curriculo->find('first', array(
             'order' => 'Curriculo.created DESC'
-                ));
+        ));
         $curriculo_ultimo = $curriculo_ultimo['Curriculo']['created'];
         $curriculo_ultimo = !empty($curriculo_ultimo) ? date('d/m/Y', strtotime($curriculo_ultimo)) : null;
         $this->set('curriculos', $curriculos);
@@ -173,10 +173,10 @@ class UsuariosController extends AppController {
             'conditions' => array(
                 'Usuario.ativo' => 1
             )
-                ));
+        ));
         $usuario_ultimo = $this->Usuario->find('first', array(
             'order' => 'Usuario.created DESC'
-                ));
+        ));
         $usuario_ultimo = $usuario_ultimo['Usuario']['created'];
         $usuario_ultimo = !empty($usuario_ultimo) ? date('d/m/Y', strtotime($usuario_ultimo)) : null;
         $this->set('usuarios', $usuarios);
@@ -277,7 +277,7 @@ class UsuariosController extends AppController {
                 'conditions' => array(
                     'Usuario.email' => $this->request->data['Usuario']['email']
                 )
-                    ));
+            ));
             if (!empty($usuario)) {
 
                 $nova_senha = uniqid();
@@ -327,7 +327,7 @@ class UsuariosController extends AppController {
             'conditions' => array(
                 'Usuario.id' => $id
             )
-                ));
+        ));
 
         $nova_senha = uniqid();
 
@@ -375,7 +375,7 @@ class UsuariosController extends AppController {
                     'conditions' => array(
                         'Usuario.id' => $this->request->data['Usuario']['id']
                     )
-                        ));
+                ));
 
                 $senha_atual = AuthComponent::password($this->request->data['Usuario']['senha_atual']);
 

@@ -1,16 +1,17 @@
 <?php
 
-App::uses('AppController', 'Controller');
+App::uses('AppInstaladorController', 'Controller');
 
-class InstaladorController extends AppController {
+class InstaladorController extends AppInstaladorController {
 
     public $uses = array('Configuracao');
     public $config_banco = array('host' => 'teste');
 
-    public function beforeFilter() {
-        parent::beforeFilter();
+    public function beforeRender() {
+        parent::beforeRender();
         $this->title_for_layout = 'Instalador';
         $this->layout = 'instalador';
+//        die($this->layout . ' --');
     }
 
     public function index() {
@@ -28,7 +29,6 @@ class InstaladorController extends AppController {
             $this->config_banco['host'] = $host;
 
             $this->criaBanco($host, $login, $senha, $banco);
-
             $handle = fopen("../Config/database.php", "w+");
             $txt = "<?php
                     class DATABASE_CONFIG {
@@ -45,8 +45,9 @@ class InstaladorController extends AppController {
                  }
                  ?>";
             if (fwrite($handle, $txt) === FALSE) {
-                $this->Session->setFlash(__('Não foi possível escrever no arquivo.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                $this->Session->setFlash(__('Erro ao salvar as configurações do banco de dados.'), 'flash_message', array('tipo' => 'error'), 'admin');
             } else {
+                $this->Session->setFlash(__('Banco de dados criado com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 $this->redirect(array("action" => "configuraEmail"));
             }
         }
@@ -131,32 +132,35 @@ class InstaladorController extends AppController {
 
     public function criarUsuarioAdmin() {
 
-        if ($this->request->is('post')) {
+        if ($this->request->is('post')) { 
             $this->loadModel('Usuario');
             $this->Usuario->create();
             if ($this->Usuario->save($this->request->data)) {
-                $this->Session->setFlash(__('Usuário administrador salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
 
-                $this->loadModel('Configuracao');
-                $etapa = $this->Configuracao->find('first', array(
-                    'conditions' => array(
-                        'Configuracao.pin' => 'etapa_cms'
-                    )
-                        ));
-                $etapa['Configuracao']['conteudo'] = '1';
-                if ($this->Configuracao->save($etapa)) {
+                if (file_exists("../Config/status_instalacao.cfg")) {
+                    $handle = fopen("../Config/status_instalacao.cfg", "r+");
+                } else {
+                    $handle = fopen("../Config/status_instalacao.cfg", "w+");
+                }
+                $status = fread($handle, 10);
+                $status = '1';
+                if (fwrite($handle, $status)) {
+                    fclose($handle);
+                    $this->Session->setFlash(__('Usuário administrador salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
                     $this->redirect(array('controller' => 'usuarios', 'action' => 'login'));
                 } else {
                     $this->Session->setFlash(__('Erro ao salvar o usuário administrador.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                    fclose($handle);
                 }
-                
             } else {
                 $this->Session->setFlash(__('Erro ao salvar o usuário administrador.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         }
-
+        
         $this->set('title_for_layout', __('Criar Usuário Administrador') . ' - ' . $this->title_for_layout);
+//        die($this->layout);
         $this->render('criar_usuario_admin');
+        
     }
 
     public function configuraEmail() {
@@ -195,10 +199,13 @@ class InstaladorController extends AppController {
             ?>";
 
             $handle = fopen("../Config/email.php", "w+");
+
             if (fwrite($handle, $txt) === FALSE) {
-                $this->Session->setFlash(__('Não foi possível escrever no arquivo.'), 'flash_message', array('tipo' => 'error'), 'admin');
+                $this->Session->setFlash(__('Erro ao salvar as configurações de e-mail.'), 'flash_message', array('tipo' => 'error'), 'admin');
+            } else {
+                $this->Session->setFlash(__('Configurações de e-mail salvas com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
+                $this->redirect(array("action" => "criarUsuarioAdmin"));
             }
-            $this->redirect(array("action" => "criarUsuarioAdmin"));
         }
         //echo $smtp;
         // echo "---".$fields['default']['host'];

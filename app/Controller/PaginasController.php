@@ -89,7 +89,7 @@ class PaginasController extends AppController {
             'conditions' => array(
                 'Pagina.pin' => $page
             )
-                ));
+        ));
 
         $this->set('title_for_layout', $conteudo['Pagina']['titulo'] . ' - ' . $this->title_for_layout);
         $this->set(compact('page', 'subpage', 'conteudo'));
@@ -167,34 +167,61 @@ class PaginasController extends AppController {
     }
 
     public function capa() {
+        $noticias = null;
+        $produtos = null;
 
         $this->loadModel('Configuracao');
-        $etapa = $this->Configuracao->find('first', array(
+        $config = $this->Configuracao->find('list', array(
+            'fields' => array(
+                'pin',
+                'conteudo'
+            ),
             'conditions' => array(
-                'Configuracao.pin' => 'etapa_cms'
+                'Configuracao.pin' => array(
+                    'usa_noticias', 'usa_produtos',
+                    'mostrar_noticias_capa', 'mostrar_noticias_capa',
+                    'qtde_noticias_capa', 'qtde_produtos_capa'
+                )
             )
+        ));
+
+        if (!empty($config)) {
+
+            if ($config['usa_noticias']) {
+                $this->loadModel('Noticia');
+                $noticias = $this->Noticia->find('all', array(
+                    'conditions' => array(
+                        'Noticia.ativo' => 1
+                    ),
+                    'limit' => $config['qtde_noticias_capa'],
+                    'order' => 'Noticia.created DESC'
                 ));
-        switch ($etapa['Configuracao']['conteudo']) {
-            case 0:
-                $this->redirect(array(
-                    'controller' => 'instalador',
-                    'action' => 'configuraBanco'
+            }
+
+            if ($config['usa_produtos']) {
+                $this->loadModel('Produto');
+                $produtos = $this->Produto->find('all', array(
+                    'conditions' => array(
+                        'Produto.ativo' => 1
+                    ),
+                    'limit' => $config['qtde_produtos_capa'],
+                    'order' => 'Produto.created DESC'
                 ));
-                break;
-            case 1:
-                $this->redirect(array(
-                    'controller' => 'usuarios',
-                    'action' => 'login'
-                ));
-                break;
+            }
         }
 
+        $this->loadModel('Pagina');
+        $a_empresa = $this->Pagina->find('first', array(
+            'conditions' => array(
+                'Pagina.ativo' => 1,
+                'Pagina.pin LIKE' => '%a-empresa%'
+            )
+        ));
 
-//        echo '<pre>';
-//        pr($etapa);
-//        echo '</pre>';
-//        exit;
-
+        $this->set('a_empresa', $a_empresa);
+        $this->set('noticias', $noticias);
+        $this->set('img_noticias', $this->Noticia->NoticiaImagem->img['path']);
+        $this->set('produtos', $produtos);
         $this->set('title_for_layout', $this->title_for_layout);
     }
 

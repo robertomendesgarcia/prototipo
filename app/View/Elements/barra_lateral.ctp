@@ -14,7 +14,8 @@
                 <li>
                     <a href="<?php echo DEFAULT_URL . 'noticias/ver/' . $noticia_lateral['Noticia']['id'] . '/' . $this->Uteis->slug($noticia_lateral['Noticia']['titulo']); ?>" title="<?php echo $noticia_lateral['Noticia']['titulo']; ?>">
                         <small>
-                            <?php echo date("d/m/Y", strtotime($noticia_lateral['Noticia']['data'])); ?>
+                            <?php echo date("d/m/Y", strtotime($noticia_lateral['Noticia']['data'])); ?> - 
+                            <?php echo $noticia_lateral['NoticiaCategoria']['nome']; ?>
                         </small>
                         <strong>
                             <?php echo $noticia_lateral['Noticia']['titulo']; ?>

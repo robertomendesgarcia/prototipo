@@ -9,6 +9,8 @@ App::uses('AppModel', 'Model');
  */
 class NoticiaComentario extends AppModel {
 
+    public $useTable = false;
+    
 /**
  * Display field
  *

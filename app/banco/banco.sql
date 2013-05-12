@@ -1,17 +1,9 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
-
-DROP SCHEMA IF EXISTS `prototipo_tcc` ;
-CREATE SCHEMA IF NOT EXISTS `prototipo_tcc` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `prototipo_tcc` ;
-
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`estruturas`
+-- Table `estruturas`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`estruturas` ;
+DROP TABLE IF EXISTS `estruturas` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`estruturas` (
+CREATE  TABLE IF NOT EXISTS `estruturas` (
   `id` INT(1) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `pin` VARCHAR(60) NOT NULL ,
   `nome` VARCHAR(60) NOT NULL ,
@@ -21,14 +13,17 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`estruturas` (
   `usa_rodape` VARCHAR(100) NULL ,
   `cor_fonte_texto` VARCHAR(100) NULL ,
   `cor_bg_html` VARCHAR(100) NULL ,
+  `cor_bg_menu` VARCHAR(100) NULL ,
+  `cor_fonte_menu` VARCHAR(100) NULL ,
+  `cor_bg_topo` VARCHAR(100) NULL ,
+  `cor_bg_rodape` VARCHAR(100) NULL ,
   `img_bg_html_repeat` VARCHAR(100) NULL ,
   `posicao_menu` VARCHAR(100) NULL ,
   `menu_degade` VARCHAR(100) NULL ,
-  `cor_bg_menu` VARCHAR(100) NULL ,
-  `cor_fonte_menu` VARCHAR(100) NULL ,
   `mostrar_noticias_capa` VARCHAR(100) NULL ,
   `qtde_noticias_capa` VARCHAR(100) NULL ,
   `mostrar_noticias_lateral` VARCHAR(100) NULL ,
+  `cor_titulo` VARCHAR(100) NULL ,
   `qtde_noticias_lateral` VARCHAR(100) NULL ,
   `mostrar_produtos_capa` VARCHAR(100) NULL ,
   `qtde_produtos_capa` VARCHAR(100) NULL ,
@@ -36,7 +31,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`estruturas` (
   `qtde_produtos_lateral` VARCHAR(100) NULL ,
   `img_bg_html` VARCHAR(100) NULL ,
   `img_logo` VARCHAR(100) NULL ,
-  `cor_titulo` VARCHAR(100) NULL ,
   `img_bg_topo` VARCHAR(100) NULL ,
   `keywords` VARCHAR(100) NULL ,
   `description` VARCHAR(100) NULL ,
@@ -50,11 +44,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`configuracoes`
+-- Table `configuracoes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`configuracoes` ;
+DROP TABLE IF EXISTS `configuracoes` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`configuracoes` (
+CREATE  TABLE IF NOT EXISTS `configuracoes` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `pin` VARCHAR(60) NOT NULL ,
   `descricao` VARCHAR(100) NULL ,
@@ -68,11 +62,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`noticia_categorias`
+-- Table `noticia_categorias`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`noticia_categorias` ;
+DROP TABLE IF EXISTS `noticia_categorias` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticia_categorias` (
+CREATE  TABLE IF NOT EXISTS `noticia_categorias` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(60) NOT NULL ,
   `ativo` TINYINT(1) NOT NULL ,
@@ -85,7 +79,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticia_categorias` (
   INDEX `categoria_id_idx` (`parent_id` ASC) ,
   CONSTRAINT `noticia_categoria_fk_noticia_categoria`
     FOREIGN KEY (`parent_id` )
-    REFERENCES `prototipo_tcc`.`noticia_categorias` (`id` )
+    REFERENCES `noticia_categorias` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -94,11 +88,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`noticias`
+-- Table `noticias`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`noticias` ;
+DROP TABLE IF EXISTS `noticias` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticias` (
+CREATE  TABLE IF NOT EXISTS `noticias` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `titulo` VARCHAR(60) NOT NULL ,
   `texto` TEXT NULL ,
@@ -113,7 +107,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticias` (
   INDEX `categoria_id_idx` (`categoria_id` ASC) ,
   CONSTRAINT `noticia_fk_noticia_categoria`
     FOREIGN KEY (`categoria_id` )
-    REFERENCES `prototipo_tcc`.`noticia_categorias` (`id` )
+    REFERENCES `noticia_categorias` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -122,11 +116,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`noticia_imagens`
+-- Table `noticia_imagens`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`noticia_imagens` ;
+DROP TABLE IF EXISTS `noticia_imagens` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticia_imagens` (
+CREATE  TABLE IF NOT EXISTS `noticia_imagens` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `noticia_id` INT(10) UNSIGNED NOT NULL ,
   `titulo` VARCHAR(60) NULL ,
@@ -137,7 +131,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticia_imagens` (
   INDEX `noticia_id_idx` (`noticia_id` ASC) ,
   CONSTRAINT `noticia_imagem_fk_noticia`
     FOREIGN KEY (`noticia_id` )
-    REFERENCES `prototipo_tcc`.`noticias` (`id` )
+    REFERENCES `noticias` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -146,11 +140,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`produto_categorias`
+-- Table `produto_categorias`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`produto_categorias` ;
+DROP TABLE IF EXISTS `produto_categorias` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produto_categorias` (
+CREATE  TABLE IF NOT EXISTS `produto_categorias` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(60) NOT NULL ,
   `ativo` TINYINT(1) NOT NULL ,
@@ -163,7 +157,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produto_categorias` (
   INDEX `categoria_id_idx` (`parent_id` ASC) ,
   CONSTRAINT `produto_categoria_fk_produto_categoria`
     FOREIGN KEY (`parent_id` )
-    REFERENCES `prototipo_tcc`.`produto_categorias` (`id` )
+    REFERENCES `produto_categorias` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -172,11 +166,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`produtos`
+-- Table `produtos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`produtos` ;
+DROP TABLE IF EXISTS `produtos` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produtos` (
+CREATE  TABLE IF NOT EXISTS `produtos` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(60) NOT NULL ,
   `valor` DOUBLE NULL ,
@@ -190,7 +184,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produtos` (
   PRIMARY KEY (`id`) ,
   CONSTRAINT `produto_fk_produto_categoria`
     FOREIGN KEY (`categoria_id` )
-    REFERENCES `prototipo_tcc`.`produto_categorias` (`id` )
+    REFERENCES `produto_categorias` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -199,11 +193,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`produto_imagens`
+-- Table `produto_imagens`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`produto_imagens` ;
+DROP TABLE IF EXISTS `produto_imagens` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produto_imagens` (
+CREATE  TABLE IF NOT EXISTS `produto_imagens` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `produto_id` INT(10) UNSIGNED NOT NULL ,
   `titulo` VARCHAR(60) NULL ,
@@ -214,7 +208,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`produto_imagens` (
   PRIMARY KEY (`id`) ,
   CONSTRAINT `produto_imagem_fk_produto`
     FOREIGN KEY (`produto_id` )
-    REFERENCES `prototipo_tcc`.`produtos` (`id` )
+    REFERENCES `produtos` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -223,11 +217,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`paginas`
+-- Table `paginas`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`paginas` ;
+DROP TABLE IF EXISTS `paginas` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`paginas` (
+CREATE  TABLE IF NOT EXISTS `paginas` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `pin` VARCHAR(60) NOT NULL ,
   `titulo` VARCHAR(60) NOT NULL ,
@@ -242,11 +236,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`curriculos`
+-- Table `curriculos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`curriculos` ;
+DROP TABLE IF EXISTS `curriculos` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`curriculos` (
+CREATE  TABLE IF NOT EXISTS `curriculos` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(60) NOT NULL ,
   `email` VARCHAR(60) NULL ,
@@ -264,11 +258,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`usuario_tipos`
+-- Table `usuario_tipos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`usuario_tipos` ;
+DROP TABLE IF EXISTS `usuario_tipos` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`usuario_tipos` (
+CREATE  TABLE IF NOT EXISTS `usuario_tipos` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `pin` VARCHAR(60) NOT NULL ,
   `tipo` VARCHAR(60) NOT NULL ,
@@ -276,16 +270,16 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`usuario_tipos` (
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1
-COLLATE = latin1_general_ci;
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`usuarios`
+-- Table `usuarios`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`usuarios` ;
+DROP TABLE IF EXISTS `usuarios` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`usuarios` (
+CREATE  TABLE IF NOT EXISTS `usuarios` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(60) NOT NULL ,
   `usuario` VARCHAR(60) NOT NULL ,
@@ -298,7 +292,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`usuarios` (
   PRIMARY KEY (`id`) ,
   CONSTRAINT `usuario_fk_usuario_tipo`
     FOREIGN KEY (`tipo_id` )
-    REFERENCES `prototipo_tcc`.`usuario_tipos` (`id` )
+    REFERENCES `usuario_tipos` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -307,11 +301,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`banner_tipos`
+-- Table `banner_tipos`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`banner_tipos` ;
+DROP TABLE IF EXISTS `banner_tipos` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`banner_tipos` (
+CREATE  TABLE IF NOT EXISTS `banner_tipos` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `tipo` VARCHAR(60) NOT NULL ,
   `created` DATETIME NULL ,
@@ -323,15 +317,14 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`banners`
+-- Table `banners`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`banners` ;
+DROP TABLE IF EXISTS `banners` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`banners` (
+CREATE  TABLE IF NOT EXISTS `banners` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `descricao` VARCHAR(60) NOT NULL ,
   `arquivo` VARCHAR(60) NOT NULL ,
-  `validade` DATETIME NULL ,
   `banner_tipo_id` INT(10) UNSIGNED NOT NULL ,
   `ativo` TINYINT(1) NULL ,
   `link` VARCHAR(200) NULL ,
@@ -341,7 +334,7 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`banners` (
   INDEX `banner_tipo_is_idx` (`banner_tipo_id` ASC) ,
   CONSTRAINT `banner_fk_banner_tipo`
     FOREIGN KEY (`banner_tipo_id` )
-    REFERENCES `prototipo_tcc`.`banner_tipos` (`id` )
+    REFERENCES `banner_tipos` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -350,11 +343,11 @@ COLLATE = utf8_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `prototipo_tcc`.`newsletter`
+-- Table `newsletter`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`newsletter` ;
+DROP TABLE IF EXISTS `newsletter` ;
 
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`newsletter` (
+CREATE  TABLE IF NOT EXISTS `newsletter` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
   `nome` VARCHAR(60) NOT NULL ,
   `email` VARCHAR(60) NOT NULL ,
@@ -364,37 +357,6 @@ CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`newsletter` (
   `modified` DATETIME NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8
-COLLATE = utf8_general_ci;
-
-
--- -----------------------------------------------------
--- Table `prototipo_tcc`.`noticia_comentarios`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `prototipo_tcc`.`noticia_comentarios` ;
-
-CREATE  TABLE IF NOT EXISTS `prototipo_tcc`.`noticia_comentarios` (
-  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `comentario` VARCHAR(500) NOT NULL ,
-  `autor` VARCHAR(60) NOT NULL ,
-  `noticia_id` INT(10) UNSIGNED NOT NULL ,
-  `noticia_comentario_id` INT(10) UNSIGNED NULL ,
-  `created` DATETIME NULL ,
-  `modified` DATETIME NULL ,
-  PRIMARY KEY (`id`) ,
-  INDEX `noticia_id_idx` (`noticia_id` ASC) ,
-  INDEX `noticia_comentario_id_idx` (`noticia_comentario_id` ASC) ,
-  CONSTRAINT `noticia_comentario_fk_noticia`
-    FOREIGN KEY (`noticia_id` )
-    REFERENCES `prototipo_tcc`.`noticias` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `noticia_comentario_fk_noticia_comentario`
-    FOREIGN KEY (`noticia_comentario_id` )
-    REFERENCES `prototipo_tcc`.`noticia_comentarios` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_general_ci;

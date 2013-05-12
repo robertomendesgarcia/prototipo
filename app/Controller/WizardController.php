@@ -3,7 +3,7 @@
 App::uses('AppController', 'Controller');
 
 class WizardController extends AppController {
-    
+
     public function index() {
         $this->redirect(array("action" => "admin_configuraLayout", 'admin' => true));
     }
@@ -19,7 +19,7 @@ class WizardController extends AppController {
         $this->loadModel('Estrutura');
         $estruturas = $this->Estrutura->find('list', array(
             'fields' => array('pin', 'nome')
-                ));
+        ));
 
         if ($this->request->is('post')) {
 
@@ -31,7 +31,7 @@ class WizardController extends AppController {
                 'conditions' => array(
                     'Estrutura.pin' => $this->request->data['Layout']['layout']
                 ),
-                    ));
+            ));
 
             $this->loadModel('Configuracao');
             $var = $estruturas['Estrutura'];
@@ -39,12 +39,13 @@ class WizardController extends AppController {
             foreach ($var as $key => $value) {
                 $$key = $value;
                 if (!in_array($key, $chk)) {
-                    echo $key . "<br>";
+//                    echo $key . "<br>";
                     $sql = "update configuracoes set conteudo = '$value', modified=now() where pin='$key'";
                     $this->Configuracao->query($sql);
                 }
             }
 
+            $this->Session->setFlash(__('Layout salvo com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
             $this->redirect(array("action" => "admin_configuraRecursos"));
 
 //            $usa_produtos = $this->request->data['Layout']['usa_produtos'];
@@ -120,6 +121,7 @@ class WizardController extends AppController {
             $sql = "update configuracoes set conteudo = '$email_trabalhe_conosco', modified=now() where pin='email_trabalhe_conosco'";
             $this->Configuracao->query($sql);
 
+            $this->Session->setFlash(__('Recursos salvos com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
             $this->redirect(array("action" => "admin_configuraDados"));
         }
 
@@ -192,7 +194,7 @@ class WizardController extends AppController {
                             'conditions' => array(
                                 'pin' => 'img_logo'
                             )
-                                ));
+                        ));
                         if (!empty($config)) {
                             $config['Configuracao']['conteudo'] = $destino;
                             if (!$this->Configuracao->save($config)) {
@@ -207,6 +209,21 @@ class WizardController extends AppController {
                 }
             }
 
+
+            if (file_exists("../Config/status_instalacao.cfg")) {
+                $handle = fopen("../Config/status_instalacao.cfg", "r+");
+            } else {
+                $handle = fopen("../Config/status_instalacao.cfg", "w+");
+            }
+            $status = fread($handle, 10);
+            $status = '2';
+            if (fwrite($handle, $status)) {
+                $this->Session->setFlash(__('Dados salvos com sucesso.'), 'flash_message', array('tipo' => 'success'), 'admin');
+            } else {
+                $this->Session->setFlash(__('Erro ao salvar os dados.'), 'flash_message', array('tipo' => 'error'), 'admin');
+            }
+
+            fclose($handle);
             $this->redirect(array("action" => "admin_wizard_concluido"));
         }
 

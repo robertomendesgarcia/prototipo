@@ -8,7 +8,7 @@
     echo $this->Form->input('nome', array('label' => 'Nome:', 'class' => 'obrigatorio'));
     echo $this->Form->input('email', array('label' => 'Email:', 'class' => 'obrigatorio'));
     echo $this->Form->input('usuario', array('label' => 'Usuário:', 'class' => 'obrigatorio'));
-    echo $this->Form->input('tipo_id', array('type' => 'hidden', 'value' => '2', 'class' => 'obrigatorio'));
+    echo $this->Form->input('tipo_id', array('type' => 'hidden', 'value' => '1', 'class' => 'obrigatorio'));
     echo $this->Form->input('senha', array('label' => 'Senha:', 'type' => 'password', 'class' => 'obrigatorio'));
     echo $this->Form->input('confirmar_senha', array('label' => 'Confirmar senha:', 'type' => 'password', 'class' => 'obrigatorio'));
     ?>

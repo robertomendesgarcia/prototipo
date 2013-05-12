@@ -2,6 +2,7 @@ body {
     display: block;
     width: 980px;
     margin: 0 auto;
+    padding: 10px 0;
     font-family: Arial, Tahoma;
     font-size: 12px;
     color: #333;
@@ -83,6 +84,10 @@ div.banners a {
 /* --- Topo --- */
 #topo {
     overflow: auto;
+    padding: 10px;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
 }
 #topo h1 {
     float: left;
@@ -113,7 +118,7 @@ div.banners a {
 #menu ul li:hover ul li ul, 
 #menu ul li:hover ul li ul li ul {
     display: block;
-    position absolute;
+    position: absolute;
     z-index: 9999;
 }
 
@@ -275,17 +280,90 @@ form.form_busca div.submit {
 /* --- Rodape --- */
 #rodape {
     clear: both;
-    height: 100px;
-
-    background-color: #eee;
-
+    height: 80px;
+    padding: 20px;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
 }
 
+/* --- Noticias Barra Lateral --- */
+#barra_lateral ul {
+    padding: 5px;
+}
+#barra_lateral ul li {
+    padding-bottom: 8px;
+}
+#barra_lateral ul li a {
+    text-decoration: none;
+    color: #656565;
+}
+#barra_lateral ul li a:hover {
+    color: #3589bA;   
+}
+#barra_lateral ul li a small,
+#barra_lateral ul li a strong {
+    display: block;
+}
+#barra_lateral ul li a small {
+    font-size: 11px;
+}
 
+/* --- Capa --- */
+#wrapper div.a-empresa,
+#wrapper div.trabalhe_conosco,
+#wrapper div.noticias,
+#wrapper div.produtos {
+    display: inline-block;
+    width: 45%;
+    vertical-align: top;    
+}
+#wrapper div.esquerda {
+    padding-right: 50px;    
+}
+#wrapper div.noticias ul li {
+    padding-bottom: 15px;
+}
+#wrapper div.noticias ul li a img {
+    float: left;
+    display: inline;
+    margin-right: 6px;
+    border: 1px solid #FFF;
+}
+#wrapper div.noticias ul li a:hover img {
+    border: 1px solid #3589bA;
+}
+#wrapper div.a-empresa a,
+#wrapper div.noticias ul li a {
+    text-decoration: none;
+    color: #656565;
+}
+#wrapper div.a-empresa a:hover,
+#wrapper div.noticias ul li a:hover {
+    color: #3589bA;   
+}
+#wrapper div.noticias ul li a small {
+    display: block;
+    font-size: 11px;
+}
+#wrapper div.noticias ul li a strong {
+    display: block;
+    font-weight: bold;
+    padding: 2px 0;
+}
+#wrapper div.noticias ul li a span, 
+#wrapper div.noticias ul li a em {
+    display: block;
+}
+#wrapper div.noticias ul li a em {
+    padding-top: 2px;
+    text-align: right;
+}
 
-
-
-
+#wrapper div.a-empresa a {
+    float: right;
+    padding-top: 2px;
+}
 
 
 

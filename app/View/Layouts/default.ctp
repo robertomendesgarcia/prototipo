@@ -74,7 +74,9 @@
             #barra_lateral h3 {
                 color: <?php echo!empty($config['cor_titulo']) ? $config['cor_titulo'] : '#333333'; ?>;
             }
-
+            #rodape {
+                background: <?php echo !empty($config['cor_bg_rodape']) ? $config['cor_bg_rodape'] : 'transparent'; ?>
+            }
         </style>
     </head>
     <body id="c-<?php echo $this->params["controller"]; ?>" class="a-<?php echo $this->params["action"]; ?>">

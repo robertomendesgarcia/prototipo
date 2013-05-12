@@ -93,19 +93,19 @@ class Noticia extends AppModel {
      * @var array
      */
     public $hasMany = array(
-        'NoticiaComentario' => array(
-            'className' => 'NoticiaComentario',
-            'foreignKey' => 'noticia_id',
-            'dependent' => false,
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => ''
-        ),
+//        'NoticiaComentario' => array(
+//            'className' => 'NoticiaComentario',
+//            'foreignKey' => 'noticia_id',
+//            'dependent' => false,
+//            'conditions' => '',
+//            'fields' => '',
+//            'order' => '',
+//            'limit' => '',
+//            'offset' => '',
+//            'exclusive' => '',
+//            'finderQuery' => '',
+//            'counterQuery' => ''
+//        ),
         'NoticiaImagem' => array(
             'className' => 'NoticiaImagem',
             'foreignKey' => 'noticia_id',

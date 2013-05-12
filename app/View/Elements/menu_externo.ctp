@@ -1,6 +1,10 @@
 
 <div id="menu" class="<?php echo ($tipo == 1) ? 'topo' : 'esquerda'; ?>">
     <ul>
+        
+                <li>
+                    <a href="<?php echo DEFAULT_URL; ?>" title="<?php echo __('Home'); ?>"><?php echo __('Home'); ?></a>
+                </li>
 
         <?php
         if (isset($opcoes_menu)) {

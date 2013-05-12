@@ -13,26 +13,29 @@ if (!empty($pin)) {
             $height = 100;
         }
 
-        $banner = $banners[$pin];
+        if (array_key_exists($pin, $banners)) {
 
-        echo '<div class="banners">';
+            $banner = $banners[$pin];
 
-        if (!empty($banner['link'])) {
-            echo '<a id="banner_' . $pin . '" href="' . $banner['link'] . '" title="' . $banner['descricao'] . '">';
+            echo '<div class="banners">';
+
+            if (!empty($banner['link'])) {
+                echo '<a id="banner_' . $pin . '" href="' . $banner['link'] . '" title="' . $banner['descricao'] . '">';
+            }
+
+            $arquivo = $banners['path'] . $banner['arquivo'];
+            if (file_exists($arquivo)) {
+                echo $this->PhpThumb->thumbnail($arquivo, array(
+                    'w' => $width, 'h' => $height, 'zc' => 1
+                ));
+            }
+
+            if (!empty($banner['link'])) {
+                echo '</a>';
+            }
+
+            echo '</div>';
         }
-
-        $arquivo = $banners['path'] . $banner['arquivo'];
-        if (file_exists($arquivo)) {
-            echo $this->PhpThumb->thumbnail($arquivo, array(
-                'w' => $width, 'h' => $height, 'zc' => 1
-            ));
-        }
-
-        if (!empty($banner['link'])) {
-            echo '</a>';
-        }
-
-        echo '</div>';
     }
 }
 ?>
