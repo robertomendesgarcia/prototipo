@@ -8,6 +8,15 @@ body {
     color: #333;
 }
 
+p {
+    display: block;
+    margin-bottom: 6px;
+}
+
+h3 {
+    border-bottom: 1px solid;
+}
+
 /* --- Flash Message --- */
 #adminMessage {
     padding: 10px;
@@ -213,6 +222,16 @@ div.banners a {
     width: 200px;
     padding: 20px 15px;
 }
+#barra_lateral h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;    
+}
+
+#barra_lateral div.noticias,
+#barra_lateral div.produtos {
+    padding-bottom: 10px;   
+}
 
 form.form_busca input {
     width: 130px;
@@ -260,36 +279,10 @@ form.form_busca div.submit {
 }
 
 
-/* --- Contato --- */
-#c-pages.a-contato #conteudo form {
-    float: left;
-    display: inline;
-    width: 280px;
-} 
-#c-pages.a-contato #conteudo #direita {
-    float: right;
-    display: inline;
-    width: 300px; 
-}
-#mapa {
-    display: block;
-    width: 100%;
-    height: 200px;
-}
-
-/* --- Rodape --- */
-#rodape {
-    clear: both;
-    height: 80px;
-    padding: 20px;
-    -webkit-border-radius: 0 0 5px 5px;
-    -moz-border-radius: 0 0 5px 5px;
-    border-radius: 0 0 5px 5px;
-}
 
 /* --- Noticias Barra Lateral --- */
 #barra_lateral ul {
-    padding: 5px;
+    padding: 0;
 }
 #barra_lateral ul li {
     padding-bottom: 8px;
@@ -310,10 +303,14 @@ form.form_busca div.submit {
 }
 
 /* --- Capa --- */
-#wrapper div.a-empresa,
-#wrapper div.trabalhe_conosco,
-#wrapper div.noticias,
-#wrapper div.produtos {
+ul li em,
+div a {
+    color: #3589bA; 
+    text-decoration: none;
+}
+/*#wrapper div.a-empresa,
+#wrapper div.trabalhe_conosco,*/
+#wrapper div.noticias {
     display: inline-block;
     width: 45%;
     vertical-align: top;    
@@ -324,12 +321,14 @@ form.form_busca div.submit {
 #wrapper div.noticias ul li {
     padding-bottom: 15px;
 }
+#wrapper div.produtos ul li a img,
 #wrapper div.noticias ul li a img {
     float: left;
     display: inline;
     margin-right: 6px;
     border: 1px solid #FFF;
 }
+#wrapper div.produtos ul li a:hover img,
 #wrapper div.noticias ul li a:hover img {
     border: 1px solid #3589bA;
 }
@@ -338,6 +337,7 @@ form.form_busca div.submit {
     text-decoration: none;
     color: #656565;
 }
+#wrapper div.produtos ul li a:hover,
 #wrapper div.a-empresa a:hover,
 #wrapper div.noticias ul li a:hover {
     color: #3589bA;   
@@ -365,6 +365,47 @@ form.form_busca div.submit {
     padding-top: 2px;
 }
 
+#wrapper div.direita {
+    width: 45%;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+}
+#wrapper div.direita div {
+    display: block;
+    padding-bottom: 15px;
+    overflow: auto;
+}
+#wrapper div.produtos {
+    display: block;
+    clear: both;
+}
+#wrapper div.produtos ul li {
+    display: inline-block;
+    width: 102px;
+    padding: 5px 6px;
+    text-align: center;
+    height: 150px;
+    vertical-align: top;
+}
+#wrapper div.produtos ul li a {
+    color: #656565;
+}
+#wrapper div.produtos ul li small,
+#wrapper div.produtos ul li strong,
+#wrapper div.produtos ul li span {
+    display: block;
+    text-align: center;
+}
+
+#wrapper div.trabalhe_conosco img {
+    float: left;
+    margin-right: 4px;
+}
+#wrapper div.trabalhe_conosco p {
+    margin-bottom: 15px;
+    padding-top: 18px;
+}
 
 
 
@@ -374,5 +415,29 @@ form.form_busca div.submit {
 
 
 
+/* --- Contato --- */
+#c-pages.a-contato #conteudo form {
+    float: left;
+    display: inline;
+    width: 280px;
+} 
+#c-pages.a-contato #conteudo #direita {
+    float: right;
+    display: inline;
+    width: 300px; 
+}
+#mapa {
+    display: block;
+    width: 100%;
+    height: 200px;
+}
 
-
+/* --- Rodape --- */
+#rodape {
+    clear: both;
+    height: 80px;
+    padding: 20px;
+    -webkit-border-radius: 0 0 5px 5px;
+    -moz-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
+}

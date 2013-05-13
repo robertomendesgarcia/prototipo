@@ -21,7 +21,7 @@
                 8 => 8,
                 9 => 9,
                 10 => 10)
-            , 'selected' => 3));
+            ));
         ?>
         <?php echo $this->Form->input('mostrar_produtos_lateral', array('label' => __('Show products on sidebar.'), 'type' => 'checkbox')); ?>
         <?php
@@ -36,7 +36,7 @@
                 8 => 8,
                 9 => 9,
                 10 => 10)
-            , 'selected' => 3));
+            ));
         ?>
     </div>
 </fieldset>

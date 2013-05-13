@@ -28,7 +28,10 @@ INSERT INTO `configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modifie
 VALUES ('cor_bg_topo', 'Cor para background do topo.', '#FFFFFF', NOW(), NOW());
 
 INSERT INTO `configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
-VALUES ('cor_bg_rodape', 'Cor para background do rodapé.', '#FFFFFF', NOW(), NOW());
+VALUES ('cor_bg_rodape', 'Cor para background do rodapé.', '#545454', NOW(), NOW());
+
+INSERT INTO `configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
+VALUES ('cor_texto_rodape', 'Cor do texto no rodapé.', '#FFFFFF', NOW(), NOW());
 
 INSERT INTO `configuracoes` (`pin`, `descricao`, `conteudo`, `created`, `modified`)
 VALUES ('img_bg_html_repeat', 'Forma de repetição para o background da tag html.', 'none', NOW(), NOW());

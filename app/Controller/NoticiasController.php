@@ -4,6 +4,31 @@ App::uses('AppController', 'Controller');
 
 class NoticiasController extends AppController {
 
+    public function index($categoria = null) {
+        $options = array(
+            'Noticia.ativo' => 1,
+            'order' => array('Noticia.id' => 'DESC'),
+            'limit' => 20
+        );
+
+        if (!empty($categoria)) {
+            $options['conditions']['Noticia.categoria_id'] = $categoria;
+        }
+
+        if ((!empty($this->data)) && (!empty($this->data['Noticia']['titulo']))) {
+            $options['conditions'] = array(
+                'Noticia.titulo LIKE' => '%' . $this->data['Noticia']['titulo'] . '%'
+            );
+        }
+
+        $this->paginate = $options;
+        $noticias = $this->paginate('Noticia');
+
+        $this->set('img', $this->Noticia->NoticiaImagem->img['path']);
+        $this->set(compact('noticias'));
+        $this->set('title_for_layout', __('News') . ' - ' . $this->title_for_layout);
+    }
+
     public function admin_index() {
 
         $options = array(
@@ -89,7 +114,7 @@ class NoticiasController extends AppController {
         $categorias = $this->NoticiaCategoria->find('list', array(
             'conditions' => array(
                 'NoticiaCategoria.ativo' => 1
-                )));
+        )));
         $this->set(compact('categorias'));
         $this->set('img', $this->Noticia->NoticiaImagem->img);
         $this->set('title_for_layout', __('Nova Notícia') . ' - ' . $this->title_for_layout);
@@ -148,7 +173,7 @@ class NoticiasController extends AppController {
             'conditions' => array(
                 'NoticiaCategoria.ativo' => 1
             )
-                ));
+        ));
 
         $noticia = $this->Noticia->findById($id);
         $this->set('img', $this->Noticia->NoticiaImagem->img);

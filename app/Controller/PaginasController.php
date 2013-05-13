@@ -222,6 +222,7 @@ class PaginasController extends AppController {
         $this->set('noticias', $noticias);
         $this->set('img_noticias', $this->Noticia->NoticiaImagem->img['path']);
         $this->set('produtos', $produtos);
+        $this->set('img_produtos', $this->Produto->ProdutoImagem->img['path']);
         $this->set('title_for_layout', $this->title_for_layout);
     }
 

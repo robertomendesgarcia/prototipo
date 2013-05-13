@@ -57,16 +57,20 @@
     ?>
 
     <div class="input">
-        <?php echo $this->Form->input('cor_titulo', array('class' => 'color_picker', 'label' => __('Title color:'), 'div' => false)); ?>
+        <?php echo $this->Form->input('cor_titulo', array('class' => 'color_picker', 'label' => __('Cor dos títulos do site:'), 'div' => false)); ?>
         <div class="preview"></div>
     </div>
     <div class="input">
-        <?php echo $this->Form->input('cor_fonte_texto', array('class' => 'color_picker', 'label' => __('Font color:'), 'div' => false)); ?>
+        <?php echo $this->Form->input('cor_fonte_texto', array('class' => 'color_picker', 'label' => __('Cor dos textos no site:'), 'div' => false)); ?>
         <div class="preview"></div>
     </div>
 
     <div class="input">
         <?php echo $this->Form->input('cor_bg_rodape', array('class' => 'color_picker', 'label' => __('Cor de fundo do Rodapé:'), 'div' => false)); ?>
+        <div class="preview"></div>
+    </div>
+    <div class="input">
+        <?php echo $this->Form->input('cor_texto_rodape', array('class' => 'color_picker', 'label' => __('Cor do texto no Rodapé:'), 'div' => false)); ?>
         <div class="preview"></div>
     </div>
     <label for="ConfiguracaoConteudoRodape">Texto para o Rodapé:</label>

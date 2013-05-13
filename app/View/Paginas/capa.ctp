@@ -1,15 +1,7 @@
 <?php echo $this->element('banners', array('pin' => 'capa')); ?>
 
-<?php if (!empty($a_empresa)) { ?>
-    <div class="a-empresa esquerda">
-        <h3><?php echo $a_empresa['Pagina']['titulo']; ?></h3>
-        <p><?php echo $this->Uteis->truncate(strip_tags($a_empresa['Pagina']['texto']), 600); ?></p>
-        <a href="<?php echo DEFAULT_URL . 'paginas/' . $a_empresa['Pagina']['pin'] . '/' . $this->Uteis->slug($a_empresa['Pagina']['titulo']); ?>" title="leia mais">leia mais</a>
-    </div>
-<?php } ?>
-
 <?php if (!empty($noticias)) { ?>
-    <div class="noticias">
+    <div class="noticias esquerda">
         <h3>Notícias</h3>
         <ul>
             <?php foreach ($noticias as $noticia) { ?>
@@ -23,7 +15,7 @@
                                 'w' => 90, 'h' => 90, 'zc' => 1
                             ));
                         } else {
-                            $tamanho = 230;
+                            $tamanho = 200;
                         }
                         ?>
                         <small><?php echo date("d/m/Y", strtotime($noticia['Noticia']['data'])); ?> - <?php echo $noticia['NoticiaCategoria']['nome']; ?></small>
@@ -37,37 +29,52 @@
     </div>
 <?php } ?>
 
+<div class="direita">
+    <?php if (!empty($a_empresa)) { ?>
+        <div class="a-empresa">
+            <h3><?php echo $a_empresa['Pagina']['titulo']; ?></h3>
+            <p><?php echo $this->Uteis->truncate(strip_tags($a_empresa['Pagina']['texto']), 600); ?></p>
+            <a href="<?php echo DEFAULT_URL . 'paginas/' . $a_empresa['Pagina']['pin'] . '/' . $this->Uteis->slug($a_empresa['Pagina']['titulo']); ?>" title="leia mais">leia mais</a>
+        </div>
+    <?php } ?>
+    <?php if (!empty($config['usa_trabalhe_conosco'])) { ?>
+        <div class="trabalhe_conosco">
+            <h3>Trabalhe Conosco</h3>
+            <img src="<?php echo DEFAULT_URL . 'img/venha_trabalhar.jpg'; ?>" style="width:100px;" alt="Trabalhe Conosco" />
+            <!-- p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p -->
+            <p>Venha fazer parte da nossa equipe!</p>
+            <a href="<?php echo DEFAULT_URL . 'trabalhe-conosco'; ?>" title="Clique aqui e envie seu currículo.">Clique aqui e envie seu currículo.</a>
+        </div>
+    <?php } ?>
+</div>
+
 <?php if (!empty($produtos)) { ?>
-
-    <div class="produtos esquerda">
-
+    <div class="produtos">
         <h3>Produtos</h3>
-
         <ul class="listagem">
-
             <?php foreach ($produtos as $produto) { ?>
-
                 <li>
-
-                    <?php
-                    if (!empty($produto['NoticiaImagem'][0])) {
-                        $src = $img_produtos . $produto['ProdutoImagem'][0]['id'] . '.jpg';
-                        echo $this->PhpThumb->thumbnail($src, array(
-                            'w' => 100, 'h' => 100, 'zc' => 1
-                        ));
-                    }
-                    ?>
-
-                    <small><?php echo $produto['ProdutoCategoria']['nome']; ?></small>
-                    <strong><?php echo $produto['Produto']['nome']; ?></strong>
-                    <p><?php echo $produto['Produto']['descricao']; ?></p>
+                    <a href="<?php echo DEFAULT_URL . 'produtos/ver/' . $produto['Produto']['id'] . '/' . $this->Uteis->slug($produto['Produto']['nome']); ?>" title="<?php echo $produto['Produto']['nome']; ?>">                    
+                        <small><?php echo $produto['ProdutoCategoria']['nome']; ?></small>
+                        <?php
+                        if (!empty($produto['ProdutoImagem'][0])) {
+                            $src = $img_produtos . $produto['ProdutoImagem'][0]['id'] . '.jpg';
+                            echo $this->PhpThumb->thumbnail($src, array(
+                                'w' => 100, 'h' => 100, 'zc' => 1
+                            ));
+                        }
+                        ?>
+                        <strong><?php echo $produto['Produto']['nome']; ?></strong>
+                        <?php
+                        if (!empty($produto['Produto']['valor'])) {
+                            echo '<span> R$ ' . number_format($produto['Produto']['valor'], 2, ',', '') . '</span>';
+                        } else {
+                            echo '<span>Consulte-nos</span>';
+                        }
+                        ?>
+                    </a>
                 </li>
-
-
             <?php } ?>
-
         </ul>
-
     </div>
-
 <?php } ?>

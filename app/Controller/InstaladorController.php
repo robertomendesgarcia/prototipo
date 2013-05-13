@@ -132,7 +132,7 @@ class InstaladorController extends AppInstaladorController {
 
     public function criarUsuarioAdmin() {
 
-        if ($this->request->is('post')) { 
+        if ($this->request->is('post')) {
             $this->loadModel('Usuario');
             $this->Usuario->create();
             if ($this->Usuario->save($this->request->data)) {
@@ -156,11 +156,10 @@ class InstaladorController extends AppInstaladorController {
                 $this->Session->setFlash(__('Erro ao salvar o usuário administrador.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         }
-        
+
         $this->set('title_for_layout', __('Criar Usuário Administrador') . ' - ' . $this->title_for_layout);
 //        die($this->layout);
         $this->render('criar_usuario_admin');
-        
     }
 
     public function configuraEmail() {
@@ -197,6 +196,9 @@ class InstaladorController extends AppInstaladorController {
                 );
             }
             ?>";
+
+            $sql = "update configuracoes set conteudo = '" . json_encode($var) . "' where pin = 'json_configuracao_smtp'";
+            $this->Configuracao->query($sql);
 
             $handle = fopen("../Config/email.php", "w+");
 

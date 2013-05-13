@@ -1,4 +1,4 @@
-<?php // echo '<pre>'; pr($config); echo '</pre>';     ?>
+<?php // echo '<pre>'; pr($config); echo '</pre>';       ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
@@ -75,7 +75,8 @@
                 color: <?php echo!empty($config['cor_titulo']) ? $config['cor_titulo'] : '#333333'; ?>;
             }
             #rodape {
-                background: <?php echo !empty($config['cor_bg_rodape']) ? $config['cor_bg_rodape'] : 'transparent'; ?>
+                background: <?php echo!empty($config['cor_bg_rodape']) ? $config['cor_bg_rodape'] : 'transparent'; ?>;
+                color: <?php echo!empty($config['cor_texto_rodape']) ? $config['cor_texto_rodape'] : '#FFFFFF'; ?>;
             }
         </style>
     </head>
@@ -133,14 +134,14 @@
 
         <script type="text/javascript">
             var DEFAULT_URL = '<?php echo DEFAULT_URL; ?>';
-            
-            
+
+
             //            $('#conteudo h3').css('color', '<?php echo $config['cor_titulo']; ?>');
-            
-            
+
+
             //            carregarMapa('Rua Joaquim Nabuco, Criciúma - SC');
-            
-            
+
+
         </script>
     </body>
 </html>

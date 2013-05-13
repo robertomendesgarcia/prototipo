@@ -113,7 +113,7 @@ class ConfiguracoesController extends AppController {
                 'conditions' => array(
                     'pin' => 'json_configuracao_smtp'
                 )
-                    ));
+            ));
             if (!empty($config)) {
                 $config['Configuracao']['conteudo'] = json_encode($this->request->data['Configuracao']);
                 if ($this->Configuracao->save($config)) {
@@ -155,11 +155,13 @@ class ConfiguracoesController extends AppController {
                 'conditions' => array(
                     'pin' => 'json_configuracao_smtp'
                 )
-                    ));
+            ));
             if (!empty($config)) {
 //                $config = json_decode($config['Configuracao']['conteudo']);
 //                pr(get_object_vars($config)); exit;                
-                $this->request->data['Configuracao'] = get_object_vars(json_decode($config['Configuracao']['conteudo']));
+                if (!empty($config['Configuracao']['conteudo'])) {
+                    $this->request->data['Configuracao'] = get_object_vars(json_decode($config['Configuracao']['conteudo']));
+                }
             }
         }
 
@@ -184,7 +186,7 @@ class ConfiguracoesController extends AppController {
                                 'conditions' => array(
                                     'pin' => $key
                                 )
-                                    ));
+                            ));
                             if (!empty($config)) {
                                 $config['Configuracao']['conteudo'] = $value;
                                 if (!$this->Configuracao->save($config)) {
@@ -208,7 +210,7 @@ class ConfiguracoesController extends AppController {
                                             'conditions' => array(
                                                 'pin' => $key
                                             )
-                                                ));
+                                        ));
                                         if (!empty($config)) {
                                             $config['Configuracao']['conteudo'] = $destino;
                                             if (!$this->Configuracao->save($config)) {
