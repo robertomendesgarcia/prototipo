@@ -7,14 +7,14 @@
             <li>
                 <a href="<?php echo DEFAULT_URL . 'noticias/ver/' . $noticia['Noticia']['id'] . '/' . $this->Uteis->slug($noticia['Noticia']['titulo']); ?>" title="<?php echo $noticia['Noticia']['titulo']; ?>">
                     <?php
-                    $tamanho = 250;
+                    $tamanho = 600;
                     if (!empty($noticia['NoticiaImagem'][0])) {
                         $src = $img . $noticia['NoticiaImagem'][0]['id'] . '.jpg';
                         echo $this->PhpThumb->thumbnail($src, array(
-                            'w' => 90, 'h' => 90, 'zc' => 1
+                            'w' => 120, 'h' => 120, 'zc' => 1
                         ));
                     } else {
-                        $tamanho = 400;
+                        $tamanho = 700;
                     }
                     ?>
                     <small><?php echo date("d/m/Y", strtotime($noticia['Noticia']['data'])); ?> - <?php echo $noticia['NoticiaCategoria']['nome']; ?></small>

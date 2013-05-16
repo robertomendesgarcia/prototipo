@@ -71,6 +71,7 @@
                 color: <?php echo!empty($config['cor_fonte_texto']) ? $config['cor_fonte_texto'] : '#333333'; ?>;
             }            
             #wrapper h3,
+            #wrapper h4,
             #barra_lateral h3 {
                 color: <?php echo!empty($config['cor_titulo']) ? $config['cor_titulo'] : '#333333'; ?>;
             }

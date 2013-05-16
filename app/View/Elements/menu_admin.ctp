@@ -16,18 +16,18 @@
             <ul>
                 <?php if ($config['usa_noticias']) { ?>
                     <li>
-                        <?php echo $this->Html->link(__('News'), array('controller' => 'noticias', 'action' => 'index', 'admin' => true), array('title' => __('News'))); ?>
+                       <?php echo $this->Html->link(__('Categorias das Notícias'), array('controller' => 'noticiacategorias', 'action' => 'index', 'admin' => true), array('title' => __('Categorias das Notícias'))); ?>            
                     </li>
                     <li>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->Html->link(__('Categories'), array('controller' => 'noticiacategorias', 'action' => 'index', 'admin' => true), array('title' => __('Categories'))); ?>            
+                        <?php echo $this->Html->link(__('News'), array('controller' => 'noticias', 'action' => 'index', 'admin' => true), array('title' => __('News'))); ?>
                     </li>
                 <?php } ?>
                 <?php if ($config['usa_produtos']) { ?>
                     <li>
-                        <?php echo $this->Html->link(__('Products'), array('controller' => 'produtos', 'action' => 'index', 'admin' => true), array('title' => __('Products'))); ?>
+                        <?php echo $this->Html->link(__('Categorias dos Produtos'), array('controller' => 'produtocategorias', 'action' => 'index', 'admin' => true), array('title' => __('Categorias dos Produtos'))); ?>
                     </li>
                     <li>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $this->Html->link(__('Categories'), array('controller' => 'produtocategorias', 'action' => 'index', 'admin' => true), array('title' => __('Categories'))); ?>
+                        <?php echo $this->Html->link(__('Products'), array('controller' => 'produtos', 'action' => 'index', 'admin' => true), array('title' => __('Products'))); ?>
                     </li>
                 <?php } ?>
                 <li>

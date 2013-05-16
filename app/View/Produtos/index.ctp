@@ -8,6 +8,7 @@
     <?php foreach ($produtos as $produto) { ?>
         <li>
             <a href="<?php echo DEFAULT_URL . "produtos/ver/" . $produto['Produto']['id'] . "/" . $this->Uteis->slug($produto['Produto']['nome']); ?>" title="<?php echo $produto['Produto']['nome']; ?>">
+                <small><?php echo $produto['ProdutoCategoria']['nome']; ?></small>
                 <?php
                 if (!empty($produto['ProdutoImagem'][0])) {
                     $src = $img . $produto['ProdutoImagem'][0]['id'] . '.jpg';
@@ -17,9 +18,8 @@
                 }
                 ?>
 
-                <small><?php echo $produto['ProdutoCategoria']['nome']; ?></small>
                 <strong><?php echo $produto['Produto']['nome']; ?></strong>
-                <p><?php echo $produto['Produto']['descricao']; ?></p>
+                <!-- p><?php // echo $produto['Produto']['descricao']; ?></p -->
                 <?php
                 if (!empty($produto['Produto']['valor'])) {
                     echo '<span> R$ ' . number_format($produto['Produto']['valor'], 2, ',', '') . '</span>';

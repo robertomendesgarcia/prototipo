@@ -35,11 +35,18 @@ class ProdutosController extends AppController {
             'conditions' => array(
                 'Produto.id' => $id
             )
-                ));
+        ));
+
+        $img_destaque = null;
+        if (isset($produto['ProdutoImagem'][0])) {
+            $img_destaque = $produto['ProdutoImagem'][0];
+            unset($produto['ProdutoImagem'][0]);
+        }
 
         $this->set('img', $this->Produto->ProdutoImagem->img);
+        $this->set('img_destaque', $img_destaque);
         $this->set(compact('produto'));
-        $this->set('title_for_layout', __('Products') . ' - ' . $this->title_for_layout);
+        $this->set('title_for_layout', $produto['Produto']['nome'] . ' - ' . __('Products') . ' - ' . $this->title_for_layout);
     }
 
     public function admin_index() {
@@ -124,7 +131,7 @@ class ProdutosController extends AppController {
         $categorias = $this->ProdutoCategoria->find('list', array(
             'conditions' => array(
                 'ProdutoCategoria.ativo' => 1
-                )));
+        )));
 
         $this->set(compact('categorias'));
         $this->set('img', $this->Produto->ProdutoImagem->img);
@@ -181,7 +188,7 @@ class ProdutosController extends AppController {
         $categorias = $this->ProdutoCategoria->find('list', array(
             'conditions' => array(
                 'ProdutoCategoria.ativo' => 1
-                )));
+        )));
 
         $produto = $this->Produto->findById($id);
         $this->set('img', $this->Produto->ProdutoImagem->img);
@@ -230,3 +237,4 @@ class ProdutosController extends AppController {
     }
 
 }
+

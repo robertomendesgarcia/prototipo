@@ -29,6 +29,17 @@ class NoticiasController extends AppController {
         $this->set('title_for_layout', __('News') . ' - ' . $this->title_for_layout);
     }
 
+    public function ver($id) {
+        $noticia = $this->Noticia->find('first', array(
+            'conditions' => array(
+                'Noticia.id' => $id
+            )
+        ));
+        $this->set('img', $this->Noticia->NoticiaImagem->img);
+        $this->set(compact('noticia'));
+        $this->set('title_for_layout', $noticia['Noticia']['titulo'] . ' - ' . __('News') . ' - ' . $this->title_for_layout);
+    }
+
     public function admin_index() {
 
         $options = array(

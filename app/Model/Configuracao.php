@@ -69,6 +69,9 @@ class Configuracao extends AppModel {
         $barra_lateral = null;
         $posicao_menu = null;
         $tamanho = 'grande';
+        
+        
+//        die($this->data['Configuracao']['pin']);
 
         if ($this->data['Configuracao']['pin'] == 'usa_barra_lateral') {
             $barra_lateral = $this->data['Configuracao']['conteudo'];
@@ -90,7 +93,7 @@ class Configuracao extends AppModel {
         
 //        die($barra_lateral . ' --- ' . $posicao_menu);
 
-        if (!empty($posicao_menu) && !empty($barra_lateral)) {
+        if (!is_null($posicao_menu) && !is_null($barra_lateral)) {
 
             if ((($posicao_menu == 1) && ($barra_lateral)) ||
                     (($posicao_menu == 2) && (!$barra_lateral))) {
@@ -104,6 +107,8 @@ class Configuracao extends AppModel {
                     'pin' => 'tamanho_centro'
                 )
                     ));
+//            die($tamanho);
+            
             $tamanho_centro['Configuracao']['conteudo'] = $tamanho;
             $this->save($tamanho_centro);
         }

@@ -307,6 +307,7 @@ DROP TABLE IF EXISTS `banner_tipos` ;
 
 CREATE  TABLE IF NOT EXISTS `banner_tipos` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT ,
+  `pin` VARCHAR(60) NOT NULL ,
   `tipo` VARCHAR(60) NOT NULL ,
   `created` DATETIME NULL ,
   `modified` DATETIME NULL ,
