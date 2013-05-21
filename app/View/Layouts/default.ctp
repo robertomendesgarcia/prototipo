@@ -1,4 +1,4 @@
-<?php // echo '<pre>'; pr($config); echo '</pre>';       ?>
+<?php // echo '<pre>'; pr($config); echo '</pre>';              ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
@@ -14,12 +14,19 @@
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-validation-1.11.0/dist/jquery.validate.min.js"></script>  
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uniform/jquery.uniform.min.js"></script>
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/masked-input/jquery.maskedinput.min.js"></script>
-        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/geral_externo.js"></script>
 
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <!-- script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script -->
 
         <link href="<?php echo DEFAULT_URL; ?>css/reset.css" media="all" rel="stylesheet" type="text/css" />
         <link href="<?php echo DEFAULT_URL; ?>js/uniform/css/uniform.default.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
+
+        <link href="<?php echo DEFAULT_URL; ?>js/shadowbox-3.0.3/shadowbox.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />     
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/shadowbox-3.0.3/shadowbox.js"></script>
+        
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery.flash.js"></script>
+
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/geral_externo.js?"></script>
+
         <link href="<?php echo DEFAULT_URL; ?>css/geral_externo.css" media="all" rel="stylesheet" type="text/css" />
 
         <style type="text/css">
@@ -113,7 +120,11 @@
 
             <div id="wrapper" class="<?php echo $config['tamanho_centro']; ?>">
 
-                <?php echo $this->element('banners', array('pin' => 'centro')); ?>
+                <?php
+                if ($this->params["action"] <> 'capa') {
+                    echo $this->element('banners', array('pin' => 'centro'));
+                }
+                ?>
 
                 <?php echo $content_for_layout; ?>
             </div>

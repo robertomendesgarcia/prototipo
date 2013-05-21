@@ -84,6 +84,12 @@ div.banners {
     padding: 15px;
     overflow: hidden;
 }
+div.banners.centro,
+div.banners.capa,
+div.banners.barra_lateral_topo,
+div.banners.barra_lateral_meio {
+    padding-top: 0px;   
+}
 div.banners a {
     display: inline-block;
     text-align: center;

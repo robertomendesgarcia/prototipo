@@ -301,7 +301,7 @@ class AppController extends Controller {
 
     public function getBanners() {
 
-        if (!$this->Session->check('__Banners')) {
+//        if (!$this->Session->check('__Banners')) {
 
             $retorno = null;
 
@@ -319,7 +319,7 @@ class AppController extends Controller {
             $retorno['path'] = $this->Banner->file['path'];
 
             $this->Session->write('__Banners', $retorno);
-        }
+//        }
     }
 
 }

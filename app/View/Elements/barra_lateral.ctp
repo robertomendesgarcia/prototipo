@@ -26,8 +26,6 @@
         </div>
     <?php } ?>
 
-    <?php echo $this->element('banners', array('pin' => 'barra_lateral_meio')); ?>
-
     <?php if ($config['mostrar_produtos_lateral'] && isset($noticias_lateral)) { ?>
         <div class="produtos">
             <h3><?php echo __('Products'); ?></h3>
@@ -54,6 +52,8 @@
             <?php echo $this->Form->end('OK'); ?>
         </div>
     <?php } ?>
+
+    <?php echo $this->element('banners', array('pin' => 'barra_lateral_meio')); ?>
 
     <div id="newsletter">
         <h3>Newsletter</h3>

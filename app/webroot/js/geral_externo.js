@@ -1,25 +1,29 @@
-$(document).ready(function(){
-    
-    $('select, input, button, textarea').uniform(); 
-    
-    $.each($('#wrapper form .obrigatorio'), function(index, value){
+$(document).ready(function() {
+
+    if ($('div.galeria').length) {
+        Shadowbox.init();
+    }
+
+    $('select, input, button, textarea').uniform();
+
+    $.each($('#wrapper form .obrigatorio'), function(index, value) {
         $(this).prev('label').append('<span class="requerido"> *</span>');
     });
-    
+
     var height_li = 0;
-    $.each($('ul.listagem li'), function(index, value){
+    $.each($('ul.listagem li'), function(index, value) {
         if ($(this).height() > height_li) {
             height_li = $(this).height();
         }
     });
     $('ul.listagem li').height(height_li);
-    
+
     if ($('body#c-paginas.a-contato').length) {
-        
+
         $('#ContatoNome').focus();
-        
+
         $('#ContatoTelefone').mask('(99) 9999-9999?9');
-        
+
         $('#form_contato').validate({
             rules: {
                 'data[Contato][nome]': 'required',
@@ -30,7 +34,7 @@ $(document).ready(function(){
                 'data[Contato][assunto]': 'required',
                 'data[Contato][mensagem]': {
                     required: true,
-                    maxlength: 600 
+                    maxlength: 600
                 }
             },
             messages: {
@@ -46,15 +50,15 @@ $(document).ready(function(){
                 }
             }
         });
-        
+
     }
-    
+
     if ($('body#c-paginas.a-trabalhe_conosco').length) {
-        
+
         $('#CurriculoNome').focus();
-        
+
         $('#CurriculoTelefone').mask('(99) 9999-9999?9');
-        
+
         $('#form_trabalhe_conosco').validate({
             rules: {
                 'data[Curriculo][nome]': 'required',
@@ -64,7 +68,7 @@ $(document).ready(function(){
                 },
                 'data[Curriculo][mensagem]': {
                     required: true,
-                    maxlength: 600 
+                    maxlength: 600
                 },
                 'data[Curriculo][curriculo]': 'required'
             },
@@ -81,11 +85,11 @@ $(document).ready(function(){
                 'data[Curriculo][curriculo]': 'Envie seu currículo.'
             }
         });
-        
+
     }
 
     if ($('#NewsletterAddForm').length) {
-        
+
         $('#NewsletterAddForm').validate({
             rules: {
                 'data[Newsletter][nome]': 'required',
@@ -102,23 +106,23 @@ $(document).ready(function(){
                 }
             }
         });
-        
-    }
-    
 
-    $('#adminMessage').on('click', function(event){
+    }
+
+
+    $('#adminMessage').on('click', function(event) {
         $('#adminMessage').fadeOut();
         event.preventDefault();
     });
-    
+
     $('div.banners a').on('click', function() {
         $(this).target = "_blank";
         window.open($(this).prop('href'));
         return false;
     });
-    
-    
-    
+
+
+
 //    $('#NoticiaData').datepicker();
 //    $('#NoticiaData').mask("99/99/9999");
 //    
@@ -165,20 +169,19 @@ $(document).ready(function(){
 //        }); 
 //    }
 //  
-    
-    
+
+
 });
 
 
-function carregarMapa(endereco){   
+function carregarMapa(endereco) {
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({
         'address': endereco
-    }, function (results, status) {
+    }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             var mapOptions = {
-                
-                zoom: 15, 
+                zoom: 15,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById('mapa'), mapOptions);

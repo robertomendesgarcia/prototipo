@@ -25,7 +25,7 @@ if (!empty($imagens)) {
                         ));
                         ?>
 
-                        <a href="<?php echo DEFAULT_URL . $src; ?>" title="<?php echo $imagem['titulo']; ?>">
+                        <a href="<?php echo DEFAULT_URL . $src; ?>" rel="shadowbox[Galeria]" title="<?php echo $imagem['titulo']; ?>">
                             <?php echo $mini; ?>
                         </a>
 

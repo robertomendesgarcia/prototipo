@@ -12,9 +12,14 @@
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/uniform/jquery.uniform.min.js"></script>
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-ui/js/jquery-ui-1.10.0.custom.min.js"></script>
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/masked-input/jquery.maskedinput.min.js"></script>
-        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/geral_admin.js"></script>
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/geral_admin.js?"></script>
+
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery.flash.js"></script>
 
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery-validation-1.11.0/dist/jquery.validate.min.js"></script>  
+
+        <link href="<?php echo DEFAULT_URL; ?>js/shadowbox-3.0.3/shadowbox.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />     
+        <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/shadowbox-3.0.3/shadowbox.js"></script>
 
         <link href="<?php echo DEFAULT_URL; ?>js/uniform/css/uniform.default.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
         <link href="<?php echo DEFAULT_URL; ?>js/jquery-ui/css/smoothness/jquery-ui-1.10.0.custom.min.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />        
@@ -30,8 +35,8 @@
 
         <?php if (in_array($this->params["controller"], array('noticias', 'paginas', 'configuracoes')) && (in_array($this->params["action"], array('admin_add', 'admin_edit', 'admin_config')))) { ?>
             <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/ckeditor/ckeditor.js"></script>
-            <!-- script type="text/javascript" src="<?php // echo DEFAULT_URL; ?>js/uploadify/jquery.uploadify.min.js"></script -->
-            <!-- link href="<?php // echo DEFAULT_URL; ?>js/uploadify/uploadify.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" / -->          
+            <!-- script type="text/javascript" src="<?php // echo DEFAULT_URL;   ?>js/uploadify/jquery.uploadify.min.js"></script -->
+            <!-- link href="<?php // echo DEFAULT_URL;   ?>js/uploadify/uploadify.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" / -->          
         <?php } ?>
 
         <?php if ($this->params["controller"] == 'configuracoes') { ?>
