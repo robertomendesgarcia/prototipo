@@ -4,7 +4,8 @@ $(document).ready(function() {
         Shadowbox.init();
     }
 
-    $('select, input, button, textarea').uniform();
+    $('select, input, button, textarea').not('#barra_lateral div.busca input:submit').uniform();
+//    $('#barra_lateral div.busca div.submit div.button span').;
 
     $.each($('#wrapper form .obrigatorio'), function(index, value) {
         $(this).prev('label').append('<span class="requerido"> *</span>');
@@ -115,7 +116,7 @@ $(document).ready(function() {
         event.preventDefault();
     });
 
-    $('div.banners a').on('click', function() {
+    $('div.banners a, a.nova_janela').on('click', function() {
         $(this).target = "_blank";
         window.open($(this).prop('href'));
         return false;

@@ -9,7 +9,12 @@
         <input type="radio" value="<?php echo $key; ?>" style="display: none;"  name="data[Layout][layout]" />
 
         <a href="#" id="<?php echo 'capa_' . $key; ?>" title="<?php echo $estrutura; ?>">
-            <img src="<?php echo DEFAULT_URL . "img/layouts_padroes/capa_" . $key . '.png'; ?>" alt="<?php echo $estrutura; ?>" />
+            <?php
+            $src = "img/layouts_padroes/capa_" . $key . '.png';
+            echo $this->PhpThumb->thumbnail($src, array(
+                'w' => 200, 'h' => 200, 'zc' => 1
+            ));
+            ?>
         </a>
     </fieldset>
 

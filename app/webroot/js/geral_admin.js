@@ -15,10 +15,10 @@ $(document).ready(function() {
         }
     });
 
-    $('a.nova_aba').on('click', function() {
-
-        console.log('Abre nova aba');
-
+    $('a.nova_aba, a.nova_janela').on('click', function() {
+        $(this).target = "_blank";
+        window.open($(this).prop('href'));
+        return false;
     });
 
     $('#adminMessage').on('click', function(event) {

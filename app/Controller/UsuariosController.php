@@ -287,30 +287,35 @@ class UsuariosController extends AppController {
 //                if ($this->Usuario->save($usuario)) {
 
                 $email = new CakeEmail('smtp');
-                $email->viewVars(array('value' => 12345));
 //                $email->deliver('smtp');
+                $email->viewVars(array('value' => '12345'));
+
                 $email->template('contato');
                 $email->emailFormat('html');
-                $email->to($usuario['Usuario']['email']);
+//                $email->to($usuario['Usuario']['email']);
+
+                $email->to('robertomendesgarcia@gmail.com');
+
+
+
                 $email->subject('Nova senha');
-                $email->from('robertomendesgarcia@gmail.com');
+//                $email->from('robertomendesgarcia@gmail.com');
 
 
                 if ($email->send()) {
-                    die('1');
+//                    die('1');
 
                     $this->Session->setFlash(__('Você receberá um e-mail com seu usuário e sua nova senha.'), 'flash_message', array('tipo' => 'success'), 'admin');
                     $this->redirect(array('action' => 'login'));
                 } else {
-                    die('0');
+//                    die('0');
                 }
 
-                pr($email);
-                exit;
+//                pr($email);
+//                exit;
 //                }
-
-                pr($usuario);
-                exit;
+//                pr($usuario);
+//                exit;
             } else {
 
                 $this->Session->setFlash(__('E-mail não cadastrado.'), 'flash_message', array('tipo' => 'warning'), 'admin');
@@ -340,9 +345,9 @@ class UsuariosController extends AppController {
 //                $email->deliver('smtp');
         $email->template('contato');
         $email->emailFormat('html');
-        $email->to($usuario['Usuario']['email']);
+        $email->to('giganteguerreirodaileom@hotmail.com');
         $email->subject('Nova senha');
-        $email->from('robertomendesgarcia@gmail.com');
+//        $email->from('robertomendesgarcia@gmail.com');
 
         if ($email->send()) {
             die('1');

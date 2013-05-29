@@ -8,7 +8,7 @@ class NoticiasController extends AppController {
         $options = array(
             'Noticia.ativo' => 1,
             'order' => array('Noticia.id' => 'DESC'),
-            'limit' => 20
+            'limit' => 1000
         );
 
         if (!empty($categoria)) {
@@ -44,7 +44,7 @@ class NoticiasController extends AppController {
 
         $options = array(
             'order' => array('Noticia.data' => 'DESC'),
-            'limit' => 10
+            'limit' => 1000
         );
 
         if ((!empty($this->data)) && (!empty($this->data['Filtro']['filtro']))) {

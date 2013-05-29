@@ -8,7 +8,7 @@ class ProdutosController extends AppController {
         $options = array(
             'Produto.ativo' => 1,
             'order' => array('Produto.id' => 'DESC'),
-            'limit' => 20
+            'limit' => 1000
         );
 
         if (!empty($categoria)) {
@@ -52,7 +52,7 @@ class ProdutosController extends AppController {
     public function admin_index() {
         $options = array(
             'order' => array('Produto.id' => 'DESC'),
-            'limit' => 5
+            'limit' => 1000
         );
 
         if ((!empty($this->data)) && (!empty($this->data['Filtro']['filtro']))) {
@@ -135,7 +135,7 @@ class ProdutosController extends AppController {
 
         $this->set(compact('categorias'));
         $this->set('img', $this->Produto->ProdutoImagem->img);
-        $this->set('title_for_layout', __('Add Product') . ' - ' . $this->title_for_layout);
+        $this->set('title_for_layout', __('Novo Produto') . ' - ' . $this->title_for_layout);
     }
 
     public function admin_edit($id = null) {

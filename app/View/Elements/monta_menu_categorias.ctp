@@ -60,7 +60,6 @@ if ($tipo == 'noticias') {
 
                                     <?php } ?>
 
-
                                 <?php } ?>
 
                             <?php } ?>
@@ -69,13 +68,11 @@ if ($tipo == 'noticias') {
 
                     </ul>
 
-                </li>
+                <?php } ?>
 
-            <?php } ?>
+            </li>
 
-        </li>
-
-    <?php } ?>   
+        <?php } ?>   
 
     </ul>
 

@@ -261,6 +261,9 @@ class ConfiguracoesController extends AppController {
             case 'email':
                 $titulo = __('Configurações de E&#45;mail');
                 break;
+            case 'rodape':
+                $titulo = __('Configurações do Rodapé');
+                break;
         }
 
         $this->set('title_for_layout', $titulo . ' - ' . $this->title_for_layout);

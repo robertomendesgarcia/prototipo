@@ -11,6 +11,7 @@ body {
 p {
     display: block;
     margin-bottom: 6px;
+    line-height: 15px;
 }
 
 h3 {
@@ -121,20 +122,23 @@ div.banners a {
 
 /* --- Base --- */
 #menu ul {
-    background-color: #FFF;
+    /*background-color: #FFF;*/
 }
 #menu ul li ul,
 #menu ul li ul li ul, 
-#menu ul li ul li ul li ul {
+#menu ul li ul li ul li ul,
+#menu ul li:hover ul li ul {
     display: none;
-    background-color: #FFF;
+    /*background-color: #FFF;*/
 }
 #menu ul li:hover ul,
-#menu ul li:hover ul li ul, 
-#menu ul li:hover ul li ul li ul {
+#menu ul li:hover ul li:hover ul {
     display: block;
     position: absolute;
     z-index: 9999;
+}
+#menu ul li:hover ul li:hover ul {
+
 }
 
 #menu ul li {
@@ -142,25 +146,54 @@ div.banners a {
 }
 #menu ul li a {
     text-decoration: none;
+    font-size: 14px;
 }
 
-
+#menu ul li a:hover {
+    text-decoration: underline;
+}
 
 #menu.esquerda {
     float: left;
     display: inline;
     width: 120px;
-    padding: 20px 15px;
+    padding: 15px 0 15px 15px;
+}
+#menu.esquerda ul li {
+    padding: 8px 0;
+    text-align: center;
+    font-weight: bold;
+}
+#menu.esquerda ul li a {
+    text-shadow: 1px 1px 1px #DDD;
 }
 
 #menu.topo {
     float: right;
     display: inline;    
-    margin: 85px 30px 0 0;
+    margin: 80px 20px 0 0;
+}
+#menu.topo ul {
+    border: 1px solid #444;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+
 }
 #menu.topo ul li {
     display: inline-block;
-    padding: 0 4px;
+    border-right: 1px solid #DDD;
+}
+#menu.topo ul li:last-child {
+    border: none;   
+}
+#menu.topo ul li ul li {
+    border: none;
+    display: block;
+}
+#menu.topo ul li a {
+    display: block;
+    padding: 6px 12px;
 }
 
 
@@ -183,7 +216,7 @@ div.banners a {
 
 }
 #conteudo #wrapper.pequeno {
-    width: 540px;
+    width: 570px;
 }
 #conteudo #wrapper.medio {
     width: 700px;
@@ -242,7 +275,8 @@ div.banners a {
     float: right;
     display: inline;
     width: 200px;
-    padding: 20px 15px;
+    padding: 15px 20px 15px 0;
+    overflow: hidden;
 }
 #barra_lateral h3 {
     font-size: 14px;
@@ -253,6 +287,19 @@ div.banners a {
 #barra_lateral div.noticias,
 #barra_lateral div.produtos {
     padding-bottom: 10px;   
+}
+
+/*#barra_lateral div.busca input.busca {*/
+#barra_lateral div.busca div.submit input {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: inline-block;
+    text-indent: -1000em;
+    overflow: hidden;
+    background: transparent url('./../img/layout/lupa.png') 0 0 no-repeat;
+    border: none;
+    cursor: pointer;
 }
 
 form.form_busca input {
@@ -310,7 +357,7 @@ form.form_busca div.submit {
 }
 #barra_lateral ul li a {
     text-decoration: none;
-    color: #656565;
+    /*color: #656565;*/
 }
 #barra_lateral ul li a:hover {
     color: #3589bA;   
@@ -330,6 +377,7 @@ form.form_busca div.submit {
 
 /* --- Capa --- */
 ul li em,
+div.a-empresa a,
 div a {
     color: #3589bA; 
     text-decoration: none;
@@ -366,7 +414,7 @@ div a {
 #c-noticias.a-index #wrapper ul li a,
 #wrapper div.noticias ul li a {
     text-decoration: none;
-    color: #656565;
+    /*color: #656565;*/
 }
 /*#wrapper div.produtos ul li a:hover,*/
 #wrapper div.a-empresa a:hover,
@@ -390,6 +438,7 @@ div a {
 #wrapper div.noticias ul li a span, 
 #wrapper div.noticias ul li a em {
     display: block;
+    line-height: 15px;
 }
 #c-noticias.a-index #wrapper ul li a em,
 #wrapper div.noticias ul li a em {
@@ -518,6 +567,9 @@ div.galeria ul li a:hover img {
     -webkit-border-radius: 0 0 5px 5px;
     -moz-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
+}
+#rodape p {
+    line-height: 15px;
 }
 
 

@@ -18,7 +18,7 @@
     <?php foreach ($produtos as $produto) { ?>
         <tr>
             <td><?php echo $produto['Produto']['nome']; ?></td>
-            <td class="centralizado"><?php echo $this->Number->currency($produto['Produto']['valor'], 'R$ '); ?></td>
+            <td class="centralizado"><?php echo !empty($produto['Produto']['valor']) ? 'R$ ' . number_format($produto['Produto']['valor'], 2, ',', '') : null; ?></td>
             <td class="centralizado"><?php echo ($produto['Produto']['destaque'] == 1) ? __('Yes') : __('No'); ?></td>
             <td class="centralizado"><?php echo ($produto['Produto']['ativo'] == 1) ? __('Yes') : __('No'); ?></td>
             <td class="centralizado"><?php echo $produto['ProdutoCategoria']['nome']; ?></td>

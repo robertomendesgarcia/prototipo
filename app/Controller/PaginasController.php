@@ -29,7 +29,7 @@ class PaginasController extends AppController {
                 $this->Session->setFlash(__('Erro ao salvar a página.'), 'flash_message', array('tipo' => 'error'), 'admin');
             }
         }
-        $this->set('title_for_layout', __('Add Page') . ' - ' . $this->title_for_layout);
+        $this->set('title_for_layout', __('Nova Página') . ' - ' . $this->title_for_layout);
     }
 
     public function admin_edit($id = null) {

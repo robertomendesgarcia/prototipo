@@ -6,7 +6,7 @@
 <?php echo $this->Form->create('Configuracao', array('type' => 'file')); ?>
 
 <fieldset>
-    <?php echo $this->Form->input('usa_produtos', array('label' => __('I want to have products.'), 'type' => 'checkbox')); ?>
+    <?php echo $this->Form->input('usa_produtos', array('label' => __('Quero ter produtos no meu site.'), 'type' => 'checkbox')); ?>
     <div class="campos">
         <?php echo $this->Form->input('mostrar_produtos_capa', array('label' => __('Show products on home.'), 'type' => 'checkbox')); ?>
         <?php

@@ -7,7 +7,7 @@ class BannersController extends AppController {
     public function admin_index() {
         $options = array(
             'order' => array('Banner.id' => 'DESC'),
-            'limit' => 10
+            'limit' => 1000
         );
 
         $this->paginate = $options;

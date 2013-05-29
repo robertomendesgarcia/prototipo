@@ -1,4 +1,4 @@
-<?php // echo '<pre>'; pr($config); echo '</pre>';              ?>
+<?php // echo '<pre>'; pr($config); echo '</pre>';                ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br">
@@ -22,7 +22,7 @@
 
         <link href="<?php echo DEFAULT_URL; ?>js/shadowbox-3.0.3/shadowbox.css" media="all" rel="stylesheet" type="text/css" charset="utf-8" />     
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/shadowbox-3.0.3/shadowbox.js"></script>
-        
+
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/jquery.flash.js"></script>
 
         <script type="text/javascript" src="<?php echo DEFAULT_URL; ?>js/geral_externo.js?"></script>
@@ -57,6 +57,13 @@
                 }
                 ?>
             }
+            #menu ul {
+                <?php
+                if (!empty($config['cor_bg_menu'])) {
+                    echo "background-color: " . $config['cor_bg_menu'] . ";";
+                }
+                ?>
+            }
             #menu ul li {
                 <?php
                 if (!empty($config['cor_bg_menu'])) {
@@ -74,6 +81,10 @@
             #conteudo {
                 background-color: #FFF;
             }
+            #barra_lateral ul li a,
+            #wrapper div.a-empresa p,
+            #c-noticias.a-index #wrapper ul li a,
+            #wrapper div.noticias ul li a,
             #wrapper p {
                 color: <?php echo!empty($config['cor_fonte_texto']) ? $config['cor_fonte_texto'] : '#333333'; ?>;
             }            

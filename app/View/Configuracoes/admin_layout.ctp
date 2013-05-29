@@ -8,7 +8,6 @@
 <fieldset>
     <?php echo $this->Form->input('usa_banners', array('label' => __('I want to have banners.'), 'type' => 'checkbox')); ?>
     <?php echo $this->Form->input('usa_barra_lateral', array('label' => __('I want to have a right sidebar.'), 'type' => 'checkbox')); ?>
-    <?php echo $this->Form->input('usa_rodape', array('label' => __('I want to have a footer.'), 'type' => 'checkbox')); ?>
 
     <div class="input">
         <?php echo $this->Form->input('cor_bg_html', array('class' => 'color_picker', 'label' => __('Cor de fundo do Site:'), 'div' => false)); ?>
@@ -64,17 +63,6 @@
         <?php echo $this->Form->input('cor_fonte_texto', array('class' => 'color_picker', 'label' => __('Cor dos textos no site:'), 'div' => false)); ?>
         <div class="preview"></div>
     </div>
-
-    <div class="input">
-        <?php echo $this->Form->input('cor_bg_rodape', array('class' => 'color_picker', 'label' => __('Cor de fundo do Rodapé:'), 'div' => false)); ?>
-        <div class="preview"></div>
-    </div>
-    <div class="input">
-        <?php echo $this->Form->input('cor_texto_rodape', array('class' => 'color_picker', 'label' => __('Cor do texto no Rodapé:'), 'div' => false)); ?>
-        <div class="preview"></div>
-    </div>
-    <label for="ConfiguracaoConteudoRodape">Texto para o Rodapé:</label>
-    <?php echo $this->Form->textarea('conteudo_rodape', array('class' => 'ckeditor')); ?>
 
 </fieldset>
 

@@ -9,7 +9,7 @@ class NewslettersController extends AppController {
             'order' => array(
                 array('Newsletter.nome' => 'ASC'),
             ),
-            'limit' => 10
+            'limit' => 1000
         );
 
         $this->paginate = $options;

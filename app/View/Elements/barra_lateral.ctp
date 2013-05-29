@@ -3,7 +3,7 @@
     <?php echo $this->element('banners', array('pin' => 'barra_lateral_topo')); ?>
 
     <?php if ($config['mostrar_noticias_lateral'] && isset($noticias_lateral)) { ?>
-        <div class="noticias">
+        <div class="noticias busca">
             <h3><?php echo __('News'); ?></h3>
             <ul>
                 <?php foreach ($noticias_lateral as $noticia_lateral) { ?>
@@ -27,7 +27,7 @@
     <?php } ?>
 
     <?php if ($config['mostrar_produtos_lateral'] && isset($noticias_lateral)) { ?>
-        <div class="produtos">
+        <div class="produtos busca">
             <h3><?php echo __('Products'); ?></h3>
             <ul>
                 <?php foreach ($produtos_lateral as $produto_lateral) { ?>
@@ -66,7 +66,7 @@
             ?>
         </fieldset>
         <div class="botoes">
-            <?php echo $this->Form->end('OK'); ?>
+            <?php echo $this->Form->end('Cadastrar'); ?>
         </div>
         <?php
         if (!empty($banners[3])) {

@@ -6,17 +6,20 @@
             <?php echo $this->Html->link(__('Welcome'), array('controller' => 'usuarios', 'action' => 'bem_vindo', 'admin' => true), array('title' => __('Welcome'))); ?>
         </li>
         <li>
-            <?php echo $this->Html->link(__('Logout'), array('controller' => 'usuarios', 'action' => 'logout', 'admin' => false), array('class' => 'logout', 'title' => __('Logout'))); ?>
+            <?php echo $this->Html->link(__('Visualisar Site'), array('controller' => 'paginas', 'action' => 'capa', 'admin' => false), array('class' => 'nova_janela', 'title' => __('Visualisar Site'))); ?>
         </li>
         <li>
             <?php echo $this->Html->link(__('Change Password'), array('controller' => 'usuarios', 'action' => 'alterar_senha', 'admin' => true), array('title' => __('Change Password'))); ?>
+        </li>
+        <li>
+            <?php echo $this->Html->link(__('Logout'), array('controller' => 'usuarios', 'action' => 'logout', 'admin' => false), array('class' => 'logout', 'title' => __('Logout'))); ?>
         </li>
         <li>
             <h3><?php echo __('Content'); ?></h3>
             <ul>
                 <?php if ($config['usa_noticias']) { ?>
                     <li>
-                       <?php echo $this->Html->link(__('Categorias das Notícias'), array('controller' => 'noticiacategorias', 'action' => 'index', 'admin' => true), array('title' => __('Categorias das Notícias'))); ?>            
+                        <?php echo $this->Html->link(__('Categorias das Notícias'), array('controller' => 'noticiacategorias', 'action' => 'index', 'admin' => true), array('title' => __('Categorias das Notícias'))); ?>            
                     </li>
                     <li>
                         <?php echo $this->Html->link(__('News'), array('controller' => 'noticias', 'action' => 'index', 'admin' => true), array('title' => __('News'))); ?>
@@ -78,6 +81,9 @@
                     </li>
                     <li>
                         <?php echo $this->Html->link(__('Products'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'produtos'), array('title' => __('Products'))); ?>
+                    </li>
+                    <li>
+                        <?php echo $this->Html->link(__('Rodapé'), array('controller' => 'configuracoes', 'action' => 'config', 'admin' => true, 'rodape'), array('title' => __('Rodapé'))); ?>
                     </li>
                     <li>
                         <?php echo $this->Html->link(__('Users'), array('controller' => 'usuarios', 'action' => 'index', 'admin' => true), array('title' => __('Users'))); ?>
