@@ -79,6 +79,17 @@ div.error-message {
     font-weight: bold;
 }
 
+/* --- BreadCrumbs --- */
+#breadcrumbs {
+    display: block;
+    font-size: 12px;
+    margin: 0 0 15px 0;
+    color: #555;
+}
+#breadcrumbs a {
+    color: #c3c3c3;
+}
+
 div.banners {
     display: block;
     text-align: center;
@@ -159,6 +170,10 @@ div.banners a {
     width: 120px;
     padding: 15px 0 15px 15px;
 }
+#menu.topo ul li ul,
+#menu.esquerda ul {
+    min-width: 105px;
+}
 #menu.esquerda ul li {
     padding: 8px 0;
     text-align: center;
@@ -167,6 +182,25 @@ div.banners a {
 #menu.esquerda ul li a {
     text-shadow: 1px 1px 1px #DDD;
 }
+#menu.topo ul li ul li ul,
+#menu.esquerda ul li ul {
+    margin: -27px 0 0 100px;
+    padding: 5px 10px;
+
+    border: 1px solid #444;
+    border-left: none;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+
+}
+#menu.topo ul li ul li ul {
+    margin-top: -32px;
+}
+/*#menu.esquerda ul li ul li ul {
+    margin-left: 100px;
+    padding: 5px 10px;
+}*/
 
 #menu.topo {
     float: right;
@@ -178,7 +212,6 @@ div.banners a {
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
-
 }
 #menu.topo ul li {
     display: inline-block;
@@ -251,6 +284,7 @@ div.banners a {
 #c-produtos ul.listagem li a {
     display: block;
     text-decoration: none;
+    text-align: center;
 }
 #wrapper div.produtos ul li a small,
 #c-produtos ul.listagem li a small {

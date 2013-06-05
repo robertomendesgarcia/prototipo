@@ -1,7 +1,18 @@
-<?php
-$titulo = explode(' - ', $title_for_layout);
-$this->Html->addCrumb($titulo[0]);
-?>
+<div id="breadcrumbs">
+    <?php
+    if (!empty($noticia['NoticiaCategoria']['CategoriaPai']['id'])) {
+        $this->Html->addCrumb($noticia['NoticiaCategoria']['CategoriaPai']['nome'], DEFAULT_URL . 'noticias/index/' . $noticia['NoticiaCategoria']['CategoriaPai']['id'] . '/' . $this->Uteis->slug($noticia['NoticiaCategoria']['CategoriaPai']['nome']));
+    }
+
+    $this->Html->addCrumb($noticia['NoticiaCategoria']['nome']);
+
+    echo $this->Html->getCrumbs(' > ', array(
+        'text' => 'Notícias',
+        'url' => DEFAULT_URL . 'noticias',
+        'escape' => false
+    ));
+    ?>
+</div>
 
 <?php if (!empty($produto)) { ?>
 

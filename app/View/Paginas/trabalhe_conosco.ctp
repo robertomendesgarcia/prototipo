@@ -1,3 +1,13 @@
+<div id="breadcrumbs">
+    <?php
+    echo $this->Html->getCrumbs(' > ', array(
+        'text' => 'Trabalhe Conosco',
+        'url' => null,
+        'escape' => false
+    ));
+    ?>
+</div>
+
 <h3>Trabalhe Conosco</h3>
 
 <?php echo $this->form->create('Curriculo', array('type' => 'file', 'id' => 'form_trabalhe_conosco')); ?>

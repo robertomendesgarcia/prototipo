@@ -18,7 +18,8 @@ class WizardController extends AppController {
 
         $this->loadModel('Estrutura');
         $estruturas = $this->Estrutura->find('list', array(
-            'fields' => array('pin', 'nome')
+            'fields' => array('pin', 'nome'),
+            'order' => 'Estrutura.pin ASC'
         ));
 
         if ($this->request->is('post')) {

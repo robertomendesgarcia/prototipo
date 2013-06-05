@@ -5,6 +5,7 @@ App::uses('AppController', 'Controller');
 class NoticiasController extends AppController {
 
     public function index($categoria = null) {
+        $categoria_selecionada = null;
         $options = array(
             'Noticia.ativo' => 1,
             'order' => array('Noticia.id' => 'DESC'),
@@ -13,6 +14,12 @@ class NoticiasController extends AppController {
 
         if (!empty($categoria)) {
             $options['conditions']['Noticia.categoria_id'] = $categoria;
+            $this->loadModel('NoticiaCategoria');
+            $categoria_selecionada = $this->NoticiaCategoria->find('first', array(
+                'conditions' => array(
+                    'NoticiaCategoria.id' => $categoria
+                )
+            ));
         }
 
         if ((!empty($this->data)) && (!empty($this->data['Noticia']['titulo']))) {
@@ -24,6 +31,7 @@ class NoticiasController extends AppController {
         $this->paginate = $options;
         $noticias = $this->paginate('Noticia');
 
+        $this->set('categoria_selecionada', $categoria_selecionada);
         $this->set('img', $this->Noticia->NoticiaImagem->img['path']);
         $this->set(compact('noticias'));
         $this->set('title_for_layout', __('News') . ' - ' . $this->title_for_layout);
@@ -33,7 +41,8 @@ class NoticiasController extends AppController {
         $noticia = $this->Noticia->find('first', array(
             'conditions' => array(
                 'Noticia.id' => $id
-            )
+            ),
+            'recursive' => 5
         ));
         $this->set('img', $this->Noticia->NoticiaImagem->img);
         $this->set(compact('noticia'));

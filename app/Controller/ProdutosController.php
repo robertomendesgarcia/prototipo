@@ -5,6 +5,7 @@ App::uses('AppController', 'Controller');
 class ProdutosController extends AppController {
 
     public function index($categoria = null) {
+        $categoria_selecionada = null;
         $options = array(
             'Produto.ativo' => 1,
             'order' => array('Produto.id' => 'DESC'),
@@ -13,6 +14,13 @@ class ProdutosController extends AppController {
 
         if (!empty($categoria)) {
             $options['conditions']['Produto.categoria_id'] = $categoria;
+            $this->loadModel('ProdutoCategoria');
+            $categoria_selecionada = $this->ProdutoCategoria->find('first', array(
+                'conditions' => array(
+                    'ProdutoCategoria.id' => $categoria
+                ),
+                'recursive' => 5
+            ));
         }
 
         if ((!empty($this->data)) && (!empty($this->data['Produto']['nome']))) {
@@ -24,6 +32,7 @@ class ProdutosController extends AppController {
         $this->paginate = $options;
         $produtos = $this->paginate('Produto');
 
+        $this->set('categoria_selecionada', $categoria_selecionada);
         $this->set('img', $this->Produto->ProdutoImagem->img['path']);
         $this->set(compact('produtos'));
         $this->set('title_for_layout', __('Products') . ' - ' . $this->title_for_layout);
@@ -34,7 +43,8 @@ class ProdutosController extends AppController {
         $produto = $this->Produto->find('first', array(
             'conditions' => array(
                 'Produto.id' => $id
-            )
+            ),
+            'recursive' => 5
         ));
 
         $img_destaque = null;

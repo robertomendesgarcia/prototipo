@@ -5,10 +5,10 @@
 <?php foreach ($estruturas as $key => $estrutura) { ?>
 
     <fieldset>
-        <label><?php echo $estrutura; ?></label>
+        <label><?php echo utf8_encode($estrutura); ?></label>
         <input type="radio" value="<?php echo $key; ?>" style="display: none;"  name="data[Layout][layout]" />
 
-        <a href="#" id="<?php echo 'capa_' . $key; ?>" title="<?php echo $estrutura; ?>">
+        <a href="#" id="<?php echo 'capa_' . $key; ?>" title="<?php echo utf8_encode($estrutura); ?>">
             <?php
             $src = "img/layouts_padroes/capa_" . $key . '.png';
             echo $this->PhpThumb->thumbnail($src, array(

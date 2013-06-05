@@ -1,7 +1,22 @@
-<?php echo $this->element('breadcrumbs'); ?>
+<div id="breadcrumbs">
+    <?php
+    $url = null;
+    if (!empty($categoria_selecionada)) {
+        $url = DEFAULT_URL . 'produtos';
+        if (!empty($categoria_selecionada['CategoriaPai']['id'])) {
+            $this->Html->addCrumb($categoria_selecionada['CategoriaPai']['nome'], DEFAULT_URL . 'produtos/index/' . $categoria_selecionada['CategoriaPai']['id'] . '/' . $this->Uteis->slug($categoria_selecionada['CategoriaPai']['nome']));
+        }
+        $this->Html->addCrumb($categoria_selecionada['ProdutoCategoria']['nome']);
+    }
+    echo $this->Html->getCrumbs(' > ', array(
+        'text' => 'Produtos',
+        'url' => $url,
+        'escape' => false
+    ));
+    ?>
+</div>
 
 <h3>Produtos</h3>
-
 
 <ul class="listagem">
 
@@ -19,10 +34,10 @@
                 ?>
 
                 <strong><?php echo $produto['Produto']['nome']; ?></strong>
-                <!-- p><?php // echo $produto['Produto']['descricao']; ?></p -->
+                <!-- p><?php // echo $produto['Produto']['descricao'];           ?></p -->
                 <?php
                 if (!empty($produto['Produto']['valor'])) {
-                    echo '<span> R$ ' . number_format($produto['Produto']['valor'], 2, ',', '') . '</span>';
+                    echo '<span> R$ ' . number_format($produto['Produto']['valor'], 2, ', ', '') . '</span>';
                 } else {
                     echo '<span>Consulte-nos</span>';
                 }

@@ -70,7 +70,7 @@ div.botoes {
     /*color: #F08D4B;*/
 }
 #form_selecao_layout fieldset a img {
-    border: 2px solid #FFF;  
+    border: 2px solid #CCC;  
 } 
 #form_selecao_layout fieldset a:hover img,
 #form_selecao_layout fieldset.selecionado a img {

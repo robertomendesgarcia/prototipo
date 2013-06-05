@@ -65,6 +65,7 @@
                         }
                         ?>
                         <strong><?php echo $produto['Produto']['nome']; ?></strong>
+                        <br>
                         <?php
                         if (!empty($produto['Produto']['valor'])) {
                             echo '<span> R$ ' . number_format($produto['Produto']['valor'], 2, ',', '') . '</span>';

@@ -1,3 +1,20 @@
+<div id="breadcrumbs">
+    <?php
+    $url = null;
+    if (!empty($categoria_selecionada)) {
+        $url = DEFAULT_URL . 'noticias';
+        if (!empty($categoria_selecionada['CategoriaPai']['id'])) {
+            $this->Html->addCrumb($categoria_selecionada['CategoriaPai']['nome'], DEFAULT_URL . 'noticias/index/' . $categoria_selecionada['CategoriaPai']['id'] . '/' . $this->Uteis->slug($categoria_selecionada['CategoriaPai']['nome']));
+        }
+        $this->Html->addCrumb($categoria_selecionada['NoticiaCategoria']['nome']);
+    }
+    echo $this->Html->getCrumbs(' > ', array(
+        'text' => 'Notícias',
+        'url' => $url,
+        'escape' => false
+    ));
+    ?>
+</div>
 
 <h3>Notícias</h3>
 

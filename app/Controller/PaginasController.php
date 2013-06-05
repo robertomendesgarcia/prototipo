@@ -145,10 +145,10 @@ class PaginasController extends AppController {
                     if (in_array($extensao, $this->Curriculo->file['extensoes'])) {
                         $arquivo = uniqid() . '.' . $extensao;
                         if (!move_uploaded_file($data['curriculo']['tmp_name'], $this->Curriculo->file['path'] . $arquivo)) {
-                            $this->Session->setFlash(__('Problemas ao salvar o arquivo. Por favor, tente novamente.'));
+                            $this->Session->setFlash(__('Problemas ao salvar o arquivo. Por favor, tente novamente.'), 'flash_message', array('tipo' => 'error'), 'admin');
                         }
                     } else {
-                        $this->Session->setFlash(__('Arquivo inválido.'));
+                        $this->Session->setFlash(__('Arquivo inválido.'), 'flash_message', array('tipo' => 'error'), 'admin');
                     }
                 }
 
@@ -156,9 +156,9 @@ class PaginasController extends AppController {
                 $data['data'] = date('Y-m-d H:i:s');
 
                 if ($this->Curriculo->save($data)) {
-                    $this->Session->setFlash(__('Currículo salvo com sucesso.</br>Obrigado.'));
+                    $this->Session->setFlash(__('Currículo salvo com sucesso, obrigado.'), 'flash_message', array('tipo' => 'success'), 'admin');
                 } else {
-                    $this->Session->setFlash(__('Problemas ao salvar seu currículo. Por favor, tente novamente.'));
+                    $this->Session->setFlash(__('Problemas ao salvar seu currículo. Por favor, tente novamente.'), 'flash_message', array('tipo' => 'error'), 'admin');
                 }
             }
         }
@@ -191,7 +191,8 @@ class PaginasController extends AppController {
                 $this->loadModel('Noticia');
                 $noticias = $this->Noticia->find('all', array(
                     'conditions' => array(
-                        'Noticia.ativo' => 1
+                        'Noticia.ativo' => 1,
+                        'Noticia.destaque' => 1
                     ),
                     'limit' => $config['qtde_noticias_capa'],
                     'order' => 'Noticia.created DESC'
@@ -202,7 +203,8 @@ class PaginasController extends AppController {
                 $this->loadModel('Produto');
                 $produtos = $this->Produto->find('all', array(
                     'conditions' => array(
-                        'Produto.ativo' => 1
+                        'Produto.ativo' => 1,
+                        'Produto.destaque' => 1
                     ),
                     'limit' => $config['qtde_produtos_capa'],
                     'order' => 'Produto.created DESC'
